@@ -1,0 +1,186 @@
+{
+  "ver": "1.3.15",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94",
+  "files": [],
+  "subMetas": {
+    "3accf": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@3accf",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "3accf",
+      "name": "player_01.mesh"
+    },
+    "1f586": {
+      "ver": "1.0.13",
+      "importer": "gltf-animation",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@1f586",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 4
+        },
+        "events": []
+      },
+      "displayName": "",
+      "id": "1f586",
+      "name": "idle.animation"
+    },
+    "cf5ee": {
+      "ver": "1.0.13",
+      "importer": "gltf-animation",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@cf5ee",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 4.2,
+          "to": 5
+        },
+        "events": []
+      },
+      "displayName": "",
+      "id": "cf5ee",
+      "name": "run.animation"
+    },
+    "a80c5": {
+      "ver": "1.0.13",
+      "importer": "gltf-animation",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@a80c5",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 5.166666666666667,
+          "to": 5.791666507720947
+        },
+        "events": []
+      },
+      "displayName": "",
+      "id": "a80c5",
+      "name": "hurt.animation"
+    },
+    "438fe": {
+      "ver": "1.0.0",
+      "importer": "gltf-skeleton",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@438fe",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "438fe",
+      "name": "UnnamedSkeleton.skeleton"
+    },
+    "5c895": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@5c895",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "5c895",
+      "name": "Material #2.material"
+    },
+    "847ec": {
+      "ver": "1.0.8",
+      "importer": "gltf-scene",
+      "uuid": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@847ec",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "847ec",
+      "name": "player_01.FBX.prefab"
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 5.791666507720947,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "idle",
+            "from": 0,
+            "to": 4
+          },
+          {
+            "name": "run",
+            "from": 4.2,
+            "to": 5
+          },
+          {
+            "name": "hurt",
+            "from": 5.166666666666667,
+            "to": 5.791666507720947
+          }
+        ]
+      }
+    ],
+    "redirect": "0713d6fa-bb77-4f79-bd48-e0c0846edb94@847ec",
+    "assetFinder": {
+      "meshes": [
+        "0713d6fa-bb77-4f79-bd48-e0c0846edb94@3accf"
+      ],
+      "skeletons": [
+        "0713d6fa-bb77-4f79-bd48-e0c0846edb94@438fe"
+      ],
+      "textures": [],
+      "materials": [
+        "0713d6fa-bb77-4f79-bd48-e0c0846edb94@5c895"
+      ],
+      "scenes": [
+        "0713d6fa-bb77-4f79-bd48-e0c0846edb94@847ec"
+      ]
+    }
+  }
+}

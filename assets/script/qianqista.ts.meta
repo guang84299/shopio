@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "fd419402-4969-46d5-8c88-36451442a0b3",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/qianqista.ts",
+    "importAsPlugin": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "3cb117a2-b460-46d7-a086-38fa714a8035",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/game/Player.ts",
+    "importAsPlugin": false
+  }
+}

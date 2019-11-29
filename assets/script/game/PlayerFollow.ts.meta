@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "2ffe9e42-10d2-4ab8-bd8f-05353fc833f4",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/game/PlayerFollow.ts",
+    "importAsPlugin": false
+  }
+}

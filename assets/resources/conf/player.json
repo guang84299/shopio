@@ -1,0 +1,12 @@
+[
+{"Lv":"1","Score":"10","Capacity":"8","Speed":"1","PlayerNum":"1"},
+{"Lv":"2","Score":"25","Capacity":"10","Speed":"1","PlayerNum":"1"},
+{"Lv":"3","Score":"75","Capacity":"15","Speed":"1","PlayerNum":"2"},
+{"Lv":"4","Score":"150","Capacity":"20","Speed":"1","PlayerNum":"2"},
+{"Lv":"5","Score":"250","Capacity":"30","Speed":"0.97","PlayerNum":"3"},
+{"Lv":"6","Score":"400","Capacity":"42","Speed":"0.97","PlayerNum":"3"},
+{"Lv":"7","Score":"700","Capacity":"60","Speed":"0.94","PlayerNum":"4"},
+{"Lv":"8","Score":"1200","Capacity":"76","Speed":"0.94","PlayerNum":"4"},
+{"Lv":"9","Score":"2000","Capacity":"100","Speed":"0.9","PlayerNum":"5"},
+{"Lv":"10","Score":"0","Capacity":"150","Speed":"0.85","PlayerNum":"6"}
+]

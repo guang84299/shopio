@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "6ab9030b-a66b-4540-b54b-7bf11ea17c8a",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/ani.ts",
+    "importAsPlugin": false
+  }
+}

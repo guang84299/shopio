@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "b349d663-0d3d-44d0-9cf2-1c98d9b4390f",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/GColl/GCollControl.ts",
+    "importAsPlugin": false
+  }
+}

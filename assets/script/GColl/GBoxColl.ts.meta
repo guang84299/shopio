@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "f2f21712-8e00-4928-af78-0a31a8d7207e",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/GColl/GBoxColl.ts",
+    "importAsPlugin": false
+  }
+}

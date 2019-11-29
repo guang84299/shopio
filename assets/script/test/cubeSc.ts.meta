@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "1d6c21f9-6047-4217-a673-493f4a0f53da",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/test/cubeSc.ts",
+    "importAsPlugin": false
+  }
+}

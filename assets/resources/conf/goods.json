@@ -1,0 +1,15 @@
+[
+{"ID":"1","Prefab":"Shelves_01","Name":"小货架","Require":"6","Score":"25","Capacity":"1","CapacityAdd":"10","Mass":"10"},
+{"ID":"2","Prefab":"Shelves_02","Name":"中货架","Require":"8","Score":"40","Capacity":"1","CapacityAdd":"15","Mass":"10"},
+{"ID":"3","Prefab":"Shelves_03","Name":"大货架","Require":"9","Score":"80","Capacity":"1","CapacityAdd":"25","Mass":"10"},
+{"ID":"4","Prefab":"Res101","Name":"纸袋子","Require":"1","Score":"1","Capacity":"1","CapacityAdd":"0","Mass":"0.5"},
+{"ID":"5","Prefab":"Res102","Name":"面包","Require":"1","Score":"2","Capacity":"1","CapacityAdd":"0","Mass":"0.5"},
+{"ID":"6","Prefab":"Res201","Name":"手提袋","Require":"3","Score":"4","Capacity":"1.5","CapacityAdd":"0","Mass":"0.7"},
+{"ID":"7","Prefab":"Res202","Name":"平底锅","Require":"3","Score":"6","Capacity":"1.5","CapacityAdd":"0","Mass":"0.7"},
+{"ID":"8","Prefab":"Res301","Name":"锅","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"0.8"},
+{"ID":"9","Prefab":"Res302","Name":"速食套餐","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"0.8"},
+{"ID":"10","Prefab":"Res401","Name":"床","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"10"},
+{"ID":"11","Prefab":"Res402","Name":"椅子","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"0.9"},
+{"ID":"12","Prefab":"Res403","Name":"显示器","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"10"},
+{"ID":"13","Prefab":"Res404","Name":"桌子","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0","Mass":"10"}
+]

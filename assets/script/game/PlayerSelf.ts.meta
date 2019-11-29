@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "fe9a353e-46e8-4e66-834c-1b75571366fc",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/game/PlayerSelf.ts",
+    "importAsPlugin": false
+  }
+}
