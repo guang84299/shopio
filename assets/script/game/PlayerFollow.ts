@@ -8,6 +8,7 @@ export class PlayerFollow extends Player {
     private upDirDt = 10;
     start () {
         super.start();
+        this.isFollowPlayer = true;
     }
 
     updateMoveDir(){
@@ -17,7 +18,7 @@ export class PlayerFollow extends Player {
             var p2 = this.followTarget.node.getPosition();
             this.moveDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p1.x,p1.z)).normalize();
 
-            if(Math.random()<0.1)
+            if(Math.random()<0.2)
             this.moveDir = cc.v2(Math.random()-0.5,Math.random()-0.5).normalize();
 
             this.isMove = true;    
@@ -25,13 +26,21 @@ export class PlayerFollow extends Player {
     }
 
     update (deltaTime: number) {
-        this.upDirDt += deltaTime;
-        if(this.upDirDt>=1)
+        if(this.gameControl.isStart)
         {
-            this.upDirDt = 0;
-            this.updateMoveDir();
+            this.upDirDt += deltaTime;
+            if(this.upDirDt>=1)
+            {
+                this.upDirDt = 0;
+                this.updateMoveDir();
+            }
+            
+            this.updateStep(deltaTime);
         }
-        
-        this.updateStep(deltaTime);
+       else
+       {
+            this.isMove = false; 
+           this.idle();
+       }
     }
 }

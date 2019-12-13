@@ -8,7 +8,9 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {}
+    {
+      "USE_ALBEDO_MAP": true
+    }
   ],
   "_states": [
     {
@@ -23,12 +25,8 @@
   ],
   "_props": [
     {
-      "albedo": {
-        "__type__": "cc.Color",
-        "r": 31,
-        "g": 0,
-        "b": 255,
-        "a": 255
+      "albedoMap": {
+        "__uuid__": "d480d5fc-8082-4ecb-9d71-d27870223975@6c48a"
       }
     }
   ]

@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "7b68e85f-a757-41a8-9e64-592a2d5f91cd",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/tools/Astar.ts",
+    "importAsPlugin": false
+  }
+}

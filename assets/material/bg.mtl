@@ -8,7 +8,11 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {}
+    {
+      "OCCLUSION_CHANNEL": "b",
+      "ROUGHNESS_CHANNEL": "r",
+      "METALLIC_CHANNEL": "g"
+    }
   ],
   "_states": [
     {
@@ -23,16 +27,19 @@
   ],
   "_props": [
     {
-      "albedo": {
+      "mainColor": {
         "__type__": "cc.Color",
         "r": 61,
         "g": 61,
         "b": 61,
         "a": 255
       },
-      "albedoMap": {
+      "mainTexture": {
         "__uuid__": "e838eb5b-297a-4282-8d88-7b3b659b4914@6c48a"
-      }
+      },
+      "occlusion": 1,
+      "roughness": 0.8,
+      "metallic": 0.6
     }
   ]
 }

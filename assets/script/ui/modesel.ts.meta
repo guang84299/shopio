@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "5e873e47-ab99-4015-8ccc-ccac7b79d2eb",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/ui/modesel.ts",
+    "importAsPlugin": false
+  }
+}

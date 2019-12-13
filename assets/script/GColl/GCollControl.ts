@@ -5,6 +5,7 @@ const { ccclass, property,executionOrder } = _decorator;
 @executionOrder(-1)
 export class GCollControl extends Component {
     public maps = {};
+    public roads = {};
     public static ins = null;
 
     public collMindis = 1;
@@ -14,6 +15,7 @@ export class GCollControl extends Component {
     private collList = [];
 
     updt = 0;
+    collNum = 0;
 
     onLoad(){
         GCollControl.ins = this;
@@ -21,6 +23,9 @@ export class GCollControl extends Component {
         // cc.log("PhysicsSystem.instance.maxSubStep ",cc.res );
         PhysicsSystem.instance.maxSubStep = 1;
         PhysicsSystem.instance.deltaTime = 1/30;
+        // PhysicsSystem.instance.gravity = cc.v3(0,-5,0);
+
+        this.roads = {};
     }
 
     add(boxColl){
@@ -30,9 +35,11 @@ export class GCollControl extends Component {
 
     update(dt){
         this.maps = {};
+        this.collNum = 0;
     }
 
     // lateUpdate(dt: number){
+        
     // }
 
 }

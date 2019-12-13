@@ -5,11 +5,27 @@
     "orientation": "portrait",
     "appid": "wx83aa5365b3b6f2be",
     "startScene": "5b302b6a-8924-4177-8b8e-d660d09a9936",
-    "debug": false
+    "debug": false,
+    "remoteServerAddress": "https://www.7q7q.top/subPackage/shop01",
+    "scenes": [
+      {
+        "url": "db://assets/scene/game.scene",
+        "uuid": "2b3bbfc0-8b05-48af-8ffd-203faa70d346"
+      },
+      {
+        "url": "db://assets/scene/load.scene",
+        "uuid": "5b302b6a-8924-4177-8b8e-d660d09a9936"
+      },
+      {
+        "url": "db://assets/scene/main.scene",
+        "uuid": "7b885a39-4e11-4e67-9d87-f9e81599d568"
+      }
+    ]
   },
   "wechatgame": {
     "orientation": "portrait",
-    "appid": "wx83aa5365b3b6f2be"
+    "appid": "wx83aa5365b3b6f2be",
+    "remoteServerAddress": "https://www.7q7q.top/subPackage/shop01"
   },
   "BuildTaskManager": {
     "queue": [
@@ -50,19 +66,19 @@
           "orientation": "portrait",
           "packAutoAtlas": true,
           "platform": "wechatgame",
-          "remoteServerAddress": "",
+          "remoteServerAddress": "https://www.7q7q.top/subPackage/shop01",
           "scenes": [
             {
               "url": "db://assets/scene/game.scene",
               "uuid": "2b3bbfc0-8b05-48af-8ffd-203faa70d346"
             },
             {
-              "url": "db://assets/scene/test.scene",
-              "uuid": "12f020d2-90ba-4127-b44b-dc09af88cac3"
-            },
-            {
               "url": "db://assets/scene/load.scene",
               "uuid": "5b302b6a-8924-4177-8b8e-d660d09a9936"
+            },
+            {
+              "url": "db://assets/scene/main.scene",
+              "uuid": "7b885a39-4e11-4e67-9d87-f9e81599d568"
             }
           ],
           "sourceMaps": false,
@@ -83,7 +99,7 @@
           "subContext": "",
           "taskName": "wechatgame"
         },
-        "message": "build success in 11252 ms!"
+        "message": "build success in 14407 ms!"
       }
     ]
   }

@@ -3,7 +3,7 @@ const { ccclass, property } = _decorator;
 
 export const storage = {
     pice:['k','m','b','t','a','aa','ab','ac','ad','ae','af','ag','ah','ai','aj','ak','al','am','an','ao','ap','aq','ar','as','at'],
-    pfix: "2048_",
+    pfix: "shop_",
     playSoundTime:0,
 
     music: "music",
@@ -16,6 +16,7 @@ export const storage = {
     circleData: "circleData",
     showScore: "showScore",
     fuhuoNum: "fuhuoNum",
+    mode: "mode",
 
     defaultVal: {
         music:1,
@@ -27,7 +28,8 @@ export const storage = {
         lv: 0,
         circleData:[],
         showScore: 0,
-        fuhuoNum: 0
+        fuhuoNum: 0,
+        mode: 1
     },
 
     setStorage: function(key,val)
@@ -216,6 +218,10 @@ export const storage = {
     getCountDown: function(t1,t2,fnum)
     {
         var time = t2 - t1;
+        return this.fomatTime(time,fnum);
+    },
+
+    fomatTime: function(time,fnum){
         var str = "";
         if(!fnum) fnum = 3;
 

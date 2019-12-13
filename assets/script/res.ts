@@ -71,7 +71,7 @@ export const res = {
         ));
     },
 
-    openUI: function(name,parent,showType)
+    openUI: function(name,parent?:Node,showType?:any)
     {
         if(!parent) parent = cc.find("Canvas/uiNode");
         if(parent)
@@ -107,7 +107,7 @@ export const res = {
         });
     },
 
-    closeUI: function(name,parent)
+    closeUI: function(name,parent?:Node)
     {
         if(!parent) parent = cc.find("Canvas/uiNode");
         if(parent)
@@ -120,7 +120,7 @@ export const res = {
         }
     },
 
-    getUI: function(name,parent)
+    getUI: function(name,parent?:Node)
     {
         if(!parent) parent = cc.find("Canvas/uiNode");
         if(parent)
@@ -134,7 +134,7 @@ export const res = {
         return null;
     },
 
-    openPrefab: function(path,parent,callback)
+    openPrefab: function(path,parent?:Node,callback?:any)
     {
         if(!parent) parent = cc.find("Canvas/uiNode");
         cc.loader.loadRes("prefab/"+path, function(err, prefab)

@@ -1,0 +1,12 @@
+[
+{"lv":1,"pay":90,"collect":80,"wander":80,"rob":0,"avoid":0},
+{"lv":2,"pay":80,"collect":70,"wander":70,"rob":5,"avoid":10},
+{"lv":3,"pay":75,"collect":65,"wander":60,"rob":10,"avoid":20},
+{"lv":4,"pay":70,"collect":60,"wander":60,"rob":15,"avoid":30},
+{"lv":5,"pay":70,"collect":55,"wander":60,"rob":20,"avoid":40},
+{"lv":6,"pay":65,"collect":55,"wander":60,"rob":30,"avoid":50},
+{"lv":7,"pay":70,"collect":60,"wander":60,"rob":35,"avoid":60},
+{"lv":8,"pay":80,"collect":65,"wander":50,"rob":40,"avoid":70},
+{"lv":9,"pay":85,"collect":70,"wander":50,"rob":40,"avoid":70},
+{"lv":10,"pay":90,"collect":70,"wander":50,"rob":40,"avoid":70}
+]

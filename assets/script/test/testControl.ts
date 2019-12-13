@@ -32,24 +32,39 @@ export class testControl extends Component {
         // cc.systemEvent.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
         cc.systemEvent.on(Node.EventType.TOUCH_END, function(){
             self.isTouch = false;
+            self.addCube();
         }, this);
 
        
-        this.initData();
+        // this.initData();
         
-        var sx = -10;
-        var sy = 0;
-        for(var i=0;i<200;i++)
-        {
-            var ps = [];
-            for(var j=0;j<20;j++)
-            {
-                ps.push({x:sx+j*1+(j%2)*0.5,y:sy+j*1});
-                // ps.push({x:10,y:0});
-            }
-            this.carPoints.push(ps);
-        }
+        // var sx = -10;
+        // var sy = 0;
+        // for(var i=0;i<200;i++)
+        // {
+        //     var ps = [];
+        //     for(var j=0;j<20;j++)
+        //     {
+        //         ps.push({x:sx+j*1+(j%2)*0.5,y:sy+j*1});
+        //         // ps.push({x:10,y:0});
+        //     }
+        //     this.carPoints.push(ps);
+        // }
        
+    }
+
+    addCube(){
+        if( this.cubes.length>120) return;
+        for(var i=0;i<10;i++)
+        {
+            var cube = cc.instantiate(this.cube);            
+            cube.active = true;
+            var x = (Math.random()-0.5)*6;
+            var z =  (Math.random()-0.5)*6;
+            cube.setPosition(cc.v3(x,1,z));
+            this.cubeNode.addChild(cube);
+            this.cubes.push(cube);
+        }
     }
 
     initData(){

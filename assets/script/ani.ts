@@ -25,6 +25,19 @@ export class ani extends Component {
             });
     }
 
+    scaleTo(time:number, toScale:Vec3,callback:any){
+        this.isScale = true;
+        this.toScale = this.node.getScale();
+        var self = this;
+        tweenUtil(this.toScale)
+            .to(time, toScale, { easing: 'Cubic-Out' })
+            .start()
+            .call(function(){
+                self.isScale = false;
+                if(callback) callback();
+            });
+    }
+
     update (deltaTime: number) {
         if(this.isMove)
         {

@@ -11,8 +11,9 @@ export class PlayerSelf extends Player {
     }
 
     start () {
+        this.initNick("留个名吧！");
         super.start();
-        this.isPlayer = true;
+        this.isPlayerSelf = true;
         this.initConf(1);
     }
 

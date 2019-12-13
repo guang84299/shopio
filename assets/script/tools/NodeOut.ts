@@ -6,6 +6,7 @@ export class NodeOut extends Component {
     
     conf = [];
     item = [];
+    zScore = 0;
     start () {
        this.conf = [
         {"ID":"1","Prefab":"Shelves_01","Name":"小货架","Require":"6","Score":"25","Capacity":"1","CapacityAdd":"10"},
@@ -22,9 +23,11 @@ export class NodeOut extends Component {
         {"ID":"12","Prefab":"Res403","Name":"显示器","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0"},
         {"ID":"13","Prefab":"Res404","Name":"桌子","Require":"5","Score":"10","Capacity":"2.5","CapacityAdd":"0"}
         ];
-
+        this.zScore = 0;
         this.loadNode(this.node);
         cc.sys.localStorage.setItem("item",JSON.stringify(this.item));
+
+        cc.log("总分="+this.zScore);
     }
 
     loadNode(node){
@@ -33,12 +36,11 @@ export class NodeOut extends Component {
         {
             this.loadNode(nodes[i]);
         }
-        var id = this.hasNode(node.name);
-        if(id>0)
+        var item = this.hasNode(node.name);
+        if(item.id>0)
         {
             var p = node.getWorldPosition();
             var ra = node.getWorldRotation();
-            var sc = node.getWorldScale();
             if((p.x+"").length > 6)  p.x = p.x.toFixed(3);
             if((p.y+"").length > 6)  p.y = p.y.toFixed(3);
             if((p.z+"").length > 6) p.z = p.z.toFixed(3);
@@ -46,19 +48,18 @@ export class NodeOut extends Component {
             if((ra.y+"").length > 6) ra.y = ra.y.toFixed(3);
             if((ra.z+"").length > 6) ra.z = ra.z.toFixed(3);
             if((ra.w+"").length > 6) ra.w = ra.w.toFixed(3);
-            if((sc.x+"").length > 6) sc.x = sc.x.toFixed(3);
-            if((sc.y+"").length > 6) sc.y = sc.y.toFixed(3);
-            if((sc.z+"").length > 6) sc.z = sc.z.toFixed(3);
-            this.item.push({id:id,x:p.x,y:p.y,z:p.z,rx:ra.x,ry:ra.y,rz:ra.z,rw:ra.w,sx:sc.x,sy:sc.y,sz:sc.z});
+            this.item.push({id:item.id,x:p.x,y:p.y,z:p.z,rx:ra.x,ry:ra.y,rz:ra.z,rw:ra.w});
+
+            this.zScore += Number(item.score);
         }
     }
 
     hasNode(name){
         for(var i=0;i<this.conf.length;i++)
         {
-            if(this.conf[i]["Prefab"] == name) return i+1;
+            if(this.conf[i]["Prefab"] == name) return {id: i+1,score:this.conf[i]["Score"]}
         }
-        return 0;
+        return {id:0};
     }
 
     // update (deltaTime: number) {

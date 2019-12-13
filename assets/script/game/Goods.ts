@@ -33,13 +33,22 @@ export class Goods extends Component {
         this.gBoxColl.enable(false);
     }
   
-    die(toP){
+    die(toP,delyTime){
         this.state = "die";
         var self = this;
         var anisc = this.node.addComponent(ani);
-        anisc.moveTo(0.5,cc.v3(toP.x,toP.y,toP.z),function(){
-            self.node.destroy();
-        });
+        var pos = this.node.getPosition();
+        var dir = cc.v2(toP.x,toP.z).subtract(cc.v2(pos.x,pos.z)).normalize();
+        var len = cc.Vec2.distance(cc.v2(toP.x,toP.z),cc.v2(pos.x,pos.z))*0.6;
+        var to = cc.v3(pos.x+dir.x*len,toP.y+2,pos.z+dir.y*len);
+        this.scheduleOnce(function(){
+            anisc.moveTo(0.3,to,function(){
+                anisc.moveTo(0.2,toP,function(){
+                    self.node.destroy();
+                });
+            });
+        },delyTime);
+       
     }
 
     canHold(lv:Number){

@@ -47,44 +47,44 @@ export class loading extends Component {
             "conf/goods",
             "conf/player",
             "conf/map",
+            "conf/robotpath",
+            "conf/robotid",
+            "conf/robotlv",
 
-            "prefab/game/goods2",
-            "prefab/game/goods",
             "prefab/game/player",
-            "prefab/game/Shelves_01",
-            "prefab/game/Shelves_02",
-            "prefab/game/Shelves_03",
-            "prefab/game/Res101",
-            "prefab/game/Res102",
-            "prefab/game/Res201",
-            "prefab/game/Res202",
-            "prefab/game/Res301",
-            "prefab/game/Res302",
-            "prefab/game/Res401",
-            "prefab/game/Res402",
-            "prefab/game/Res403",
-            "prefab/game/Res404",
+            "prefab/game/Res1",
+            "prefab/game/Res2",
+            "prefab/game/Res3",
+            "prefab/game/Res4",
+            "prefab/game/Res5",
+            "prefab/game/Res6",
+            "prefab/game/Res7",
+            "prefab/game/Res8",
+            "prefab/game/Res9",
            
 
             // "prefab/anim/baoji",
 
-            // "prefab/ui/jiesuan",
+            "prefab/ui/nick",
+            "prefab/ui/countdown",
+            "prefab/ui/jiesuan",
             // "prefab/ui/toast",
         ];
 
-        // for(var i=1;i<=1;i++)
+        // for(var i=1;i<=9;i++)
         // {
-        //    this.purls.push("prefab/game/circle"+i);
+        //    this.purls.push("prefab/game/Res"+i);
         // }
-
         this.totalCount = this.purls.length;
+        for(var i=0;i<2;i++)
+        this.loadres();  
+        
         this.loadCount = 0;
         this.nowtime = new Date().getTime();
-        for(var i=0;i<2;i++)
-            this.loadres();    
+         
         
         var self = this;
-        qianqista.init("1109924367","V3B4wKHqtViRhT2g","套圈缤纷乐-QQ",function(){
+        qianqista.init("wx83aa5365b3b6f2be","c2cbe456f71cb7e9826b2527284cf5a9","疯狂购物3D-微信",function(){
             var score = storage.getStorage(storage.lv);
             // sdk.uploadScore(score,self.initNet.bind(self));
             self.initNet();
@@ -102,6 +102,15 @@ export class loading extends Component {
             storage.setStorage(storage.vibrate,1);
         }   
         
+        // cc.loader.loadRes("conf/goods", function(err, resource)
+        // {
+        //     var list = resource.json;
+        //     for(var i=0;i<list.length;i++)
+        //     {
+        //         self.purls.push("prefab/game/"+list[i].Prefab);
+        //     }
+           
+        // });
     }
 
     start () {
@@ -143,6 +152,9 @@ export class loading extends Component {
         this.progressBar.progress = this.progress;
         this.progressTips.string = "加载中 " + Math.floor(this.completedCount/this.totalCount*100)+"%";
 
+        
+        this.setRes(resource,index);
+
         if(this.completedCount>=this.totalCount)
         {
             this.completeCallback();
@@ -151,7 +163,6 @@ export class loading extends Component {
             this.loadres();
             //this.scheduleOnce(this.loadres.bind(this),0.1);
         }
-        this.setRes(resource,index);
 
         if(this.canLoadVideo && this.progress>0.6)
         {
@@ -195,7 +206,10 @@ export class loading extends Component {
         if(url.indexOf("conf/") != -1)
             res.loads[pifx] = resource;
         else
+        {
             res.loads[pifx+resource.data.name] = resource;
+        }
+            
 
         // cc.log(res.loads);
     }
@@ -205,7 +219,7 @@ export class loading extends Component {
         {
             this.isStart = true;
             this.progressBar.node.active = false;
-            cc.director.loadScene("game");
+            cc.director.loadScene("main");
         }
     }
 

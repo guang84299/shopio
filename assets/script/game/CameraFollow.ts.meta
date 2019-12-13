@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "ea954c2a-012e-46f4-b61b-bbf66ce9c844",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/game/CameraFollow.ts",
+    "importAsPlugin": false
+  }
+}

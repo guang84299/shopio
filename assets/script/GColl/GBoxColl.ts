@@ -29,11 +29,33 @@ export class GBoxColl extends Component {
     mesh = null;
     zOffset = 0;
     xOffset = 0;
+
+    rigid = null;
+    collider = null;
+    upCollDt = 0;
+    isOpenColl = true;
+
     start () {
         this.collDis = GCollControl.ins.collMindis;
         var mesh = this.findMesh(this.node);
         this.mesh = mesh;
         this.initWh();
+        this.addAstarMap();
+        // this.rigid = this.node.getComponent(RigidBodyComponent);
+        // this.collider = this.node.getComponent(ColliderComponent);
+        // if(this.rigid) 
+        // {
+        //     this.rigid.linearDamping = 0.2;
+        //     this.rigid.useGravity = true;
+        //     this.rigid.enabled = false;
+
+        //     // if(this.node.name == "player")
+        //     // {
+        //     //     this.rigid.mass = 1;
+        //     // }
+        // }
+        // this.collider.enabled = false;
+        // this.isOpenColl = false;
     }
 
     initWh(){
@@ -114,9 +136,14 @@ export class GBoxColl extends Component {
 
         if(this.node.name == "player")
         {
-            this.width = 0.3;
-            this.height = 0.3;
+            this.width = 0.5;
+            this.height = 0.5;
         }
+        else if(this.node.name.indexOf("Shelves") != -1)
+        {
+            // this.width = this.width*0.9;
+        }
+        
     }
 
     findMesh(node){
@@ -134,6 +161,8 @@ export class GBoxColl extends Component {
 
     applyForce(velocity:Vec2){
         this.velocity = velocity;
+        // if(this.rigid) 
+        // this.rigid.setLinearVelocity(cc.v3(velocity.x,0,velocity.y));
     }
 
     getNextPos(dt)
@@ -144,8 +173,8 @@ export class GBoxColl extends Component {
         p.z += dt*v.y;
         if(p.x>14) p.x = 14;
         if(p.x<-14) p.x = -14;
-        if(p.z>14) p.z = 14;
-        if(p.z<-14) p.z = -14;
+        if(p.z>7.5) p.z = 7.5;
+        if(p.z<-7.5) p.z = -7.5;
         return p;
     }
 
@@ -168,35 +197,73 @@ export class GBoxColl extends Component {
         this.collcallback = callback;
     }
 
+    excCallback(item){
+        if(this.collcallback) this.collcallback(item);
+    }
+
     judgeColl(dt){
         var p = this.node.getPosition();
         var np = this.getNextPos(dt);
         //{collItem:colls[j],dir:dir,mdis:mdis,box:box}
         var data = this.excColl(np,p);
-        // var rec = new cc.Rect(p.x-this.width/2+this.xOffset,p.z-this.height/2+this.zOffset,this.width,this.height);
+
+        var cw = 0;
+        var ch = 0;
+        var num = 0;
         for(var i=0;i<data.length;i++)
         {
             var item = data[i].collItem;
+            var dataItem = data[i];
+            this.excCallback(item);
+            item.excCallback(this);
+
+            // if(item.node.getPosition().y>0.5) continue;
+
             var v = cc.v2(this.velocity).normalize().subtract(cc.v2(item.velocity).normalize());
-            this.velocity = this.velocity.subtract(v.multiplyScalar(item.velocity.length()/2));  
+            this.velocity = this.velocity.subtract(cc.v2(v).multiplyScalar(item.velocity.length()*0.5));  
+
             // var v = cc.v2(this.velocity).normalize().add(data.dir2).normalize();
             //对方的力
-            // item.velocity = item.velocity.subtract(v.multiplyScalar(this.velocity.length()/-2));
-
-            this.velocity = this.velocity.multiplyScalar(0.5); 
-
+            if(!item.isStatic)
+            {
+                var sc = this.mass/item.mass;
+                if(sc>2) sc = 2;
+                item.velocity = cc.v2(this.velocity).multiplyScalar(sc);
+                // item.velocity = item.velocity.subtract(cc.v2(v).multiplyScalar(this.velocity.length()*0.5));
+                // if(item.velocity.length()>5) item.velocity = item.velocity.normalize().multiplyScalar(5);
+            }
+            // this.velocity = this.velocity.multiplyScalar(0.9); 
             // this.elasticVelocity = data[i].dir.multiplyScalar(this.velocity.length()*2*this.elastic*item.elastic);
-
-            if(this.collcallback) this.collcallback(item);
-
-            var dataItem = data[i];
+            
             if(dataItem.box)
             {
+               
                 var dis = Math.min(dataItem.box.width,dataItem.box.height);
-                if(this.mass == item.mass) dis = dis/2;
-                else if(this.mass > item.mass) dis = 0;
+                // if(this.mass == item.mass) dis = dis/2;
+                // else if(this.mass > item.mass) dis = 0;
                 if(dis>0)
                 {
+                    if(item.isStatic && item.mass>1)
+                    {
+                        if(this.mass == item.mass)
+                        {
+                            num ++;
+                            cw += dataItem.box.width/2;
+                            ch += dataItem.box.height/2;
+                        }
+                        else if(this.mass < item.mass)
+                        {
+                            num ++;
+                            cw += dataItem.box.width;
+                            ch += dataItem.box.height;
+                        }
+                    }
+                    // else{
+                    //     var dir = dataItem.dir.multiplyScalar(dis/2);
+                    //     np.x += dir.x;
+                    //     np.z += dir.y;
+                    // }
+                    
                     // if(dataItem.box.x>np.x) np.x -= dis;
                     // else np.x += dis;
                     // if(dataItem.box.y>np.z) np.z -= dis;
@@ -205,26 +272,35 @@ export class GBoxColl extends Component {
                     // var p2 = cc.v2(dataItem.box.x-dataItem.box.width/2,dataItem.box.y-dataItem.box.height/2);
                     // var p3 = cc.v2(dataItem.box.x+dataItem.box.width/2,dataItem.box.y-dataItem.box.height/2);
                     // var p4 = cc.v2(dataItem.box.x-dataItem.box.width/2,dataItem.box.y+dataItem.box.height/2);
-                    // if(rec.contains(p1))
-                    //     dataItem.dir = p1.subtract(p2).normalize();
-                    // else if(rec.contains(p2))  dataItem.dir = p2.subtract(p1).normalize();  
-                    // else if(rec.contains(p3))  dataItem.dir = p3.subtract(p4).normalize();  
-                    // else if(rec.contains(p4))  dataItem.dir = p4.subtract(p3).normalize();  
-                    // dataItem.dir = cc.v2(np.x,np.z).subtract(cc.v2(dataItem.box.x,dataItem.box.y)).normalize();
+                    // if(dataItem.box.x>np.x && dataItem.box.y>np.z) dataItem.dir = p3.subtract(p4).normalize();
+                    // else if(dataItem.box.x<np.x && dataItem.box.y<np.z) dataItem.dir = p4.subtract(p3).normalize();
+                    // else if(dataItem.box.x>np.x && dataItem.box.y<np.z) dataItem.dir = p2.subtract(p1).normalize();
+                    // else if(dataItem.box.x<np.x && dataItem.box.y>np.z) dataItem.dir = p1.subtract(p2).normalize();
+                                       
                     // var dir = dataItem.dir.multiplyScalar(dis);
-                    var vdir = cc.v2(this.velocity).normalize();
-                    if(dataItem.box.width>dataItem.box.height)
-                    {
-                        np.x -= vdir.x*dis/4;
-                        np.z -= vdir.y*dis*2;
-                    }
-                    else
-                    {
-                        np.x -= vdir.x*dis*2;
-                        np.z -= vdir.y*dis/4;
-                    }
+                    // np.x += dir.x;
+                    // np.z += dir.y;
+
+                    // var vdir = cc.v2(this.velocity).normalize();
+                    // //  np.x -= vdir.x*dis;
+                    // //  np.z -= vdir.y*dis;
+
+                    // if(dataItem.box.width>dataItem.box.height)
+                    // {
+                    //     np.x -= vdir.x*dis/2;
+                    //     np.z -= vdir.y*dis;
+                    // }
+                    // else
+                    // {
+                    //     np.x -= vdir.x*dis;
+                    //     np.z -= vdir.y*dis/2;
+                    // }
                     // np = this.getNextPos(dt);
                     // this.node.setPosition(np);
+
+                    // var dir = cc.v2(dataItem.box.x,dataItem.box.y).subtract(cc.v2(np.x,np.z)).normalize();
+                    // np.x -= dir.x*dis;
+                    // np.z -= dir.y*dis;
                 }           
             }
             else{
@@ -235,51 +311,27 @@ export class GBoxColl extends Component {
             }
             // item.judgeColl(dt);
         }
+
+        var dis = Math.min(cw,ch);
+        if(dis>0)
+        {
+            dis = dis/num;
+            var vdir = cc.v2(this.velocity).normalize();
+            if(cw>ch)
+            {
+                np.x -= vdir.x*dis/2;
+                np.z -= vdir.y*dis;
+            }
+            else
+            {
+                np.x -= vdir.x*dis;
+                np.z -= vdir.y*dis/2;
+            }
+        }
     // if(this.node.name == "player" && Math.random()<0.01 && data.length>0)
     //     cc.log(data[0].box);
         this.node.setPosition(np);
-       
-
-        if(this.velocity.x>0)
-        {
-            this.velocity.x -= this.velocity.x*this.damping;
-            if(this.velocity.x < this.damping) this.velocity.x = 0;
-        }
-        else{
-            this.velocity.x += -this.velocity.x*this.damping;
-            if(this.velocity.x > -this.damping) this.velocity.x = 0;
-        }
-
-        if(this.velocity.y>0)
-        {
-            this.velocity.y -= this.velocity.y*this.damping;
-            if(this.velocity.y < this.damping) this.velocity.y = 0;
-        }
-        else{
-            this.velocity.y += -this.velocity.y*this.damping;
-            if(this.velocity.y > -this.damping) this.velocity.y = 0;
-        }
-
-        // var elaDamping = this.damping;
-        // if(this.elasticVelocity.x>0)
-        // {
-        //     this.elasticVelocity.x -= this.elasticVelocity.x*elaDamping;
-        //     if(this.elasticVelocity.x < this.damping) this.elasticVelocity.x = 0;
-        // }
-        // else{
-        //     this.elasticVelocity.x += -this.elasticVelocity.x*elaDamping;
-        //     if(this.elasticVelocity.x > -this.damping) this.elasticVelocity.x = 0;
-        // }
-
-        // if(this.elasticVelocity.y>0)
-        // {
-        //     this.elasticVelocity.y -= this.elasticVelocity.y*elaDamping;
-        //     if(this.elasticVelocity.y < this.damping) this.elasticVelocity.y = 0;
-        // }
-        // else{
-        //     this.elasticVelocity.y += -this.elasticVelocity.y*elaDamping;
-        //     if(this.elasticVelocity.y > -this.damping) this.elasticVelocity.y = 0;
-        // }
+    
     }
 
     excColl(np,p){
@@ -351,56 +403,217 @@ export class GBoxColl extends Component {
         return items;
     }
 
+    judgeColl2(np){
+        var p = this.node.getPosition();
+        var data = this.excColl(np,p);
+
+        var cw = 0;
+        var ch = 0;
+        var num = 0;
+        for(var i=0;i<data.length;i++)
+        {
+            var item = data[i].collItem;
+            var dataItem = data[i];
+            if(item.mass>=1)
+            {
+                var dis = Math.min(dataItem.box.width,dataItem.box.height);
+                if(dis>0)
+                {
+                    num ++;
+                    cw += dataItem.box.width;
+                    ch += dataItem.box.height;
+                }
+            }
+        }
+        var dis = Math.min(cw,ch);
+        if(dis>0)
+        {
+            dis = dis/num;
+            var vdir = cc.v2(this.velocity).normalize();
+            if(cw>ch)
+            {
+                np.x -= vdir.x*dis/2;
+                np.z -= vdir.y*dis;
+            }
+            else
+            {
+                np.x -= vdir.x*dis;
+                np.z -= vdir.y*dis/2;
+            }
+        }
+        
+        return np;
+    }
+
+    judgeDrop(){
+        var np = this.node.getPosition();
+        var sc = this.collDis/2;
+        var keys = [];
+        keys.push(Math.round(np.x)+"_"+Math.round(np.z));
+        keys.push(Math.round(np.x+sc)+"_"+Math.round(np.z+sc));
+        keys.push(Math.round(np.x-sc)+"_"+Math.round(np.z-sc));
+        keys.push(Math.round(np.x+sc)+"_"+Math.round(np.z-sc));
+        keys.push(Math.round(np.x-sc)+"_"+Math.round(np.z+sc));
+        keys.push(Math.round(np.x)+"_"+Math.round(np.z+sc));
+        keys.push(Math.round(np.x+sc)+"_"+Math.round(np.z));
+        keys.push(Math.round(np.x-sc)+"_"+Math.round(np.z));
+        keys.push(Math.round(np.x)+"_"+Math.round(np.z-sc));
+
+        keys = Array.from(new Set(keys));
+        
+        var colls = [];
+        for(var i=0;i<keys.length;i++)
+        {
+            if(GCollControl.ins.maps[keys[i]]) colls = colls.concat(GCollControl.ins.maps[keys[i]]);
+        }
+        colls = Array.from(new Set((colls)));
+
+        var isDrop = true;
+        for(var j=0;j<colls.length;j++)
+        {
+            if(colls[j] != this && colls[j].mass>this.mass)
+            {
+                isDrop = false;
+                break;
+            }
+        }
+        return isDrop;
+    }
+
+    addAstarMap(){
+        var p = this.node.getPosition();
+        if(this.isStatic && p.y < 0.1) {
+            var collDis = 1;
+            p.x = p.x/collDis;
+            p.z = p.z/collDis;
+
+            var key = Math.round(p.x)+"_"+Math.round(p.z);
+            if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+            GCollControl.ins.roads[key].push(this); 
+
+            var key = Math.round(p.x)+"_"+Math.floor(p.z);
+            if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+            GCollControl.ins.roads[key].push(this); 
+
+            var key = Math.floor(p.x)+"_"+Math.floor(p.z);
+            if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+            GCollControl.ins.roads[key].push(this); 
+
+            var key = Math.floor(p.x)+"_"+Math.round(p.z);
+            if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+            GCollControl.ins.roads[key].push(this); 
+
+
+            if(!this.isCircle)
+            {
+                var dx =  Math.floor(this.width/collDis/2);
+                if(dx<1) dx = 1;
+                for(var i=1;i<=dx;i++)
+                {
+                    var key = Math.round(p.x+collDis*i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+                    
+                    var key = Math.round(p.x+collDis*i+this.xOffset)+"_"+Math.floor(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+collDis*i+this.xOffset)+"_"+Math.floor(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+collDis*i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+        
+                    var key = Math.round(p.x+collDis*-i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.round(p.x+collDis*-i+this.xOffset)+"_"+Math.floor(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+collDis*-i+this.xOffset)+"_"+Math.floor(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+collDis*-i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+                }
+                var dy = Math.floor(this.height/this.collDis/2);
+                if(dy<1) dy = 1;
+                for(var i=1;i<=dy;i++)
+                {
+                    var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z+collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.round(p.x+this.xOffset)+"_"+Math.floor(p.z+collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+this.xOffset)+"_"+Math.floor(p.z+collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+this.xOffset)+"_"+Math.round(p.z+collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z-collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.round(p.x+this.xOffset)+"_"+Math.floor(p.z-collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+this.xOffset)+"_"+Math.floor(p.z-collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+
+                    var key = Math.floor(p.x+this.xOffset)+"_"+Math.round(p.z-collDis*i+this.zOffset);
+                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
+                    GCollControl.ins.roads[key].push(this); 
+                }
+            }
+        }
+    }
 
     update (dt: number) {
         var p = this.node.getPosition();
         var key = Math.round(p.x)+"_"+Math.round(p.z);
         if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
         GCollControl.ins.maps[key].push(this); 
-
+       
         if(!this.isCircle)
         {
-            // var sc = this.collDis/2;
-            // var key = Math.round(p.x+sc)+"_"+Math.round(p.z);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-            // var key = Math.round(p.x+sc)+"_"+Math.round(p.z+sc);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-            // var key = Math.round(p.x+sc)+"_"+Math.round(p.z-sc);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-            // var key = Math.round(p.x-sc)+"_"+Math.round(p.z);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-            // var key = Math.round(p.x-sc)+"_"+Math.round(p.z+sc);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-            // var key = Math.round(p.x-sc)+"_"+Math.round(p.z-sc);
-            // if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
-            // GCollControl.ins.maps[key].push(this); 
-
             var dx =  Math.floor(this.width/this.collDis/2);
             for(var i=1;i<=dx;i++)
             {
-                var key = Math.round(p.x+this.collDis*i)+"_"+Math.round(p.z);
+                var key = Math.round(p.x+this.collDis*i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
                 if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
                 GCollControl.ins.maps[key].push(this); 
-    
-                var key = Math.round(p.x+this.collDis*-i)+"_"+Math.round(p.z);
+                
+                var key = Math.round(p.x+this.collDis*-i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
                 if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
                 GCollControl.ins.maps[key].push(this); 
+               
             }
             var dy = Math.floor(this.height/this.collDis/2);
             for(var i=1;i<=dy;i++)
             {
-                var key = Math.round(p.x)+"_"+Math.round(p.z+this.collDis*i);
+                var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z+this.collDis*i+this.zOffset);
                 if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
                 GCollControl.ins.maps[key].push(this); 
-    
-                var key = Math.round(p.x)+"_"+Math.round(p.z-this.collDis*i);
+               
+                var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z-this.collDis*i+this.zOffset);
                 if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];
                 GCollControl.ins.maps[key].push(this); 
+               
             }
         }
 
@@ -409,11 +622,152 @@ export class GBoxColl extends Component {
     lateUpdate(dt: number){
         if(!this.isStatic)
         {
-            this.judgeColl(dt);
+            if(this.node.name == "player") 
+            {
+                this.judgeColl(1/30);
+            }
+            else{
+                if(this.velocity.x != 0 || this.velocity.y != 0)
+                {
+                    var np = this.getNextPos(dt);
+                    if(this.mass<=1) np = this.judgeColl2(np);
+                    this.node.setPosition(np);
+
+                     // this.damping = 0.02;
+                    if(this.velocity.x>0)
+                    {
+                        this.velocity.x -= this.velocity.x*this.damping;
+                        if(this.velocity.x < this.damping) this.velocity.x = 0;
+                    }
+                    else{
+                        this.velocity.x += -this.velocity.x*this.damping;
+                        if(this.velocity.x > -this.damping) this.velocity.x = 0;
+                    }
+
+                    if(this.velocity.y>0)
+                    {
+                        this.velocity.y -= this.velocity.y*this.damping;
+                        if(this.velocity.y < this.damping) this.velocity.y = 0;
+                    }
+                    else{
+                        this.velocity.y += -this.velocity.y*this.damping;
+                        if(this.velocity.y > -this.damping) this.velocity.y = 0;
+                    }
+                }
+            }
+
+           
+
+            // if(this.velocity.x != 0 || this.velocity.y != 0)
+            //     this.judgeColl(1/30);
+            // if(this.velocity.x != 0 || this.velocity.y != 0)
+            // {
+            //     this.rigid.enabled = true;
+            //     this.collider.enabled = true;
+            //     this.judgeColl(1/60);
+            // }
+            // else{
+            //     this.rigid.enabled = false;
+
+            // }
         }
+        // else
+        // {
+        //     if(this.mass<=1 && this.judgeDrop())
+        //     {
+        //         this.isStatic = false;
+        //         var np = this.node.getPosition();
+        //         np.y = 0;
+        //         this.node.setPosition(np);
+        //     }
+        // }
+    }
+
+    lateUpdate2 (dt: number){
+        if(this.node.name == "player") 
+        {
+            this.rigid.enabled = true;
+            this.collider.enabled = true;
+
+            var p = this.node.getPosition();
+            p.y = -0.01;
+            this.node.setPosition(p);
+            var np = this.getNextPos(dt);
+            var data = this.excColl(np,p);
+
+            for(var i=0;i<data.length;i++)
+            {
+                var item = data[i].collItem;
+                this.excCallback(item);
+                item.excCallback(this);
+               
+                if(item.enabled)
+                {
+                    item.isOpenColl = true;
+                    item.upCollDt = 0.05;
+
+                    if(item.rigid) item.rigid.enabled = true;
+                    item.collider.enabled = true;
+                }
+                
+            }
+        }
+        else{
+            if(this.isOpenColl && this.upCollDt>0)
+            {
+                this.upCollDt -= dt;
+                if(this.upCollDt<0)
+                {
+                    // if(this.rigid)
+                    // {
+                    //     var v = cc.v3();
+                    //     this.rigid.getLinearVelocity(v);
+                    //     if(v.length()<0.2)
+                    //     {
+                    //         this.isOpenColl = false;
+                    //         if(this.rigid) this.rigid.enabled = false;
+                    //         this.collider.enabled = false;
+                    //     }
+                    // }
+                    // else
+                    // {
+                        if(this.rigid) this.rigid.enabled = false;
+                        this.isOpenColl = false;
+                        this.collider.enabled = false;
+                    // }
+                }
+            }
+        }
+        // if(this.collider.enabled)
+        // {
+        //     GCollControl.ins.collNum++;
+        //     if(Math.random()<0.01) cc.log( GCollControl.ins.collNum);
+        // } 
+    //     if(this.isOpenColl)
+    //    {
+    //        var v = cc.v3();
+    //        this.rigid.getLinearVelocity(v);
+    //        if(v.length()<0.02)
+    //        {
+    //             this.isOpenColl = false;
+    //             this.rigid.enabled = false;
+    //             this.upCollDt = 0.1;
+    //        }
+    //    }
+    //    else
+    //    {
+    //         this.upCollDt -= dt;
+    //         if(this.upCollDt<0)
+    //         {
+    //             this.isOpenColl = true;
+    //             this.rigid.enabled = true;
+    //         }
+    //    }
     }
 
     public enable (enable:boolean) {
+        // if(this.rigid) this.rigid.enabled = enable;
+        // this.collider.enabled = enable;
         this.enabled = enable;
     }
 }
