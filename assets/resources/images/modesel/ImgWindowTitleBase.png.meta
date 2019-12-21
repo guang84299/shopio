@@ -1,0 +1,56 @@
+{
+  "ver": "1.0.16",
+  "importer": "image",
+  "imported": true,
+  "uuid": "da8cf964-46f2-4ee5-be88-14243627edb1",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "f9941": {
+      "ver": "1.0.7",
+      "importer": "sprite-frame",
+      "uuid": "da8cf964-46f2-4ee5-be88-14243627edb1@f9941",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 25,
+        "height": 25,
+        "rawWidth": 25,
+        "rawHeight": 25,
+        "borderTop": 10,
+        "borderBottom": 10,
+        "borderLeft": 9,
+        "borderRight": 9,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "da8cf964-46f2-4ee5-be88-14243627edb1",
+        "atlasUuid": ""
+      },
+      "displayName": "ImgWindowTitleBase",
+      "id": "f9941",
+      "name": "spriteFrame"
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "redirect": "da8cf964-46f2-4ee5-be88-14243627edb1@f9941"
+  }
+}

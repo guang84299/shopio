@@ -1,0 +1,70 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "animlvarrow",
+  "_objFlags": 0,
+  "_native": "",
+  "sample": 40,
+  "speed": 1,
+  "wrapMode": 2,
+  "events": [],
+  "_duration": 1.5,
+  "_keys": [
+    [
+      0,
+      0.425,
+      0.775,
+      1.175,
+      1.5
+    ]
+  ],
+  "_stepness": 0,
+  "_curves": [
+    {
+      "modifiers": [
+        "position"
+      ],
+      "data": {
+        "keys": 0,
+        "values": [
+          {
+            "__type__": "cc.Vec3",
+            "x": 57.774,
+            "y": 174.971,
+            "z": 0
+          },
+          {
+            "__type__": "cc.Vec3",
+            "x": 57.774,
+            "y": 180.346,
+            "z": 0
+          },
+          {
+            "__type__": "cc.Vec3",
+            "x": 57.774,
+            "y": 180.346,
+            "z": 0
+          },
+          {
+            "__type__": "cc.Vec3",
+            "x": 57.774,
+            "y": 174.971,
+            "z": 0
+          },
+          {
+            "__type__": "cc.Vec3",
+            "x": 57.774,
+            "y": 174.971,
+            "z": 0
+          }
+        ],
+        "easingMethods": [
+          "cubicOut",
+          "cubicIn",
+          "cubicOut",
+          null,
+          null
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "8b15b1d2-0516-4399-8eec-0995f62d97ee",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/tools/AstarOut.ts",
+    "importAsPlugin": false
+  }
+}

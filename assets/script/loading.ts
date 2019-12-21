@@ -4,12 +4,15 @@ import { res } from "./res";
 import { storage } from "./storage";
 import { sdk } from "./sdk";
 import { qianqista } from "./qianqista";
+import { audio } from "./audio";
 
 cc.res = res;
 cc.storage = storage;
 cc.sdk = sdk;
 cc.qianqista = qianqista;
+cc.audio = audio;
 cc.GAME = {};
+cc.GAME.judgeLixian = true;
 
 @ccclass("loading")
 export class loading extends Component {
@@ -26,6 +29,10 @@ export class loading extends Component {
     @property(Node)
     loadNode = null;
 
+    private suburls = [];
+    subCount = 0;
+    subTotalCount = 0;
+
     private purls = [];
     completedCount = 0;
     totalCount = 0;
@@ -41,51 +48,11 @@ export class loading extends Component {
     onLoad() {
         //cc.sys.os = "web";
         // cc.game.setFrameRate(30);
-        this.purls = [
-            //"audio/button",
-            "conf/game",
-            "conf/goods",
-            "conf/player",
-            "conf/map",
-            "conf/robotpath",
-            "conf/robotid",
-            "conf/robotlv",
-
-            "prefab/game/player",
-            "prefab/game/Res1",
-            "prefab/game/Res2",
-            "prefab/game/Res3",
-            "prefab/game/Res4",
-            "prefab/game/Res5",
-            "prefab/game/Res6",
-            "prefab/game/Res7",
-            "prefab/game/Res8",
-            "prefab/game/Res9",
-           
-
-            // "prefab/anim/baoji",
-
-            "prefab/ui/nick",
-            "prefab/ui/countdown",
-            "prefab/ui/jiesuan",
-            // "prefab/ui/toast",
-        ];
-
-        // for(var i=1;i<=9;i++)
-        // {
-        //    this.purls.push("prefab/game/Res"+i);
-        // }
-        this.totalCount = this.purls.length;
-        for(var i=0;i<2;i++)
-        this.loadres();  
         
-        this.loadCount = 0;
-        this.nowtime = new Date().getTime();
-         
-        
+                 
         var self = this;
         qianqista.init("wx83aa5365b3b6f2be","c2cbe456f71cb7e9826b2527284cf5a9","疯狂购物3D-微信",function(){
-            var score = storage.getStorage(storage.lv);
+            // var score = storage.getStorage(storage.lv);
             // sdk.uploadScore(score,self.initNet.bind(self));
             self.initNet();
         },null);
@@ -102,15 +69,104 @@ export class loading extends Component {
             storage.setStorage(storage.vibrate,1);
         }   
         
-        // cc.loader.loadRes("conf/goods", function(err, resource)
-        // {
-        //     var list = resource.json;
-        //     for(var i=0;i<list.length;i++)
-        //     {
-        //         self.purls.push("prefab/game/"+list[i].Prefab);
-        //     }
+        if(window["wx"])
+            this.loadSubpackage();
+        else 
+            this.loadAllRes();
+     
+    }
+
+    loadSubpackage(){
+        this.suburls = [
+            "subpackages/mode/"
+        ];
+
+        this.subTotalCount = this.suburls.length;
+        this.loadSubpackageItem();
+    }
+
+    loadSubpackageItem(){
+        var self = this;
+        cc.loader.downloader.loadSubpackage(this.suburls[this.subCount],function(r){
+            console.log("加载子包："+self.suburls[self.subCount],r);
+            self.subCount ++;
+            if(self.subCount>=self.subTotalCount)
+            {
+                self.loadAllRes();
+            }
+            else{
+                self.progressBar.progress = self.progress;
+                self.progressTips.string = "加载中 " + Math.floor(self.subCount/self.subTotalCount*100)+"%";
+                self.loadSubpackageItem();
+            }
+        });
+    }
+
+    loadAllRes(){
+        this.purls = [
+            //"audio/button",
+            "conf/game",
+            "conf/goods",
+            "conf/player",
+            "conf/map",
+            "conf/maptitle",
+            "conf/robotpath",
+            "conf/robotid",
+            "conf/robotlv",
+            "conf/playerlv",
+            "conf/starlv",
+            "conf/starrank",
+
+            "prefab/game/player",
+            "prefab/game/Res1",
+            "prefab/game/Res2",
+            "prefab/game/Res3",
+            "prefab/game/Res4",
+            "prefab/game/Res5",
+            "prefab/game/Res6",
+            "prefab/game/Res7",
+            "prefab/game/Res8",
+            "prefab/game/Res9",
+
+            "prefab/game/cube",
+
+            "prefab/skin/skin1",
+            "prefab/skin/skin2",
+            "prefab/skin/skin3",
+            "prefab/skin/skin4",
+            "prefab/skin/skin5",
+            "prefab/skin/skin6",
+            "prefab/skin/skin7",
+            "prefab/skin/skin8",
+            "prefab/skin/skin9",
+            "prefab/skin/skin10",
            
-        // });
+
+            "prefab/anim/ParLvUp",
+
+            "prefab/ui/toast",
+            "prefab/ui/nick",
+            "prefab/ui/score",
+            "prefab/ui/countdown",
+            "prefab/ui/jiesuan",
+            "prefab/ui/jiesuan2",
+            "prefab/ui/skin",
+            "prefab/ui/lixian",
+            "prefab/ui/starup",
+
+            "prefab/ui/test"
+        ];
+
+        // for(var i=1;i<=9;i++)
+        // {
+        //    this.purls.push("prefab/game/Res"+i);
+        // }
+        this.totalCount = this.purls.length;
+        for(var i=0;i<2;i++)
+        this.loadres();  
+        
+        this.loadCount = 0;
+        this.nowtime = new Date().getTime();
     }
 
     start () {
@@ -194,6 +250,8 @@ export class loading extends Component {
             pifx = "prefab_anim_";
         else if(url.indexOf("prefab/game/") != -1)
             pifx = "prefab_game_";
+        else if(url.indexOf("prefab/skin/") != -1)
+            pifx = "prefab_skin_";    
         else if(url.indexOf("prefab/") != -1)
             pifx = "prefab_";
         else if(url.indexOf("conf/") != -1)
@@ -341,12 +399,50 @@ export class loading extends Component {
                 storage.setStorage(storage.coin,coin);
             }
 
-            if(datas.hasOwnProperty("lv"))
-                storage.setStorage(storage.lv, Number(datas.lv));
+            if(datas.hasOwnProperty("starlv"))
+                storage.setStorage(storage.starlv, Number(datas.starlv));
 
+            if(datas.hasOwnProperty("starexp"))
+                storage.setStorage(storage.starexp, Number(datas.starexp));
+
+            if(datas.hasOwnProperty("maxscore"))
+                storage.setStorage(storage.maxscore, Number(datas.maxscore)); 
+
+            if(datas.hasOwnProperty("maxscore2"))
+                storage.setStorage(storage.maxscore2, Number(datas.maxscore2)); 
+
+            if(datas.hasOwnProperty("speedlv"))
+                storage.setStorage(storage.speedlv, Number(datas.speedlv));    
+
+            if(datas.hasOwnProperty("capacitylv"))
+                storage.setStorage(storage.capacitylv, Number(datas.capacitylv));    
+
+            if(datas.hasOwnProperty("lixianlv"))
+                storage.setStorage(storage.lixianlv, Number(datas.lixianlv)); 
+                
+            if(datas.hasOwnProperty("hasskin"))
+                storage.setStorage(storage.hasskin, Number(datas.hasskin));  
+
+            if(datas.hasOwnProperty("skinid"))
+                storage.setStorage(storage.skinid, Number(datas.skinid));  
+
+            if(datas.hasOwnProperty("loginday"))
+                storage.setStorage(storage.loginday, Number(datas.loginday));    
+                
+            if(datas.hasOwnProperty("logintime"))
+                storage.setStorage(storage.logintime, Number(datas.logintime));
+                
+            if(datas.hasOwnProperty("modewinnum"))
+                storage.setStorage(storage.modewinnum, Number(datas.modewinnum));   
         
+            var t1 = new Date().getTime();
+            var t2 = storage.getStorage(storage.logintime);
+            if(storage.isResetDay(t1,t2))
+            {
+                var loginday = storage.getStorage(storage.loginday);
+                storage.setStorage(storage.loginday, loginday+1);   
+            }
             console.log("datas:",datas);
-
         }
         else
         {

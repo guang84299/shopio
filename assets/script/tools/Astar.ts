@@ -1,13 +1,15 @@
 import { _decorator, Component, Node } from "cc";
 const { ccclass, property } = _decorator;
 
-import { GCollControl } from '../GColl/GCollControl';
+import { config } from '../config';
 
 @ccclass("Astar")
 export class Astar extends Object {
-    
+    row = 31;
+    col = 61;
     openList:any = [];
     closeList:any = [];
+    pathList:any = [];
     startPoint: {x:number,y:number,f:0,g:0,h:0};
     endPoint: {x:0,y:0,f:0,g:0,h:0};
 
@@ -16,181 +18,226 @@ export class Astar extends Object {
     num = 0;
     initEndNum = 0;
     initStartNum = 0;
-
+    currCollPos = null;
+    startDir = [1,1,1,1];
+    isFind = false;
 
     //{x:0,y:0,f:0,g:0,h:0}
-    findPath (startPoint:any,endPoint) {
+    findPath (startPoint:any,endPoint,currCollPos) {
+        this.row = config.astarmap.length;
+        this.col =  config.astarmap[0].length;
+        startPoint = config.converToNodePos(startPoint);
+        endPoint = config.converToNodePos(endPoint);
         this.startPoint = startPoint;
         this.endPoint = endPoint;
+        this.currCollPos = currCollPos;
 
         this.startPoint.g = 0;
         this.startPoint.h = 0;
         this.startPoint.f = 0;
-
         // this.addOpenList(this.startPoint,this.startPoint);
+        // this.openList = getHeap();
         this.initStartPoint();
         this.initEndPoint();
         this.addCloseList(this.startPoint);
+        // this.openList.push(this.startPoint);
+        // cc.log(this.startPoint,this.endPoint);
+        var time = new Date().getTime();
 
-        while(this.findNext() && this.num < 400)
+        while(this.findNext() && this.num < 2000)
         {
             this.num ++;
         }
         // this.closeList.reverse();
-
-        var node = this.closeList.pop();
-        var list = [];
-        list.push(node);
-        while(node.parent)
+        // cc.log("time1="+(new Date().getTime()-time),this.isFind);   
+        
+        if(this.isFind)
         {
-            if(GCollControl.ins.roads[node.parent.x+"_"+node.parent.y])
-            cc.log("---x---",node.parent,startPoint);
-            list.unshift(node.parent);
-            node = node.parent;
-        }    
-        // if(this.num < 400 && !GCollControl.ins.roads[endPoint.x+"_"+endPoint.y])
-          list.push(endPoint);
-        cc.log("num="+this.num);   
-        return list;
+          var node = this.closeList.pop();
+          node = config.converToWorldPos(node);
+          this.pathList.push(node);
+
+          while(node.parent)
+          {
+              if(!config.astarmap[node.parent.y][node.parent.x])
+                cc.log("---x---",node.parent,startPoint,this.startPoint);
+              node.parent = config.converToWorldPos(node.parent);
+              this.pathList.unshift(node.parent);
+              node = node.parent;
+          }    
+        }
+       
+        endPoint = config.converToWorldPos(endPoint);
+        this.pathList.push(endPoint);
+        if(this.num>990)
+          cc.log("--x----num="+this.num,(new Date().getTime()-time));   
+        // cc.log("time2="+(new Date().getTime()-time));   
     }
 
     //获取开始点最近的可行走的点
     initStartPoint(){
-      var end = null;
-      if(this.initStartNum == 0)
-        end = {x:Math.round(this.startPoint.x),y:Math.round(this.startPoint.y)};
-      else if(this.initStartNum == 1)
-        end = {x:Math.round(this.startPoint.x),y:Math.floor(this.startPoint.y)};  
-      else if(this.initStartNum == 2)
-        end = {x:Math.floor(this.startPoint.x),y:Math.floor(this.startPoint.y)}; 
-      else if(this.initStartNum == 3)
-        end = {x:Math.floor(this.startPoint.x),y:Math.round(this.startPoint.y)};        
+      var end = {x:Math.round(this.startPoint.x),y:Math.round(this.startPoint.y)};
+      var num = this.initStartNum++;
+      if(!config.astarmap[end.y][end.x])
+      {
+          if(end.x-num > 0 && config.astarmap[end.y][end.x-num] && this.startDir[0])
+          {
+              this.startPoint.x -= num;
+              return;
+          }
+          else this.startDir[0] = 0;
+          if(end.x+num < this.col && config.astarmap[end.y][end.x+num] && this.startDir[1])
+          {
+              this.startPoint.x += num;
+              return;
+          }
+          else this.startDir[1] = 0;
+          if(end.y-num > 0 && config.astarmap[end.y-num][end.x] && this.startDir[2])
+          {
+              this.startPoint.y -= num;
+              return;
+          }
+          else this.startDir[2] = 0;
+          if(end.y+num < this.row && config.astarmap[end.y+num][end.x] && this.startDir[3])
+          {
+              this.startPoint.y += num;
+              return;
+          }
+          else this.startDir[3] = 0;
+      }
       
-      this.initStartNum ++;
-
-      if(GCollControl.ins.roads[end.x+"_"+end.y] && this.initStartNum<3) this.initStartPoint();
-      else{
-        this.startPoint.x = end.x;
-        this.startPoint.y = end.y;
-      }      
+      this.initStartNum++;
+      if(this.initStartNum<8) this.initStartPoint();
+     
   }
     //获取终点最近的可行走的点
     initEndPoint(){
         var end = {x:this.endPoint.x,y:this.endPoint.y};
-        if(GCollControl.ins.roads[end.x+"_"+end.y])
+        if(config.astarmap[end.y][end.x]) return;
+        var num = this.initEndNum + 1;
+        if(end.x-num > 0 && config.astarmap[end.y][end.x-num])
         {
-            var maxX = 14;
-            var minX = -14;
-            var maxY = 7;
-            var minY = -7;
-            var start = {x:this.startPoint.x,y:this.startPoint.y};
-            if(end.x>start.x)
-            {
-                if(!GCollControl.ins.roads[(end.x-1)+"_"+end.y] && end.x-1 > minX)
-                {
-                    end.x-=1;
-                    return;
-                }
-            }
-            else{
-                if(!GCollControl.ins.roads[(end.x+1)+"_"+end.y] && end.x+1 < maxX)
-                {
-                    end.x+=1;
-                    return;
-                }
-            }
-
-            if(end.y>start.y)
-            {
-                if(!GCollControl.ins.roads[end.x+"_"+(end.y-1)] && end.y-1 > minY)
-                {
-                    end.y-=1;
-                    return;
-                }
-            }
-            else{
-                if(!GCollControl.ins.roads[end.x+"_"+(end.y+1)] && end.y-1 < maxY)
-                {
-                    end.y+=1;
-                    return;
-                }
-            }
+            this.endPoint.x -= num;
+            return;
         }
-        this.endPoint.x = end.x;
-        this.endPoint.y = end.y;
+        if(end.x+num < this.col && config.astarmap[end.y][end.x+num])
+        {
+            this.endPoint.x += num;
+            return;
+        }
+        if(end.y-num > 0 && config.astarmap[end.y-num][end.x])
+        {
+            this.endPoint.y -= num;
+            return;
+        }
+        if(end.y+num < this.row && config.astarmap[end.y+num][end.x])
+        {
+            this.endPoint.y += num;
+            return;
+        }
         this.initEndNum ++;
-        if(GCollControl.ins.roads[end.x+"_"+end.y] && this.initEndNum<5) this.initEndPoint();
+        if(this.initEndNum<8)
+          this.initEndPoint();
     }
 
     findNext(){
         var node = this.closeList[this.closeList.length-1];
-        var maxX = 14;
-        var minX = -14;
-        var maxY = 7;
-        var minY = -7;
         //top
         var top = {x:node.x,y:node.y+1};
-        if(top.x == this.endPoint.x && top.y == this.endPoint.y) return false;
-        if(!GCollControl.ins.roads[top.x+"_"+top.y] && top.y < maxY)
+        if(top.x == this.endPoint.x && top.y == this.endPoint.y) 
+        {
+          this.isFind = true;
+          return false;
+        }
+        if(top.y < this.row && config.astarmap[top.y][top.x])
         {
             this.addOpenList(top,node);
         }
 
         //bottom
         var bottom = {x:node.x,y:node.y-1};
-        if(bottom.x == this.endPoint.x && bottom.y == this.endPoint.y) return false;
-        if(!GCollControl.ins.roads[bottom.x+"_"+bottom.y] && bottom.y > minY)
+        if(bottom.x == this.endPoint.x && bottom.y == this.endPoint.y) 
+        {
+          this.isFind = true;
+          return false;
+        }
+        if(bottom.y > 0 && config.astarmap[bottom.y][bottom.x])
         {
             this.addOpenList(bottom,node);
         }
 
         //left
         var left = {x:node.x-1,y:node.y};
-        if(left.x == this.endPoint.x && left.y == this.endPoint.y) return false;
-        if(!GCollControl.ins.roads[left.x+"_"+left.y] && left.x > minX)
+        if(left.x == this.endPoint.x && left.y == this.endPoint.y) 
+        {
+          this.isFind = true;
+          return false;
+        }
+        if(left.x > 0 && config.astarmap[left.y][left.x])
         {
             this.addOpenList(left,node);
         }
 
          //right
          var right = {x:node.x+1,y:node.y};
-         if(right.x == this.endPoint.x && right.y == this.endPoint.y) return false;
-         if(!GCollControl.ins.roads[right.x+"_"+right.y] && right.x < maxX)
+         if(right.x == this.endPoint.x && right.y == this.endPoint.y) 
+         {
+          this.isFind = true;
+          return false;
+         }
+         if( right.x < this.col && config.astarmap[right.y][right.x])
          {
              this.addOpenList(right,node);
          }
 
          //top right
          var topright = {x:node.x+1,y:node.y+1};
-         if(topright.x == this.endPoint.x && topright.y == this.endPoint.y) return false;
-         if(!GCollControl.ins.roads[topright.x+"_"+topright.y] && topright.x<maxX && topright.y<maxY)
+         if(topright.x == this.endPoint.x && topright.y == this.endPoint.y)
+         {
+          this.isFind = true;
+          return false;
+        }
+         if(topright.x<this.col && topright.y<this.row && config.astarmap[topright.y][topright.x])
          {
              this.addOpenList(topright,node);
          }
 
          //bottom right
          var bottomright = {x:node.x+1,y:node.y-1};
-         if(bottomright.x == this.endPoint.x && bottomright.y == this.endPoint.y) return false;
-         if(!GCollControl.ins.roads[bottomright.x+"_"+bottomright.y] && bottomright.x<maxX && bottomright.y>minY)
+         if(bottomright.x == this.endPoint.x && bottomright.y == this.endPoint.y)
+         {
+          this.isFind = true;
+          return false;
+        }
+         if(bottomright.x<this.col && bottomright.y>0 && config.astarmap[bottomright.y][bottomright.x])
          {
              this.addOpenList(bottomright,node);
          }
 
         //top left
         var topleft = {x:node.x-1,y:node.y+1};
-        if(topleft.x == this.endPoint.x && topleft.y == this.endPoint.y) return false;
-        if(!GCollControl.ins.roads[topleft.x+"_"+topleft.y] && topleft.x>minX && topleft.y < maxY)
+        if(topleft.x == this.endPoint.x && topleft.y == this.endPoint.y) 
+        {
+          this.isFind = true;
+          return false;
+        }
+        if(topleft.x>0 && topleft.y < this.row && config.astarmap[topleft.y][topleft.x])
         {
             this.addOpenList(topleft,node);
         }
 
         //bottom left
         var bottomleft = {x:node.x-1,y:node.y-1};
-        if(bottomleft.x == this.endPoint.x && bottomleft.y == this.endPoint.y) return false;
-        if(!GCollControl.ins.roads[bottomleft.x+"_"+bottomleft.y] && bottomleft.x > minX && bottomleft.y > minY)
+        if(bottomleft.x == this.endPoint.x && bottomleft.y == this.endPoint.y) 
+        {
+          this.isFind = true;
+          return false;
+        }
+        if(bottomleft.x > 0 && bottomleft.y > 0 && config.astarmap[bottomleft.y][bottomleft.x])
         {
             this.addOpenList(bottomleft,node);
         }
+        
         if(this.openList.length>0)
         {
             var node = this.openList[0];
@@ -199,9 +246,10 @@ export class Astar extends Object {
                 this.addCloseList(node);
 
                 this.openList.shift();
-                this.openList.sort(function(a,b){
-                    return a.f - b.f;
-                });
+                this.sortOpenList();
+                // this.openList.sort(function(a,b){
+                //     return a.f - b.f;
+                // });
             }
                 
             // this.openMap[node.x+"_"+node.y] = 0;
@@ -212,7 +260,29 @@ export class Astar extends Object {
         return false;
     }
 
-   
+   sortOpenList(){
+    if(this.openList.length>0)
+    {
+        var node = this.openList[0];
+        var index = 0;
+        for(var i=1;i<this.openList.length;i++)
+        {
+            if(this.openList[i].f< node.f)
+            {
+              index = i;
+              node = this.openList[i];
+            }
+        }
+
+        if(index != 0)
+        {
+            var node1 = this.openList[0];
+            var node2 = this.openList[index];
+            this.openList[index] = node1;
+            this.openList[0] = node2;
+        }
+    }
+   }
 
     addOpenList(node,parent){
         if(!this.openMap[node.x+"_"+node.y] && !this.closeMap[node.x+"_"+node.y])

@@ -1,0 +1,797 @@
+{
+  "ver": "1.3.15",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd",
+  "files": [],
+  "subMetas": {
+    "12162": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@12162",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 15
+      },
+      "displayName": "",
+      "id": "12162",
+      "name": "Knight_shoe_left.mesh"
+    },
+    "47990": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@47990",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 31
+      },
+      "displayName": "",
+      "id": "47990",
+      "name": "Soldier_helmet.mesh"
+    },
+    "87962": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@87962",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 25
+      },
+      "displayName": "",
+      "id": "87962",
+      "name": "Santa_Bag.mesh"
+    },
+    "92430": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@92430",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 29
+      },
+      "displayName": "",
+      "id": "92430",
+      "name": "SkateBoy_shoe_right.mesh"
+    },
+    "2afa5": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2afa5",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "2afa5",
+      "name": "king.mesh"
+    },
+    "804fe": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@804fe",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 1
+      },
+      "displayName": "",
+      "id": "804fe",
+      "name": "Black_hair.mesh"
+    },
+    "6dafa": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6dafa",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 2
+      },
+      "displayName": "",
+      "id": "6dafa",
+      "name": "Black_shoe_left.mesh"
+    },
+    "80c97": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@80c97",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 3
+      },
+      "displayName": "",
+      "id": "80c97",
+      "name": "Black_shoe_right.mesh"
+    },
+    "944af": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@944af",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 4
+      },
+      "displayName": "",
+      "id": "944af",
+      "name": "Cook_hat.mesh"
+    },
+    "059bb": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@059bb",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 5
+      },
+      "displayName": "",
+      "id": "059bb",
+      "name": "Cook_shoe_left.mesh"
+    },
+    "be0e5": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@be0e5",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 6
+      },
+      "displayName": "",
+      "id": "be0e5",
+      "name": "Cook_shoe_right.mesh"
+    },
+    "9ed27": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ed27",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 7
+      },
+      "displayName": "",
+      "id": "9ed27",
+      "name": "Gentlemen_hat.mesh"
+    },
+    "5f0bc": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f0bc",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 8
+      },
+      "displayName": "",
+      "id": "5f0bc",
+      "name": "Gentlemen_Stick.mesh"
+    },
+    "5f479": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f479",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 9
+      },
+      "displayName": "",
+      "id": "5f479",
+      "name": "Gentleman_tie.mesh"
+    },
+    "d8fba": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@d8fba",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 10
+      },
+      "displayName": "",
+      "id": "d8fba",
+      "name": "Gentlemen_shoe_left.mesh"
+    },
+    "6a49c": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6a49c",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 11
+      },
+      "displayName": "",
+      "id": "6a49c",
+      "name": "Gentlemen_shoe_right.mesh"
+    },
+    "ad585": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@ad585",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 12
+      },
+      "displayName": "",
+      "id": "ad585",
+      "name": "Gentleman_mostache.mesh"
+    },
+    "6287d": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6287d",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 13
+      },
+      "displayName": "",
+      "id": "6287d",
+      "name": "Knight_Sword.mesh"
+    },
+    "a4867": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a4867",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 14
+      },
+      "displayName": "",
+      "id": "a4867",
+      "name": "Knight_Water.mesh"
+    },
+    "9ce29": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ce29",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 16
+      },
+      "displayName": "",
+      "id": "9ce29",
+      "name": "Knight_shoe_right.mesh"
+    },
+    "a2d9c": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2d9c",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 17
+      },
+      "displayName": "",
+      "id": "a2d9c",
+      "name": "Magic_hat.mesh"
+    },
+    "af519": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@af519",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 18
+      },
+      "displayName": "",
+      "id": "af519",
+      "name": "Magic_book.mesh"
+    },
+    "43c2d": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@43c2d",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 19
+      },
+      "displayName": "",
+      "id": "43c2d",
+      "name": "Magic_shoe_right.mesh"
+    },
+    "fc23d": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@fc23d",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 20
+      },
+      "displayName": "",
+      "id": "fc23d",
+      "name": "Magic_shoe_left.mesh"
+    },
+    "8adc8": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@8adc8",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 21
+      },
+      "displayName": "",
+      "id": "8adc8",
+      "name": "Santa_hat_02.mesh"
+    },
+    "e4374": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@e4374",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 22
+      },
+      "displayName": "",
+      "id": "e4374",
+      "name": "Santa_hat.mesh"
+    },
+    "c8f32": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@c8f32",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 23
+      },
+      "displayName": "",
+      "id": "c8f32",
+      "name": "Santa_shoe_left.mesh"
+    },
+    "4d3ae": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4d3ae",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 24
+      },
+      "displayName": "",
+      "id": "4d3ae",
+      "name": "santa_shoe_right.mesh"
+    },
+    "2c979": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2c979",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 26
+      },
+      "displayName": "",
+      "id": "2c979",
+      "name": "SkateBoy_hat.mesh"
+    },
+    "4b7e4": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4b7e4",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 27
+      },
+      "displayName": "",
+      "id": "4b7e4",
+      "name": "SkateBoy_Skateboard.mesh"
+    },
+    "cf16e": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@cf16e",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 28
+      },
+      "displayName": "",
+      "id": "cf16e",
+      "name": "SkateBoy_shoe_left.mesh"
+    },
+    "59c1d": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@59c1d",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 30
+      },
+      "displayName": "",
+      "id": "59c1d",
+      "name": "Soldier_Shoe_left.mesh"
+    },
+    "26a7c": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@26a7c",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 32
+      },
+      "displayName": "",
+      "id": "26a7c",
+      "name": "Soldier_backpack.mesh"
+    },
+    "5af22": {
+      "ver": "1.0.7",
+      "importer": "gltf-mesh",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5af22",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 33
+      },
+      "displayName": "",
+      "id": "5af22",
+      "name": "Soldier_Shoe_right.mesh"
+    },
+    "a2364": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2364",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "a2364",
+      "name": "Map #1.image"
+    },
+    "32d96": {
+      "ver": "1.0.2",
+      "importer": "gltf-embeded-image",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@32d96",
+      "imported": true,
+      "files": [
+        ".png",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 1
+      },
+      "displayName": "",
+      "id": "32d96",
+      "name": "Map #0.image"
+    },
+    "6e70c": {
+      "ver": "1.0.19",
+      "importer": "texture",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6e70c",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2364"
+      },
+      "displayName": "",
+      "id": "6e70c",
+      "name": "Map #1.texture"
+    },
+    "ab932": {
+      "ver": "1.0.19",
+      "importer": "texture",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@ab932",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@32d96"
+      },
+      "displayName": "",
+      "id": "ab932",
+      "name": "Map #0.texture"
+    },
+    "1c7e7": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@1c7e7",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "1c7e7",
+      "name": "01 - Default-0.material"
+    },
+    "949ce": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@949ce",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 1
+      },
+      "displayName": "",
+      "id": "949ce",
+      "name": "01 - Default-1.material"
+    },
+    "302ed": {
+      "ver": "1.0.10",
+      "importer": "gltf-material",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@302ed",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 2
+      },
+      "displayName": "",
+      "id": "302ed",
+      "name": "03 - Default-2.material"
+    },
+    "4bcab": {
+      "ver": "1.0.8",
+      "importer": "gltf-scene",
+      "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4bcab",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "4bcab",
+      "name": "Suit.FBX.prefab"
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Map #1",
+        "uri": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2364"
+      },
+      {
+        "name": "Map #0",
+        "uri": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@32d96"
+      }
+    ],
+    "redirect": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4bcab",
+    "assetFinder": {
+      "meshes": [
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2afa5",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@804fe",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6dafa",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@80c97",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@944af",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@059bb",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@be0e5",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ed27",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f0bc",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f479",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@d8fba",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6a49c",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@ad585",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6287d",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a4867",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@12162",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ce29",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2d9c",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@af519",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@43c2d",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@fc23d",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@8adc8",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@e4374",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@c8f32",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4d3ae",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@87962",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2c979",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4b7e4",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@cf16e",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@92430",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@59c1d",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@47990",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@26a7c",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5af22"
+      ],
+      "skeletons": [],
+      "textures": [
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6e70c",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@ab932"
+      ],
+      "materials": [
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@1c7e7",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@949ce",
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@302ed"
+      ],
+      "scenes": [
+        "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4bcab"
+      ]
+    }
+  }
+}

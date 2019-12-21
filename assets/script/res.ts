@@ -1,9 +1,26 @@
-import { _decorator, Component, Node ,SpriteComponent,LabelComponent,Texture2D,RenderTexture} from "cc";
+import { _decorator, Component, Node ,SpriteComponent,LabelComponent,Texture2D,NodePool} from "cc";
 const { ccclass, property } = _decorator;
 
 export const res = {
     loads:{},
     audio_music: "",
+    nodePools: {},
+
+    getObjByPool: function(name){
+        if(!this.nodePools[name]) this.nodePools[name] = new cc.NodePool();
+        let obj = null;
+        if (this.nodePools[name].size() > 0) { // 通过 size 接口判断对象池中是否有空闲的对象
+            obj = this.nodePools[name].get();
+        } else { // 如果没有空闲对象，也就是对象池中备用对象不够时，我们就用 cc.instantiate 重新创建
+            obj = cc.instantiate(this.loads[name]);
+        }
+        return obj;
+    },
+
+    putObjByPool: function(obj,name){
+        if(!this.nodePools[name]) this.nodePools[name] = new cc.NodePool();
+        this.nodePools[name].put(obj); 
+    },
 
     setSpriteFrame: function(url,sp)
     {
@@ -59,16 +76,12 @@ export const res = {
 
     showToast: function(str)
     {
-        var toast = cc.instantiate(this["prefab_ui_toast"]);
+        var toast = cc.instantiate(this.loads["prefab_ui_toast"]);
         cc.find("label",toast).getComponent(LabelComponent).string = str;
         cc.find("Canvas").addChild(toast,10000);
-        toast.opacity = 0;
-        toast.runAction(cc.sequence(
-            cc.fadeIn(0.2),
-            cc.delayTime(2),
-            cc.fadeOut(0.3),
-            cc.removeSelf()
-        ));
+        toast.getComponent(SpriteComponent).scheduleOnce(function(){
+            toast.destroy();
+        },1.7)
     },
 
     openUI: function(name,parent?:Node,showType?:any)

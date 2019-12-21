@@ -1,0 +1,56 @@
+{
+  "ver": "1.0.16",
+  "importer": "image",
+  "imported": true,
+  "uuid": "bb5ad01f-5931-4f31-a432-feb284b654f8",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "f9941": {
+      "ver": "1.0.7",
+      "importer": "sprite-frame",
+      "uuid": "bb5ad01f-5931-4f31-a432-feb284b654f8@f9941",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 71,
+        "height": 60,
+        "rawWidth": 71,
+        "rawHeight": 60,
+        "borderTop": 26,
+        "borderBottom": 26,
+        "borderLeft": 26,
+        "borderRight": 26,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "bb5ad01f-5931-4f31-a432-feb284b654f8",
+        "atlasUuid": ""
+      },
+      "displayName": "ImgGameBlack",
+      "id": "f9941",
+      "name": "spriteFrame"
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "redirect": "bb5ad01f-5931-4f31-a432-feb284b654f8@f9941"
+  }
+}

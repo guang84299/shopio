@@ -1,0 +1,14 @@
+{
+  "ver": "1.0.844",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "ce03ef88-4284-43ec-96a6-413c75835102",
+  "files": [
+    ".js"
+  ],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/script/ui/starup.ts",
+    "importAsPlugin": false
+  }
+}

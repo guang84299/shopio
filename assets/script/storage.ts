@@ -4,19 +4,26 @@ const { ccclass, property } = _decorator;
 export const storage = {
     pice:['k','m','b','t','a','aa','ab','ac','ad','ae','af','ag','ah','ai','aj','ak','al','am','an','ao','ap','aq','ar','as','at'],
     pfix: "shop_",
-    playSoundTime:0,
 
     music: "music",
     sound: "sound",
     vibrate: "vibrate",
     first: "first",
     coin: "coin",
-    score: "score",
-    lv: "lv",
-    circleData: "circleData",
-    showScore: "showScore",
+    maxscore: "maxscore",
+    maxscore2: "maxscore2",
+    starlv: "starlv",
+    starexp: "starexp",
     fuhuoNum: "fuhuoNum",
     mode: "mode",
+    speedlv: "speedlv",
+    capacitylv: "capacitylv",
+    lixianlv: "lixianlv",
+    skinid: "skinid",
+    hasskin:"hasskin",
+    loginday:"loginday",
+    logintime:"logintime",
+    modewinnum:"modewinnum",
 
     defaultVal: {
         music:1,
@@ -24,12 +31,20 @@ export const storage = {
         vibrate:1,
         first:0,
         coin:0,
-        score:0,
-        lv: 0,
-        circleData:[],
-        showScore: 0,
+        maxscore:0,
+        maxscore2: 0,
+        starlv: 1,
+        starexp: 0,
         fuhuoNum: 0,
-        mode: 1
+        mode: 1,
+        speedlv: 0,
+        capacitylv: 0,
+        lixianlv: 0,
+        skinid: 0,
+        hasskin: [],
+        loginday: 0,
+        logintime: 0,
+        modewinnum: 0
     },
 
     setStorage: function(key,val)
@@ -60,69 +75,6 @@ export const storage = {
         datas[key] = this.getStorage(key);
         var data = JSON.stringify(datas);
         cc.qianqista.uploaddatas(data);
-    },
-
-    playMusic: function(music,yinliang)
-    {
-        if(this.getStorage(this.music) == 1)
-        {
-            this.stopMusic();
-
-            cc.loader.loadRes(music, function (err, clip)
-            {
-                if(!err)
-                {
-                    if(!yinliang) yinliang = 0.3;
-                    cc.audioEngine.play(clip, true, yinliang);
-                }
-                else
-                {
-                    console.log(err);
-                }
-            });
-            
-        }
-    },
-
-    pauseMusic: function()
-    {
-        if(this.getStorage(this.music) == 1)
-            cc.audioEngine.pauseAll();
-    },
-
-    resumeMusic: function()
-    {
-        if(this.getStorage(this.music) == 1)
-            cc.audioEngine.resumeAll();
-    },
-
-    stopMusic: function()
-    {
-        cc.audioEngine.stopAll();
-    },
-
-    playSound: function(sound)
-    {
-        if(this.getStorage(this.sound) == 1)
-        {
-            var now = new Date().getTime();
-            if(now-this.playSoundTime>200)
-            {
-                this.playSoundTime = now;
-                cc.loader.loadRes(sound, function (err, clip)
-                {
-                    if(!err)
-                    {
-                        cc.audioEngine.play(clip, false, 1);
-                    }
-                    else
-                    {
-                        //console.log(err);
-                    }
-                });
-            }
-
-        }
     },
 
     scientificToNumber: function(num) {
@@ -260,5 +212,27 @@ export const storage = {
         }
 
         return str;
+    },
+
+    isResetDay: function(time1,time2){
+        var t1 = new Date(time1);
+        var t2 = new Date(time2);
+
+        if(t2.getFullYear() != t1.getFullYear())
+        {
+            return true;
+        }
+        else if(t2.getMonth() != t1.getMonth())
+        {
+            return true;
+        }
+        else if(t2.getDate() != t1.getDate())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

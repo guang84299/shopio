@@ -157,7 +157,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Res150<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 2
@@ -165,7 +165,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -247,7 +247,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -329,7 +329,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -411,7 +411,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -493,7 +493,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -575,7 +575,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -657,7 +657,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -739,7 +739,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -821,7 +821,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -895,7 +895,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Res160<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 29
@@ -903,7 +903,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -985,7 +985,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -1067,7 +1067,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -1141,7 +1141,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Res163<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 38
@@ -1149,7 +1149,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "98ddee8e-d165-471a-bac3-c70bb6039318"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@f5330"
       }
     ],
     "_visFlags": 0,
@@ -1223,7 +1223,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Res164<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 41
@@ -1231,7 +1231,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1313,7 +1313,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1395,7 +1395,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1477,7 +1477,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1559,7 +1559,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1633,7 +1633,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Res203<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 56
@@ -1641,7 +1641,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,
@@ -1723,7 +1723,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "933b8de5-a675-4d82-8809-4dd8de61fc0c"
+        "__uuid__": "dd522f25-d0b0-4a57-87c7-b779440ae397@1eb62"
       }
     ],
     "_visFlags": 0,

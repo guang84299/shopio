@@ -35,6 +35,7 @@ export class GCollControl extends Component {
 
     update(dt){
         this.maps = {};
+        // this.roads = {};
         this.collNum = 0;
     }
 

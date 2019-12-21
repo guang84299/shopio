@@ -41,13 +41,31 @@ export class NodeOut extends Component {
         {
             var p = node.getWorldPosition();
             var ra = node.getWorldRotation();
-            if((p.x+"").length > 6)  p.x = p.x.toFixed(3);
-            if((p.y+"").length > 6)  p.y = p.y.toFixed(3);
-            if((p.z+"").length > 6) p.z = p.z.toFixed(3);
-            if((ra.x+"").length > 6)  ra.x = ra.x.toFixed(3);
-            if((ra.y+"").length > 6) ra.y = ra.y.toFixed(3);
-            if((ra.z+"").length > 6) ra.z = ra.z.toFixed(3);
-            if((ra.w+"").length > 6) ra.w = ra.w.toFixed(3);
+            if((p.x+"").length > 6)  p.x = p.x.toFixed(1);
+            if((p.y+"").length > 6)  p.y = p.y.toFixed(1);
+            if((p.z+"").length > 6) p.z = p.z.toFixed(1);
+            if((ra.x+"").length > 6)  ra.x = ra.x.toFixed(1);
+            if((ra.y+"").length > 6) ra.y = ra.y.toFixed(1);
+            if((ra.z+"").length > 6) ra.z = ra.z.toFixed(1);
+            if((ra.w+"").length > 6) ra.w = ra.w.toFixed(1);
+
+            var colls = [];
+            for(var i=0;i<nodes.length;i++)
+            {
+                var node2 = nodes[i];
+                if(node2.name == "coll")
+                {
+                    var p2 = node2.getWorldPosition();
+                    p2.x = p2.x.toFixed(1);
+                    p2.z = p2.z.toFixed(1);
+                    colls.push({x:p2.x,z:p2.z});
+                }
+            }
+            if(colls.length>0)
+            {
+                this.item.push({id:item.id,x:p.x,y:p.y,z:p.z,rx:ra.x,ry:ra.y,rz:ra.z,rw:ra.w,c:colls});
+            }
+            else
             this.item.push({id:item.id,x:p.x,y:p.y,z:p.z,rx:ra.x,ry:ra.y,rz:ra.z,rw:ra.w});
 
             this.zScore += Number(item.score);
@@ -61,6 +79,8 @@ export class NodeOut extends Component {
         }
         return {id:0};
     }
+
+    
 
     // update (deltaTime: number) {
     //     // Your update function goes here.

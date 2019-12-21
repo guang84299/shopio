@@ -18,12 +18,17 @@ export class Robot extends Player {
     toRobTime = 0;
     toAvoidTime = 0;
 
+    updateDirTime = 1;
+
+    toHoldGoodsNum = 0;
+
     ai2Dt = 0;
 
     findGoodsState = 0;
     robotConfPathId = -1;
 
     removePath = [];
+    isCanRmovePath = false;
 
     start () {
         this.isRobot = true;
@@ -47,51 +52,82 @@ export class Robot extends Player {
             var p = this.node.getPosition();
             if(this.robotState == "toHoldGoods")
             {
-                if(this.roadList.length > 0)
+                if(cc.isValid(this.tarGoods) && this.toHoldGoodsNum<6)
                 {
-                    var node = this.roadList[0];
-                    var dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
-                    if(dis<0.1 || this.roadListTime > 2)
+                    this.toHoldGoodsTime += deltaTime;
+                    var np = this.tarGoods.getPosition();
+                    var dis = cc.Vec2.distance(cc.v2(np.x,np.y),cc.v2(p.x,p.z));
+                    if(dis>0.05 && this.toHoldGoodsTime>0.25)
+                        this.moveDir = cc.v2(np.x,np.z).subtract(cc.v2(p.x,p.z)).normalize();
+                    if(this.toHoldGoodsTime>0.5)
                     {
-                        this.roadList.shift();
-                        if(this.roadList.length > 0)
-                        {
-                            node = this.roadList[0];
-                        }
-                        if(this.roadListTime>2)
-                        {
-                            this.robotState = "toWander";   
-                            this.toWanderTime = 0;
-                        }
-                        this.roadListTime = 0;
+                        this.toHoldGoodsNum ++;
+                        this.toHoldGoodsTime = 0;
+                        this.moveDir.rotate((Math.random()-0.5)*(Math.PI+Math.PI/4));
+
+                        if(this.canPostGoods()) this.excAi();
                     }
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
-                    this.roadListTime += deltaTime;
                 }
                 else
                 {
-                    this.toHoldGoodsTime += deltaTime;
-                    if(this.toHoldGoodsTime>2)
+                    if(this.roadList.length > 0)
                     {
-                        this.excAi();
-                    }
-                    else{
-                        if(this.findGoodsState == 0)
+                        var node = this.roadList[0];
+                        var dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
+                        if(dis<0.2 || this.roadListTime > 2)
                         {
-                            this.findGoodsState = 1;
-                        }
-                        else{
-                            if(this.robotConfPath.length>1 && !this.tarGoods) 
+                            this.roadList.shift();
+                            if(this.roadList.length > 0)
                             {
-                                var pa = this.robotConfPath.pop();
-                                this.removePath.push(pa);
+                                node = this.roadList[0];
+                                dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
+                                if(dis<0.2)
+                                {
+                                    this.roadList.shift();
+                                    if(this.roadList.length > 0)
+                                        node = this.roadList[0];
+                                }
                             }
+                            this.roadListTime = 0;
+
+                            if(!cc.isValid(this.tarGoods))
+                            {
+                                this.findGoodsState = 1;
+                                this.toHoldGoodsNum = 0;
+                            }
+                            if(this.canPostGoods()) this.excAi();
+
+                            this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
                         }
-                        if(cc.isValid(this.tarGoods))
+                        if(this.updateDirTime>0.05)
                         {
-                            var np = this.tarGoods.getPosition();
-                            this.moveDir = cc.v2(np.x,np.z).subtract(cc.v2(p.x,p.z)).normalize();
-                            // cc.log("tarGoods move");
+                            this.updateDirTime = 0;
+                            this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                        }
+                        this.roadListTime += deltaTime;
+                        this.toHoldGoodsTime = 0;
+                    }
+                    else
+                    {
+                        this.toHoldGoodsTime += deltaTime;
+                        if(this.toHoldGoodsTime>1)
+                        {
+                            this.excAi();
+                        }
+                        else
+                        {
+                            if(this.isCanRmovePath && this.robotConfPath.length>1 && !cc.isValid(this.tarGoods)) 
+                            {
+                                this.isCanRmovePath = false;
+                                this.removePath.push(this.robotConfPath[this.robotConfPathId]);
+                                this.robotConfPath.splice(this.robotConfPathId,1);
+                                // this.removePath.push(pa);
+                            }
+                            if(!cc.isValid(this.tarGoods))
+                            {
+                                this.findGoodsState = 1;
+                                this.toHoldGoodsNum = 0;
+                            }
                         }
                     }
                 }
@@ -113,26 +149,35 @@ export class Robot extends Player {
                 {
                     var node = this.roadList[0];
                     var dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
-                    if(dis<0.1 || this.roadListTime > 2)
+                    if(dis<0.2 || this.roadListTime > 2)
                     {
                         this.roadList.shift();
                         if(this.roadList.length > 0)
                         {
                             node = this.roadList[0];
+                            dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
+                            if(dis<0.2)
+                            {
+                                this.roadList.shift();
+                                if(this.roadList.length > 0)
+                                    node = this.roadList[0];
+                            }
                         }
-                        if(this.roadListTime>2)
-                        {
-                            this.robotState = "toWander";   
-                            this.toWanderTime = 0;
-                        }
+                        
                         this.roadListTime = 0;
+                        this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
                     }
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                    if(this.updateDirTime>0.05)
+                    {
+                        this.updateDirTime = 0;
+                        this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                    }
+                    
                     this.roadListTime += deltaTime;
                 }
                 else{
                     this.toPostGoodsTime += deltaTime;
-                    if(this.toPostGoodsTime>2)
+                    if(this.toPostGoodsTime>1)
                     {
                         this.excAi();
                     }
@@ -148,7 +193,7 @@ export class Robot extends Player {
                 }
 
                 this.toRobTime += deltaTime;
-                if(this.toRobTime>5)
+                if(this.toRobTime>2)
                 {
                     this.excAi();
                 }
@@ -162,7 +207,7 @@ export class Robot extends Player {
                 }
 
                 this.toAvoidTime += deltaTime;
-                if(this.toAvoidTime>5)
+                if(this.toAvoidTime>2)
                 {
                     this.excAi();
                 }
@@ -185,14 +230,22 @@ export class Robot extends Player {
     }
 
     findRoad(tarPoint){
-        var now = new Date().getTime();
-        var p = cc.v3(this.node.getPosition());
-        cc.log("tarPoint",tarPoint);
-                
        
+        var p = cc.v3(this.node.getPosition());
+        // cc.log("tarPoint",tarPoint);
+                
+        var currCollPos = null;
+        if(cc.isValid(this.currCollNode))
+        {
+            var p2 = this.currCollNode.getPosition();
+            currCollPos = cc.v2(p2.x,p2.z);
+        }
+        var now = new Date().getTime();
         var astar = new Astar();
-        this.roadList = astar.findPath({x:p.x,y:p.z},{x:tarPoint.x,y:tarPoint.y});
-        cc.log("耗时"+(new Date().getTime()-now),this.roadList);
+        astar.findPath({x:p.x,y:p.z},{x:tarPoint.x,y:tarPoint.y},currCollPos);
+        this.roadList = astar.pathList;
+        this.isCanRmovePath = astar.isFind;
+        // cc.log("耗时"+(new Date().getTime()-now));
         // this.roadList.shift();
     }
 
@@ -220,7 +273,7 @@ export class Robot extends Player {
 
     ai(){
         //判断收银
-        if(Math.random()*100 <= Number(this.robotConflv.pay) && this.currCapacity/Number(this.conf.Capacity)*100 >= Number(this.robotConfId.capacitylimit))
+        if(Math.random()*100 <= Number(this.robotConflv.pay) && this.canPostGoods())
         {
             this.robotState = "toPostGoods";
             // var p = this.gameControl.cashier.getPosition();
@@ -234,15 +287,20 @@ export class Robot extends Player {
             var p = null;
             // removePath
             if(this.robotConfPath.length > 0)
-                p = this.robotConfPath[this.robotConfPath.length-1];//Math.floor(Math.random()*this.robotConfPath.length);
+            {
+                this.robotConfPathId = this.robotConfPath.length-1; 
+                p = this.robotConfPath[this.robotConfPathId];//Math.floor(Math.random()*this.robotConfPath.length);
+            }
             else
             {
                 this.robotConfPathId = Math.floor(Math.random()*this.removePath.length);
                 p = this.removePath[this.robotConfPathId];
             }
-            this.findRoad(cc.v2(Number(p.x),Number(p.y)));
+            // var pp = [cc.v2(-11,2),cc.v2(0,7)];
+            this.findRoad(cc.v2(p.x,p.y));
             this.toHoldGoodsTime = 0;
             this.findGoodsState = 0;
+            this.tarGoods = null;
         }
         //判断游荡
         else if(Math.random()*100 <= Number(this.robotConflv.wander)+Number(this.robotConfId.wander))
@@ -256,13 +314,14 @@ export class Robot extends Player {
             this.toIdleTime = 0;
         }
 
-        cc.log(this.robotState);
+        // cc.log(this.robotState);
         // cc.log("robotConfPath",this.robotConfPath);
 
     }
 
     //判断抢夺和躲避
     ai2(){
+        if(this.robotState == "toRob" || this.robotState == "toAvoid") return;
         if(this.robotState != "toPostGoods")
         {
             //判断抢夺
@@ -276,8 +335,8 @@ export class Robot extends Player {
                 {
                     this.toRobTime = 0;
                     this.robotState = "toRob";   
-
-                    cc.log(this.robotState);
+                    this.showEmoji("attack");
+                    // cc.log(this.robotState);
                 }
     
                 //判断躲避

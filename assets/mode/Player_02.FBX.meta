@@ -84,29 +84,6 @@
       "id": "029b8",
       "name": "idle2.animation"
     },
-    "5326f": {
-      "ver": "1.0.13",
-      "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@5326f",
-      "imported": true,
-      "files": [
-        ".bin",
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0,
-        "sample": 30,
-        "span": {
-          "from": 5.9,
-          "to": 8
-        },
-        "events": []
-      },
-      "displayName": "",
-      "id": "5326f",
-      "name": "idle3.animation"
-    },
     "cf5ee": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
@@ -145,7 +122,7 @@
         "sample": 30,
         "span": {
           "from": 5.033333333333333,
-          "to": 5.9
+          "to": 6.666666666666667
         },
         "events": []
       },
@@ -167,8 +144,8 @@
         "gltfIndex": 0,
         "sample": 30,
         "span": {
-          "from": 4.5,
-          "to": 5.033333333333333
+          "from": 6.7,
+          "to": 8
         },
         "events": []
       },
@@ -192,10 +169,10 @@
       "id": "438fe",
       "name": "UnnamedSkeleton.skeleton"
     },
-    "5c895": {
+    "db4d2": {
       "ver": "1.0.10",
       "importer": "gltf-material",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@5c895",
+      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@db4d2",
       "imported": true,
       "files": [
         ".json"
@@ -205,8 +182,8 @@
         "gltfIndex": 0
       },
       "displayName": "",
-      "id": "5c895",
-      "name": "Material #2.material"
+      "id": "db4d2",
+      "name": "02 - Default.material"
     }
   },
   "userData": {
@@ -228,11 +205,6 @@
             "to": 3.533333333333333
           },
           {
-            "name": "idle3",
-            "from": 5.9,
-            "to": 8
-          },
-          {
             "name": "run",
             "from": 3.6666666666666665,
             "to": 4.333333333333333
@@ -240,12 +212,12 @@
           {
             "name": "hurt",
             "from": 5.033333333333333,
-            "to": 5.9
+            "to": 6.666666666666667
           },
           {
             "name": "post",
-            "from": 4.5,
-            "to": 5.033333333333333
+            "from": 6.7,
+            "to": 8
           }
         ]
       }
@@ -260,7 +232,7 @@
       ],
       "textures": [],
       "materials": [
-        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@5c895"
+        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@db4d2"
       ],
       "scenes": [
         "03becafb-c80d-45e7-b867-aa1e3dd7fb95@79115"

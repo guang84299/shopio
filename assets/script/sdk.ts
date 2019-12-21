@@ -4,6 +4,7 @@ import { storage } from "./storage";
 
 
 export const sdk = {
+    bannerNum:0,
     is_iphonex: function()
     {
         if(!this._initiphonex)
@@ -24,7 +25,7 @@ export const sdk = {
 
     vibrate: function(isLong)
     {
-        if(storage.getStorage(storage.vibrate) == 1 && (cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS))
+        if(storage.getStorage(storage.vibrate) == 1 && window["wx"])
         {
             if(isLong)
             {
@@ -39,7 +40,7 @@ export const sdk = {
 
     keepScreenOn: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.setKeepScreenOn({
                 keepScreenOn: true
@@ -49,7 +50,7 @@ export const sdk = {
 
     uploadScore: function(score,callback)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.postMessage({ message: "updateScore",score:Math.floor(score) });
             if(callback)
@@ -64,14 +65,14 @@ export const sdk = {
 
     openRank: function(worldrank)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.postMessage({ message: "friendRank",worldrank:worldrank });
         }
     },
     closeRank: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.postMessage({ message: "closeRank" });
         }
@@ -79,14 +80,14 @@ export const sdk = {
 
     openFuhuoRank: function(score)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             //wx.postMessage({ message: "fuhuoRank",score:Math.floor(score) });
         }
     },
     closeFuhuoRank: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             //wx.postMessage({ message: "closeFuhuo" });
         }
@@ -94,7 +95,7 @@ export const sdk = {
 
     getRankList: function(callback)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(callback)
                 callback(null);
@@ -109,7 +110,7 @@ export const sdk = {
     getChaoyueRank: function(callback,score)
     {
         var self = this;
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(callback)
                 callback(null);
@@ -124,9 +125,9 @@ export const sdk = {
     videoLoad: function()
     {
         var self = this;
-        if(cc.sys.os == cc.sys.OS_ANDROID && cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
-            this.rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId:'adunit-7b88c163e9ffaa68'});
+            this.rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId:'adunit-f82cfca77c68b3d0'});
             this.rewardedVideoAd.onLoad(function(){
                 cc.GAME.hasVideo = true;
                 console.log('激励视频 广告加载成功')
@@ -165,7 +166,7 @@ export const sdk = {
             // 创建插屏广告实例，提前初始化
             if (wx.createInterstitialAd){
                 this.interstitialAd = wx.createInterstitialAd({
-                    adUnitId: 'adunit-e5d5fae8e8c8bffb'
+                    adUnitId: 'adunit-208a14c8625961a8'
                 });
             }
 
@@ -178,23 +179,23 @@ export const sdk = {
     {
         var self = this;
         this.videocallback = callback;
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             cc.GAME.hasVideo = false;
-            // this.rewardedVideoAd.show().catch(function(err){
-            //     self.rewardedVideoAd.load().then(function(){
-            //         self.rewardedVideoAd.show();
-            //     });
-            // });
+            this.rewardedVideoAd.show().catch(function(err){
+                self.rewardedVideoAd.load().then(function(){
+                    self.rewardedVideoAd.show();
+                });
+            });
 
             if(cc.GAME.share)
                this.share(callback,"prop");
-            else
-            {
-               if(callback)
-                   callback(false);
-               cc.res.showToast("暂未开放！");
-            }
+            // else
+            // {
+            //    if(callback)
+            //        callback(false);
+            //    cc.res.showToast("暂未开放！");
+            // }
         }
         else
         {
@@ -206,16 +207,23 @@ export const sdk = {
     showBanner: function(node,callback,isHide)
     {
 
-        if(cc.sys.os == cc.sys.OS_ANDROID && cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
-            if(this.bannerAd)
+            // if(this.bannerAd)
+            // {
+            //     var now = new Date().getTime();
+            //     if(now - this.bannerTime<2000)
+            //         return;
+            // }
+
+            if(this.bannerAd && this.bannerNum<5)
             {
-                var now = new Date().getTime();
-                if(now - this.bannerTime<2000)
-                    return;
+                this.bannerNum ++;
+                this.bannerAd.show();
+                return;
             }
 
-            this.hideBanner();
+            // this.hideBanner();
 
             //var dpi = cc.view.getDevicePixelRatio();
             var s = cc.view.getFrameSize();
@@ -240,7 +248,7 @@ export const sdk = {
             }
 
             this.bannerAd = wx.createBannerAd({
-                adUnitId: 'adunit-88872c339449194e',
+                adUnitId: 'adunit-948f2698c0f7e103',
                 style: {
                     left: 0,
                     top: s.height/dpi-300/3.5,
@@ -281,12 +289,12 @@ export const sdk = {
 
     hideBanner: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID && cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(this.bannerAd)
             {
-                this.bannerAd.destroy();
-                this.bannerAd = null;
+                this.bannerAd.hide();
+                // this.bannerAd = null;
             }
 
         }
@@ -294,7 +302,7 @@ export const sdk = {
 
     getBannerDis: function(node)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(this.bannerAd && node && this.bannerAd.res)
             {
@@ -310,7 +318,7 @@ export const sdk = {
 
     moveBanner: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(this.bannerAd && this.bannerAd.res)
             {
@@ -322,7 +330,7 @@ export const sdk = {
 
     showSpot: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID && cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if (this.interstitialAd)
             {
@@ -335,7 +343,7 @@ export const sdk = {
 
     share: function(callback,channel)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             var query = "fromid="+cc.qianqista.openid+"&channel="+channel;
             var title = "不一样的3D套圈游戏，童年的回忆。这次能否弥补当初百套不中的遗憾？";
@@ -383,7 +391,7 @@ export const sdk = {
 
     skipGame: function(gameId,url)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(gameId)
             {
@@ -409,7 +417,7 @@ export const sdk = {
 
     shortcut: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             //var extendInfo = "shortcut";//扩展字段
             //BK.QQ.createShortCut(extendInfo)
@@ -418,7 +426,7 @@ export const sdk = {
 
     getUserInfo: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.getSetting({
                 success: function (res) {
@@ -480,7 +488,7 @@ export const sdk = {
 
     judgePower: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             return cc.qianqista.power == 1 ? true : false;
         }
@@ -489,7 +497,7 @@ export const sdk = {
 
     openSetting: function(callback)
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             //cc.sdk.main.openQuanXian();
             //var quan = self.node_quanxian.quan;
@@ -544,7 +552,7 @@ export const sdk = {
 
     showClub: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             if(!this.clubBtn)
             {
@@ -577,7 +585,7 @@ export const sdk = {
 
     openKefu: function()
     {
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.openCustomerServiceConversation({});
         }

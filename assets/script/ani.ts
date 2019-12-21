@@ -13,6 +13,7 @@ export class ani extends Component {
         // Your initialization goes here.
     }
     moveTo(time:number, toPos:Vec3,callback:any){
+        if(!cc.isValid(this.node)) return;
         this.isMove = true;
         this.toVec = cc.v3(this.node.position);
         var self = this;
@@ -26,6 +27,7 @@ export class ani extends Component {
     }
 
     scaleTo(time:number, toScale:Vec3,callback:any){
+        if(!cc.isValid(this.node)) return;
         this.isScale = true;
         this.toScale = this.node.getScale();
         var self = this;
@@ -39,9 +41,10 @@ export class ani extends Component {
     }
 
     update (deltaTime: number) {
+        if(!cc.isValid(this.node)) return;
         if(this.isMove)
         {
-            this.node.setWorldPosition(this.toVec);
+            this.node.setPosition(this.toVec);
         }
         if(this.isScale)
         {

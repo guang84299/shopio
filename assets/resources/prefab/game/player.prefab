@@ -27,19 +27,34 @@
       },
       {
         "__id__": 73
+      },
+      {
+        "__id__": 77
+      },
+      {
+        "__id__": 81
+      },
+      {
+        "__id__": 85
+      },
+      {
+        "__id__": 89
+      },
+      {
+        "__id__": 93
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 75
+        "__id__": 99
       },
       {
-        "__id__": 78
+        "__id__": 107
       }
     ],
     "_prefab": {
-      "__id__": 79
+      "__id__": 108
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -172,7 +187,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@5c895"
+        "__uuid__": "4bad87dd-04a2-4f93-b203-a89f845c8ef1"
       }
     ],
     "_visFlags": 0,
@@ -198,7 +213,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "d3M+iRZZtLxI/tRiK6ozd2",
+    "fileId": "d6aCsRd2xJ9pXpcE+qD+pd",
     "sync": false,
     "_synced": {
       "default": false,
@@ -302,7 +317,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "90pihnftpIn4OtqhyER8y2",
+    "fileId": "45+sZ0NFBLnpdnZSSjACjk",
     "sync": false,
     "_synced": {
       "default": false,
@@ -730,7 +745,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "52bvmj+U1O/L1DsC/+yNwv",
+    "fileId": "fdjSjQxkNED6HOQRKpcO01",
     "sync": false,
     "_synced": {
       "default": false,
@@ -745,7 +760,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "2fCL3CKdNLQ7C/uCWuMOf7",
+    "fileId": "63JsWI3oNAp7ci2IiBMxKk",
     "sync": false,
     "_synced": {
       "default": false,
@@ -760,7 +775,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "2boGHsa1pKu4a/owBu9wwb",
+    "fileId": "6d+H0bKpdCn5pCWA4Muyvl",
     "sync": false,
     "_synced": {
       "default": false,
@@ -775,7 +790,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "a3fzGHsB5HlaolkN9pciF8",
+    "fileId": "2bcrFg49dLTKHNk/ubFErh",
     "sync": false,
     "_synced": {
       "default": false,
@@ -790,7 +805,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "3a2jnGN1pPtZ4TGlyzpOwt",
+    "fileId": "2aJyVeUU9CZ4hjQPgqK9Wr",
     "sync": false,
     "_synced": {
       "default": false,
@@ -805,7 +820,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "27Y95UtDBFWajHtA7tOn8g",
+    "fileId": "f0Itk979ZKaYRcumFoTyXj",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1086,7 +1101,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "b2yazfzExJNYIMFivilsoj",
+    "fileId": "b5AaHyqu5M7aND9T5Z/C9Y",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1101,7 +1116,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5erCZmP1hK3rsoHe5OvSyG",
+    "fileId": "8cTeOiihRAXb+uQSJ+njAj",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1116,7 +1131,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "89GlNNYnNESojUiPITL6rU",
+    "fileId": "e0s0xHj9FMrLQKBUj6YWOQ",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1131,7 +1146,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5btPBTPI9HmpWXMoq4FbFD",
+    "fileId": "c396r9v0tF/4jil3fFeA5R",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1146,7 +1161,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "39xTJ1K0pP96vrJ2xOM9Iv",
+    "fileId": "a8/+lUhRRCrY2YV9nXtHsh",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1161,7 +1176,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "67o3HUln9N7ZA6EG0IQgFn",
+    "fileId": "a9+SGNaC1OtYAvInX2K08v",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1262,7 +1277,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "afkj3mvA1CB4CG6vpmUSzh",
+    "fileId": "8dHsd3evpJYJWoSOHv2RCj",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1277,7 +1292,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "98jpHfSTtGoarFubKNNErE",
+    "fileId": "ea65o7ilhC6IGOIQNDFJjq",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1292,7 +1307,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "0aEtJ1PhVNaaEnA9fesobh",
+    "fileId": "a9FqCFxGRFGJyypdEPhCxf",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1528,7 +1543,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "5fxB2uKHtNRK8WakE46XJI",
+    "fileId": "73pSEVHGdFdZ0aTlKhjfsw",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1543,7 +1558,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "c9fQ0dBKtGa5L2ECB2vaIV",
+    "fileId": "adYue/ClFGFaWKF/LCCSI6",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1558,7 +1573,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "3aql4Xon5EzqD/qhfBCQst",
+    "fileId": "8a3dufXTdPibi4QEQuzM9w",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1573,7 +1588,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "512NdQtuRJLJt8OI1HmSID",
+    "fileId": "ffxXqa1HdJiKO2sKkxb/pq",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1588,7 +1603,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "2eOzG4x/5KX7uyoH77ojgX",
+    "fileId": "3164INcdJGHb8VfyynmZVJ",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1824,7 +1839,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "9emLg8Be9CfJajGk/Pneuf",
+    "fileId": "d1T8IrGl9Kd53dWB5YQB9z",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1839,7 +1854,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "6e1Rz6JYlER4m1GGrSuKUw",
+    "fileId": "39sI13TC1NdYyPBL3HgJtd",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1854,7 +1869,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "3eHXOTWxtOeKCw6/3MI7P9",
+    "fileId": "73/dRL1EFCP6QeZDFPuhVc",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1869,7 +1884,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "7cYhof6tdH65OYh1lAyxRn",
+    "fileId": "42Yma0tn9D95JrhmLheCcF",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1884,7 +1899,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "26GOCqLxVKQaVc0hyeVz5d",
+    "fileId": "5brzUXyyhOUKWSBGreooZm",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1899,7 +1914,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "aaNO+PSr1IoL4vmgOZgA09",
+    "fileId": "42CX2bxx9IWYF23QQhJ8QB",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1914,7 +1929,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "61ssDkHLVIhrrtog7Q6rJE",
+    "fileId": "8eCqQwrnREp7drWg7snDbH",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1929,7 +1944,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "329hyGTuFCpbaSi8rovJ+k",
+    "fileId": "92ReX2JS9I76kk9wcGQ8V1",
     "sync": false,
     "_synced": {
       "default": false,
@@ -1944,7 +1959,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "319QslNCVN57TNSRDrPmEr",
+    "fileId": "fbBZarYbNCE6WnK9Us8S6N",
     "sync": false,
     "_synced": {
       "default": false,
@@ -2185,21 +2200,66 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "head",
+    "_name": "Bip001 Head Socket",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 74
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 76
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -0.005441428560101419,
+      "y": 0.865393612229668,
+      "z": 0.0056235333766458465
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.5073881893260835,
+      "y": 0.4925002965230295,
+      "z": 0.5424875210986376,
+      "w": 0.4535503836915579
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1.0000002233940415,
+      "y": 1.000000012415944,
+      "z": 1.0000001218178776
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": -144.39254151260437,
+      "y": -125.38637249343397,
+      "z": 82.68831765063499
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 73
     },
     "_children": [],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 74
+      "__id__": 75
     },
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 1.5,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -2232,7 +2292,650 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "d3OwsDGDFGiJzgLhrExJE/",
+    "fileId": "9b3zGxT3tHjYUEnzutqmQZ",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "27oPf4GKlJ7bXUVkHZvg3B",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bip001 Neck Socket",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 78
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 80
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -0.0036255021251595525,
+      "y": 0.801594673543624,
+      "z": -0.006470427003527894
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.5302892063759534,
+      "y": 0.4491055476729067,
+      "z": 0.5588214245252958,
+      "w": 0.45256617261147364
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1.0000002165558273,
+      "y": 0.999999901168629,
+      "z": 1.000000120694132
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": -173.30209995377214,
+      "y": -98.53927045937077,
+      "z": 79.14867291985827
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 77
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 79
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "84jnydIyJNI4AihtZGX9yS",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "a7K/3JcyRISLG8i4a9r3QX",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bip001 Spine Socket",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 82
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 84
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0.00000720852190744542,
+      "y": 0.5657468598450406,
+      "z": 0.03883437208818628
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.436726377714115,
+      "y": 0.5405298576899309,
+      "z": 0.4641050287663781,
+      "w": 0.5492759241841553
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1.0000001136713363,
+      "y": 0.999999884843793,
+      "z": 1.0000000014848638
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": -6.670725025327597,
+      "y": 94.59141752632588,
+      "z": 79.10364207119987
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 81
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 83
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "b7fn2Q9iZMJ4zqs0YN6AUk",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "77AuUFaq1DBL9qQrbW0rSA",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bip001 L Foot Socket",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 86
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 88
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0.10671994850225998,
+      "y": 0.08072351404823636,
+      "z": 0.055370095553300525
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.42554708560062876,
+      "y": -0.4255471273932854,
+      "z": -0.5647209312577559,
+      "w": 0.5647208534184824
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 0.9999999934455868,
+      "y": 0.9999997823683312,
+      "z": 0.9999999261628194
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -73.99992225857966,
+      "z": -90
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 85
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 87
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "84Xqlh+RxGxbZAokiUZP7Y",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "30rDHyvtNAbZYRqJd7Kawr",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bip001 R Foot Socket",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 90
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 92
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -0.051990300000418495,
+      "y": 0.08378963345117107,
+      "z": -0.001568029487336052
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0.6012895722317385,
+      "y": -0.6012895451927277,
+      "z": -0.3720898740024686,
+      "w": 0.37208984698534125
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1.0000003512466684,
+      "y": 1.0000001205479057,
+      "z": 1.000000124251884
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": -116.49992152761929,
+      "z": -90
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 89
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 91
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "19bow6J+lGiZKDj2+hcTlc",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "aejrkE5zRIyaokeoJZQpID",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "head",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 94
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": {
+      "__id__": 98
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 1.5,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "king",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 93
+    },
+    "_children": [],
+    "_active": false,
+    "_components": [
+      {
+        "__id__": 95
+      },
+      {
+        "__id__": 96
+      }
+    ],
+    "_prefab": {
+      "__id__": 97
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0.6,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": -0.7071067811865475,
+      "y": 0,
+      "z": 0,
+      "w": 0.7071067811865476
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1.5,
+      "y": 1.5,
+      "z": 1.5
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": -90,
+      "y": 0,
+      "z": 0
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.ModelComponent",
+    "_name": "Cube<ModelComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 94
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "1a3bf609-68fd-452e-9473-3fabbaa0bd51"
+      }
+    ],
+    "_visFlags": 0,
+    "_enableDynamicBatching": false,
+    "_mesh": {
+      "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2afa5"
+    },
+    "_shadowCastingMode": 0,
+    "_receiveShadows": false,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.AnimationComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 94
+    },
+    "_enabled": true,
+    "playOnLoad": true,
+    "_clips": [
+      {
+        "__uuid__": "7c288508-76c0-45b2-8b6f-11f11667c1bd"
+      }
+    ],
+    "_defaultClip": {
+      "__uuid__": "7c288508-76c0-45b2-8b6f-11f11667c1bd"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "e64oJbJb5PCattvUFbozcr",
+    "sync": false,
+    "_synced": {
+      "default": false,
+      "serializable": false
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "85sN0Q2JREVa39rvMmn6Jy",
     "sync": false,
     "_synced": {
       "default": false,
@@ -2247,16 +2950,13 @@
       "__id__": 1
     },
     "_enabled": true,
-    "playOnLoad": false,
+    "playOnLoad": true,
     "_clips": [
       {
         "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@cac3d"
       },
       {
         "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@029b8"
-      },
-      {
-        "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@5326f"
       },
       {
         "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@cf5ee"
@@ -2273,10 +2973,25 @@
     },
     "_sockets": [
       {
-        "__id__": 76
+        "__id__": 100
       },
       {
-        "__id__": 77
+        "__id__": 101
+      },
+      {
+        "__id__": 102
+      },
+      {
+        "__id__": 103
+      },
+      {
+        "__id__": 104
+      },
+      {
+        "__id__": 105
+      },
+      {
+        "__id__": 106
       }
     ],
     "_id": ""
@@ -2293,6 +3008,41 @@
     "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001 R Hand/Bip001 R Finger0/Bip001 R Finger0Nub",
     "target": {
       "__id__": 69
+    }
+  },
+  {
+    "__type__": "cc.SkeletalAnimationComponent.Socket",
+    "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Neck/Bip001 Head",
+    "target": {
+      "__id__": 73
+    }
+  },
+  {
+    "__type__": "cc.SkeletalAnimationComponent.Socket",
+    "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 Neck",
+    "target": {
+      "__id__": 77
+    }
+  },
+  {
+    "__type__": "cc.SkeletalAnimationComponent.Socket",
+    "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine",
+    "target": {
+      "__id__": 81
+    }
+  },
+  {
+    "__type__": "cc.SkeletalAnimationComponent.Socket",
+    "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001 L Foot",
+    "target": {
+      "__id__": 85
+    }
+  },
+  {
+    "__type__": "cc.SkeletalAnimationComponent.Socket",
+    "path": "RootNode/Bip001/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001 R Foot",
+    "target": {
+      "__id__": 89
     }
   },
   {
@@ -2320,7 +3070,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "49SjrNXiFKX4Xkm2qW/tBg",
+    "fileId": "1aSHtC4WxG0YSCBbTB5JL0",
     "sync": false,
     "_synced": {
       "default": false,

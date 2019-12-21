@@ -1,0 +1,56 @@
+{
+  "ver": "1.0.16",
+  "importer": "image",
+  "imported": true,
+  "uuid": "a3886d56-cb7e-4afe-91d4-b4aa35120db3",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "f9941": {
+      "ver": "1.0.7",
+      "importer": "sprite-frame",
+      "uuid": "a3886d56-cb7e-4afe-91d4-b4aa35120db3@f9941",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 116,
+        "height": 119,
+        "rawWidth": 116,
+        "rawHeight": 119,
+        "borderTop": 67,
+        "borderBottom": 49,
+        "borderLeft": 52,
+        "borderRight": 52,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "a3886d56-cb7e-4afe-91d4-b4aa35120db3",
+        "atlasUuid": ""
+      },
+      "displayName": "ImgResultTitleBase",
+      "id": "f9941",
+      "name": "spriteFrame"
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "redirect": "a3886d56-cb7e-4afe-91d4-b4aa35120db3@f9941"
+  }
+}

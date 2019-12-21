@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,ButtonComponent } from "cc";
+import { _decorator, Component, Node,ButtonComponent,SpriteComponent } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("modesel")
@@ -30,25 +30,30 @@ export class modesel extends Component {
 
             this.mode2.interactable = true;
             this.sel2.active = false;
+            this.mode2.node.getComponent(SpriteComponent).color = cc.color(255,255,255);
         }
         else{
             this.mode1.interactable = true;
             this.sel1.active = false;
+            this.mode1.node.getComponent(SpriteComponent).color = cc.color(255,255,255);
 
             this.mode2.interactable = false;
             this.sel2.active = true;
         }
+        this.mainControl.updateMode();
     }
 
     show(type){
         this.type = type;
         // this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
+        cc.sdk.showBanner();
     }
 
     hide(){
        
         this.node.parent.destroy();
+        cc.sdk.hideBanner();
     }
 
     click(event:any,data:any)
@@ -67,6 +72,8 @@ export class modesel extends Component {
             cc.storage.setStorage(cc.storage.mode,2);
             this.updateMode();
         }
+        cc.log(data);
+        cc.audio.playSound("audio/button");
     }
 
     // update (deltaTime: number) {

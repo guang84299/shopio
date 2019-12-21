@@ -1,0 +1,56 @@
+{
+  "ver": "1.0.16",
+  "importer": "image",
+  "imported": true,
+  "uuid": "11774ca8-b9d9-4c3c-9ae6-9ae90ff6cf62",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "f9941": {
+      "ver": "1.0.7",
+      "importer": "sprite-frame",
+      "uuid": "11774ca8-b9d9-4c3c-9ae6-9ae90ff6cf62@f9941",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 7.5,
+        "offsetY": -1.5,
+        "trimX": 35,
+        "trimY": 19,
+        "width": 165,
+        "height": 325,
+        "rawWidth": 220,
+        "rawHeight": 360,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "11774ca8-b9d9-4c3c-9ae6-9ae90ff6cf62",
+        "atlasUuid": ""
+      },
+      "displayName": "ImgSkin5",
+      "id": "f9941",
+      "name": "spriteFrame"
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "redirect": "11774ca8-b9d9-4c3c-9ae6-9ae90ff6cf62@f9941"
+  }
+}
