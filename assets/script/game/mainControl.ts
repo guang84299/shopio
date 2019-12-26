@@ -62,8 +62,11 @@ export class mainControl extends Component {
         {
             cc.GAME.judgeLixian = false;
             this.updateLixian();
+            this.scheduleOnce(function(){
+                cc.sdk.videoLoad();
+            },0.3);
         }
-        cc.qianqista.onshowmaincallback = this.updateLixian;
+        // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
         cc.audio.playMusic("audio/music");
     }
@@ -284,69 +287,73 @@ export class mainControl extends Component {
  
     judgeSkin(){
         var hasskin = storage.getStorage(storage.hasskin);
+        if(!hasskin)  hasskin = [];
         var b = false;
-        if(hasskin.indexOf(1) == -1)
+        if(storage.indexOf(hasskin,1) == -1)
         {
             var loginday = storage.getStorage(storage.loginday);
             if(loginday>0) hasskin.push(1);
             b = true;
         }
-        if(hasskin.indexOf(2) == -1)
+        if(storage.indexOf(hasskin,2) == -1)
         {
             var loginday = storage.getStorage(storage.loginday);
             if(loginday>=7) hasskin.push(2);
             b = true;
         }
-        if(hasskin.indexOf(3) == -1)
+        if(storage.indexOf(hasskin,3) == -1)
         {
             var modewinnum = storage.getStorage(storage.modewinnum);
             if(modewinnum>=1) hasskin.push(3);
             b = true;
         }
-        if(hasskin.indexOf(4) == -1)
+        if(storage.indexOf(hasskin,4) == -1)
         {
             var maxscore = storage.getStorage(storage.maxscore);
             if(maxscore>=2000) hasskin.push(4);
             b = true;
         }
-        if(hasskin.indexOf(5) == -1)
+        if(storage.indexOf(hasskin,5) == -1)
         {
             var maxscore = storage.getStorage(storage.maxscore);
             if(maxscore>=2500) hasskin.push(5);
             b = true;
         }
-        if(hasskin.indexOf(6) == -1)
+        if(storage.indexOf(hasskin,6) == -1)
         {
             var modewinnum = storage.getStorage(storage.modewinnum);
             if(modewinnum>=3) hasskin.push(6);
             b = true;
         }
-        if(hasskin.indexOf(7) == -1)
+        if(storage.indexOf(hasskin,7) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
             if(starlv>=5) hasskin.push(7);
             b = true;
         }
-        if(hasskin.indexOf(8) == -1)
+        if(storage.indexOf(hasskin,8) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
             if(starlv>=6) hasskin.push(8);
             b = true;
         }
-        if(hasskin.indexOf(9) == -1)
+        if(storage.indexOf(hasskin,9) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
             if(starlv>=7) hasskin.push(9);
             b = true;
         }
-        if(hasskin.indexOf(10) == -1)
+        if(storage.indexOf(hasskin,10) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
             if(starlv>=8) hasskin.push(10);
             b = true;
         }
-        storage.setStorage(storage.hasskin,hasskin);
-        storage.uploadStorage(storage.hasskin);
+        if(b)
+        {
+            storage.setStorage(storage.hasskin,hasskin);
+            storage.uploadStorage(storage.hasskin);
+        }
     }
 
    

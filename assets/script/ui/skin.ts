@@ -51,6 +51,7 @@ export class skin extends Component {
     start () {
         this.skinid = storage.getStorage(storage.skinid);
         this.hasskin = storage.getStorage(storage.hasskin);
+        if(!this.hasskin) this.hasskin = [];
 
         for(var i=0;i<this.itemConfig.length;i++)
         {
@@ -61,7 +62,7 @@ export class skin extends Component {
             var mode = cc.find("mode",item);
             cc.res.setSpriteFrame("images/skin/ImgSkin"+(i+1)+"/spriteFrame",mode);
             lock.active = true;
-            if(this.hasskin.indexOf(i+1) != -1)  lock.active = false;
+            if(storage.indexOf(this.hasskin,i+1) != -1)  lock.active = false;
             if(i+1 == this.skinid)
             {
                 sel.active = true;
@@ -157,7 +158,7 @@ export class skin extends Component {
             this.protitleLabel.string = "当前："+cc.res.loads["conf_starlv"][starlv-1].name;
         }
 
-        if(this.hasskin.indexOf(this.currScollIndex) != -1)
+        if(storage.indexOf(this.hasskin,this.currScollIndex) != -1)
         {
             this.btnSel.node.active = true;
             this.btnLock.node.active = false;

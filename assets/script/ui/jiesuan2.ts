@@ -91,7 +91,9 @@ export class jiesuan2 extends Component {
                 cc.res.showToast("金币+"+award);
             }
 
+            var self = this;
             this.scheduleOnce(function(){
+                self.hide();
                 cc.director.loadScene("main");
             },0.2);
         }

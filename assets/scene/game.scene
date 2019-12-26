@@ -215,7 +215,7 @@
     "_fov": 45,
     "_orthoHeight": 10,
     "_near": 1,
-    "_far": 100,
+    "_far": 120,
     "_color": {
       "__type__": "cc.Color",
       "r": 51,
@@ -7602,7 +7602,7 @@
       "__uuid__": "dd24958f-153a-434f-8337-921fd7b78afc"
     },
     "_isRGBE": false,
-    "_enabled": true,
+    "_enabled": false,
     "_useIBL": false
   },
   {

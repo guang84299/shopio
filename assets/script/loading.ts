@@ -223,7 +223,7 @@ export class loading extends Component {
         if(this.canLoadVideo && this.progress>0.6)
         {
             this.canLoadVideo = false;
-            sdk.videoLoad();
+            // sdk.videoLoad();
         }
     }
 
@@ -421,7 +421,7 @@ export class loading extends Component {
                 storage.setStorage(storage.lixianlv, Number(datas.lixianlv)); 
                 
             if(datas.hasOwnProperty("hasskin"))
-                storage.setStorage(storage.hasskin, Number(datas.hasskin));  
+                storage.setStorage(storage.hasskin, datas.hasskin);  
 
             if(datas.hasOwnProperty("skinid"))
                 storage.setStorage(storage.skinid, Number(datas.skinid));  

@@ -76,7 +76,7 @@ export const audio = {
         if(cc.storage.getStorage(cc.storage.sound) == 1)
         {
             var now = new Date().getTime();
-            if(now-this.playSoundTime>100)
+            if(now-this.playSoundTime>200)
             {
                 this.playSoundTime = now;
                 var self = this;
@@ -86,6 +86,7 @@ export const audio = {
                     {
                         var audioSound = self.getSoundAudio();
                         audioSound.playOneShot(clip);
+                        cc.log(audioSound.duration);
                     }
                     else
                     {
