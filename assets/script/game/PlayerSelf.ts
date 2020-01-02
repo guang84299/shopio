@@ -32,6 +32,8 @@ export class PlayerSelf extends Player {
         let p = e.getLocation();
         this.moveDir = p.subtract(this.startTouchPos).normalize();
         this.moveDir = cc.v2(-this.moveDir.x,this.moveDir.y).rotate(Math.PI);
+
+       
         this.isMove = true;
     }
 

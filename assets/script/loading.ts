@@ -118,6 +118,7 @@ export class loading extends Component {
             "conf/starrank",
 
             "prefab/game/player",
+            "prefab/game/pack",
             "prefab/game/Res1",
             "prefab/game/Res2",
             "prefab/game/Res3",

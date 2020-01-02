@@ -39,8 +39,11 @@ export class GBoxColl extends Component {
 
     isRobot = false;
     isPlayer = false;
+    robotSc = null;
 
     canColl = false;
+
+    lastAstarP = null;
 
     start () {
         this.collDis = GCollControl.ins.collMindis;
@@ -69,6 +72,7 @@ export class GBoxColl extends Component {
             {
                 self.isRobot = self.node.getComponent(Player).isRobot;
                 self.isPlayer = true;
+                if(self.isRobot) self.robotSc = self.node.getComponent(Player);
             }
         },1);
        
@@ -267,43 +271,47 @@ export class GBoxColl extends Component {
         }
        
         //判断位移
-        var ap = config.converToNodePos(cc.v2(np.x,np.z));
-        if(!config.astarmap[ap.y][ap.x])
+        if(!this.isRobot || (this.isRobot && this.robotSc.isExcColl))
         {
-            //判断方向
-            if(Math.abs(this.velocity.x)>Math.abs(this.velocity.y))
+            var ap = config.converToNodePos(cc.v2(np.x,np.z));
+            if(!config.astarmap[ap.y][ap.x])
             {
-                var ap2 = config.converToNodePos(cc.v2(np.x,p.z));
-                if(config.astarmap[ap2.y][ap2.x])
-                {
-                    p.x = np.x;
-                }
-
-                if(np.x != p.x)
-                {
-                    var ap2 = config.converToNodePos(cc.v2(p.x,np.z));
-                    if(config.astarmap[ap2.y][ap2.x])
-                    {
-                        p.z = np.z;
-                    }
-                }               
-            }
-            else
-            {
-                var ap2 = config.converToNodePos(cc.v2(p.x,np.z));
-                if(config.astarmap[ap2.y][ap2.x])
-                {
-                    p.z = np.z;
-                }
-                if(np.z != p.z)
+                //判断方向
+                if(Math.abs(this.velocity.x)>Math.abs(this.velocity.y))
                 {
                     var ap2 = config.converToNodePos(cc.v2(np.x,p.z));
                     if(config.astarmap[ap2.y][ap2.x])
                     {
                         p.x = np.x;
                     }
+    
+                    if(np.x != p.x)
+                    {
+                        var ap2 = config.converToNodePos(cc.v2(p.x,np.z));
+                        if(config.astarmap[ap2.y][ap2.x])
+                        {
+                            p.z = np.z;
+                        }
+                    }               
+                }
+                else
+                {
+                    var ap2 = config.converToNodePos(cc.v2(p.x,np.z));
+                    if(config.astarmap[ap2.y][ap2.x])
+                    {
+                        p.z = np.z;
+                    }
+                    if(np.z != p.z)
+                    {
+                        var ap2 = config.converToNodePos(cc.v2(np.x,p.z));
+                        if(config.astarmap[ap2.y][ap2.x])
+                        {
+                            p.x = np.x;
+                        }
+                    }
                 }
             }
+            else p = np;
         }
         else p = np;
         this.node.setPosition(p);
@@ -719,41 +727,16 @@ export class GBoxColl extends Component {
     }
 
     addAstarMap(){
-        var p = this.node.getPosition();
-        if(this.isStatic && p.y < 0.1) {
-            var collDis = 1;
-            p.x = p.x/collDis;
-            p.z = p.z/collDis;
-
-            var key = Math.round(p.x)+"_"+Math.round(p.z);
-            if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
-            GCollControl.ins.roads[key].push(this); 
-
-
-            if(!this.isCircle)
+        if(this.node.name == "player")
+        {
+            if(this.lastAstarP) config.astarmap[this.lastAstarP.y][this.lastAstarP.x] = 1;
+            this.lastAstarP = null;
+            var p = this.node.getPosition();
+            var np = config.converToNodePos(cc.v2(p.x,p.z));
+            if(config.astarmap[np.y][np.x] == 1) 
             {
-                var dx = Math.floor(this.width/collDis/2);
-                for(var i=1;i<=dx;i++)
-                {
-                    var key = Math.round(p.x+collDis*i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
-                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
-                    GCollControl.ins.roads[key].push(this); 
-                    
-                    var key = Math.round(p.x+collDis*-i+this.xOffset)+"_"+Math.round(p.z+this.zOffset);
-                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
-                    GCollControl.ins.roads[key].push(this); 
-                }
-                var dy = Math.floor(this.height/this.collDis/2);
-                for(var i=1;i<=dy;i++)
-                {
-                    var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z+collDis*i+this.zOffset);
-                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
-                    GCollControl.ins.roads[key].push(this); 
-
-                    var key = Math.round(p.x+this.xOffset)+"_"+Math.round(p.z-collDis*i+this.zOffset);
-                    if(!GCollControl.ins.roads[key])  GCollControl.ins.roads[key] = [];
-                    GCollControl.ins.roads[key].push(this); 
-                }
+                config.astarmap[np.y][np.x] = 0;
+                this.lastAstarP = np;
             }
         }
     }

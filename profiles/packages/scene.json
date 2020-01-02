@@ -1,5 +1,5 @@
 {
-  "current-scene": "7b885a39-4e11-4e67-9d87-f9e81599d568",
+  "current-scene": "2b3bbfc0-8b05-48af-8ffd-203faa70d346",
   "gizmos-infos": {
     "iconGizmoSize": 8,
     "isGridVisible": true,
@@ -26,9 +26,9 @@
     },
     "2b3bbfc0-8b05-48af-8ffd-203faa70d346": {
       "position": {
-        "x": 50,
-        "y": 50,
-        "z": 50
+        "x": 5.8253464318638715,
+        "y": 5.82534643186387,
+        "z": 5.825346431863865
       },
       "rotation": {
         "w": 0.8804762392171493,

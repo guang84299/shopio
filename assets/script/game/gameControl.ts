@@ -3,6 +3,7 @@ import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
 import { PlayerFollow } from "./PlayerFollow"
+import { PlayerPack } from "./PlayerPack"
 import { GBoxColl } from "../GColl/GBoxColl"
 import { res } from "../res"
 import { config } from "../config"
@@ -153,6 +154,7 @@ export class gameControl extends Component {
 
                 if(pre.indexOf("Res999") != -1)
                 {
+                    goods.setWorldPosition(cc.v3(Number(m.x),Number(m.y),Number(m.z-0.3)));
                     this.cashier = goods;
                 }
                 else{
@@ -199,6 +201,8 @@ export class gameControl extends Component {
        }
        var p = pps[Math.floor(Math.random()*pps.length)];
        this.playerSc.node.setPosition(cc.v3(p.x,0,p.y));
+       this.playerSc.addFollowPlayer();
+
        cc.log(this.num);
     //    this.camera.node.getComponent("CameraFollow").lookTarget = this.players[0].node;
        this.parentPre = [];
@@ -232,15 +236,15 @@ export class gameControl extends Component {
 
     addPlayerFollow(target){
         var p = target.node.getPosition();
-        var follow = cc.instantiate(res.loads["prefab_game_player"]);
+        var follow = cc.instantiate(res.loads["prefab_game_pack"]);
 
         follow.setPosition(cc.v3((Math.random()-0.5)*0.2+p.x,0,(Math.random()-0.5)*0.2+p.z));
         this.goodsNode.addChild(follow);
-        var followSc = follow.addComponent(PlayerFollow);
-        followSc.initConf(target.lv);
-        followSc.initNick(target.nick+"-追随者");
+        var followSc = follow.addComponent(PlayerPack);
+        // followSc.initConf(target.lv);
+        // followSc.initNick(target.nick+"-追随者");
         followSc.followTarget = target;
-        followSc.bodyColor = target.bodyColor.clone();
+        // followSc.bodyColor = target.bodyColor.clone();
         return followSc;
     }
 

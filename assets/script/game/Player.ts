@@ -8,11 +8,14 @@ import { config } from '../config';
 
 @ccclass("Player")
 export class Player extends Component {
-    public moveDir = cc.v2(0,0);
+    public moveDir = cc.v2(0,1);
+    protected tarMoveDir = cc.v2(0,1);
     protected isMove = false;
-    protected isColl = false;
-    protected moveSpeed = 4;
+    public isColl = false;
+    protected moveSpeed = 3;
+    protected rotateSpeed = Math.PI/18;//弧度
     protected isCanColl = true;
+    public isExcColl = false;
 
     public lv = 1;
     protected gameControl = null;
@@ -31,6 +34,7 @@ export class Player extends Component {
     protected isPlayerSelf = false;
     protected isFollowPlayer = false;
     public isRobot = false;  
+    protected isPlayerPack = false;
     protected robotId = 0;
     protected robotConfId = {ID:1,range:1,collect:0,wander:0,rob:0,avoid:0,capacitylimit:60,wandertime:10};
     protected robotConflv = {lv:1,pay:90,collect:80,wander:80,rob:0,avoid:0};
@@ -199,7 +203,6 @@ export class Player extends Component {
                 // self.node.getComponent(SkeletalAnimationComponent).stop();
                 self.idle();
             },1.1)
-            this.dropGoods();
 
             this.showEmoji("hurt");
         }
@@ -228,16 +231,17 @@ export class Player extends Component {
                 var handIndex = this.goods.length%this.hands.length;
                 var l = 1;
                 if(handIndex == 1) l = -1;
-                goods.node.setPosition(cc.v3(Math.random()*0.2*l,Math.random()*0.2*l,Math.random()*0.2*l));
+                var rlen = Math.round(this.goods.length/8);
+                goods.node.setPosition(cc.v3(Math.random()*0.2*rlen*l,Math.random()*0.2*rlen*l,Math.random()*0.2*rlen*l));
                 goods.node.parent = this.hands[handIndex];
 
                 if(this.isRobot)
                 {
-                    // this.tarGoods = null;
+                    this.tarGoods = null;
                     // this.node.emit("excAi");
+
                     this.toHoldGoodsTime = 0;
-                    var tarNode = this.findCanHoldGoods(0);
-                    if(!tarNode)
+                    if(this.canPostGoods() || !this.findCanHoldGoods())
                     {
                         this.node.emit("excAi");
                     }
@@ -253,19 +257,21 @@ export class Player extends Component {
     }
 
     //掉落商品
-    dropGoods()
+    dropGoods(player)
     {
         var dropNum = Math.floor(this.goods.length/2);
         for(var i=0;i<dropNum;i++)
         {
             var goods = this.goods[i];
-            goods.drop();
+            // goods.drop();
             this.currCapacity -= Number(goods.conf.Capacity);
 
             var p = cc.v3(goods.node.getWorldPosition());
             p.y = 0;
             goods.node.setPosition(p);
             goods.node.parent = this.gameControl.goodsNode;
+
+            goods.drop(player.node.getPosition(),i*0.05,this.isPlayerSelf);
         }
         if(this.isPlayerSelf)
         {
@@ -293,12 +299,11 @@ export class Player extends Component {
                     this.followTarget.addScore(Number(goods.conf.Score));
                 }
     
-                var p = cc.v3(goods.node.getWorldPosition());
-                goods.node.setPosition(p);
-                goods.node.parent = this.gameControl.goodsNode;
-                goods.die(this.gameControl.cashier.getPosition(),i*0.05,this.isPlayerSelf);
+               
+                var tpos = this.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
+                goods.die(tpos,i*0.05+0.5,this.isPlayerSelf,this.follow[0]);
 
-                this.addScoreAni(i*0.05,Number(goods.conf.Score));
+                this.addScoreAni(i*0.05+0.5,Number(goods.conf.Score));
             }
 
             if(this.isPlayerSelf)
@@ -310,11 +315,15 @@ export class Player extends Component {
             var slef = this;
             this.scheduleOnce(function(){
                 slef.idle();
-                if(slef.goods.length == 0)
+                if(slef.goods.length == 0 && slef.isRobot)
                     slef.node.emit("excAi");
-            },0.5);
+            },1.5);
 
             if(len>0) this.showEmoji("post");
+        }
+        else{
+            if(this.state != "post")
+                this.idle();
         }
     }    
 
@@ -369,90 +378,220 @@ export class Player extends Component {
     }
 
     //寻找附近可拿商品
-    findCanHoldGoods(num){
+    findCanHoldGoods(){
         var p = this.node.getPosition();
-        var end = {x:p.x,y:p.z};
-        if(num == 1) end.y+=1;
-        else if(num == 2) end.y-=1;
-        else if(num == 3) end.x-=1;
-        else if(num == 4) end.x+=1;
-        // else if(num == 5) end.y+=2;
-        // else if(num == 6) end.y-=2;
-        // else if(num == 7) end.x-=2;
-        // else if(num == 8) end.x+=2;
-        // else if(num == 9) end.y+=3;
-        // else if(num == 10) end.y-=3;
-        // else if(num == 11) end.x-=3;
-        // else if(num == 12) end.x+=3;
-        var items = GCollControl.ins.maps[Math.round(end.x)+"_"+Math.round(end.y)];
         this.tarGoods = null;
-        if(items && items.length>0)
+        // var goodsNodes = [];
+        for(var num=0;num<25;num++)
         {
-            for(var i=0;i<items.length;i++)
+            var end = {x:p.x,y:p.z};
+            var n = 1;
+            if(num>=9) n = 2;
+            else if(num>=16) n = 3;
+            if(num>0)
             {
-                if(this.gameControl.goodsNames.indexOf(items[i].node.name) != -1)
+                if(num%8 == 1) end.y+=n;
+                else if(num%8 == 2) end.y-=n;
+                else if(num%8 == 3) end.x-=n;
+                else if(num%8 == 4) end.x+=n;
+                else if(num%8 == 5)
                 {
-                    var goods = items[i].node.getComponent(Goods);
-                    if(goods.state == "idle" && goods.canHold(this.lv) 
-                    && this.currCapacity+Number(goods.conf.Capacity)<=Number(this.conf.Capacity)
-                    && config.judgeWall(cc.v2(p.x,p.z),cc.v2(end.x,end.y)))
-                    {
-                        this.tarGoods = goods.node;
-                        break;
-                    }
+                    end.y+=n;
+                    end.x+=n;
+                }
+                else if(num%8 == 6)
+                {
+                    end.y+=n;
+                    end.x-=n;
+                }
+                else if(num%8 == 7)
+                {
+                    end.y-=n;
+                    end.x-=n;
+                }
+                else if(num%8 == 0)
+                {
+                    end.y-=n;
+                    end.x+=n;
                 }
             }
-        }
-        num ++;
-        if(!this.tarGoods && num<4)
-        {
-            return this.findCanHoldGoods(num);
-        }
-        else{
-            return this.tarGoods;
-        }
-    }
-
-    //寻找附近是否有别的角色
-    findOtherPlayer(num){
-        var p = this.node.getPosition();
-        var end = {x:p.x,y:p.z};
-        if(num == 1) end.y+=1;
-        else if(num == 2) end.y-=1;
-        else if(num == 3) end.x-=1;
-        else if(num == 4) end.x+=1;
-        else if(num == 5) end.y+=2;
-        else if(num == 6) end.y-=2;
-        else if(num == 7) end.x-=2;
-        else if(num == 8) end.x+=2;
-        var items = GCollControl.ins.maps[Math.round(end.x)+"_"+Math.round(end.y)];
-        this.tarPlayer = null;
-        if(items && items.length>0)
-        {
-            for(var i=0;i<items.length;i++)
+            var items = GCollControl.ins.maps[Math.round(end.x)+"_"+Math.round(end.y)];
+            if(items && items.length>0)
             {
-                if("player".indexOf(items[i].node.name) != -1)
+                for(var i=0;i<items.length;i++)
                 {
-                    var pla = items[i].node.getComponent(Player);
-                    if(pla != this)
+                    if(this.gameControl.goodsNames.indexOf(items[i].node.name) != -1)
                     {
-                        if(pla.isPlayerSelf || pla.isRobot || (pla.isFollowPlayer && pla.followTarget != this))
+                        var goods = items[i].node.getComponent(Goods);
+                        var p2 = goods.node.getPosition();
+                        if(goods.state == "idle" && goods.canHold(this.lv) 
+                        && this.currCapacity+Number(goods.conf.Capacity)<=Number(this.conf.Capacity)
+                        && !config.judgeWall(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z)))
                         {
-                            this.tarPlayer = pla;
+                            this.tarGoods = goods.node;
                             break;
                         }
                     }
                 }
             }
+            if(this.tarGoods) break;
         }
-        num ++;
-        if(!this.tarPlayer && num<8)
+
+        return this.tarGoods;
+    }
+
+    //寻找附近是否有别的角色
+    findOtherPlayer(num){
+        var p = this.node.getPosition();
+        var plas = this.gameControl.players;
+        this.tarPlayer = null;
+        for(var i=0;i<plas.length;i++)
         {
-            return this.findOtherPlayer(num);
+            var pla = plas[i];
+            if(pla != this)
+            {
+                var p2 = pla.node.getPosition();
+                var dis = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z));
+                if(dis<2)
+                {
+                    if(!this.tarPlayer) this.tarPlayer = pla;
+                    else{
+                        var p3 = this.tarPlayer.node.getPosition();
+                        var dis2 = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p3.x,p3.z));
+                        if(dis<dis2)  this.tarPlayer = pla;
+                    }
+                }
+            }
         }
-        else{
-            return this.tarPlayer;
+        return this.tarPlayer;
+        // var end = {x:p.x,y:p.z};
+        // if(num == 1) end.y+=1;
+        // else if(num == 2) end.y-=1;
+        // else if(num == 3) end.x-=1;
+        // else if(num == 4) end.x+=1;
+        // else if(num == 5)
+        // {
+        //     end.x+=1;
+        //     end.y+=1;
+        // }
+        // else if(num == 6)
+        // {
+        //     end.x+=1;
+        //     end.y-=1;
+        // }
+        // else if(num == 7)
+        // {
+        //     end.x-=1;
+        //     end.y+=1;
+        // }
+        // else if(num == 8)
+        // {
+        //     end.x-=1;
+        //     end.y-=1;
+        // }
+        
+        // var items = GCollControl.ins.maps[Math.round(end.x)+"_"+Math.round(end.y)];
+        // this.tarPlayer = null;
+        // if(items && items.length>0)
+        // {
+        //     for(var i=0;i<items.length;i++)
+        //     {
+        //         if("player".indexOf(items[i].node.name) != -1)
+        //         {
+        //             var pla = items[i].node.getComponent(Player);
+        //             if(pla != this)
+        //             {
+        //                 if(pla.isPlayerSelf || pla.isRobot || (pla.isFollowPlayer && pla.followTarget != this))
+        //                 {
+        //                     this.tarPlayer = pla;
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // num ++;
+        // if(!this.tarPlayer && num<8)
+        // {
+        //     return this.findOtherPlayer(num);
+        // }
+        // else{
+        //     return this.tarPlayer;
+        // }
+    }
+
+    //动态设置Astar路障
+    updateAstar(){
+        var p = this.node.getPosition();
+        var plas = this.gameControl.players;
+        var anps = [];
+        for(var i=0;i<plas.length;i++)
+        {
+            var pla = plas[i];
+            if(pla != this)
+            {
+                var p2 = pla.node.getPosition();
+                var dis = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z));
+                if(dis<3)
+                {
+                    var np = config.converToNodePos(cc.v2(p2.x,p2.z));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x+0.5,p2.z));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x-0.5,p2.z));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x+0.5,p2.z+0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x+0.5,p2.z-0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x-0.5,p2.z-0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x-0.5,p2.z+0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x,p2.z+0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                    np = config.converToNodePos(cc.v2(p2.x,p2.z-0.5));
+                    if(config.astarmap[np.y][np.x] == 1) 
+                    {
+                        anps.push(np);
+                        config.astarmap[np.y][np.x] = 0;
+                    }
+                }
+            }
         }
+        return anps;
     }
 
     //判断能否收银
@@ -473,10 +612,10 @@ export class Player extends Component {
             {
                 this.initConf(this.lv+1);
 
-                if(this.isPlayerSelf || this.isRobot)
-                {
-                    this.addFollowPlayer();
-                }
+                // if(this.isPlayerSelf || this.isRobot)
+                // {
+                //     this.addFollowPlayer();
+                // }
 
                 this.showEmoji("lvup");
 
@@ -493,13 +632,13 @@ export class Player extends Component {
 
     //添加跟随者
     addFollowPlayer(){
-         for(var i=this.follow.length;i< Number(this.conf.PlayerNum)-1;i++)
-         {
+        //  for(var i=this.follow.length;i< Number(this.conf.PlayerNum)-1;i++)
+        //  {
             var follow = this.gameControl.addPlayerFollow(this);
             this.follow.push(follow);
-         }
+        //  }
 
-         cc.log(this.lv,this.conf.PlayerNum);
+        //  cc.log(this.lv,this.conf.PlayerNum);
     }
 
     //角色碰撞
@@ -519,6 +658,7 @@ export class Player extends Component {
         this.moveDir = dir;
 
         this.isColl = true;
+        this.isExcColl = true;
         var self = this;
         // var anisc = this.node.getComponent(ani);
        
@@ -534,10 +674,15 @@ export class Player extends Component {
             // });
             self.scheduleOnce(function(){
                 self.isColl = false;
+                self.isExcColl = false;
                 self.scheduleOnce(function(){
                     self.isCanColl = true;
                 },1);
-            },1);
+                if(self.isRobot) self.node.emit("excAi");
+            },1.5);
+            self.scheduleOnce(function(){
+                self.dropGoods(player);
+            },0.2);
             this.hurt();
 
             if(this.isPlayerSelf) 
@@ -552,13 +697,13 @@ export class Player extends Component {
             // });
             self.scheduleOnce(function(){
                 self.isColl = false;
+                self.isExcColl = false;
                 self.scheduleOnce(function(){
                     self.isCanColl = true;
                 },1);
+                if(self.isRobot) self.node.emit("excAi");
             },0.1);
             
-            this.node.emit("excAi");
-
             if(this.isPlayerSelf) 
             {
                 cc.sdk.vibrate();
@@ -608,7 +753,7 @@ export class Player extends Component {
         }
         else if(this.gameControl.goodsNames.indexOf(item.node.name) != -1)
         {
-            if(this.state == "run")
+            if(this.state == "run" && !this.isPlayerPack)
             this.holdGoods(item.node.getComponent(Goods));
         }
         else if(item.node.name == this.gameControl.cashier.name)
@@ -618,21 +763,43 @@ export class Player extends Component {
         this.currCollNode = item.node;
     }
 
+    getMoveSpeed(){
+        return this.moveSpeed*Number(this.conf.Speed);
+    }
+
     updateStep (deltaTime: number) {
         if(!this.isColl)
        {
             if(this.isMove)
             {
+                // if(this.isPlayerSelf)
+                // {
+                //     var rad = 0;
+                //     if(this.moveDir.x != 0 || this.moveDir.y != 0)
+                //         rad = this.moveDir.signAngle(this.tarMoveDir);
+                    
+                //     if(rad!=0)
+                //     {   
+                //         var speed = this.rotateSpeed*(rad/(Math.PI*0.2));
+                //         if(speed<this.rotateSpeed) speed = this.rotateSpeed;
+                //         if(rad>this.rotateSpeed) rad = speed;
+                //         else if(rad<-this.rotateSpeed) rad = -speed;
+                //         this.moveDir.rotate(rad);
+                //     }    
+                // }
+               
+
                 this.run();
                 this.updateDir(this.moveDir);
                 if(this.moveDir.x != 0 || this.moveDir.y != 0)
                 {    
-                    this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.moveSpeed*Number(this.conf.Speed)));
+                    this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.getMoveSpeed()));
                 }
+               
             }
             else
             {
-                this.idle();
+                this.postGoods();
                 this.gcoll.applyForce(cc.v2(0,0));
             }
        }

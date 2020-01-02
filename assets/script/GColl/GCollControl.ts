@@ -1,11 +1,12 @@
 import { _decorator, Component, Node,PhysicsSystem } from "cc";
 const { ccclass, property,executionOrder } = _decorator;
 
+
 @ccclass("GCollControl")
 @executionOrder(-1)
 export class GCollControl extends Component {
     public maps = {};
-    public roads = {};
+    public roads = [];
     public static ins = null;
 
     public collMindis = 1;
@@ -25,7 +26,6 @@ export class GCollControl extends Component {
         PhysicsSystem.instance.deltaTime = 1/30;
         // PhysicsSystem.instance.gravity = cc.v3(0,-5,0);
 
-        this.roads = {};
     }
 
     add(boxColl){
@@ -35,7 +35,8 @@ export class GCollControl extends Component {
 
     update(dt){
         this.maps = {};
-        // this.roads = {};
+        
+        this.roads = [];
         this.collNum = 0;
     }
 
