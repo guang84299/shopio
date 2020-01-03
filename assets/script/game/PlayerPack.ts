@@ -66,7 +66,6 @@ export class PlayerPack extends Component {
             if(n>23) break;
         }
 
-
     }
 
     lvUp(num){
