@@ -23,6 +23,7 @@ export class PlayerPack extends Component {
 
     tarDis = 1;
     private upDirDt = 10;
+    
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         // this.gcoll = this.node.getComponent(GBoxColl);
