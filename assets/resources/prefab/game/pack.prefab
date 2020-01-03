@@ -24,9 +24,13 @@
       }
     ],
     "_active": true,
-    "_components": [],
+    "_components": [
+      {
+        "__id__": 7
+      }
+    ],
     "_prefab": {
-      "__id__": 7
+      "__id__": 8
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -193,6 +197,25 @@
       "default": false,
       "serializable": false
     }
+  },
+  {
+    "__type__": "cc.AnimationComponent",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "playOnLoad": false,
+    "_clips": [
+      {
+        "__uuid__": "5f9ea4cb-75a9-4e61-9c1b-39dc9b7f5499"
+      }
+    ],
+    "_defaultClip": {
+      "__uuid__": "5f9ea4cb-75a9-4e61-9c1b-39dc9b7f5499"
+    },
+    "_id": ""
   },
   {
     "__type__": "cc.PrefabInfo",

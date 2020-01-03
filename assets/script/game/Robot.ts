@@ -283,7 +283,8 @@ export class Robot extends Player {
             }
             else if(this.robotState == "toPostGoods")
             {
-
+                this.isMove = false; 
+                return;
             }
             else if(this.robotState == "toRob")
             {
@@ -411,7 +412,7 @@ export class Robot extends Player {
         {
             this.robotState = "toPostGoods";
             // var p = this.gameControl.cashier.getPosition();
-            this.findRoad(cc.v2(0,8));
+            // this.findRoad(cc.v2(0,8));
             this.toPostGoodsTime = 0;
         }
         //判断拿货
@@ -542,11 +543,11 @@ export class Robot extends Player {
             this.findCanHoldGoods();
         }
 
-        this.ai2Dt += dt;
-        if(this.ai2Dt > 0.1)
-        {
-            this.ai2Dt = 0;
-            this.ai2();
-        }
+        // this.ai2Dt += dt;
+        // if(this.ai2Dt > 0.1)
+        // {
+        //     this.ai2Dt = 0;
+        //     this.ai2();
+        // }
     }
 }

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from "cc";
+import { _decorator, Component, Node,AnimationComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Player } from "./Player"
 import { Goods } from "./Goods"
@@ -10,6 +10,7 @@ export class PlayerPack extends Component {
     public followTarget = null;
     isColl = false;
     isMove = false;
+    isPlayPost = false;
     moveDir = cc.v2(0,0);
     gameControl = null;
     // gcoll = null;
@@ -66,7 +67,19 @@ export class PlayerPack extends Component {
             }
             if(n>23) break;
         }
+        this.playPostAni();
+    }
 
+    playPostAni(){
+        if(!this.isPlayPost)
+        {
+            this.isPlayPost = true;
+            this.node.getComponent(AnimationComponent).play();
+            var self = this;
+            this.scheduleOnce(function(){
+                self.isPlayPost = false;
+            },0.5);
+        }
     }
 
     lvUp(num){

@@ -89,6 +89,8 @@ export class Player extends Component {
         {
             clips[clips.length-1].speed = 3;
         }
+
+        if(this.isRobot) this.addFollowPlayer();
     }
 
     initNick(nick,skinId){
@@ -350,7 +352,6 @@ export class Player extends Component {
                 cc.res.putObjByPool(node,"prefab_ui_score");
             });
 
-            slef.gameControl.playPostAni();
             if(slef.isPlayerSelf) cc.audio.playSound("audio/coin");
         },time);
 
