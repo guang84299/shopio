@@ -83,6 +83,12 @@ export class Player extends Component {
         this.kingNode = cc.find("king",this.nickNode);
 
         this.initSkin();
+
+        var clips = this.node.getComponent(SkeletalAnimationComponent).clips;
+        if(clips)
+        {
+            clips[clips.length-1].speed = 3;
+        }
     }
 
     initNick(nick,skinId){
@@ -288,6 +294,7 @@ export class Player extends Component {
             this.state = "post";
 
             var len = this.goods.length;
+            if(len>4) len = 4;
             for(var i=0;i<len;i++)
             {
                 var goods = this.goods.pop();
@@ -301,9 +308,9 @@ export class Player extends Component {
     
                
                 var tpos = this.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
-                goods.die(tpos,i*0.05+0.5,this.isPlayerSelf,this.follow[0]);
+                goods.die(tpos,i*0.05+0.14,this.isPlayerSelf,this.follow[0]);
 
-                this.addScoreAni(i*0.05+0.5,Number(goods.conf.Score));
+                this.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
             }
 
             if(this.isPlayerSelf)
@@ -317,7 +324,7 @@ export class Player extends Component {
                 slef.idle();
                 if(slef.goods.length == 0 && slef.isRobot)
                     slef.node.emit("excAi");
-            },1.5);
+            },0.5);
 
             if(len>0) this.showEmoji("post");
         }
@@ -612,10 +619,10 @@ export class Player extends Component {
             {
                 this.initConf(this.lv+1);
 
-                // if(this.isPlayerSelf || this.isRobot)
-                // {
-                //     this.addFollowPlayer();
-                // }
+                if(this.isPlayerSelf || this.isRobot)
+                {
+                    this.follow[0].lvUp(Number(this.conf.PlayerNum));
+                }
 
                 this.showEmoji("lvup");
 
@@ -764,7 +771,9 @@ export class Player extends Component {
     }
 
     getMoveSpeed(){
-        return this.moveSpeed*Number(this.conf.Speed);
+        if(this.follow[0].currDis>= this.follow[0].tarDis)
+            return this.moveSpeed*Number(this.conf.Speed);
+        return this.moveSpeed;
     }
 
     updateStep (deltaTime: number) {

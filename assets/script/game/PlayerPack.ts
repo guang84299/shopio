@@ -12,32 +12,67 @@ export class PlayerPack extends Component {
     isMove = false;
     moveDir = cc.v2(0,0);
     gameControl = null;
-    gcoll = null;
+    // gcoll = null;
     goodss = [];
+    goodsNode = null;
+    packNode = null;
+
+    maxGoods = null;
+
+    currDis = 0;
+
+    tarDis = 1;
     private upDirDt = 10;
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
-        this.gcoll = this.node.getComponent(GBoxColl);
+        // this.gcoll = this.node.getComponent(GBoxColl);
+        this.goodsNode = cc.find("goods",this.node);
+        this.packNode = cc.find("pack",this.node);
+        this.lvUp(0.5);
     }
 
     holdGoods(goods){
         this.goodss.push(goods);
 
-        var h = this.goodss.length>5 ? 5 : this.goodss.length;
-        goods.node.parent = this.node;
+        var h = this.goodss.length>20 ? 5 : Math.floor(this.goodss.length/4);
+        goods.node.parent = this.goodsNode;
+        var max1 = Math.max(goods.gBoxColl.height,goods.gBoxColl.width);
+        if(max1>=1) 
+        {
+            goods.node.setRotationFromEuler(0,0,90);
+            if(this.maxGoods)
+            {
+                var max2 = Math.max(this.maxGoods.gBoxColl.height,this.maxGoods.gBoxColl.width);
+                if(max1>max2) this.maxGoods = goods;
+            }
+            else this.maxGoods = goods;
+        }
+        if(this.maxGoods && this.maxGoods != goods)
+        {
+            this.goodss[this.goodss.length-1] = this.maxGoods;
+            this.goodss[this.goodss.length-2] = goods;
+        }
 
         var n = 0;
         for(var i=this.goodss.length-1;i>=0;i--)
         {
             var good = this.goodss[i];
-            good.node.setPosition(cc.v3(0,0.1*(h-n),0));
+            good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*0.5-0.5,(Math.random()-0.5)*0.5));
             n++;
-            if(n>5) 
+            if(n>20) 
             {
                 good.node.active = false;
             }
-            if(n>8) break;
+            if(n>23) break;
         }
+
+
+    }
+
+    lvUp(num){
+        this.packNode.setScale(num,num*3,num);
+        this.tarDis = num;
+        if(this.tarDis<1) this.tarDis = 1;
     }
 
     updateMoveDir(){
@@ -47,7 +82,8 @@ export class PlayerPack extends Component {
             var p1 = this.node.getPosition();
             var p2 = this.followTarget.node.getPosition();
             var dis = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p2.x,p2.z));
-            if(dis>1)
+            this.currDis = dis;
+            if(dis>this.tarDis)
             {
                 this.moveDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p1.x,p1.z)).normalize();
                 this.isMove = true;    
@@ -57,6 +93,7 @@ export class PlayerPack extends Component {
                 this.moveDir = cc.v2(0,0);
             }
         }
+        else this.currDis = 0;
     }
 
     updateDir(dir){
@@ -69,6 +106,18 @@ export class PlayerPack extends Component {
         }
     }
 
+    getNextPos(v,dt)
+    {
+        var p = this.node.getPosition();
+        p.x += dt*v.x;
+        p.z += dt*v.y;
+        if(p.x>14) p.x = 14;
+        if(p.x<-14) p.x = -14;
+        if(p.z>7.5) p.z = 7.5;
+        if(p.z<-7.5) p.z = -7.5;
+        return p;
+    }
+
     updateStep (deltaTime: number)
     {
         if(!this.isColl && this.followTarget)
@@ -78,12 +127,14 @@ export class PlayerPack extends Component {
                  this.updateDir(this.moveDir);
                  if(this.moveDir.x != 0 || this.moveDir.y != 0)
                  {    
-                     this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.followTarget.getMoveSpeed()));
+                    var np = this.getNextPos(cc.v2(this.moveDir).multiplyScalar(this.followTarget.getMoveSpeed()),deltaTime);
+                    this.node.setPosition(np);
+                    //  this.gcoll.applyForce();
                  }
              }
              else
              {
-                 this.gcoll.applyForce(cc.v2(0,0));
+                //  this.gcoll.applyForce(cc.v2(0,0));
              }
         }
     }

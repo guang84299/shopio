@@ -85,7 +85,8 @@ export class Goods extends Component {
                 anisc.moveTo(0.2,toP,function(){
                     // if(cc.isValid(self.node))
                     //     self.node.destroy();
-                    pack.holdGoods(self);
+                    if(self.gameControl.isStart)
+                        pack.holdGoods(self);
                     if(isPlayerSelf)
                     cc.sdk.vibrate();
                 });
