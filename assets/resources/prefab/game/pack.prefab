@@ -48,8 +48,8 @@
     "_lscale": {
       "__type__": "cc.Vec3",
       "x": 1,
-      "y": 1,
-      "z": 1
+      "y": 0.9999999999999998,
+      "z": 0.9999999999999998
     },
     "_layer": 1073741824,
     "_euler": {
@@ -149,7 +149,7 @@
     "_lscale": {
       "__type__": "cc.Vec3",
       "x": 1,
-      "y": 3,
+      "y": 1,
       "z": 1
     },
     "_layer": 1073741824,
@@ -171,13 +171,13 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "d3c7820c-2a98-4429-8bc7-b8453bc9ac41"
+        "__uuid__": "4bad87dd-04a2-4f93-b203-a89f845c8ef1"
       }
     ],
     "_visFlags": 0,
     "_enableDynamicBatching": false,
     "_mesh": {
-      "__uuid__": "1263d74c-8167-4928-91a6-4e2672411f47@40ece"
+      "__uuid__": "4ace5e05-06e4-4e2b-a619-4912d6409659@f67e3"
     },
     "_shadowCastingMode": 0,
     "_receiveShadows": false,
@@ -200,7 +200,7 @@
   },
   {
     "__type__": "cc.AnimationComponent",
-    "_name": "",
+    "_name": "pack<AnimationComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 1
@@ -210,6 +210,9 @@
     "_clips": [
       {
         "__uuid__": "5f9ea4cb-75a9-4e61-9c1b-39dc9b7f5499"
+      },
+      {
+        "__uuid__": "dc0e6f7f-cab6-4605-972c-84610cfe73a6"
       }
     ],
     "_defaultClip": {

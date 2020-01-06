@@ -13,5 +13,5 @@
 {"ID":12,"range":3,"collect":20,"wander":"-20","rob":"-30","avoid":50,"capacitylimit":85,"wandertime":5},
 {"ID":13,"range":3,"collect":10,"wander":0,"rob":"-10","avoid":30,"capacitylimit":65,"wandertime":5},
 {"ID":14,"range":3,"collect":5,"wander":"-20","rob":20,"avoid":30,"capacitylimit":50,"wandertime":5},
-{"ID":15,"range":3,"collect":0,"wander":"-10","rob":50,"avoid":50,"capacitylimit":0,"wandertime":5}
+{"ID":15,"range":3,"collect":0,"wander":"-10","rob":50,"avoid":50,"capacitylimit":80,"wandertime":5}
 ]

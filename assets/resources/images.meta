@@ -5,5 +5,7 @@
   "uuid": "5fb1ddc1-8baf-4e74-bd56-567e89cb3a5e",
   "files": [],
   "subMetas": {},
-  "userData": {}
+  "userData": {
+    "isSubpackage": true
+  }
 }

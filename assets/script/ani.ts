@@ -26,6 +26,26 @@ export class ani extends Component {
             });
     }
 
+    bezierTo(time:number, toPos:Vec3[],callback:any)
+    {
+        if(!cc.isValid(this.node)) return;
+        this.isMove = true;
+        this.toVec = cc.v3(this.node.position);
+        var self = this;
+        var twenn = tweenUtil(this.toVec);
+        for(var i=0;i<toPos.length;i++)
+        {
+            twenn.to(time/toPos.length, toPos[i], { easing: 'Cubic-Out'});
+        }
+        // twenn.union()
+        twenn.start()
+        .call(function(){
+            self.isMove = false;
+            if(callback) callback();
+        });
+            
+    }
+
     scaleTo(time:number, toScale:Vec3,callback:any){
         if(!cc.isValid(this.node)) return;
         this.isScale = true;

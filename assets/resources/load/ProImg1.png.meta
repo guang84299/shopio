@@ -2,7 +2,7 @@
   "ver": "1.0.16",
   "importer": "image",
   "imported": true,
-  "uuid": "3ee33bdc-1d3d-4985-a2fe-df6627ec705d",
+  "uuid": "76644b74-2dd5-4033-a4e6-94774148ad45",
   "files": [
     ".png",
     ".json"
@@ -11,7 +11,7 @@
     "f9941": {
       "ver": "1.0.7",
       "importer": "sprite-frame",
-      "uuid": "3ee33bdc-1d3d-4985-a2fe-df6627ec705d@f9941",
+      "uuid": "76644b74-2dd5-4033-a4e6-94774148ad45@f9941",
       "imported": true,
       "files": [
         ".json"
@@ -32,25 +32,25 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 41,
-        "height": 37,
-        "rawWidth": 41,
-        "rawHeight": 37,
-        "borderTop": 11,
+        "width": 37,
+        "height": 35,
+        "rawWidth": 37,
+        "rawHeight": 35,
+        "borderTop": 12,
         "borderBottom": 12,
-        "borderLeft": 13,
-        "borderRight": 14,
+        "borderLeft": 16,
+        "borderRight": 16,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "3ee33bdc-1d3d-4985-a2fe-df6627ec705d",
+        "imageUuidOrDatabaseUri": "76644b74-2dd5-4033-a4e6-94774148ad45",
         "atlasUuid": ""
       },
-      "displayName": "ProBase1",
+      "displayName": "ProImg1",
       "id": "f9941",
       "name": "spriteFrame"
     }
   },
   "userData": {
     "type": "sprite-frame",
-    "redirect": "3ee33bdc-1d3d-4985-a2fe-df6627ec705d@f9941"
+    "redirect": "76644b74-2dd5-4033-a4e6-94774148ad45@f9941"
   }
 }

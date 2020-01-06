@@ -5,7 +5,7 @@ import { Player } from "./Player"
 @ccclass("PlayerSelf")
 export class PlayerSelf extends Player {
     private startTouchPos = null;
-
+    private findPlaDt = 0;
     onLoad(){
         this.initEvent();
     }
@@ -29,11 +29,13 @@ export class PlayerSelf extends Player {
     }
 
     onTouchMove (e:EventTouch) {
-        let p = e.getLocation();
-        this.moveDir = p.subtract(this.startTouchPos).normalize();
-        this.moveDir = cc.v2(-this.moveDir.x,this.moveDir.y).rotate(Math.PI);
-
-       
+        if(!this.isColl)
+        {
+            let p = e.getLocation();
+            this.moveDir = p.subtract(this.startTouchPos).normalize();
+            this.moveDir = cc.v2(-this.moveDir.x,this.moveDir.y).rotate(Math.PI);
+    
+        }
         this.isMove = true;
     }
 
@@ -42,6 +44,17 @@ export class PlayerSelf extends Player {
     }
 
     update (deltaTime: number) {
-      this.updateStep(deltaTime);
+        if(this.gameControl.isStart)
+        {
+
+            this.updateStep(deltaTime);
+            this.findPlaDt += deltaTime;
+            if(this.findPlaDt>0.2)
+            {
+                this.findPlaDt = 0;
+                this.findOtherPlayer();
+            } 
+        }
+     
     }
 }

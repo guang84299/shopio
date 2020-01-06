@@ -1,16 +1,19 @@
-import { _decorator, Component, Node,AnimationComponent } from "cc";
+import { _decorator, Component, Node,AnimationComponent,ModelComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { GBoxColl } from "../GColl/GBoxColl"
+import { ani } from "../ani"
 
 @ccclass("PlayerPack")
 export class PlayerPack extends Component {
 
     public followTarget = null;
-    isColl = false;
+    public isColl = false;
     isMove = false;
     isPlayPost = false;
+    isPlayDrop = false;
+    isPause = false;
     moveDir = cc.v2(0,0);
     gameControl = null;
     // gcoll = null;
@@ -19,6 +22,8 @@ export class PlayerPack extends Component {
     packNode = null;
 
     maxGoods = null;
+
+    tarPlayer = null;
 
     currDis = 0;
 
@@ -30,7 +35,11 @@ export class PlayerPack extends Component {
         // this.gcoll = this.node.getComponent(GBoxColl);
         this.goodsNode = cc.find("goods",this.node);
         this.packNode = cc.find("pack",this.node);
-        this.lvUp(0.5);
+        this.lvUp(1);
+        this.node.addComponent(ani);
+
+        var material = this.packNode.getComponent(ModelComponent).material;   
+        material.setProperty('albedo', this.followTarget.bodyColor); 
     }
 
     holdGoods(goods){
@@ -71,7 +80,7 @@ export class PlayerPack extends Component {
     }
 
     playPostAni(){
-        if(!this.isPlayPost)
+        if(!this.isPlayPost && !this.isPlayDrop)
         {
             this.isPlayPost = true;
             this.node.getComponent(AnimationComponent).play();
@@ -82,14 +91,106 @@ export class PlayerPack extends Component {
         }
     }
 
+    playDropAni(){
+        if(!this.isPlayDrop)
+        {
+            this.isPlayDrop = true;
+            var material = this.packNode.getComponent(ModelComponent).material;   
+            material.setProperty('albedo', new cc.Color("#ff0000")); 
+            this.node.getComponent(AnimationComponent).play("animrob");
+            var self = this;
+            this.scheduleOnce(function(){
+                self.isPlayDrop = false;
+                material.setProperty('albedo', self.followTarget.bodyColor); 
+            },0.5);
+        }
+    }
+
+
+
     lvUp(num){
-        this.packNode.setScale(num,num*3,num);
-        this.tarDis = num;
-        if(this.tarDis<1) this.tarDis = 1;
+        this.packNode.setScale(num,num,num);
+        this.tarDis = num/2;
+        // if(this.tarDis<1) this.tarDis = 1;
+    }
+
+    canColl(pos){
+        if(!this.isColl && this.followTarget.isCanColl)
+        {
+            var p = this.node.getPosition();
+            var dis = cc.Vec2.distance(cc.v2(pos.x,pos.z),cc.v2(p.x,p.z));
+            if(dis<this.tarDis)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    coll(target){
+        this.isColl = true;
+        this.isPause = true;
+        var toPos = this.node.getPosition();
+        var pos = target.node.getPosition();
+        var dir = cc.v2(toPos.x,toPos.z).subtract(cc.v2(pos.x,pos.z)).normalize();
+        toPos.x += dir.x*2;
+        toPos.z += dir.y*2;
+        var self = this;
+        var t1 = 0.2;
+        var t2 = 0.9;
+        // if(target.lv>this.followTarget.lv)
+        {
+            t1 = 0.2;
+            t2 = 2.3;
+        }
+        // var anisc = this.node.getComponent(ani);
+
+        self.scheduleOnce(function(){
+            // anisc.moveTo(t1,toPos,function(){
+            //     self.scheduleOnce(function(){
+            //         self.isColl = false;
+            //      },t2);
+            // });
+            self.isColl = false;
+            self.dropGoods(target);
+            self.isPause = false;
+         },0.5);
+        
+
+        // this.followTarget.collPlayerPack(target);
+
+    }
+
+    //掉落商品
+    dropGoods(player)
+    {
+        var dropNum = Math.floor(this.goodss.length/2);
+        if(dropNum>8) dropNum = 8;
+        for(var i=0;i<dropNum;i++)
+        {
+            var goods = this.goodss[i];
+            goods.node.active = true;
+            // goods.drop();
+            this.followTarget.addScore(-Number(goods.conf.Score));
+
+            var p = cc.v3(goods.node.getWorldPosition());
+            p.y = 0;
+            goods.node.setPosition(p);
+            goods.node.parent = this.gameControl.goodsNode;
+
+            var tpos = player.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
+            goods.die(tpos,i*0.05+0.14,player.isPlayerSelf,player.follow[0]);
+            player.addScore(Number(goods.conf.Score));
+            player.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
+            // goods.drop(player.node.getPosition(),i*0.05,this.followTarget.isPlayerSelf);
+
+        }
+        this.goodss.splice(0,dropNum);
+        this.playDropAni();
     }
 
     updateMoveDir(){
-        if(this.followTarget != null &&  !this.isColl)
+        if(this.followTarget != null ) //&&  !this.isColl
         {
             this.isMove = false;   
             var p1 = this.node.getPosition();
@@ -133,7 +234,7 @@ export class PlayerPack extends Component {
 
     updateStep (deltaTime: number)
     {
-        if(!this.isColl && this.followTarget)
+        if(this.followTarget)//!this.isColl && 
         {
              if(this.isMove)
              {
@@ -153,6 +254,7 @@ export class PlayerPack extends Component {
     }
 
     update (deltaTime: number) {
+        // if(this.isPause) return;
         if(this.gameControl.isStart)
         {
             this.upDirDt += deltaTime;
@@ -160,9 +262,18 @@ export class PlayerPack extends Component {
             {
                 this.upDirDt = 0;
                 this.updateMoveDir();
+                this.tarPlayer = this.followTarget.findOtherPlayer();
             }
             
             this.updateStep(deltaTime);
+
+            //判断碰撞
+            if(this.tarPlayer)
+            {
+                var p = this.tarPlayer.node.getPosition();
+                if(this.canColl(p)) this.coll(this.tarPlayer);
+            }
+            
         }
        else
        {

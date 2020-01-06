@@ -52,6 +52,7 @@ export class gameControl extends Component {
 
     //ani
     isPlayCapacity = false;
+    isPlayHurt = false;
     start () {
         // this.initGoods();
         cc.game.setFrameRate(30);
@@ -204,7 +205,7 @@ export class gameControl extends Component {
        this.playerSc.addFollowPlayer();
 
        cc.log(this.num);
-       this.camera.node.getComponent("CameraFollow").lookTarget = this.players[0].node;
+    //    this.camera.node.getComponent("CameraFollow").lookTarget = this.players[0].node;
        this.parentPre = [];
 
     //    for(var i=0;i<config.astarmap.length;i++)
@@ -250,10 +251,7 @@ export class gameControl extends Component {
 
     startCountDown(){
         this.isStart = true;
-        for(var i=0;i<this.players.length;i++)
-        {
-            this.players[i].excAi();
-        }
+       
 
         this.players.push(this.playerSc);
         this.gameUI.active = true;
@@ -365,6 +363,18 @@ export class gameControl extends Component {
         // }
 
         if(isToScore) this.gameOver();
+    }
+
+    hurtAnimate(){
+        if(!this.isPlayHurt)
+        {
+            this.isPlayHurt = true;
+            this.node.getComponent(AnimationComponent).play();
+            var self = this;
+            this.scheduleOnce(function(){
+                self.isPlayHurt = false;
+            },0.3);
+        }
     }
 
     gameOver(){

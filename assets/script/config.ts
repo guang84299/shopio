@@ -130,17 +130,16 @@ export const config = {
     //判断2点之间是有有墙
     judgeWall(pos1,pos2){
         var dir = cc.v2(pos2).subtract(cc.v2(pos1)).normalize();
-        var len = cc.Vec2.distance(cc.v2(pos2.x,pos2.z),cc.v2(pos1.x,pos1.z));
-        for(var i=0.1;i<=len;i+=0.1)
+        // var len = cc.Vec2.distance(cc.v2(pos2),cc.v2(pos1))/0.03;
+        for(var i=1;i<=2;i++)
         {
-            var p = cc.v2(pos1).add(cc.v2(dir).multiplyScalar(i));
+            var p = cc.v2(pos1);
+            p.x += 0.03*dir.x*2*i;
+            p.y += 0.03*dir.y*2*i;
             var ap = this.converToNodePos(p);
-            if(this.astarmap[ap.y][ap.x] == 0) 
-            {
-                // console.error("has wall");
-                return true;
-            }
+            if(this.astarmap[ap.y][ap.x] == 0)  return true;
         }
+    
         return false;
     },
     astarmap:[],

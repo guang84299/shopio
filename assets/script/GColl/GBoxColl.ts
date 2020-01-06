@@ -209,10 +209,10 @@ export class GBoxColl extends Component {
         var p = this.node.getPosition();
         p.x += dt*v.x;
         p.z += dt*v.y;
-        if(p.x>14) p.x = 14;
-        if(p.x<-14) p.x = -14;
-        if(p.z>7.5) p.z = 7.5;
-        if(p.z<-7.5) p.z = -7.5;
+        if(p.x>13.5) p.x = 13.5;
+        if(p.x<-13.5) p.x = -13.5;
+        if(p.z>7) p.z = 7;
+        if(p.z<-7) p.z = -7;
         return p;
     }
 
@@ -791,31 +791,32 @@ export class GBoxColl extends Component {
                     // if(this.mass<=1) np = this.judgeColl2(np);
                     // this.node.setPosition(np);
                     if(this.mass<=1) this.judgeColl3(1/30);
-
-                     // this.damping = 0.02;
-                    if(this.velocity.x>0)
-                    {
-                        this.velocity.x -= this.velocity.x*this.damping;
-                        if(this.velocity.x < this.damping) this.velocity.x = 0;
-                    }
-                    else{
-                        this.velocity.x += -this.velocity.x*this.damping;
-                        if(this.velocity.x > -this.damping) this.velocity.x = 0;
-                    }
-
-                    if(this.velocity.y>0)
-                    {
-                        this.velocity.y -= this.velocity.y*this.damping;
-                        if(this.velocity.y < this.damping) this.velocity.y = 0;
-                    }
-                    else{
-                        this.velocity.y += -this.velocity.y*this.damping;
-                        if(this.velocity.y > -this.damping) this.velocity.y = 0;
-                    }
                 }
             }
 
-           
+            if(this.velocity.x != 0 || this.velocity.y != 0)
+            {
+                  // this.damping = 0.02;
+                  if(this.velocity.x>0)
+                  {
+                      this.velocity.x -= this.velocity.x*this.damping;
+                      if(this.velocity.x < this.damping) this.velocity.x = 0;
+                  }
+                  else{
+                      this.velocity.x += -this.velocity.x*this.damping;
+                      if(this.velocity.x > -this.damping) this.velocity.x = 0;
+                  }
+
+                  if(this.velocity.y>0)
+                  {
+                      this.velocity.y -= this.velocity.y*this.damping;
+                      if(this.velocity.y < this.damping) this.velocity.y = 0;
+                  }
+                  else{
+                      this.velocity.y += -this.velocity.y*this.damping;
+                      if(this.velocity.y > -this.damping) this.velocity.y = 0;
+                  }
+            }
 
             // if(this.velocity.x != 0 || this.velocity.y != 0)
             //     this.judgeColl(1/30);

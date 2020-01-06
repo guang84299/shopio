@@ -78,7 +78,8 @@ export class loading extends Component {
 
     loadSubpackage(){
         this.suburls = [
-            "subpackages/mode/"
+            "subpackages/mode/",
+            "subpackages/images/"
         ];
 
         this.subTotalCount = this.suburls.length;
@@ -144,6 +145,8 @@ export class loading extends Component {
            
 
             "prefab/anim/ParLvUp",
+            "prefab/anim/ParHurt",
+            "prefab/anim/ParTrail",
 
             "prefab/ui/toast",
             "prefab/ui/nick",
@@ -278,6 +281,7 @@ export class loading extends Component {
         {
             this.isStart = true;
             this.progressBar.node.active = false;
+            cc.log(res.loads);
             cc.director.loadScene("main");
         }
     }

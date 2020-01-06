@@ -10,12 +10,13 @@ export const audio = {
 
     playMusic: function(music,yinliang)
     {
-        if(this.audioMusic == null)
+        if(this.audioMusic == null || !cc.find("Canvas").getComponent(AudioSourceComponent))
         {
             this.audioMusic = cc.find("Canvas").addComponent(AudioSourceComponent);
             this.audioMusic.loop = true;
             this.audioMusic.playOnAwake = true;
         }
+        
         var self = this;
         cc.loader.loadRes(music, function (err, clip)
         {
