@@ -215,7 +215,7 @@ export class Player extends Component {
             this.scheduleOnce(function(){
                 // self.node.getComponent(SkeletalAnimationComponent).stop();
                 self.idle();
-            },1.3)//1.3
+            },1.1)//1.3
 
             this.showEmoji("hurt");
         }
@@ -650,7 +650,7 @@ export class Player extends Component {
         toPos.x += dir.x*0.3;
         toPos.z += dir.y*0.3;
         this.moveDir = dir;
-        this.moveSpeed *= 2;
+        this.moveSpeed *= 3;
 
         this.isColl = true;
         this.isExcColl = true;
@@ -674,8 +674,8 @@ export class Player extends Component {
                 self.moveSpeed = self.delSpeed;
                 self.scheduleOnce(function(){
                     self.isCanColl = true;
-                },1);
-            },0.4);//1.7
+                },0.5);
+            },0.6);//1.7
             self.scheduleOnce(function(){
                 self.dropGoods(player);
             },0.4);
@@ -684,14 +684,17 @@ export class Player extends Component {
             // anisc.moveTo(0.1,toPos,function(){
             //     self.isColl = false;
             // });
+            var t = 0.2;
+            if(player && player.lv==this.lv)
+                t = 0.4;
             self.scheduleOnce(function(){
                 self.isColl = false;
                 self.isExcColl = false;
                 self.moveSpeed = self.delSpeed;
                 self.scheduleOnce(function(){
                     self.isCanColl = true;
-                },1);
-            },0.4);//1.7
+                },0.5);
+            },t);//1.7
             
 
             // if(playNum == 0)
@@ -709,7 +712,7 @@ export class Player extends Component {
         }
         this.hurt();
 
-        // if(playNum == 2)
+        // if(true)
         // {
         //     var node = cc.res.getObjByPool("prefab_anim_ParHurt");
         //     node.parent = this.gameControl.goodsNode;
@@ -726,7 +729,7 @@ export class Player extends Component {
         this.scheduleOnce(function(){
             self.isPause = false;
             self.node.getComponent(SkeletalAnimationComponent).resume();
-        },0.2);
+        },0.1);
 
         
         if(this.isPlayerSelf) 

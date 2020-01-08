@@ -109,7 +109,7 @@ export class PlayerPack extends Component {
 
 
     lvUp(num){
-        this.packNode.setScale(num,num,num);
+        this.packNode.setScale(num,num*0.6,num);
         this.tarDis = num/2;
         // if(this.tarDis<1) this.tarDis = 1;
     }

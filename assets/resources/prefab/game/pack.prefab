@@ -149,7 +149,7 @@
     "_lscale": {
       "__type__": "cc.Vec3",
       "x": 1,
-      "y": 1,
+      "y": 0.6,
       "z": 1
     },
     "_layer": 1073741824,
@@ -171,7 +171,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "4bad87dd-04a2-4f93-b203-a89f845c8ef1"
+        "__uuid__": "d6e9b6f6-1d46-48e6-8cbd-9240e0926d31"
       }
     ],
     "_visFlags": 0,
