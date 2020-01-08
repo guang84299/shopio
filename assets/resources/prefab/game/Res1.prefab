@@ -318,7 +318,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_08<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 8
@@ -564,7 +564,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_11<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 17
@@ -646,7 +646,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_12<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 20
@@ -788,9 +788,9 @@
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": 2.1855694143368915e-8,
-      "y": -8.742277657347555e-8,
-      "z": 1.9106854651647026e-15,
+      "x": 2.1855694143368918e-8,
+      "y": -8.742277657347559e-8,
+      "z": 1.910685465164704e-15,
       "w": 0.999999999999996
     },
     "_lscale": {
@@ -810,7 +810,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_01<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 26
@@ -870,7 +870,7 @@
     },
     "_lrot": {
       "__type__": "cc.Quat",
-      "x": 2.1855694143368998e-8,
+      "x": 2.1855694143369e-8,
       "y": 0,
       "z": 0,
       "w": 0.9999999999999998
@@ -892,7 +892,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_02<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 29
@@ -1056,7 +1056,7 @@
   },
   {
     "__type__": "cc.ModelComponent",
-    "_name": "",
+    "_name": "Shelves_04<ModelComponent>",
     "_objFlags": 0,
     "node": {
       "__id__": 35
