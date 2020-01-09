@@ -68,6 +68,7 @@ export class countdown extends Component {
                 self.sp2.setScale(cc.v3(1,1,1));
                 self.hide();
             });
+            cc.audio.playSound("audio/MusGameStart");
         }
         else
         {
@@ -75,6 +76,8 @@ export class countdown extends Component {
                 self.timeLabel.node.setScale(cc.v3(1,1,1));
                 self.num --;
             });
+
+            cc.audio.playSound("audio/MusCountDown");
         }
     }
 
@@ -97,8 +100,14 @@ export class countdown extends Component {
             this.anisc3.scaleTo(0.3,cc.v3(1.3,1.3,1.3),function(){
                 self.timeLabel2.node.setScale(cc.v3(1,1,1));
                 self.num --;
-                if(self.num <= 0) self.hide();
+                if(self.num <= 0) 
+                {
+                    cc.audio.playSound("audio/MusGameEnd");
+                    self.hide();
+                }
             });
+            if(self.num>0)
+            cc.audio.playSound("audio/MusCountDown");
         }
     }
     

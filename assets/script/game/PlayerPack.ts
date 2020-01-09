@@ -1,4 +1,4 @@
-import { _decorator, Component, Node,AnimationComponent,ModelComponent } from "cc";
+import { _decorator, Component, Node,AnimationComponent,ModelComponent,LineComponent } from "cc";
 const { ccclass, property } = _decorator;
 import { Player } from "./Player"
 import { Goods } from "./Goods"
@@ -20,6 +20,11 @@ export class PlayerPack extends Component {
     goodss = [];
     goodsNode = null;
     packNode = null;
+    lineNode = null;
+    line = null;
+    uiNodePos = null;
+    uiNode = null;
+
 
     maxGoods = null;
 
@@ -29,23 +34,34 @@ export class PlayerPack extends Component {
 
     tarDis = 1;
     private upDirDt = 10;
+
+    packLv = 1;
+
+    scoreAniNum = 0;
     
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         // this.gcoll = this.node.getComponent(GBoxColl);
         this.goodsNode = cc.find("goods",this.node);
         this.packNode = cc.find("pack",this.node);
+        this.lineNode = cc.find("line",this.node);
+        this.uiNodePos =  cc.find("uiNode",this.node);
+        this.uiNode = new cc.Node();
+        this.uiNode.parent = this.gameControl.gameUI;
+
         this.lvUp(1);
         this.node.addComponent(ani);
 
         var material = this.packNode.getComponent(ModelComponent).material;   
         material.setProperty('albedo', this.followTarget.bodyColor); 
+        this.line = this.lineNode.getComponent(LineComponent);   
+        this.line.color.color = this.followTarget.bodyColor;
     }
 
     holdGoods(goods){
         this.goodss.push(goods);
 
-        var h = this.goodss.length>20 ? 5 : Math.floor(this.goodss.length/4);
+        var h = this.goodss.length>12 ? 3 : Math.floor(this.goodss.length/4);
         goods.node.parent = this.goodsNode;
         var max1 = Math.max(goods.gBoxColl.height,goods.gBoxColl.width);
         if(max1>=1) 
@@ -68,15 +84,50 @@ export class PlayerPack extends Component {
         for(var i=this.goodss.length-1;i>=0;i--)
         {
             var good = this.goodss[i];
-            good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*0.5-0.5,(Math.random()-0.5)*0.5));
+            good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*0.5-0.3,(Math.random()-0.5)*0.5));
             n++;
-            if(n>20) 
+            if(n>12) 
             {
                 good.node.active = false;
             }
-            if(n>23) break;
+            if(n>15) break;
         }
         this.playPostAni();
+
+        var upData = this.followTarget.getPackLv(this.packLv,true);
+        if(upData.lv != this.packLv)
+        {
+            this.packLv = upData.lv;
+            this.lvUp(upData.len);
+        }
+
+        this.addScoreAni(Number(goods.conf.Score));
+    }
+
+    //新增分数动画
+    addScoreAni(score){
+        var node = cc.res.getObjByPool("prefab_ui_score");
+        node.parent = this.uiNode;
+        node.setPosition(cc.v3(0,40+this.scoreAniNum*10,0));
+        node.setScale(1,1,1);
+        node.getComponent(cc.LabelComponent).string = "+"+score;
+        if(score<20) node.getComponent(AnimationComponent).play("score1");
+        else  node.getComponent(AnimationComponent).play("score2");
+        this.scoreAniNum ++;
+        // var anisc = node.getComponent(ani);
+        // anisc.moveTo(1.0,cc.v3(0,200,0));
+        // anisc.scaleTo(1.0,cc.v3(0.5,0.5,0.5),function(){
+        //     cc.res.putObjByPool(node,"prefab_ui_score");
+        // });
+
+        this.scheduleOnce(function(){
+            cc.res.putObjByPool(node,"prefab_ui_score");
+        },1);
+
+        if(this.followTarget.isPlayerSelf)
+        {
+            cc.audio.playSound("audio/coin");
+        } 
     }
 
     playPostAni(){
@@ -110,8 +161,9 @@ export class PlayerPack extends Component {
 
     lvUp(num){
         this.packNode.setScale(num,num*0.6,num);
-        this.tarDis = num/2;
+        this.tarDis = num/1.6-0.4;
         // if(this.tarDis<1) this.tarDis = 1;
+        this.uiNodePos.setPosition(cc.v3(0,num*0.6/2,0));
     }
 
     canColl(pos){
@@ -155,7 +207,20 @@ export class PlayerPack extends Component {
             self.dropGoods(target);
             self.isPause = false;
          },0.5);
+
+         if(this.followTarget.isPlayerSelf)
+         {
+            if(this.gameControl.tipNum3<3 && new Date().getTime()-cc.res.tipTime>5000)
+            {
+                this.gameControl.tipNum3 ++;
+                cc.res.showTips("你的货品被偷啦，赶紧回身反击或者逃跑");
+            }
+         }
         
+        //  if(target.isPlayerSelf)
+        //  {
+        //     cc.audio.playSound("audio/MusRob");
+        //  }
 
         // this.followTarget.collPlayerPack(target);
 
@@ -179,14 +244,21 @@ export class PlayerPack extends Component {
             goods.node.parent = this.gameControl.goodsNode;
 
             var tpos = player.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
-            goods.die(tpos,i*0.05+0.14,player.isPlayerSelf,player.follow[0]);
+            goods.die(tpos,i*0.05+0.04,player.isPlayerSelf,player.follow[0]);
             player.addScore(Number(goods.conf.Score));
-            player.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
+            // player.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
             // goods.drop(player.node.getPosition(),i*0.05,this.followTarget.isPlayerSelf);
 
         }
         this.goodss.splice(0,dropNum);
         this.playDropAni();
+
+        var upData = this.followTarget.getPackLv(this.packLv,false);
+        if(upData.lv != this.packLv)
+        {
+            this.packLv = upData.lv;
+            this.lvUp(upData.len);
+        }
     }
 
     updateMoveDir(){
@@ -195,17 +267,21 @@ export class PlayerPack extends Component {
             this.isMove = false;   
             var p1 = this.node.getPosition();
             var p2 = this.followTarget.node.getPosition();
+            var dir = cc.v2(p2.x,p2.z).subtract(cc.v2(p1.x,p1.z)).normalize();
             var dis = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p2.x,p2.z));
             this.currDis = dis;
             if(dis>this.tarDis)
             {
-                this.moveDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p1.x,p1.z)).normalize();
-                this.isMove = true;    
+                this.moveDir = dir;
+                this.isMove = true;   
+                this.line.positions = [cc.v3(p1.x,this.tarDis/2,p1.z),cc.v3(p2.x+dir.x*0.2,0.5,p2.z+dir.y*0.2)]; 
             }
             else
             {
+                this.line.positions = [cc.v3(p1.x,this.tarDis/2,p1.z),cc.v3(p2.x,0.5,p2.z)];
                 this.moveDir = cc.v2(0,0);
             }
+            this.line.width.constant = (1.1-dis/this.tarDis)*0.3;
         }
         else this.currDis = 0;
     }
@@ -217,7 +293,21 @@ export class PlayerPack extends Component {
             var rad = cc.v2(dir).signAngle(cc.v2(0,1));
             var ang = 180/Math.PI*rad;
             this.node.setRotationFromEuler(0,ang,0);
+
+            // var rad2 = cc.v2(-dir.x,dir.y).signAngle(cc.v2(0,1));
+            // var ang2 = 180/Math.PI*rad2;
+            // this.lineNode.setRotationFromEuler(0,ang2,0);
         }
+    }
+
+    updateUI(){
+        // var p = this.gameControl.camera.worldToScreen(this.nickNode.getWorldPosition());
+        var p = cc.pipelineUtils.WorldNode3DToWorldNodeUI(this.gameControl.camera,this.uiNodePos.getWorldPosition(),this.gameControl.gameUI);
+        var dis = Math.abs(this.gameControl.camera.node.getWorldPosition().z - this.node.getWorldPosition().z);
+        this.uiNode.setWorldPosition(p);
+        var sc = 10/dis;
+        if(sc>1) sc = 1;
+        this.uiNode.setScale(sc, sc, 1);
     }
 
     getNextPos(v,dt)
@@ -261,10 +351,10 @@ export class PlayerPack extends Component {
             if(this.upDirDt>=0.1)
             {
                 this.upDirDt = 0;
-                this.updateMoveDir();
                 this.tarPlayer = this.followTarget.findOtherPlayer();
+                this.updateUI();
             }
-            
+            this.updateMoveDir();
             this.updateStep(deltaTime);
 
             //判断碰撞

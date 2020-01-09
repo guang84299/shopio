@@ -68,7 +68,7 @@ export class mainControl extends Component {
         }
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
-        cc.audio.playMusic("audio/music");
+        // cc.audio.playMusic("audio/music");
     }
 
     initUI(){
@@ -76,8 +76,8 @@ export class mainControl extends Component {
         this.playerSc.initNick("留个名吧",skinid);
         this.playerSc.bodyColor = new cc.Color("#FF5200");
 
-        var music = storage.getStorage(storage.music);
-        if(!music) cc.res.setSpriteFrame("images/main/BtnMusicOff/spriteFrame",this.musicNode);
+        var sound = storage.getStorage(storage.sound);
+        if(!sound) cc.res.setSpriteFrame("images/main/BtnMusicOff/spriteFrame",this.musicNode);
         else cc.res.setSpriteFrame("images/main/BtnMusicOn/spriteFrame",this.musicNode);
     }
 
@@ -180,6 +180,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.speedUp.node).getComponent(AnimationComponent).play();
+        cc.audio.playSound("audio/MusBtnLvUp");
     }
 
 
@@ -232,6 +233,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.capacityUp.node).getComponent(AnimationComponent).play();
+        cc.audio.playSound("audio/MusBtnLvUp");
     }
 
     updateLixianUp(){
@@ -283,6 +285,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.lixianUp.node).getComponent(AnimationComponent).play();
+        cc.audio.playSound("audio/MusBtnLvUp");
     }
  
     judgeSkin(){
@@ -292,67 +295,98 @@ export class mainControl extends Component {
         if(storage.indexOf(hasskin,1) == -1)
         {
             var loginday = storage.getStorage(storage.loginday);
-            if(loginday>0) hasskin.push(1);
-            b = true;
+            if(loginday>0) 
+            {
+                hasskin.push(1);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,2) == -1)
         {
             var loginday = storage.getStorage(storage.loginday);
-            if(loginday>=7) hasskin.push(2);
-            b = true;
+            if(loginday>=7) 
+            {
+                hasskin.push(2);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,3) == -1)
         {
             var modewinnum = storage.getStorage(storage.modewinnum);
-            if(modewinnum>=1) hasskin.push(3);
-            b = true;
+            if(modewinnum>=1) 
+            {
+                hasskin.push(3);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,4) == -1)
         {
             var maxscore = storage.getStorage(storage.maxscore);
-            if(maxscore>=2000) hasskin.push(4);
-            b = true;
+            if(maxscore>=2000) 
+            {
+                hasskin.push(4);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,5) == -1)
         {
             var maxscore = storage.getStorage(storage.maxscore);
-            if(maxscore>=2500) hasskin.push(5);
-            b = true;
+            if(maxscore>=2500) 
+            {
+                hasskin.push(5);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,6) == -1)
         {
             var modewinnum = storage.getStorage(storage.modewinnum);
-            if(modewinnum>=3) hasskin.push(6);
-            b = true;
+            if(modewinnum>=3) 
+            {
+                hasskin.push(6);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,7) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=5) hasskin.push(7);
-            b = true;
+            if(starlv>=5)
+            {
+                hasskin.push(7);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,8) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=6) hasskin.push(8);
-            b = true;
+            if(starlv>=6)
+            {
+                hasskin.push(8);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,9) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=7) hasskin.push(9);
-            b = true;
+            if(starlv>=7)
+            {
+                hasskin.push(9);
+                b = true;
+            }
         }
         if(storage.indexOf(hasskin,10) == -1)
         {
             var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=8) hasskin.push(10);
-            b = true;
+            if(starlv>=8)
+            {
+                hasskin.push(10);
+                b = true;
+            }
         }
         if(b)
         {
             storage.setStorage(storage.hasskin,hasskin);
             storage.uploadStorage(storage.hasskin);
+            res.showToast("解锁新皮肤");
         }
     }
 
@@ -427,13 +461,13 @@ export class mainControl extends Component {
         }
         else if(data == "music")
         {
-            var music = storage.getStorage(storage.music);
-            storage.setStorage(storage.music,music == 1 ? 0 : 1);
-            if(music) cc.res.setSpriteFrame("images/main/BtnMusicOff/spriteFrame",this.musicNode);
+            var sound = storage.getStorage(storage.sound);
+            storage.setStorage(storage.sound,sound == 1 ? 0 : 1);
+            if(sound) cc.res.setSpriteFrame("images/main/BtnMusicOff/spriteFrame",this.musicNode);
             else cc.res.setSpriteFrame("images/main/BtnMusicOn/spriteFrame",this.musicNode);
 
-            if(music) cc.audio.pauseMusic();
-            else cc.audio.resumeMusic();
+            // if(music) cc.audio.pauseMusic();
+            // else cc.audio.resumeMusic();
         }
         else if(data == "speedUp")
         {

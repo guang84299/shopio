@@ -15,6 +15,7 @@ export class Robot extends Player {
     toIdleTime = 0;
     roadListTime = 0;
     toPostGoodsTime = 0;
+    toPostGoodsTime2 = 0;
     toRobTime = 0;
     toAvoidTime = 0;
 
@@ -64,28 +65,28 @@ export class Robot extends Player {
     //基础ai
     ai(){
         //判断收银
-        if(this.robotState != "toPostGoods" && this.robotState != "toAvoid" && Math.random()*100 <= Number(this.robotConflv.pay) && this.canPostGoods())
+        if(this.robotState != "toPostGoods" && this.robotState != "toAvoid" && this.toPostGoodsTime2>0.5 && Math.random()*100 <= Number(this.robotConflv.pay) && this.canPostGoods())
         {
             this.robotState = "toPostGoods";
             this.toPostGoodsTime = 0;
         }
 
         //判断拿货 
-        if(this.robotState != "toHoldGoods" && this.robotState != "toPostGoods" && this.robotState != "toAvoid" && this.robotState != "toRob" && Math.random()*100 <= Number(this.robotConflv.collect)+Number(this.robotConfId.collect)-50)
+        if(this.robotState != "toHoldGoods" && this.robotState != "toPostGoods" && this.robotState != "toAvoid" && this.robotState != "toRob" && this.toHoldGoodsTime > 2 && Math.random()*100 <= Number(this.robotConflv.collect)+Number(this.robotConfId.collect))
         {
             this.robotState = "toHoldGoods";
             //找到最近的拿货点
             var p1 = this.node.getPosition();
-            if(this.robotConfPath.length == 0)
+            if(this.gameControl.robotConfPath.length == 0)
             {
-                this.robotConfPath = JSON.parse(JSON.stringify(this.removePath));
+                this.gameControl.robotConfPath = JSON.parse(JSON.stringify(this.robotConfPath));
                 this.removePath = [];
             }
-            var p2 = this.robotConfPath[0];
+            var p2 = this.gameControl.robotConfPath[0];
             this.robotConfPathId = 0;
-            for(var i=1;i<this.robotConfPath.length;i++)
+            for(var i=1;i<this.gameControl.robotConfPath.length;i++)
             {
-                var p3 = this.robotConfPath[i];
+                var p3 = this.gameControl.robotConfPath[i];
                 var dis1 = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p2.x,p2.y));
                 var dis2 = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p3.x,p3.y));
                 if(dis2<dis1)
@@ -95,6 +96,7 @@ export class Robot extends Player {
                 }
             }
             this.removePath.push(p2);
+            this.gameControl.robotConfPath.splice(this.robotConfPathId,1);
             this.findRoad(cc.v2(p2.x,p2.y));
             this.toHoldGoodsTime = 0;
             this.findGoodsState = 0;
@@ -102,7 +104,7 @@ export class Robot extends Player {
         }
 
         //判断躲避
-        if(this.robotState != "toAvoid" && this.robotState != "toRob" && this.toAvoidTime <= 0 && Math.random()*100 <= Number(this.robotConfId.avoid)-100)
+        if(this.robotState != "toAvoid" && this.robotState != "toRob" && this.toAvoidTime <= 0 && Math.random()*100 <= Number(this.robotConfId.avoid)+Number(this.robotConflv.avoid))
         {
             var pla = this.findOtherPlayer();
             if(pla)
@@ -128,10 +130,10 @@ export class Robot extends Player {
             }
         }
         //躲避间隔
-        if(this.toAvoidTime<=0) this.toAvoidTime = 0.01;
+        if(this.toAvoidTime<=0) this.toAvoidTime = 0.3;
 
         //判断抢夺
-        if(this.robotState != "toPostGoods" && this.robotState != "toRob" && this.robotState != "toAvoid" && this.toRobTime <= 0 && Math.random()*100 <= Number(this.robotConfId.rob)-100)
+        if(this.robotState != "toPostGoods" && this.robotState != "toRob" && this.robotState != "toAvoid" && this.toRobTime <= 0 && Math.random()*100 <= Number(this.robotConfId.rob)+Number(this.robotConflv.rob))
         {
             var pla = this.findOtherPlayerPack();
             if(pla) //.currCapacity > 0  && this.currCapacity<=Number(this.conf.Capacity)
@@ -143,7 +145,7 @@ export class Robot extends Player {
             }
         }
         //抢夺间隔
-        if(this.toRobTime<=0) this.toRobTime = 0.01;
+        if(this.toRobTime<=0) this.toRobTime = 0.3;
 
        
         if(Math.random()<0.2) cc.log(this.robotState);
@@ -156,6 +158,9 @@ export class Robot extends Player {
         this.toRobTime -= dt;
         this.toAvoidTime -= dt;
         this.updateDirTime += dt;
+        this.toHoldGoodsTime += dt;
+        this.toPostGoodsTime2 += dt;
+
 
         var p = this.node.getPosition();
 
@@ -176,9 +181,9 @@ export class Robot extends Player {
         }
         else if(this.robotState == "toHoldGoods")
         {
+
             if(this.tarGoods) // && this.toHoldGoodsNum<6
             {
-                this.toHoldGoodsTime += dt;
                 var np = this.tarGoods.node.getPosition();
                 var dis = cc.Vec2.distance(cc.v2(np.x,np.y),cc.v2(p.x,p.z));
                 if(dis>0.02)// && this.updateDirTime>0.25
@@ -285,14 +290,19 @@ export class Robot extends Player {
                     this.robotState = "toIdle";
                     this.moveDir = cc.v2(0,0);
                     this.isMove = false; 
-                    if(this.roadList.length == 0)
-                    {
-                        this.robotConfPath.splice(this.robotConfPathId,1);
-                    }
-                    else{
-                        cc.log("dis>1=",dis);
-                    }
+                    // if(this.roadList.length == 0)
+                    // {
+                    //     this.robotConfPath.splice(this.robotConfPathId,1);
+                    // }
+                    // else{
+                    //     cc.log("dis>1=",dis);
+                    // }
                 }
+            }
+            else{
+                this.robotState = "toIdle";
+                this.moveDir = cc.v2(0,0);
+                this.isMove = false; 
             }
         }
     }

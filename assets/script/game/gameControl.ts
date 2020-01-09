@@ -33,6 +33,7 @@ export class gameControl extends Component {
 
     public goodss = [];
     public players = [];
+    public robotConfPath = [];
     num = 0;
     public goodsNames = "";
     private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF"];
@@ -53,6 +54,12 @@ export class gameControl extends Component {
     //ani
     isPlayCapacity = false;
     isPlayHurt = false;
+
+    // tips num
+    tipNum1 = 0;
+    tipNum2 = 0;
+    tipNum3 = 0;
+    tipTime = 0;
     start () {
         // this.initGoods();
         cc.game.setFrameRate(30);
@@ -180,11 +187,17 @@ export class gameControl extends Component {
     initRobot(){
         //生成robot
         // this.players = [];
-        var pps = [cc.v2(1,1),cc.v2(1,5),cc.v2(-1,5),cc.v2(-4,3),cc.v2(-3,1),cc.v2(4,3),cc.v2(5,3),cc.v2(0,6)];
+        var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
         var robotNum = 0;
+         //星级
+        var starlv = cc.storage.getStorage(cc.storage.starlv);
+        var aiDatas = cc.res.loads["conf_robotstage"][starlv-1];
         if(this.gameMode == 1) robotNum = 5;
         for(var i=0;i<robotNum;i++)
        {
+           var robotIds = aiDatas["AI"+(i+1)].split(",");
+           var robotId = Math.floor(Math.random()*robotIds.length);
+           
            var pindex = Math.floor(Math.random()*pps.length);
            var p = pps[pindex];
             var robot = cc.instantiate(res.loads["prefab_game_player"]);
@@ -192,7 +205,7 @@ export class gameControl extends Component {
             this.goodsNode.addChild(robot);
             var robotSc = robot.addComponent(Robot);
             robotSc.initConf(1);
-            robotSc.initRobotConf(15);
+            robotSc.initRobotConf(Number(robotIds[robotId]));//Number(robotIds[robotId])
             robotSc.initNick(this.randNick(),Math.floor(Math.random()*11));
             robotSc.bodyColor = new cc.Color(this.colors[i+1]);
             this.players.push(robotSc);
@@ -256,6 +269,7 @@ export class gameControl extends Component {
         this.players.push(this.playerSc);
         this.gameUI.active = true;
         this.updateHold(0);
+
     }
 
     updateSelfCapacity(pro){
@@ -278,6 +292,11 @@ export class gameControl extends Component {
             {
                 capacityIcon.getComponent(AnimationComponent).play();
                 this.isPlayCapacity = true;
+                if(this.tipNum1<3 && new Date().getTime()-res.tipTime>5000)
+                {
+                    this.tipNum1 ++;
+                    res.showTips("容量满啦，立刻松开手指");
+                }
             }
         }
         else{
@@ -381,6 +400,8 @@ export class gameControl extends Component {
         this.isStart = false;
         if(this.gameMode == 1) res.openUI("jiesuan");
         else res.openUI("jiesuan2");
+
+        cc.audio.playSound("audio/MusResult");
     }
 
     update (dt: number) {

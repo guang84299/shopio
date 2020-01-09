@@ -13,10 +13,21 @@
       "fontSize": 40,
       "atlasName": "common_shop.png",
       "fontDefDictionary": {
+        "43": {
+          "rect": {
+            "x": 237,
+            "y": 178,
+            "width": 52,
+            "height": 89
+          },
+          "xOffset": 0,
+          "yOffset": 0,
+          "xAdvance": 52
+        },
         "46": {
           "rect": {
             "x": 290,
-            "y": 89,
+            "y": 178,
             "width": 26,
             "height": 89
           },
@@ -38,7 +49,7 @@
         "49": {
           "rect": {
             "x": 290,
-            "y": 0,
+            "y": 89,
             "width": 38,
             "height": 89
           },
@@ -136,7 +147,7 @@
         },
         "98": {
           "rect": {
-            "x": 180,
+            "x": 123,
             "y": 178,
             "width": 57,
             "height": 89
@@ -147,7 +158,7 @@
         },
         "107": {
           "rect": {
-            "x": 123,
+            "x": 180,
             "y": 178,
             "width": 57,
             "height": 89
@@ -169,8 +180,8 @@
         },
         "116": {
           "rect": {
-            "x": 237,
-            "y": 178,
+            "x": 290,
+            "y": 0,
             "width": 44,
             "height": 89
           },

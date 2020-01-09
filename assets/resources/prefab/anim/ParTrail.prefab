@@ -27,9 +27,9 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.087,
+      "x": 0,
       "y": 0,
-      "z": -15.787
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -107,7 +107,7 @@
     "startLifetime": {
       "__id__": 15
     },
-    "duration": 1,
+    "duration": 0.2,
     "loop": true,
     "simulationSpeed": 1,
     "playOnAwake": true,
@@ -488,7 +488,7 @@
       ]
     },
     "constant": 2,
-    "constantMin": 0.1,
+    "constantMin": 0,
     "constantMax": 0,
     "multiplier": 1
   },
@@ -2763,7 +2763,7 @@
     "lifeTime": {
       "__id__": 53
     },
-    "_minParticleDistance": 0.1,
+    "_minParticleDistance": 1,
     "existWithParticles": true,
     "textureMode": 0,
     "widthFromParticle": false,
@@ -2848,7 +2848,7 @@
         }
       ]
     },
-    "constant": 1,
+    "constant": 0.2,
     "constantMin": 0,
     "constantMax": 0,
     "multiplier": 1
@@ -2919,7 +2919,7 @@
         }
       ]
     },
-    "constant": 0.2,
+    "constant": 0.15,
     "constantMin": 0,
     "constantMax": 0,
     "multiplier": 1

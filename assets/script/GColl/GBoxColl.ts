@@ -252,6 +252,7 @@ export class GBoxColl extends Component {
                 var dataItem = data[i];
                 this.excCallback(item);
                 item.excCallback(this);
+               
                 var v = cc.v2(this.velocity).normalize().subtract(cc.v2(item.velocity).normalize());
                 this.velocity = this.velocity.subtract(cc.v2(v).multiplyScalar(item.velocity.length()*0.5));  
                 //对方的力

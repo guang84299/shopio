@@ -1,0 +1,56 @@
+{
+  "ver": "1.0.16",
+  "importer": "image",
+  "imported": true,
+  "uuid": "d59d5e9d-b8d1-41ce-8d26-a14658238c27",
+  "files": [
+    ".png",
+    ".json"
+  ],
+  "subMetas": {
+    "f9941": {
+      "ver": "1.0.7",
+      "importer": "sprite-frame",
+      "uuid": "d59d5e9d-b8d1-41ce-8d26-a14658238c27@f9941",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "premultiplyAlpha": false,
+        "anisotropy": 1,
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": -0.5,
+        "trimX": 0,
+        "trimY": 1,
+        "width": 40,
+        "height": 128,
+        "rawWidth": 40,
+        "rawHeight": 129,
+        "borderTop": 22,
+        "borderBottom": 22,
+        "borderLeft": 16,
+        "borderRight": 16,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "d59d5e9d-b8d1-41ce-8d26-a14658238c27",
+        "atlasUuid": ""
+      },
+      "displayName": "ImgGameWindow",
+      "id": "f9941",
+      "name": "spriteFrame"
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "redirect": "d59d5e9d-b8d1-41ce-8d26-a14658238c27@f9941"
+  }
+}

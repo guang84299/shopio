@@ -77,7 +77,7 @@ export const audio = {
         if(cc.storage.getStorage(cc.storage.sound) == 1)
         {
             var now = new Date().getTime();
-            if(now-this.playSoundTime>200)
+            if(now-this.playSoundTime>200 || sound != "audio/coin")
             {
                 this.playSoundTime = now;
                 var self = this;

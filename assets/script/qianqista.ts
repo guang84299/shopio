@@ -32,7 +32,7 @@ export const qianqista = {
         this.initcallback = initcallback;
         this.showcallback = showcallback;
         var self = this;
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             var opts = wx.getLaunchOptionsSync();
             if(opts)
@@ -389,7 +389,7 @@ export const qianqista = {
     getOpenId: function(callback)
     {
         var self = this;
-        if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+        if(window["wx"])
         {
             wx.login({
                 success: function(res)
@@ -423,7 +423,7 @@ export const qianqista = {
         if(this.state == 1)
         {
             var self = this;
-            if(cc.sys.os == cc.sys.OS_ANDROID || cc.sys.os == cc.sys.OS_IOS)
+            if(window["wx"])
             {
                 self.httpPost("groupid",{encryptedData:encryptedData,sessionkey:self.session_key,iv:iv},function(r){
                     if(r.state == 200)

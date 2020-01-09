@@ -12,8 +12,8 @@ export class Player extends Component {
     protected tarMoveDir = cc.v2(0,1);
     protected isMove = false;
     public isColl = false;
-    protected delSpeed = 2;
-    protected moveSpeed = 2;
+    protected delSpeed = 2.5;
+    protected moveSpeed = 2.5;
     protected rotateSpeed = Math.PI/18;//弧度
     protected isCanColl = true;
     public isExcColl = false;
@@ -113,7 +113,7 @@ export class Player extends Component {
             var obj = cc.res.loads["conf_robotlv"][this.lv-1];
             this.robotConflv = JSON.parse(JSON.stringify(obj));
 
-            this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"][this.lv-1]));
+            this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"][0]));
         }  
         
         if(this.isPlayerSelf)
@@ -143,6 +143,8 @@ export class Player extends Component {
         this.robotConflv = JSON.parse(JSON.stringify(obj));
 
         this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"][this.lv-1]));
+
+        console.error("robot:"+id);
     }
 
     initSkin(){
@@ -310,14 +312,18 @@ export class Player extends Component {
                
                 var tpos = this.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
                 goods.die(tpos,i*0.05+0.14,this.isPlayerSelf,this.follow[0]);
-
-                this.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
             }
 
             if(this.isPlayerSelf)
             {
                 this.gameControl.updateSelfCapacity(this.currCapacity/Number(this.conf.Capacity));
                 this.gameControl.updateHold(len);
+
+                if(this.gameControl.tipNum2<3 && new Date().getTime()-cc.res.tipTime>5000)
+                {
+                    this.gameControl.tipNum2 ++;
+                    cc.res.showTips("放物品时，小心被抢");
+                }
             }
            
             var slef = this;
@@ -333,30 +339,10 @@ export class Player extends Component {
         }
     }    
 
-    //新增分数动画
-    addScoreAni(time,score){
-        var slef = this;
-        this.scheduleOnce(function(){
-            var node = cc.res.getObjByPool("prefab_ui_score");
-            node.parent = slef.uiNick;
-            node.setPosition(cc.v3(0,40,0));
-            node.setScale(2,2,2);
-            node.getComponent(LabelComponent).string = "+"+score;
     
-            var anisc = node.getComponent(ani);
-            anisc.moveTo(1.0,cc.v3(0,200,0));
-            anisc.scaleTo(1.0,cc.v3(0.5,0.5,0.5),function(){
-                cc.res.putObjByPool(node,"prefab_ui_score");
-            });
-
-            if(slef.isPlayerSelf) cc.audio.playSound("audio/coin");
-        },time);
-
-        
-    }
     //显示表情
     showEmoji(type){
-        if(Math.random()<0.3) return;
+        if(Math.random()<0.8) return;
 
         var emojibg = cc.find("emojibg",this.uiNick);
         if(emojibg.active && this.currEmojiType == type) return;
@@ -371,6 +357,9 @@ export class Player extends Component {
         this.currEmojiType = type;
         this.unschedule(this.hideEmoji.bind(this));
         this.scheduleOnce(this.hideEmoji.bind(this),2);
+
+        if(this.isPlayerSelf)
+        cc.audio.playSound("audio/MusEmoji"+Math.floor(Math.random()*4+1));
     }
     hideEmoji(){
         var emojibg = cc.find("emojibg",this.uiNick);
@@ -606,10 +595,10 @@ export class Player extends Component {
             {
                 this.initConf(this.lv+1);
 
-                if(this.isPlayerSelf || this.isRobot)
-                {
-                    this.follow[0].lvUp(Number(this.conf.PlayerNum));
-                }
+                // if(this.isPlayerSelf || this.isRobot)
+                // {
+                //     this.follow[0].lvUp(Number(this.conf.PlayerNum));
+                // }
 
                 this.showEmoji("lvup");
 
@@ -622,6 +611,36 @@ export class Player extends Component {
                 },2);
             }
         }
+    }
+
+    getPackLv(lv,isAdd){
+        var conf = cc.res.loads["conf_player"][lv-1];
+        if(isAdd)
+        {
+            if(this.currScore>=Number(conf.Score))
+            {
+                if(lv < cc.res.loads["conf_player"].length)
+                {
+                    lv++;
+                    conf = cc.res.loads["conf_player"][lv-1];
+                    return {lv:lv,len:Number(conf.PlayerNum)};
+                }
+            }
+        }
+        else
+        {
+            if(this.currScore<Number(conf.Score))
+            {
+                if(lv > 1)
+                {
+                    lv--;
+                    conf = cc.res.loads["conf_player"][lv-1];
+                    return {lv:lv,len:Number(conf.PlayerNum)};
+                }
+            }
+        }
+
+        return {lv:lv,len:Number(conf.PlayerNum)};
     }
 
     //添加跟随者
@@ -684,7 +703,7 @@ export class Player extends Component {
             // anisc.moveTo(0.1,toPos,function(){
             //     self.isColl = false;
             // });
-            var t = 0.2;
+            var t = 0.1;
             if(player && player.lv==this.lv)
                 t = 0.4;
             self.scheduleOnce(function(){
@@ -729,6 +748,8 @@ export class Player extends Component {
         this.scheduleOnce(function(){
             self.isPause = false;
             self.node.getComponent(SkeletalAnimationComponent).resume();
+            if(this.isPlayerSelf) 
+            cc.audio.playSound("audio/MusHurt");
         },0.1);
 
         
@@ -829,7 +850,7 @@ export class Player extends Component {
         }
         else if(this.gameControl.goodsNames.indexOf(item.node.name) != -1)
         {
-            if(this.state == "run" && !this.isPlayerPack)
+            if(this.state == "run")
             this.holdGoods(item.node.getComponent(Goods));
         }
         else if(item.node.name == this.gameControl.cashier.name)

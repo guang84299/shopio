@@ -5,6 +5,7 @@ export const res = {
     loads:{},
     audio_music: "",
     nodePools: {},
+    tipTime : 0,
 
     getObjByPool: function(name){
         if(!this.nodePools[name]) this.nodePools[name] = new cc.NodePool();
@@ -80,6 +81,18 @@ export const res = {
         cc.find("label",toast).getComponent(LabelComponent).string = str;
         cc.find("Canvas").addChild(toast,10000);
         toast.getComponent(SpriteComponent).scheduleOnce(function(){
+            toast.destroy();
+        },1.7)
+    },
+
+    showTips: function(str)
+    {
+        this.tipTime = new Date().getTime();
+        var toast = cc.instantiate(this.loads["prefab_ui_tips"]);
+        toast.getComponent(LabelComponent).string = str;
+        toast.position = cc.v3(0,300,0);
+        cc.find("Canvas").addChild(toast,10000);
+        toast.getComponent(LabelComponent).scheduleOnce(function(){
             toast.destroy();
         },1.7)
     },

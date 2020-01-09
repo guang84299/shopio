@@ -225,7 +225,7 @@
     },
     "_depth": 1,
     "_stencil": 0,
-    "_clearFlags": 14,
+    "_clearFlags": 7,
     "_rect": {
       "__type__": "cc.Rect",
       "x": 0,
@@ -509,7 +509,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "4bad87dd-04a2-4f93-b203-a89f845c8ef1"
+        "__uuid__": "d6e9b6f6-1d46-48e6-8cbd-9240e0926d31"
       }
     ],
     "_visFlags": 0,

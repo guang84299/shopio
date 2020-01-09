@@ -26,16 +26,19 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 6
     },
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 1
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -46,9 +49,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
-      "z": 1
+      "x": 0,
+      "y": 0,
+      "z": 0
     },
     "_layer": 33554432,
     "_euler": {
@@ -70,8 +73,8 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 63.38,
-      "height": 40
+      "width": 33,
+      "height": 45
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -99,17 +102,19 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "label",
+    "_string": "0",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
-    "_fontSize": 30,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 90,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
+    "_font": {
+      "__uuid__": "b9e2d0af-7bb8-49d1-8b1e-8c5beec0fb08"
+    },
+    "_isSystemFontUsed": false,
     "_isItalic": false,
     "_isBold": false,
     "_isUnderline": false,
@@ -117,13 +122,41 @@
     "_id": ""
   },
   {
-    "__type__": "6ab90MLpmtFQLVLe/EeoXyK",
+    "__type__": "cc.LabelOutlineComponent",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_width": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.AnimationComponent",
+    "_name": "score<AnimationComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "playOnLoad": false,
+    "_clips": [
+      {
+        "__uuid__": "f2ec5453-89b8-40b7-a6d2-05382839434d"
+      },
+      {
+        "__uuid__": "d134b149-032d-4393-bb83-2858a9ea0959"
+      }
+    ],
+    "_defaultClip": null,
     "_id": ""
   },
   {

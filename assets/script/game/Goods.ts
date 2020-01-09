@@ -77,9 +77,9 @@ export class Goods extends Component {
         var dir = cc.v2(toP.x,toP.z).subtract(cc.v2(pos.x,pos.z)).normalize();
         var len = cc.Vec2.distance(cc.v2(toP.x,toP.z),cc.v2(pos.x,pos.z));
 
-        var to1 = cc.v3(pos.x+dir.x*len*0.25,toP.y+4*0.75,pos.z+dir.y*len*0.25);
-        var to2 = cc.v3(pos.x+dir.x*len*0.5,toP.y+4*1,pos.z+dir.y*len*0.5);
-        var to3 = cc.v3(pos.x+dir.x*len*0.75,toP.y+4*0.75,pos.z+dir.y*len*0.75);
+        var to1 = cc.v3(pos.x+dir.x*len*0.25,toP.y+3*0.75,pos.z+dir.y*len*0.25);
+        var to2 = cc.v3(pos.x+dir.x*len*0.5,toP.y+3*1,pos.z+dir.y*len*0.5);
+        var to3 = cc.v3(pos.x+dir.x*len*0.75,toP.y+3*0.75,pos.z+dir.y*len*0.75);
         var to4 = cc.v3(toP);
 
         var ang = (Math.random()-0.5)*(Math.PI/5);

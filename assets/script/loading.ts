@@ -117,6 +117,7 @@ export class loading extends Component {
             "conf/playerlv",
             "conf/starlv",
             "conf/starrank",
+            "conf/robotstage",
 
             "prefab/game/player",
             "prefab/game/pack",
@@ -149,6 +150,7 @@ export class loading extends Component {
             "prefab/anim/ParTrail",
 
             "prefab/ui/toast",
+            "prefab/ui/tips",
             "prefab/ui/nick",
             "prefab/ui/score",
             "prefab/ui/countdown",
