@@ -73,7 +73,7 @@ export class modesel extends Component {
             this.updateMode();
         }
         cc.log(data);
-        cc.audio.playSound("audio/button");
+        cc.audio.playSound("button");
     }
 
     // update (deltaTime: number) {

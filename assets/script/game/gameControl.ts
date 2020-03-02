@@ -34,6 +34,7 @@ export class gameControl extends Component {
     public goodss = [];
     public players = [];
     public robotConfPath = [];
+    public robotRemovePath = [[],[]];
     num = 0;
     public goodsNames = "";
     private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF"];
@@ -76,6 +77,9 @@ export class gameControl extends Component {
         this.proTxt = cc.find("pro/txt",this.loadNode).getComponent(LabelComponent);
         this.loadNode.active = true;
         this.gameUI.active = false;
+
+        if(this.gameMode == 1) cc.find("tip1",this.loadNode).active = true;
+        else cc.find("tip2",this.loadNode).active = true;
 
 
         this.gameTime = Number(cc.res.loads["conf_game"][0].Time);
@@ -192,7 +196,11 @@ export class gameControl extends Component {
          //星级
         var starlv = cc.storage.getStorage(cc.storage.starlv);
         var aiDatas = cc.res.loads["conf_robotstage"][starlv-1];
-        if(this.gameMode == 1) robotNum = 5;
+        if(this.gameMode == 1) 
+        {
+            robotNum = 5;
+            this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"]));
+        }
         for(var i=0;i<robotNum;i++)
        {
            var robotIds = aiDatas["AI"+(i+1)].split(",");
@@ -205,7 +213,7 @@ export class gameControl extends Component {
             this.goodsNode.addChild(robot);
             var robotSc = robot.addComponent(Robot);
             robotSc.initConf(1);
-            robotSc.initRobotConf(Number(robotIds[robotId]));//Number(robotIds[robotId])
+            robotSc.initRobotConf(Number(robotIds[robotId]),i%2);//Number(robotIds[robotId])
             robotSc.initNick(this.randNick(),Math.floor(Math.random()*11));
             robotSc.bodyColor = new cc.Color(this.colors[i+1]);
             this.players.push(robotSc);
@@ -401,7 +409,7 @@ export class gameControl extends Component {
         if(this.gameMode == 1) res.openUI("jiesuan");
         else res.openUI("jiesuan2");
 
-        cc.audio.playSound("audio/MusResult");
+        cc.audio.playSound("result");
     }
 
     update (dt: number) {

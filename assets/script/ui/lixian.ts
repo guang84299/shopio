@@ -128,7 +128,7 @@ export class lixian extends Component {
             }
            
         }
-        cc.audio.playSound("audio/button");
+        cc.audio.playSound("button");
     }
 
     // update (deltaTime: number) {

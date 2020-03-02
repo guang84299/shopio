@@ -48,6 +48,10 @@ export class mainControl extends Component {
     coin = 0;
     start () {
         cc.game.setFrameRate(30);
+        // cc.view.enableAntiAlias(false);
+        // console.error(cc.macro.ENABLE_CULLING);
+        // cc.macro.ENABLE_CULLING = true;
+        // console.error(cc.macro.ENABLE_CULLING);
 
         this.initMap();
         this.initUI();
@@ -180,7 +184,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.speedUp.node).getComponent(AnimationComponent).play();
-        cc.audio.playSound("audio/MusBtnLvUp");
+        cc.audio.playSound("lvup");
     }
 
 
@@ -233,7 +237,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.capacityUp.node).getComponent(AnimationComponent).play();
-        cc.audio.playSound("audio/MusBtnLvUp");
+        cc.audio.playSound("lvup");
     }
 
     updateLixianUp(){
@@ -285,7 +289,7 @@ export class mainControl extends Component {
         this.updateLixianUp();
 
         cc.find("ani",this.lixianUp.node).getComponent(AnimationComponent).play();
-        cc.audio.playSound("audio/MusBtnLvUp");
+        cc.audio.playSound("lvup");
     }
  
     judgeSkin(){
@@ -482,7 +486,7 @@ export class mainControl extends Component {
             this.toLixianUp();
         }
 
-        cc.audio.playSound("audio/button");
+        cc.audio.playSound("button");
     }
     // update (dt: number) {
         

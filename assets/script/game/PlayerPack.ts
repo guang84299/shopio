@@ -94,12 +94,12 @@ export class PlayerPack extends Component {
         }
         this.playPostAni();
 
-        var upData = this.followTarget.getPackLv(this.packLv,true);
-        if(upData.lv != this.packLv)
-        {
-            this.packLv = upData.lv;
-            this.lvUp(upData.len);
-        }
+        // var upData = this.followTarget.getPackLv(this.packLv,true);
+        // if(upData.lv != this.packLv)
+        // {
+        //     this.packLv = upData.lv;
+        //     this.lvUp(upData.len);
+        // }
 
         this.addScoreAni(Number(goods.conf.Score));
     }
@@ -126,7 +126,7 @@ export class PlayerPack extends Component {
 
         if(this.followTarget.isPlayerSelf)
         {
-            cc.audio.playSound("audio/coin");
+            cc.audio.playSound("coin");
         } 
     }
 
@@ -161,7 +161,7 @@ export class PlayerPack extends Component {
 
     lvUp(num){
         this.packNode.setScale(num,num*0.6,num);
-        this.tarDis = num/1.6-0.4;
+        this.tarDis = num/5+0.5;
         // if(this.tarDis<1) this.tarDis = 1;
         this.uiNodePos.setPosition(cc.v3(0,num*0.6/2,0));
     }
@@ -253,12 +253,12 @@ export class PlayerPack extends Component {
         this.goodss.splice(0,dropNum);
         this.playDropAni();
 
-        var upData = this.followTarget.getPackLv(this.packLv,false);
-        if(upData.lv != this.packLv)
-        {
-            this.packLv = upData.lv;
-            this.lvUp(upData.len);
-        }
+        // var upData = this.followTarget.getPackLv(this.packLv,false);
+        // if(upData.lv != this.packLv)
+        // {
+        //     this.packLv = upData.lv;
+        //     this.lvUp(upData.len);
+        // }
     }
 
     updateMoveDir(){
@@ -281,7 +281,7 @@ export class PlayerPack extends Component {
                 this.line.positions = [cc.v3(p1.x,this.tarDis/2,p1.z),cc.v3(p2.x,0.5,p2.z)];
                 this.moveDir = cc.v2(0,0);
             }
-            this.line.width.constant = (1.1-dis/this.tarDis)*0.3;
+            this.line.width.constant = (1.2-dis/this.tarDis)*0.3;
         }
         else this.currDis = 0;
     }

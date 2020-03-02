@@ -38,9 +38,8 @@ export class Player extends Component {
     public isRobot = false;  
     protected isPlayerPack = false;
     protected robotId = 0;
-    protected robotConfId = {ID:1,range:1,collect:0,wander:0,rob:0,avoid:0,capacitylimit:60,wandertime:10};
+    protected robotConfId = {ID:1,range:1,collect:0,wander:0,rob:0,avoid:0,capacitylimit:60,wandertime:10,speed:1};
     protected robotConflv = {lv:1,pay:90,collect:80,wander:80,rob:0,avoid:0};
-    protected robotConfPath = [];
 
     protected toHoldGoodsTime = 0;
     protected tarGoods = null;
@@ -57,6 +56,8 @@ export class Player extends Component {
 
     protected currCollNode = null;
     protected currEmojiType = "";
+
+    pathType = 0;
 
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -112,8 +113,6 @@ export class Player extends Component {
         {
             var obj = cc.res.loads["conf_robotlv"][this.lv-1];
             this.robotConflv = JSON.parse(JSON.stringify(obj));
-
-            this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"][0]));
         }  
         
         if(this.isPlayerSelf)
@@ -132,19 +131,19 @@ export class Player extends Component {
         }
     }
 
-    initRobotConf(id){
+    initRobotConf(id,pathType){
         if(id && id <= cc.res.loads["conf_robotid"].length)
         {
             var obj = cc.res.loads["conf_robotid"][id-1];
             this.robotConfId = JSON.parse(JSON.stringify(obj));
+            this.delSpeed = Number(this.robotConfId.speed);
+            this.moveSpeed = this.delSpeed;
         }
 
         var obj = cc.res.loads["conf_robotlv"][this.lv-1];
         this.robotConflv = JSON.parse(JSON.stringify(obj));
+        this.pathType = pathType;
 
-        this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"][this.lv-1]));
-
-        console.error("robot:"+id);
     }
 
     initSkin(){
@@ -359,7 +358,7 @@ export class Player extends Component {
         this.scheduleOnce(this.hideEmoji.bind(this),2);
 
         if(this.isPlayerSelf)
-        cc.audio.playSound("audio/MusEmoji"+Math.floor(Math.random()*4+1));
+        cc.audio.playSound("emoji"+Math.floor(Math.random()*4+1));
     }
     hideEmoji(){
         var emojibg = cc.find("emojibg",this.uiNick);
@@ -584,7 +583,8 @@ export class Player extends Component {
 
     addScore(score){
         this.currScore += score;
-        this.lvUp();
+        if(score>0) this.lvUp();
+        else this.lvDown();
     }
 
     //判断升级 和 添加跟随者
@@ -599,6 +599,7 @@ export class Player extends Component {
                 // {
                 //     this.follow[0].lvUp(Number(this.conf.PlayerNum));
                 // }
+                this.follow[0].lvUp(Number(this.conf.PlayerNum));
 
                 this.showEmoji("lvup");
 
@@ -612,36 +613,47 @@ export class Player extends Component {
             }
         }
     }
-
-    getPackLv(lv,isAdd){
-        var conf = cc.res.loads["conf_player"][lv-1];
-        if(isAdd)
+    //降级
+    lvDown(){
+        if(this.currScore<Number(this.conf.Score))
         {
-            if(this.currScore>=Number(conf.Score))
+            if(this.lv>1)
             {
-                if(lv < cc.res.loads["conf_player"].length)
-                {
-                    lv++;
-                    conf = cc.res.loads["conf_player"][lv-1];
-                    return {lv:lv,len:Number(conf.PlayerNum)};
-                }
+                this.initConf(this.lv-1);
+                this.follow[0].lvUp(Number(this.conf.PlayerNum));
             }
         }
-        else
-        {
-            if(this.currScore<Number(conf.Score))
-            {
-                if(lv > 1)
-                {
-                    lv--;
-                    conf = cc.res.loads["conf_player"][lv-1];
-                    return {lv:lv,len:Number(conf.PlayerNum)};
-                }
-            }
-        }
-
-        return {lv:lv,len:Number(conf.PlayerNum)};
     }
+
+    // getPackLv(lv,isAdd){
+    //     var conf = cc.res.loads["conf_player"][lv-1];
+    //     if(isAdd)
+    //     {
+    //         if(this.currScore>=Number(conf.Score))
+    //         {
+    //             if(lv < cc.res.loads["conf_player"].length)
+    //             {
+    //                 lv++;
+    //                 conf = cc.res.loads["conf_player"][lv-1];
+    //                 return {lv:lv,len:Number(conf.PlayerNum)};
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if(this.currScore<Number(conf.Score))
+    //         {
+    //             if(lv > 1)
+    //             {
+    //                 lv--;
+    //                 conf = cc.res.loads["conf_player"][lv-1];
+    //                 return {lv:lv,len:Number(conf.PlayerNum)};
+    //             }
+    //         }
+    //     }
+
+    //     return {lv:lv,len:Number(conf.PlayerNum)};
+    // }
 
     //添加跟随者
     addFollowPlayer(){
@@ -749,7 +761,7 @@ export class Player extends Component {
             self.isPause = false;
             self.node.getComponent(SkeletalAnimationComponent).resume();
             if(this.isPlayerSelf) 
-            cc.audio.playSound("audio/MusHurt");
+            cc.audio.playSound("hurt");
         },0.1);
 
         

@@ -105,7 +105,14 @@ export class loading extends Component {
 
     loadAllRes(){
         this.purls = [
-            //"audio/button",
+            // "audio/button",
+            "audio/coin",
+            "audio/MusCountDown",
+            "audio/MusGameEnd",
+            "audio/MusGameStart",
+            "audio/MusHurt",
+            "audio/MusResult",
+
             "conf/game",
             "conf/goods",
             "conf/player",
@@ -269,6 +276,8 @@ export class loading extends Component {
 
         if(url.indexOf("conf/") != -1)
             res.loads[pifx] = resource;
+        else  if(url.indexOf("audio/") != -1)
+           res.loads[pifx+resource.name] = resource; 
         else
         {
             res.loads[pifx+resource.data.name] = resource;

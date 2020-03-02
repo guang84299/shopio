@@ -94,7 +94,7 @@ export const res = {
         cc.find("Canvas").addChild(toast,10000);
         toast.getComponent(LabelComponent).scheduleOnce(function(){
             toast.destroy();
-        },1.7)
+        },2.1)
     },
 
     openUI: function(name,parent?:Node,showType?:any)

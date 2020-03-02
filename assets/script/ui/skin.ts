@@ -270,7 +270,7 @@ export class skin extends Component {
             }
         }
         cc.log(data);
-        cc.audio.playSound("audio/button");
+        cc.audio.playSound("button");
     }
 
     // update (deltaTime: number) {

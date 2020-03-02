@@ -346,8 +346,8 @@ export const sdk = {
         if(window["wx"])
         {
             var query = "fromid="+cc.qianqista.openid+"&channel="+channel;
-            var title = "不一样的3D套圈游戏，童年的回忆。这次能否弥补当初百套不中的遗憾？";
-            var imageUrl = "https://www.7q7q.top/share/2048_1.jpg";//cc.url.raw("resources/zhuanfa.jpg");
+            var title = "赶紧来“疯狂购物”！体验最畅快的抢购，没有人可以制止你！";
+            var imageUrl = "https://www.7q7q.top/share/shop/share1.png";//cc.url.raw("resources/zhuanfa.jpg");
             if(cc.GAME.shares.length>0)
             {
                 var i = Math.floor(Math.random()*cc.GAME.shares.length);
@@ -459,14 +459,13 @@ export const sdk = {
                     // 分享失败
                 }
             });
-
       
             wx.onShareAppMessage(function (ops){
                 return {
                     query:"channel=sharemenu",
                     withShareTicket: true,
-                    title: "不一样的3D套圈游戏，童年的回忆。这次能否弥补当初百套不中的遗憾？",
-                    imageUrl: "https://www.7q7q.top/share/2048_1.jpg"
+                    title: "赶紧来“疯狂购物”！体验最畅快的抢购，没有人可以制止你！",
+                    imageUrl: "https://www.7q7q.top/share/shop/share1.png"
                 }
             });
 

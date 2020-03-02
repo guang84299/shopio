@@ -26,9 +26,7 @@ export class Robot extends Player {
     aiDt = 0;
 
     findGoodsState = 0;
-    robotConfPathId = -1;
 
-    removePath = [];
     isCanRmovePath = false;
 
     start () {
@@ -77,26 +75,26 @@ export class Robot extends Player {
             this.robotState = "toHoldGoods";
             //找到最近的拿货点
             var p1 = this.node.getPosition();
-            if(this.gameControl.robotConfPath.length == 0)
+            if(this.gameControl.robotConfPath[this.pathType].length == 0)
             {
-                this.gameControl.robotConfPath = JSON.parse(JSON.stringify(this.robotConfPath));
-                this.removePath = [];
+                this.gameControl.robotConfPath[this.pathType] = JSON.parse(JSON.stringify(this.gameControl.robotRemovePath[this.pathType]));
+                this.gameControl.robotRemovePath[this.pathType] = [];
             }
-            var p2 = this.gameControl.robotConfPath[0];
-            this.robotConfPathId = 0;
-            for(var i=1;i<this.gameControl.robotConfPath.length;i++)
+            var p2 = this.gameControl.robotConfPath[this.pathType][0];
+            var robotConfPathId = 0;
+            for(var i=1;i<this.gameControl.robotConfPath[this.pathType].length;i++)
             {
-                var p3 = this.gameControl.robotConfPath[i];
+                var p3 = this.gameControl.robotConfPath[this.pathType][i];
                 var dis1 = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p2.x,p2.y));
                 var dis2 = cc.Vec2.distance(cc.v2(p1.x,p1.z),cc.v2(p3.x,p3.y));
                 if(dis2<dis1)
                 {
                     p2 = p3;
-                    this.robotConfPathId = i;
+                    robotConfPathId = i;
                 }
             }
-            this.removePath.push(p2);
-            this.gameControl.robotConfPath.splice(this.robotConfPathId,1);
+            this.gameControl.robotRemovePath[this.pathType].push(p2);
+            this.gameControl.robotConfPath[this.pathType].splice(robotConfPathId,1);
             this.findRoad(cc.v2(p2.x,p2.y));
             this.toHoldGoodsTime = 0;
             this.findGoodsState = 0;

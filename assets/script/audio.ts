@@ -5,7 +5,7 @@ export const audio = {
     playSoundTime:0,
 
     audioMusic: null,
-    audioSounds: [],
+    audioSounds: {},
 
 
     playMusic: function(music,yinliang)
@@ -51,23 +51,18 @@ export const audio = {
         this.audioMusic.stop();
     },
 
-    getSoundAudio: function(){
-        var audioSound = null;
-        for(var i=0;i<this.audioSounds.length;i++)
-        {
-            if(!this.audioSounds[i].playing)
-            {
-                audioSound = this.audioSounds[i];
-                break;
-            }
-        }
-        if(audioSound == null)
+    getSoundAudio: function(sound){
+        var audioSound = this.audioSounds[sound];
+        if(!audioSound)
         {
             audioSound = cc.find("Canvas").addComponent(AudioSourceComponent);
             audioSound.loop = false;
-            this.audioSounds.push(audioSound);
-            cc.log("---s---",this.audioSounds.length);
+            this.audioSounds[sound] = audioSound;
         }
+        else{
+            if(!audioSound.node) audioSound.node = cc.find("Canvas");
+        }
+        // cc.log("---s---",this.audioSounds);
 
         return audioSound;
     },
@@ -77,23 +72,28 @@ export const audio = {
         if(cc.storage.getStorage(cc.storage.sound) == 1)
         {
             var now = new Date().getTime();
-            if(now-this.playSoundTime>200 || sound != "audio/coin")
+            if(now-this.playSoundTime>200 || sound != "coin")
             {
                 this.playSoundTime = now;
-                var self = this;
-                cc.loader.loadRes(sound, function (err, clip)
-                {
-                    if(!err)
-                    {
-                        var audioSound = self.getSoundAudio();
-                        audioSound.playOneShot(clip);
-                        cc.log(audioSound.duration);
-                    }
-                    else
-                    {
-                        //console.log(err);
-                    }
-                });
+                var audioSound = cc.find("Canvas/audioNode/"+sound).getComponent(AudioSourceComponent);
+                if(audioSound) audioSound.play();
+                // var self = this;
+                // cc.loader.loadRes(sound, function (err, clip)
+                // {
+                //     if(!err)
+                //     {
+
+                //         clip.setCurrentTime(0);
+                //         clip.playOneShot(1);
+                //         // var audioSound = self.getSoundAudio(sound.split("/")[1]);
+                //         // audioSound.playOneShot(clip);
+                //         // cc.log("--1--",clip.duration,clip.state);
+                //     }
+                //     else
+                //     {
+                //         //console.log(err);
+                //     }
+                // });
             }
 
         }

@@ -56,7 +56,7 @@ export class starup extends Component {
         {
             this.hide();
         }
-        cc.audio.playSound("audio/button");
+        cc.audio.playSound("button");
     }
 
     // update (deltaTime: number) {

@@ -173,5 +173,8 @@
 {"ID":"172","Prefab":"Res514","Parent":"Res9","Name":"吧台2","Require":"6","Score":"50","Capacity":"20","CapacityAdd":"0","Mass":"10"},
 {"ID":"173","Prefab":"Res515","Parent":"Res9","Name":"玩具底座","Require":"4","Score":"25","Capacity":"12","CapacityAdd":"0","Mass":"10"},
 {"ID":"174","Prefab":"Res516","Parent":"Res9","Name":"蛋糕底座","Require":"4","Score":"25","Capacity":"12","CapacityAdd":"0","Mass":"10"},
-{"ID":"175","Prefab":"Res517","Parent":"Res9","Name":"厨具底座","Require":"4","Score":"25","Capacity":"12","CapacityAdd":"0","Mass":"10"}
+{"ID":"175","Prefab":"Res517","Parent":"Res9","Name":"厨具底座","Require":"4","Score":"25","Capacity":"12","CapacityAdd":"0","Mass":"10"},
+{"ID":"176","Prefab":"Res911","Parent":"Res9","Name":"横道线","Require":"11","Score":"1","Capacity":"1","CapacityAdd":"0","Mass":"-1"},
+{"ID":"177","Prefab":"Res912","Parent":"Res9","Name":"马路","Require":"11","Score":"1","Capacity":"1","CapacityAdd":"0","Mass":"-1"},
+{"ID":"178","Prefab":"Res913","Parent":"Res9","Name":"人行道","Require":"11","Score":"1","Capacity":"1","CapacityAdd":"0","Mass":"-1"}
 ]
