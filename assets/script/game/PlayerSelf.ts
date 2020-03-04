@@ -6,6 +6,7 @@ import { Player } from "./Player"
 export class PlayerSelf extends Player {
     private startTouchPos = null;
     private findPlaDt = 0;
+    private touchTime = 0;
     onLoad(){
         this.initEvent();
     }
@@ -26,6 +27,7 @@ export class PlayerSelf extends Player {
 
     onTouchStart (e:EventTouch) {
         this.startTouchPos = e.getLocation();
+        this.touchTime = new Date().getTime();
     }
 
     onTouchMove (e:EventTouch) {
@@ -41,6 +43,16 @@ export class PlayerSelf extends Player {
 
     onTouchEnd (e:EventTouch) {
        this.isMove = false;
+
+       if(new Date().getTime() - this.touchTime < 200)
+       {
+           let p = e.getLocation();
+           var dis = cc.Vec2.distance(p,this.startTouchPos);
+           if(dis>=100)
+           {
+               this.speedUp();
+           }
+       }
     }
 
     update (deltaTime: number) {

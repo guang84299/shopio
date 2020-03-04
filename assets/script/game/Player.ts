@@ -238,6 +238,8 @@ export class Player extends Component {
         {
             if(this.hands.length>0)
             {
+                this.gameControl.holdGoods.push(cc.instantiate(goods.node));
+
                 goods.hold(this.isPlayerSelf);
                 this.goods.push(goods);
                 this.currCapacity += Number(goods.conf.Capacity);
@@ -309,7 +311,7 @@ export class Player extends Component {
                 }
     
                
-                var tpos = this.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
+                var tpos = this.follow[0].node.getWorldPosition();//this.gameControl.cashier.getPosition()
                 goods.die(tpos,i*0.05+0.14,this.isPlayerSelf,this.follow[0]);
             }
 
@@ -452,7 +454,7 @@ export class Player extends Component {
     //寻找附近是否有别的角色
     findOtherPlayer(){
         if(this.follow[0].isColl) return;
-        var p = this.follow[0].node.getPosition();
+        var p = this.follow[0].node.getWorldPosition();
         var plas = this.gameControl.players;
         var tarPlayer = null;
         for(var i=0;i<plas.length;i++)
@@ -486,7 +488,7 @@ export class Player extends Component {
             var pla = plas[i];
             if(pla != this && !pla.follow[0].isColl)
             {
-                var p2 = pla.follow[0].node.getPosition();
+                var p2 = pla.follow[0].node.getWorldPosition();
                 var dis = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z));
                 if(dis<2.5)
                 {
@@ -819,6 +821,45 @@ export class Player extends Component {
         //     self.node.getComponent(SkeletalAnimationComponent).resume();
         // },1);
 
+    }
+
+    //加速
+    speedUp(){
+        if(!this.isCanColl) return;
+        this.isCanColl = false;
+       
+        this.moveSpeed *= 5;
+
+        this.isColl = true;
+        this.isExcColl = true;
+        this.isPause = true;
+        var self = this;
+        // var anisc = this.node.getComponent(ani);
+       
+        var t = 0.4;
+            self.scheduleOnce(function(){
+                self.isColl = false;
+                self.isExcColl = false;
+                self.moveSpeed = self.delSpeed;
+                self.scheduleOnce(function(){
+                    self.isCanColl = true;
+                },0.5);
+            },t);//1.7
+
+        this.gcoll.applyForce(cc.v2(0,0));
+        this.node.getComponent(SkeletalAnimationComponent).pause();
+        this.scheduleOnce(function(){
+            self.isPause = false;
+            self.node.getComponent(SkeletalAnimationComponent).resume();
+            if(this.isPlayerSelf) 
+            cc.audio.playSound("hurt");
+        },0.1);
+
+        if(this.isPlayerSelf) 
+        {
+            cc.sdk.vibrate();
+            this.gameControl.hurtAnimate();
+        }
     }
     
     //判断2个角色是否可以碰撞

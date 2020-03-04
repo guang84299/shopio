@@ -20,7 +20,7 @@ export class PlayerPack extends Component {
     goodss = [];
     goodsNode = null;
     packNode = null;
-    lineNode = null;
+    // lineNode = null;
     line = null;
     uiNodePos = null;
     uiNode = null;
@@ -44,7 +44,7 @@ export class PlayerPack extends Component {
         // this.gcoll = this.node.getComponent(GBoxColl);
         this.goodsNode = cc.find("goods",this.node);
         this.packNode = cc.find("pack",this.node);
-        this.lineNode = cc.find("line",this.node);
+        // this.lineNode = cc.find("line",this.node);
         this.uiNodePos =  cc.find("uiNode",this.node);
         this.uiNode = new cc.Node();
         this.uiNode.parent = this.gameControl.gameUI;
@@ -54,8 +54,8 @@ export class PlayerPack extends Component {
 
         var material = this.packNode.getComponent(ModelComponent).material;   
         material.setProperty('albedo', this.followTarget.bodyColor); 
-        this.line = this.lineNode.getComponent(LineComponent);   
-        this.line.color.color = this.followTarget.bodyColor;
+        // this.line = this.lineNode.getComponent(LineComponent);   
+        // this.line.color.color = this.followTarget.bodyColor;
     }
 
     holdGoods(goods){
@@ -164,12 +164,14 @@ export class PlayerPack extends Component {
         this.tarDis = num/5+0.5;
         // if(this.tarDis<1) this.tarDis = 1;
         this.uiNodePos.setPosition(cc.v3(0,num*0.6/2,0));
+
+        this.node.setPosition(0,0,-num*0.25);
     }
 
     canColl(pos){
         if(!this.isColl && this.followTarget.isCanColl)
         {
-            var p = this.node.getPosition();
+            var p = this.node.getWorldPosition();
             var dis = cc.Vec2.distance(cc.v2(pos.x,pos.z),cc.v2(p.x,p.z));
             if(dis<this.tarDis)
             {
@@ -182,7 +184,7 @@ export class PlayerPack extends Component {
     coll(target){
         this.isColl = true;
         this.isPause = true;
-        var toPos = this.node.getPosition();
+        var toPos = this.node.getWorldPosition();
         var pos = target.node.getPosition();
         var dir = cc.v2(toPos.x,toPos.z).subtract(cc.v2(pos.x,pos.z)).normalize();
         toPos.x += dir.x*2;
@@ -243,7 +245,7 @@ export class PlayerPack extends Component {
             goods.node.setPosition(p);
             goods.node.parent = this.gameControl.goodsNode;
 
-            var tpos = player.follow[0].node.getPosition();//this.gameControl.cashier.getPosition()
+            var tpos = player.follow[0].node.getWorldPosition();//this.gameControl.cashier.getPosition()
             goods.die(tpos,i*0.05+0.04,player.isPlayerSelf,player.follow[0]);
             player.addScore(Number(goods.conf.Score));
             // player.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
@@ -354,8 +356,8 @@ export class PlayerPack extends Component {
                 this.tarPlayer = this.followTarget.findOtherPlayer();
                 this.updateUI();
             }
-            this.updateMoveDir();
-            this.updateStep(deltaTime);
+            // this.updateMoveDir();
+            // this.updateStep(deltaTime);
 
             //判断碰撞
             if(this.tarPlayer)

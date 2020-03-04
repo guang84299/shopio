@@ -35,6 +35,7 @@ export class gameControl extends Component {
     public players = [];
     public robotConfPath = [];
     public robotRemovePath = [[],[]];
+    public holdGoods = [];
     num = 0;
     public goodsNames = "";
     private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF"];
@@ -48,6 +49,7 @@ export class gameControl extends Component {
     parentPre = [];
 
     upDt = 1;
+    addGoodsDt = 0;
     score = 0;
     isStart = false;
     isCountDown = false;
@@ -260,8 +262,10 @@ export class gameControl extends Component {
         var p = target.node.getPosition();
         var follow = cc.instantiate(res.loads["prefab_game_pack"]);
 
-        follow.setPosition(cc.v3((Math.random()-0.5)*0.2+p.x,0,(Math.random()-0.5)*0.2+p.z));
-        this.goodsNode.addChild(follow);
+        // follow.setPosition(cc.v3((Math.random()-0.5)*0.2+p.x,0,(Math.random()-0.5)*0.2+p.z));
+        // this.goodsNode.addChild(follow);
+        follow.setPosition(0,0,-0.2);
+        target.node.addChild(follow);
         var followSc = follow.addComponent(PlayerPack);
         // followSc.initConf(target.lv);
         // followSc.initNick(target.nick+"-追随者");
@@ -429,6 +433,22 @@ export class gameControl extends Component {
                     this.gameOver();
                 }
             }
+
+            //增加商品
+            if(this.gameMode == 1)
+            {
+                this.addGoodsDt += dt;
+                if(this.addGoodsDt > 1 && this.holdGoods.length>0)
+                {
+                    this.addGoodsDt = 0;
+                    var r = Math.floor(Math.random()*this.holdGoods.length);
+                    var goodsNode = this.holdGoods[r];
+                    this.goodsNode.addChild(goodsNode);
+                    this.holdGoods.splice(r,1);
+                    goodsNode.getComponent(Goods).resetState();
+                }                
+            }
+            
         }
        
        

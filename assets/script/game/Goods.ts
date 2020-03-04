@@ -122,6 +122,17 @@ export class Goods extends Component {
     canHold(lv:Number){
         return lv >= Number(this.conf.Require);
     }
+
+    resetState(){
+        if(this.collPos)
+        {
+            for(var i=0;i<this.collPos.length;i++)
+            {
+                var p = config.converToNodePos(cc.v2(this.collPos[i].x,this.collPos[i].z));
+                config.astarmap[p.y][p.x] = 0;
+            }
+        }    
+    }
     // update (deltaTime: number) {
     //     // Your update function goes here.
     // }
