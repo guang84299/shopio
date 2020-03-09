@@ -139,6 +139,7 @@ export class loading extends Component {
             "prefab/game/Res9",
 
             "prefab/game/cube",
+            "prefab/game/dog",
 
             "prefab/skin/skin1",
             "prefab/skin/skin2",

@@ -4,6 +4,7 @@ import { Goods } from "./Goods"
 import { Robot } from "./Robot"
 import { PlayerFollow } from "./PlayerFollow"
 import { PlayerPack } from "./PlayerPack"
+import { Dog } from "./Dog"
 import { GBoxColl } from "../GColl/GBoxColl"
 import { res } from "../res"
 import { config } from "../config"
@@ -36,6 +37,7 @@ export class gameControl extends Component {
     public robotConfPath = [];
     public robotRemovePath = [[],[]];
     public holdGoods = [];
+    public dogs = [];
     num = 0;
     public goodsNames = "";
     private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF"];
@@ -50,6 +52,7 @@ export class gameControl extends Component {
 
     upDt = 1;
     addGoodsDt = 0;
+    addDogDt = 0;
     score = 0;
     isStart = false;
     isCountDown = false;
@@ -274,6 +277,15 @@ export class gameControl extends Component {
         return followSc;
     }
 
+    addDog(){
+        if(this.dogs.length>= 3) return;
+        var p = this.players[Math.floor(Math.random()*this.players.length)].node.getPosition();
+        var dog = cc.instantiate(res.loads["prefab_game_dog"]);
+        dog.setPosition(p.x+(Math.random()-0.5)*0.5,p.y,p.z+(Math.random()-0.5)*0.5);
+        this.goodsNode.addChild(dog);
+        this.dogs.push(dog.getComponent(Dog));
+    }
+
     startCountDown(){
         this.isStart = true;
        
@@ -446,7 +458,14 @@ export class gameControl extends Component {
                     this.goodsNode.addChild(goodsNode);
                     this.holdGoods.splice(r,1);
                     goodsNode.getComponent(Goods).resetState();
-                }                
+                }   
+                
+                this.addDogDt += dt;
+                if(this.addDogDt>5)
+                {
+                    this.addDogDt = 0;
+                    this.addDog();
+                }
             }
             
         }

@@ -906,10 +906,10 @@ export class Player extends Component {
             if(this.state == "run")
             this.holdGoods(item.node.getComponent(Goods));
         }
-        else if(item.node.name == this.gameControl.cashier.name)
-        {
-            this.postGoods();
-        }
+        // else if(item.node.name == this.gameControl.cashier.name)
+        // {
+        //     this.postGoods();
+        // }
         this.currCollNode = item.node;
     }
 
