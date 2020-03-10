@@ -222,6 +222,25 @@ export class Player extends Component {
         }
     }
 
+    die(){
+        if(this.state != "die")
+        {
+            this.node.getComponent(SkeletalAnimationComponent).play("hurt");
+            this.state = "die";
+
+           this.follow[0].dropGoodsDie();
+
+
+            var self = this;
+            this.scheduleOnce(function(){
+                // self.node.getComponent(SkeletalAnimationComponent).stop();
+                self.idle();
+            },1.1)//1.3
+
+            this.showEmoji("hurt");
+        }
+    }
+
     updateDir(dir){
         //旋转
         if(dir.x != 0 || dir.y != 0)
@@ -906,10 +925,11 @@ export class Player extends Component {
             if(this.state == "run")
             this.holdGoods(item.node.getComponent(Goods));
         }
-        // else if(item.node.name == this.gameControl.cashier.name)
-        // {
-        //     this.postGoods();
-        // }
+        else if(item.node.name == "dog")
+        {
+            // this.postGoods();
+            this.die();
+        }
         this.currCollNode = item.node;
     }
 

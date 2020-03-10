@@ -281,7 +281,9 @@ export class gameControl extends Component {
         if(this.dogs.length>= 3) return;
         var p = this.players[Math.floor(Math.random()*this.players.length)].node.getPosition();
         var dog = cc.instantiate(res.loads["prefab_game_dog"]);
-        dog.setPosition(p.x+(Math.random()-0.5)*0.5,p.y,p.z+(Math.random()-0.5)*0.5);
+        var p2 = config.converToNodePos(cc.v2(p.x+(Math.random()-0.5)*3,p.z+(Math.random()-0.5)*3));
+        p2 = config.converToWorldPos(p2);
+        dog.setPosition(p2.x,p.y,p2.y);
         this.goodsNode.addChild(dog);
         this.dogs.push(dog.getComponent(Dog));
     }

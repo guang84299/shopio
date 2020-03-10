@@ -72,11 +72,12 @@ export const audio = {
         if(cc.storage.getStorage(cc.storage.sound) == 1)
         {
             var now = new Date().getTime();
-            if(now-this.playSoundTime>200 || sound != "coin")
+            if(now-this.playSoundTime>500 || sound != "coin")
             {
                 this.playSoundTime = now;
                 var audioSound = cc.find("Canvas/audioNode/"+sound).getComponent(AudioSourceComponent);
                 if(audioSound) audioSound.play();
+
                 // var self = this;
                 // cc.loader.loadRes(sound, function (err, clip)
                 // {

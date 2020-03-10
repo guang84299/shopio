@@ -263,6 +263,32 @@ export class PlayerPack extends Component {
         // }
     }
 
+    //掉落商品
+    dropGoodsDie()
+    {
+        var dropNum = this.goodss.length;
+        for(var i=0;i<dropNum;i++)
+        {
+            var goods = this.goodss[i];
+            goods.node.active = true;
+            // goods.drop();
+            this.followTarget.addScore(-Number(goods.conf.Score));
+
+            var p = cc.v3(goods.node.getWorldPosition());
+            p.y = 0;
+            goods.node.setPosition(p);
+            goods.node.parent = this.gameControl.goodsNode;
+
+            var tpos = this.node.getWorldPosition();//this.gameControl.cashier.getPosition()
+            tpos.x += (Math.random()-0.5)*2;
+            tpos.z += (Math.random()-0.5)*2;
+            goods.die2(tpos,i*0.05+0.04,this.followTarget.isPlayerSelf,this,i<10);
+
+        }
+        this.goodss.splice(0,dropNum);
+        this.playDropAni();
+    }
+
     updateMoveDir(){
         if(this.followTarget != null ) //&&  !this.isColl
         {
