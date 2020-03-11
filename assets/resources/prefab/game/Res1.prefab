@@ -166,12 +166,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": true,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@ed6e6"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -248,12 +246,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@67ce0"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -330,12 +326,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@fb04a"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -412,12 +406,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@d0bfa"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -494,12 +486,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@1ec58"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -576,12 +566,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": true,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@2972f"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -658,12 +646,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": true,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@9fab7"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -740,12 +726,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@6dd68"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -822,12 +806,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@110a5"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -904,12 +886,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@bbae2"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -986,12 +966,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@9af31"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1068,12 +1046,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@3c53d"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1150,12 +1126,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@56fbe"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1232,12 +1206,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@a4028"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1314,12 +1286,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@e6567"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1396,12 +1366,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@0bdc5"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1478,12 +1446,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@732e5"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1560,12 +1526,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "a2c74e90-d53c-4a9e-aad3-f37074d2c87d@15e3b"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -1642,12 +1606,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "404a95cd-89d8-4bbe-a78d-8387a267d963@12848"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {

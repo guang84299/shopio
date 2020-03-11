@@ -25,7 +25,7 @@ export const audio = {
                 if(!yinliang) yinliang = 0.8;
                 // self.audioMusic.volume = yinliang;
                 self.audioMusic.clip = clip;
-                if(cc.storage.getStorage(cc.storage.music) == 1)
+                if(cc.storage.getStorage(cc.storage.sound) == 1)
                     self.audioMusic.play();
             }
             else
@@ -37,17 +37,19 @@ export const audio = {
 
     pauseMusic: function()
     {
+        if(this.audioMusic)
         this.audioMusic.pause();
     },
 
     resumeMusic: function()
     {
-        if(cc.storage.getStorage(cc.storage.music) == 1)
+        if(cc.storage.getStorage(cc.storage.sound) == 1 && this.audioMusic)
         this.audioMusic.play();
     },
 
     stopMusic: function()
     {
+        if(this.audioMusic)
         this.audioMusic.stop();
     },
 

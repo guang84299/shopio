@@ -163,12 +163,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6287d"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -305,12 +303,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ce29"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {
@@ -447,12 +443,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@12162"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {

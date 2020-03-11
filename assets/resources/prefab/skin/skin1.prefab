@@ -157,12 +157,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@804fe"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": ""
   },
   {

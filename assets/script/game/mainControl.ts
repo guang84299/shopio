@@ -72,7 +72,7 @@ export class mainControl extends Component {
         }
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
-        // cc.audio.playMusic("audio/music");
+        cc.audio.playMusic(cc.res.audio_music);
     }
 
     initUI(){
@@ -470,8 +470,8 @@ export class mainControl extends Component {
             if(sound) cc.res.setSpriteFrame("images/main/BtnMusicOff/spriteFrame",this.musicNode);
             else cc.res.setSpriteFrame("images/main/BtnMusicOn/spriteFrame",this.musicNode);
 
-            // if(music) cc.audio.pauseMusic();
-            // else cc.audio.resumeMusic();
+            if(sound) cc.audio.pauseMusic();
+            else cc.audio.resumeMusic();
         }
         else if(data == "speedUp")
         {

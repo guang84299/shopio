@@ -1,14 +1,15 @@
 {
-  "ver": "1.0.844",
+  "ver": "2.0.14",
   "importer": "typescript",
   "imported": true,
   "uuid": "4f1fa16e-dcd0-43a9-830d-a59e9ad7cb56",
   "files": [
-    ".js"
+    ".js",
+    ".trans"
   ],
   "subMetas": {},
   "userData": {
-    "moduleId": "project:///assets/script/tools/NodeOut.ts",
-    "importAsPlugin": false
+    "importAsPlugin": false,
+    "moduleId": "project:///assets/script/tools/NodeOut.js"
   }
 }

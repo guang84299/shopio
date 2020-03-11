@@ -39,6 +39,6 @@ export class CameraFollow extends Component {
         v.x += this.offset.x;
         v.y = this.offset.y;
         v.z += this.offset.z;
-        this.node.worldPosition = v;
+        this.node.setWorldPosition(v);
     }
 }

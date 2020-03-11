@@ -1,14 +1,15 @@
 {
-  "ver": "1.0.84",
+  "ver": "2.0.14",
   "importer": "javascript",
   "imported": true,
   "uuid": "8b5962d7-669e-4575-8274-cd2535981d4a",
   "files": [
-    ".js"
+    ".js",
+    ".trans"
   ],
   "subMetas": {},
   "userData": {
-    "moduleId": "project:///assets/script/GColl/QuadTree.js",
-    "importAsPlugin": false
+    "importAsPlugin": false,
+    "moduleId": "project:///assets/script/GColl/QuadTree.js"
   }
 }

@@ -256,7 +256,7 @@ export class GBoxColl extends Component {
                 var v = cc.v2(this.velocity).normalize().subtract(cc.v2(item.velocity).normalize());
                 this.velocity = this.velocity.subtract(cc.v2(v).multiplyScalar(item.velocity.length()*0.5));  
                 //对方的力
-                if(!item.isStatic)
+                if(!item.isStatic && !item.isPlayer)
                 {
                     var sc = this.mass/item.mass;
                     if(sc>2 || item.isPlayer) sc = 2;

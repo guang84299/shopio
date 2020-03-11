@@ -8,8 +8,12 @@
   },
   "_techIdx": 0,
   "_defines": [
-    {},
-    {}
+    {
+      "USE_SKINNING": true
+    },
+    {
+      "USE_SKINNING": true
+    }
   ],
   "_states": [
     {

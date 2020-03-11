@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.6",
+  "ver": "1.0.8",
   "importer": "animation-clip",
   "imported": true,
   "uuid": "5f9ea4cb-75a9-4e61-9c1b-39dc9b7f5499",
@@ -7,5 +7,7 @@
     ".json"
   ],
   "subMetas": {},
-  "userData": {}
+  "userData": {
+    "name": "animpost"
+  }
 }

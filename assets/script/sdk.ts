@@ -144,7 +144,7 @@ export const sdk = {
                         self.videocallback(false);
                     cc.res.showToast("视频未看完！");
                 }
-                if(cc.myscene == "main")
+                // if(cc.myscene == "main")
                     cc.storage.playMusic(cc.res.audio_music);
                 //storage.playMusic(cc.sdk.main.res.audio_mainBGM);
             });

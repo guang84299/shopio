@@ -57,6 +57,10 @@ export class Player extends Component {
     protected currCollNode = null;
     protected currEmojiType = "";
 
+    protected isPostGoods = false;
+
+    protected lastLvSoce = 0;
+
     pathType = 0;
 
     start () {
@@ -227,6 +231,7 @@ export class Player extends Component {
         {
             this.node.getComponent(SkeletalAnimationComponent).play("hurt");
             this.state = "die";
+            this.isPause = true;
 
            this.follow[0].dropGoodsDie();
 
@@ -234,6 +239,10 @@ export class Player extends Component {
             var self = this;
             this.scheduleOnce(function(){
                 // self.node.getComponent(SkeletalAnimationComponent).stop();
+                var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
+                var p = pps[ Math.floor(Math.random()*pps.length)];
+                self.node.setPosition(cc.v3(p.x,0,p.y));
+                self.isPause = false;
                 self.idle();
             },1.1)//1.3
 
@@ -311,13 +320,15 @@ export class Player extends Component {
 
     //投放商品
     postGoods(){
-        if(this.goods.length>0 && this.state != "post")
+        if(this.goods.length>0 && !this.isPostGoods)//this.state != "post")
         {
-            this.node.getComponent(SkeletalAnimationComponent).play("post");
-            this.state = "post";
+            
+            // this.node.getComponent(SkeletalAnimationComponent).play("post");
+            // this.state = "post";
+            this.isPostGoods = true;
 
             var len = this.goods.length;
-            if(len>4) len = 4;
+            if(len>3) len = 3;
             for(var i=0;i<len;i++)
             {
                 var goods = this.goods.pop();
@@ -348,14 +359,17 @@ export class Player extends Component {
            
             var slef = this;
             this.scheduleOnce(function(){
-                slef.idle();
+                // slef.idle();
+                slef.isPostGoods = false;
+                if(slef.goods.length==0)slef.idle();
             },0.5);
 
             if(len>0) this.showEmoji("post");
         }
         else{
-            if(this.state != "post")
-                this.idle();
+            // if(this.state != "post")
+            // if(this.goods.length<=0 && !this.isPostGoods)
+            //     this.idle();
         }
     }    
 
@@ -614,6 +628,7 @@ export class Player extends Component {
         {
             if(this.lv < cc.res.loads["conf_player"].length)
             {
+                this.lastLvSoce = Number(this.conf.Score);
                 this.initConf(this.lv+1);
 
                 // if(this.isPlayerSelf || this.isRobot)
@@ -636,7 +651,7 @@ export class Player extends Component {
     }
     //降级
     lvDown(){
-        if(this.currScore<Number(this.conf.Score))
+        if(this.currScore<this.lastLvSoce)
         {
             if(this.lv>1)
             {
@@ -917,8 +932,8 @@ export class Player extends Component {
     collEnter(item){
         if(item.node.name == "player")
         {
-            if(this.judgeColl(item))
-                this.collPlayer(item,0);
+            // if(this.judgeColl(item))
+            //     this.collPlayer(item,0);
         }
         else if(this.gameControl.goodsNames.indexOf(item.node.name) != -1)
         {
@@ -934,9 +949,9 @@ export class Player extends Component {
     }
 
     getMoveSpeed(){
-        if(this.follow[0].currDis>= this.follow[0].tarDis)
+        // if(this.follow[0].currDis>= this.follow[0].tarDis)
             return this.moveSpeed*Number(this.conf.Speed);
-        return this.moveSpeed;
+        // return this.moveSpeed;
     }
 
     updateStep (deltaTime: number) {
@@ -972,9 +987,9 @@ export class Player extends Component {
             }
             else
             {
-                this.postGoods();
                 this.gcoll.applyForce(cc.v2(0,0));
             }
+            this.postGoods();
        }
        else
        {

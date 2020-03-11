@@ -101,6 +101,8 @@ export class gameControl extends Component {
         cc.find("rank",this.gameUI).active = this.gameMode == 1 ? true : false;
         cc.find("holdpro",this.gameUI).active = this.gameMode == 1 ? false : true;
         // this.gameTime = 18;
+
+        cc.audio.playMusic(cc.res.audio_music);
     }
 
     updatePro(){
@@ -203,7 +205,7 @@ export class gameControl extends Component {
         var aiDatas = cc.res.loads["conf_robotstage"][starlv-1];
         if(this.gameMode == 1) 
         {
-            robotNum = 5;
+            robotNum = 3;
             this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"]));
         }
         for(var i=0;i<robotNum;i++)
@@ -452,7 +454,7 @@ export class gameControl extends Component {
             if(this.gameMode == 1)
             {
                 this.addGoodsDt += dt;
-                if(this.addGoodsDt > 1 && this.holdGoods.length>0)
+                if(this.addGoodsDt > 0.3 && this.holdGoods.length>0)
                 {
                     this.addGoodsDt = 0;
                     var r = Math.floor(Math.random()*this.holdGoods.length);

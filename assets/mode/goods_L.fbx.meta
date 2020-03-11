@@ -1,12 +1,12 @@
 {
-  "ver": "1.3.15",
+  "ver": "1.3.16",
   "importer": "fbx",
   "imported": true,
   "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963",
   "files": [],
   "subMetas": {
     "12848": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@12848",
       "imported": true,
@@ -23,7 +23,7 @@
       "name": "Cake_01.mesh"
     },
     "24814": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@24814",
       "imported": true,
@@ -40,7 +40,7 @@
       "name": "SI_Prop_Toy_Chick_01.mesh"
     },
     "27559": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@27559",
       "imported": true,
@@ -57,7 +57,7 @@
       "name": "Food_17.mesh"
     },
     "43850": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@43850",
       "imported": true,
@@ -74,7 +74,7 @@
       "name": "Cake_07.mesh"
     },
     "47402": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@47402",
       "imported": true,
@@ -91,7 +91,7 @@
       "name": "Instrument_Guitar_05.mesh"
     },
     "49515": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@49515",
       "imported": true,
@@ -108,7 +108,7 @@
       "name": "Alcoho_03.mesh"
     },
     "70858": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@70858",
       "imported": true,
@@ -125,7 +125,7 @@
       "name": "Water_04.mesh"
     },
     "71106": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@71106",
       "imported": true,
@@ -142,7 +142,7 @@
       "name": "Cloth_02.mesh"
     },
     "76453": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@76453",
       "imported": true,
@@ -159,7 +159,7 @@
       "name": "T_shirt_02.mesh"
     },
     "76950": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@76950",
       "imported": true,
@@ -176,7 +176,7 @@
       "name": "Floor_02.mesh"
     },
     "3fde2": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3fde2",
       "imported": true,
@@ -193,7 +193,7 @@
       "name": "Apple_01.mesh"
     },
     "ea28c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@ea28c",
       "imported": true,
@@ -210,7 +210,7 @@
       "name": "Banana_01.mesh"
     },
     "4045f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4045f",
       "imported": true,
@@ -227,7 +227,7 @@
       "name": "PotatoChips_02.mesh"
     },
     "a8362": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a8362",
       "imported": true,
@@ -244,7 +244,7 @@
       "name": "Coffeecup_01.mesh"
     },
     "8f89a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@8f89a",
       "imported": true,
@@ -261,7 +261,7 @@
       "name": "Oats_01.mesh"
     },
     "4135b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4135b",
       "imported": true,
@@ -278,7 +278,7 @@
       "name": "PotatoChips_01.mesh"
     },
     "3c53d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3c53d",
       "imported": true,
@@ -295,7 +295,7 @@
       "name": "ExhibitionStand_01.mesh"
     },
     "88b88": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@88b88",
       "imported": true,
@@ -312,7 +312,7 @@
       "name": "Box_01.mesh"
     },
     "a9d99": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a9d99",
       "imported": true,
@@ -329,7 +329,7 @@
       "name": "Apple_02.mesh"
     },
     "57a55": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@57a55",
       "imported": true,
@@ -346,7 +346,7 @@
       "name": "Cake_02.mesh"
     },
     "e5f47": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@e5f47",
       "imported": true,
@@ -363,7 +363,7 @@
       "name": "Cake_03.mesh"
     },
     "14bb7": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@14bb7",
       "imported": true,
@@ -380,7 +380,7 @@
       "name": "Sandwich_01.mesh"
     },
     "6378c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@6378c",
       "imported": true,
@@ -397,7 +397,7 @@
       "name": "Cake_04.mesh"
     },
     "7ea98": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@7ea98",
       "imported": true,
@@ -414,7 +414,7 @@
       "name": "Water_03.mesh"
     },
     "4237b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4237b",
       "imported": true,
@@ -431,7 +431,7 @@
       "name": "Water_005.mesh"
     },
     "1f0dd": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1f0dd",
       "imported": true,
@@ -448,7 +448,7 @@
       "name": "Orange_01.mesh"
     },
     "4b477": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4b477",
       "imported": true,
@@ -465,7 +465,7 @@
       "name": "Toy_Bear_01.mesh"
     },
     "94e92": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@94e92",
       "imported": true,
@@ -482,7 +482,7 @@
       "name": "SI_Prop_Toy_Cat_01.mesh"
     },
     "3b671": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3b671",
       "imported": true,
@@ -499,7 +499,7 @@
       "name": "SI_Prop_Toy_Dog_01.mesh"
     },
     "98acf": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@98acf",
       "imported": true,
@@ -516,7 +516,7 @@
       "name": "SI_Prop_Toy_Lamb_01.mesh"
     },
     "03752": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@03752",
       "imported": true,
@@ -533,7 +533,7 @@
       "name": "SI_Prop_Toy_Pig_01.mesh"
     },
     "67f84": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@67f84",
       "imported": true,
@@ -550,7 +550,7 @@
       "name": "SI_Prop_Toy_Rabbit_01.mesh"
     },
     "32b38": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@32b38",
       "imported": true,
@@ -567,7 +567,7 @@
       "name": "SI_Prop_Toy_Turtle_01.mesh"
     },
     "b015b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@b015b",
       "imported": true,
@@ -584,7 +584,7 @@
       "name": "Instrument_Guitar_01.mesh"
     },
     "56c51": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@56c51",
       "imported": true,
@@ -601,7 +601,7 @@
       "name": "Instrument_Guitar_03.mesh"
     },
     "03162": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@03162",
       "imported": true,
@@ -618,7 +618,7 @@
       "name": "Instrument_Guitar_02.mesh"
     },
     "78cd2": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@78cd2",
       "imported": true,
@@ -635,7 +635,7 @@
       "name": "Instrument_Guitar_04.mesh"
     },
     "04c0d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@04c0d",
       "imported": true,
@@ -652,7 +652,7 @@
       "name": "Instrument_Keyboard_01.mesh"
     },
     "9af31": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@9af31",
       "imported": true,
@@ -669,7 +669,7 @@
       "name": "ClothesRack_01.mesh"
     },
     "c760f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@c760f",
       "imported": true,
@@ -686,7 +686,7 @@
       "name": "Cloth_01.mesh"
     },
     "f0aa1": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@f0aa1",
       "imported": true,
@@ -703,7 +703,7 @@
       "name": "Cloth_03.mesh"
     },
     "c9eb0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@c9eb0",
       "imported": true,
@@ -720,7 +720,7 @@
       "name": "Cloth_04.mesh"
     },
     "d7127": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d7127",
       "imported": true,
@@ -737,7 +737,7 @@
       "name": "SI_Prop_CarboardBox_03.mesh"
     },
     "cc4a1": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@cc4a1",
       "imported": true,
@@ -754,7 +754,7 @@
       "name": "SI_Prop_CarboardBox_01.mesh"
     },
     "3f07d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3f07d",
       "imported": true,
@@ -771,7 +771,7 @@
       "name": "SI_Prop_Shoe_Box_02.mesh"
     },
     "796cc": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@796cc",
       "imported": true,
@@ -788,7 +788,7 @@
       "name": "SI_Prop_Shoe_Box_003.mesh"
     },
     "cdc50": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@cdc50",
       "imported": true,
@@ -805,7 +805,7 @@
       "name": "SI_Prop_Shoe_Box_004.mesh"
     },
     "8c32c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@8c32c",
       "imported": true,
@@ -822,7 +822,7 @@
       "name": "SI_Prop_Shoe_Box_005.mesh"
     },
     "1481c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1481c",
       "imported": true,
@@ -839,7 +839,7 @@
       "name": "CheckoutCounter_01.mesh"
     },
     "ed6e6": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@ed6e6",
       "imported": true,
@@ -856,7 +856,7 @@
       "name": "ShoeShelf_01.mesh"
     },
     "2d762": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2d762",
       "imported": true,
@@ -873,7 +873,7 @@
       "name": "shoe_01.mesh"
     },
     "8ae0f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@8ae0f",
       "imported": true,
@@ -890,7 +890,7 @@
       "name": "shoe_02.mesh"
     },
     "66a24": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@66a24",
       "imported": true,
@@ -907,7 +907,7 @@
       "name": "shoe_03.mesh"
     },
     "86e8d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@86e8d",
       "imported": true,
@@ -924,7 +924,7 @@
       "name": "shoe_04.mesh"
     },
     "a44eb": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a44eb",
       "imported": true,
@@ -941,7 +941,7 @@
       "name": "Sign_Fastfood_01.mesh"
     },
     "d09b0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d09b0",
       "imported": true,
@@ -958,7 +958,7 @@
       "name": "Sign_Sale_01.mesh"
     },
     "1340f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1340f",
       "imported": true,
@@ -975,7 +975,7 @@
       "name": "Sign_Clothing_01.mesh"
     },
     "2a143": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2a143",
       "imported": true,
@@ -992,7 +992,7 @@
       "name": "Sign_BuyNow_01.mesh"
     },
     "86e27": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@86e27",
       "imported": true,
@@ -1009,7 +1009,7 @@
       "name": "Sign_Bakery_01.mesh"
     },
     "67ce0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@67ce0",
       "imported": true,
@@ -1026,7 +1026,7 @@
       "name": "Shelf_01.mesh"
     },
     "1ec58": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1ec58",
       "imported": true,
@@ -1043,7 +1043,7 @@
       "name": "Shelf_04.mesh"
     },
     "2972f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2972f",
       "imported": true,
@@ -1060,7 +1060,7 @@
       "name": "Shelf_05.mesh"
     },
     "d0bfa": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d0bfa",
       "imported": true,
@@ -1077,7 +1077,7 @@
       "name": "Shelf_03.mesh"
     },
     "675d8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@675d8",
       "imported": true,
@@ -1094,7 +1094,7 @@
       "name": "Cloth_Folded_01.mesh"
     },
     "5d55e": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@5d55e",
       "imported": true,
@@ -1111,7 +1111,7 @@
       "name": "Cloth_Folded_02.mesh"
     },
     "aac23": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@aac23",
       "imported": true,
@@ -1128,7 +1128,7 @@
       "name": "Cloth_Folded_03.mesh"
     },
     "62fd8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@62fd8",
       "imported": true,
@@ -1145,7 +1145,7 @@
       "name": "Cloth_Folded_04.mesh"
     },
     "90abe": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@90abe",
       "imported": true,
@@ -1162,7 +1162,7 @@
       "name": "Alcoho_01.mesh"
     },
     "d3664": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d3664",
       "imported": true,
@@ -1179,7 +1179,7 @@
       "name": "Alcoho_02.mesh"
     },
     "2bbae": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2bbae",
       "imported": true,
@@ -1196,7 +1196,7 @@
       "name": "Alcoho_04.mesh"
     },
     "4a1a1": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4a1a1",
       "imported": true,
@@ -1213,7 +1213,7 @@
       "name": "Alcoho_05.mesh"
     },
     "cb485": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@cb485",
       "imported": true,
@@ -1230,7 +1230,7 @@
       "name": "T_shirt_01.mesh"
     },
     "962c2": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@962c2",
       "imported": true,
@@ -1247,7 +1247,7 @@
       "name": "T_shirt_03.mesh"
     },
     "59d38": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@59d38",
       "imported": true,
@@ -1264,7 +1264,7 @@
       "name": "T_shirt_04.mesh"
     },
     "5028b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@5028b",
       "imported": true,
@@ -1281,7 +1281,7 @@
       "name": "T_shirt_05.mesh"
     },
     "94f3f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@94f3f",
       "imported": true,
@@ -1298,7 +1298,7 @@
       "name": "T_shirt_06.mesh"
     },
     "96e42": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@96e42",
       "imported": true,
@@ -1315,7 +1315,7 @@
       "name": "T_shirt_07.mesh"
     },
     "fb04a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@fb04a",
       "imported": true,
@@ -1332,7 +1332,7 @@
       "name": "Shelf_02.mesh"
     },
     "238a1": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@238a1",
       "imported": true,
@@ -1349,7 +1349,7 @@
       "name": "Food_01.mesh"
     },
     "97b02": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@97b02",
       "imported": true,
@@ -1366,7 +1366,7 @@
       "name": "Food_02.mesh"
     },
     "417ae": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@417ae",
       "imported": true,
@@ -1383,7 +1383,7 @@
       "name": "Food_03.mesh"
     },
     "acdab": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@acdab",
       "imported": true,
@@ -1400,7 +1400,7 @@
       "name": "Food_04.mesh"
     },
     "2de6b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2de6b",
       "imported": true,
@@ -1417,7 +1417,7 @@
       "name": "Food_05.mesh"
     },
     "8057d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@8057d",
       "imported": true,
@@ -1434,7 +1434,7 @@
       "name": "Food_06.mesh"
     },
     "9fab7": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@9fab7",
       "imported": true,
@@ -1451,7 +1451,7 @@
       "name": "Shelf_06.mesh"
     },
     "4564e": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4564e",
       "imported": true,
@@ -1468,7 +1468,7 @@
       "name": "Basket_01.mesh"
     },
     "0fe0b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@0fe0b",
       "imported": true,
@@ -1485,7 +1485,7 @@
       "name": "Basket_02.mesh"
     },
     "e22f4": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@e22f4",
       "imported": true,
@@ -1502,7 +1502,7 @@
       "name": "Basket_03.mesh"
     },
     "655f2": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@655f2",
       "imported": true,
@@ -1519,7 +1519,7 @@
       "name": "Basket_004.mesh"
     },
     "b39e8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@b39e8",
       "imported": true,
@@ -1536,7 +1536,7 @@
       "name": "Food_25.mesh"
     },
     "6ee3a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@6ee3a",
       "imported": true,
@@ -1553,7 +1553,7 @@
       "name": "Food_07.mesh"
     },
     "135fe": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@135fe",
       "imported": true,
@@ -1570,7 +1570,7 @@
       "name": "Food_08.mesh"
     },
     "6586c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@6586c",
       "imported": true,
@@ -1587,7 +1587,7 @@
       "name": "Food_09.mesh"
     },
     "7e73b": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@7e73b",
       "imported": true,
@@ -1604,7 +1604,7 @@
       "name": "Food_10.mesh"
     },
     "16b9c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@16b9c",
       "imported": true,
@@ -1621,7 +1621,7 @@
       "name": "Food_11.mesh"
     },
     "a124d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a124d",
       "imported": true,
@@ -1638,7 +1638,7 @@
       "name": "Food_12.mesh"
     },
     "337f9": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@337f9",
       "imported": true,
@@ -1655,7 +1655,7 @@
       "name": "Food_13.mesh"
     },
     "bd5ef": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@bd5ef",
       "imported": true,
@@ -1672,7 +1672,7 @@
       "name": "Food_14.mesh"
     },
     "c1932": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@c1932",
       "imported": true,
@@ -1689,7 +1689,7 @@
       "name": "Food_15.mesh"
     },
     "3d8e0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3d8e0",
       "imported": true,
@@ -1706,7 +1706,7 @@
       "name": "Food_16.mesh"
     },
     "51dc9": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@51dc9",
       "imported": true,
@@ -1723,7 +1723,7 @@
       "name": "Food_18.mesh"
     },
     "16ad1": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@16ad1",
       "imported": true,
@@ -1740,7 +1740,7 @@
       "name": "Food_19.mesh"
     },
     "9778a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@9778a",
       "imported": true,
@@ -1757,7 +1757,7 @@
       "name": "Food_20.mesh"
     },
     "919b6": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@919b6",
       "imported": true,
@@ -1774,7 +1774,7 @@
       "name": "Food_21.mesh"
     },
     "cef1e": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@cef1e",
       "imported": true,
@@ -1791,7 +1791,7 @@
       "name": "Food_22.mesh"
     },
     "e3d69": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@e3d69",
       "imported": true,
@@ -1808,7 +1808,7 @@
       "name": "Food_23.mesh"
     },
     "d11b8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d11b8",
       "imported": true,
@@ -1825,7 +1825,7 @@
       "name": "Food_24.mesh"
     },
     "51acb": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@51acb",
       "imported": true,
@@ -1842,7 +1842,7 @@
       "name": "Table_01.mesh"
     },
     "3a4fd": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@3a4fd",
       "imported": true,
@@ -1859,7 +1859,7 @@
       "name": "Chair_01.mesh"
     },
     "44dcf": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@44dcf",
       "imported": true,
@@ -1876,7 +1876,7 @@
       "name": "CoffeCup_01.mesh"
     },
     "23f16": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@23f16",
       "imported": true,
@@ -1893,7 +1893,7 @@
       "name": "Car_01.mesh"
     },
     "a0884": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a0884",
       "imported": true,
@@ -1910,7 +1910,7 @@
       "name": "SignCaution_01.mesh"
     },
     "d0121": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d0121",
       "imported": true,
@@ -1927,7 +1927,7 @@
       "name": "FastFood_TakeAway_01.mesh"
     },
     "f35e0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@f35e0",
       "imported": true,
@@ -1944,7 +1944,7 @@
       "name": "FastFood_02.mesh"
     },
     "d2dfa": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d2dfa",
       "imported": true,
@@ -1961,7 +1961,7 @@
       "name": "FastFood_01.mesh"
     },
     "4dce7": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4dce7",
       "imported": true,
@@ -1978,7 +1978,7 @@
       "name": "Fridge_01.mesh"
     },
     "224a5": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@224a5",
       "imported": true,
@@ -1995,7 +1995,7 @@
       "name": "Microwave_01.mesh"
     },
     "7ace5": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@7ace5",
       "imported": true,
@@ -2012,7 +2012,7 @@
       "name": "Speakersmall_01.mesh"
     },
     "5f6ff": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@5f6ff",
       "imported": true,
@@ -2029,7 +2029,7 @@
       "name": "Speakerlarge_01.mesh"
     },
     "6dd68": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@6dd68",
       "imported": true,
@@ -2046,7 +2046,7 @@
       "name": "AlcoholShelf_01.mesh"
     },
     "9c589": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@9c589",
       "imported": true,
@@ -2063,7 +2063,7 @@
       "name": "Fridge_02.mesh"
     },
     "d27c8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d27c8",
       "imported": true,
@@ -2080,7 +2080,7 @@
       "name": "Fridge_03.mesh"
     },
     "72a01": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@72a01",
       "imported": true,
@@ -2097,7 +2097,7 @@
       "name": "Microwave_02.mesh"
     },
     "2b655": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2b655",
       "imported": true,
@@ -2114,7 +2114,7 @@
       "name": "Microwave_03.mesh"
     },
     "4363a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4363a",
       "imported": true,
@@ -2131,7 +2131,7 @@
       "name": "Floor_01.mesh"
     },
     "b48a8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@b48a8",
       "imported": true,
@@ -2148,7 +2148,7 @@
       "name": "Floor_03.mesh"
     },
     "09c51": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@09c51",
       "imported": true,
@@ -2165,7 +2165,7 @@
       "name": "Cake_08.mesh"
     },
     "a9c1f": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a9c1f",
       "imported": true,
@@ -2182,7 +2182,7 @@
       "name": "Cake_06.mesh"
     },
     "bdde0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@bdde0",
       "imported": true,
@@ -2199,7 +2199,7 @@
       "name": "Cake_05.mesh"
     },
     "c10e0": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@c10e0",
       "imported": true,
@@ -2216,7 +2216,7 @@
       "name": "Floor_004.mesh"
     },
     "bae3a": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@bae3a",
       "imported": true,
@@ -2233,7 +2233,7 @@
       "name": "Floor_005.mesh"
     },
     "4fbff": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@4fbff",
       "imported": true,
@@ -2250,7 +2250,7 @@
       "name": "Floor_006.mesh"
     },
     "b4359": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@b4359",
       "imported": true,
@@ -2267,7 +2267,7 @@
       "name": "ChairTables_01.mesh"
     },
     "b132e": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@b132e",
       "imported": true,
@@ -2284,7 +2284,7 @@
       "name": "SI_Prop_Sign_Welcome_01.mesh"
     },
     "2793c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@2793c",
       "imported": true,
@@ -2383,7 +2383,7 @@
       "name": "Map #7.texture"
     },
     "d90a4": {
-      "ver": "1.0.10",
+      "ver": "1.0.13",
       "importer": "gltf-material",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d90a4",
       "imported": true,
@@ -2399,7 +2399,7 @@
       "name": "01 - Default.material"
     },
     "db4d2": {
-      "ver": "1.0.10",
+      "ver": "1.0.13",
       "importer": "gltf-material",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@db4d2",
       "imported": true,
@@ -2415,7 +2415,7 @@
       "name": "02 - Default.material"
     },
     "902cc": {
-      "ver": "1.0.8",
+      "ver": "1.0.9",
       "importer": "gltf-scene",
       "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@902cc",
       "imported": true,

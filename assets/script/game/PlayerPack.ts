@@ -84,6 +84,7 @@ export class PlayerPack extends Component {
         for(var i=this.goodss.length-1;i>=0;i--)
         {
             var good = this.goodss[i];
+            // cc.log(i,good);
             good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*0.5-0.3,(Math.random()-0.5)*0.5));
             n++;
             if(n>12) 
@@ -133,12 +134,12 @@ export class PlayerPack extends Component {
     playPostAni(){
         if(!this.isPlayPost && !this.isPlayDrop)
         {
-            this.isPlayPost = true;
-            this.node.getComponent(AnimationComponent).play();
-            var self = this;
-            this.scheduleOnce(function(){
-                self.isPlayPost = false;
-            },0.5);
+            // this.isPlayPost = true;
+            // this.node.getComponent(AnimationComponent).play();
+            // var self = this;
+            // this.scheduleOnce(function(){
+            //     self.isPlayPost = false;
+            // },0.5);
         }
     }
 
@@ -148,7 +149,7 @@ export class PlayerPack extends Component {
             this.isPlayDrop = true;
             var material = this.packNode.getComponent(ModelComponent).material;   
             material.setProperty('albedo', new cc.Color("#ff0000")); 
-            this.node.getComponent(AnimationComponent).play("animrob");
+            // this.node.getComponent(AnimationComponent).play("animrob");
             var self = this;
             this.scheduleOnce(function(){
                 self.isPlayDrop = false;
@@ -208,7 +209,7 @@ export class PlayerPack extends Component {
             self.isColl = false;
             self.dropGoods(target);
             self.isPause = false;
-         },0.5);
+         },1);
 
          if(this.followTarget.isPlayerSelf)
          {
@@ -231,14 +232,25 @@ export class PlayerPack extends Component {
     //掉落商品
     dropGoods(player)
     {
-        var dropNum = Math.floor(this.goodss.length/2);
-        if(dropNum>8) dropNum = 8;
+        var dropNum = 5; //Math.floor(this.goodss.length/2);
+        if(player.lv>=this.followTarget.lv)
+        {
+            dropNum += player.lv-this.followTarget.lv;
+            if(dropNum>8) dropNum = 8;
+        }
+        else{
+            dropNum = 2;
+            if(Math.abs(player.lv-this.followTarget.lv)<4) dropNum = 1;
+        }
+        if(dropNum>this.goodss.length) dropNum = this.goodss.length;
+        var score = 0;
         for(var i=0;i<dropNum;i++)
         {
             var goods = this.goodss[i];
             goods.node.active = true;
             // goods.drop();
             this.followTarget.addScore(-Number(goods.conf.Score));
+            score += Number(goods.conf.Score);
 
             var p = cc.v3(goods.node.getWorldPosition());
             p.y = 0;
@@ -254,6 +266,9 @@ export class PlayerPack extends Component {
         }
         this.goodss.splice(0,dropNum);
         this.playDropAni();
+
+        if(this.followTarget.isPlayerSelf)
+        cc.log(dropNum,score);
 
         // var upData = this.followTarget.getPackLv(this.packLv,false);
         // if(upData.lv != this.packLv)
@@ -282,10 +297,11 @@ export class PlayerPack extends Component {
             var tpos = this.node.getWorldPosition();//this.gameControl.cashier.getPosition()
             tpos.x += (Math.random()-0.5)*2;
             tpos.z += (Math.random()-0.5)*2;
-            goods.die2(tpos,i*0.05+0.04,this.followTarget.isPlayerSelf,this,i<10);
+            goods.die2(tpos,i*0.05+0.04,this.followTarget.isPlayerSelf,this,i<8);
 
         }
         this.goodss.splice(0,dropNum);
+        this.maxGoods = null;
         this.playDropAni();
     }
 

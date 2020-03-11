@@ -1,14 +1,15 @@
 {
-  "ver": "1.0.844",
+  "ver": "2.0.14",
   "importer": "typescript",
   "imported": true,
   "uuid": "e7d00ba6-1992-40ff-8efc-7f5ff4caba32",
   "files": [
-    ".js"
+    ".js",
+    ".trans"
   ],
   "subMetas": {},
   "userData": {
-    "moduleId": "project:///assets/script/ui/jiesuan.ts",
-    "importAsPlugin": false
+    "importAsPlugin": false,
+    "moduleId": "project:///assets/script/ui/jiesuan.js"
   }
 }

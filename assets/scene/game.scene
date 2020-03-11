@@ -199,8 +199,8 @@
     "offset": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 9,
-      "z": 10
+      "y": 12,
+      "z": 14
     },
     "epsilon": 0.001,
     "_id": "34+U0BdxpECJOTGJ8lLJ9y"
@@ -2491,7 +2491,7 @@
       "y": 0,
       "z": 0
     },
-    "_id": "2b7cEIUm1LEZNM2Dej7v46"
+    "_id": "69NEky+7tGk5hfyWHkCz7W"
   },
   {
     "__type__": "cc.AudioSourceComponent",
@@ -2507,7 +2507,7 @@
     "_loop": false,
     "_playOnAwake": false,
     "_volume": 1,
-    "_id": "382zFdEgNFCrqK7O2ygSae"
+    "_id": "93mJK9rj5Czpc8ZL8IP8Jy"
   },
   {
     "__type__": "cc.UITransformComponent",
@@ -6629,12 +6629,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@3accf"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_skeleton": {
       "__uuid__": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@438fe"
     },
@@ -8558,12 +8556,10 @@
       }
     ],
     "_visFlags": 0,
-    "_enableDynamicBatching": false,
     "_mesh": {
       "__uuid__": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2afa5"
     },
     "_shadowCastingMode": 0,
-    "_receiveShadows": false,
     "_id": "70optYsNVJ4ITargseGeGn"
   },
   {
@@ -8749,10 +8745,10 @@
     "ambient": {
       "__id__": 257
     },
-    "skybox": {
+    "planarShadows": {
       "__id__": 258
     },
-    "planarShadows": {
+    "_skybox": {
       "__id__": 259
     }
   },
@@ -8775,15 +8771,6 @@
     }
   },
   {
-    "__type__": "cc.SkyboxInfo",
-    "_envmap": {
-      "__uuid__": "dd24958f-153a-434f-8337-921fd7b78afc"
-    },
-    "_isRGBE": false,
-    "_enabled": false,
-    "_useIBL": false
-  },
-  {
     "__type__": "cc.PlanarShadowInfo",
     "_enabled": false,
     "_normal": {
@@ -8800,5 +8787,14 @@
       "b": 0,
       "a": 76
     }
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_envmap": {
+      "__uuid__": "dd24958f-153a-434f-8337-921fd7b78afc"
+    },
+    "_isRGBE": false,
+    "_enabled": false,
+    "_useIBL": false
   }
 ]

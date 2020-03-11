@@ -130,7 +130,7 @@
     ]
   },
   {
-    "__type__": "cc.ComponentModifier",
+    "__type__": "cc.animation.ComponentPath",
     "component": "cc.LabelComponent"
   }
 ]

@@ -1,12 +1,12 @@
 {
-  "ver": "1.3.15",
+  "ver": "1.3.16",
   "importer": "fbx",
   "imported": true,
   "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd",
   "files": [],
   "subMetas": {
     "12162": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@12162",
       "imported": true,
@@ -23,7 +23,7 @@
       "name": "Knight_shoe_left.mesh"
     },
     "47990": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@47990",
       "imported": true,
@@ -40,7 +40,7 @@
       "name": "Soldier_helmet.mesh"
     },
     "87962": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@87962",
       "imported": true,
@@ -57,7 +57,7 @@
       "name": "Santa_Bag.mesh"
     },
     "92430": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@92430",
       "imported": true,
@@ -74,7 +74,7 @@
       "name": "SkateBoy_shoe_right.mesh"
     },
     "2afa5": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2afa5",
       "imported": true,
@@ -91,7 +91,7 @@
       "name": "king.mesh"
     },
     "804fe": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@804fe",
       "imported": true,
@@ -108,7 +108,7 @@
       "name": "Black_hair.mesh"
     },
     "6dafa": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6dafa",
       "imported": true,
@@ -125,7 +125,7 @@
       "name": "Black_shoe_left.mesh"
     },
     "80c97": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@80c97",
       "imported": true,
@@ -142,7 +142,7 @@
       "name": "Black_shoe_right.mesh"
     },
     "944af": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@944af",
       "imported": true,
@@ -159,7 +159,7 @@
       "name": "Cook_hat.mesh"
     },
     "059bb": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@059bb",
       "imported": true,
@@ -176,7 +176,7 @@
       "name": "Cook_shoe_left.mesh"
     },
     "be0e5": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@be0e5",
       "imported": true,
@@ -193,7 +193,7 @@
       "name": "Cook_shoe_right.mesh"
     },
     "9ed27": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ed27",
       "imported": true,
@@ -210,7 +210,7 @@
       "name": "Gentlemen_hat.mesh"
     },
     "5f0bc": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f0bc",
       "imported": true,
@@ -227,7 +227,7 @@
       "name": "Gentlemen_Stick.mesh"
     },
     "5f479": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5f479",
       "imported": true,
@@ -244,7 +244,7 @@
       "name": "Gentleman_tie.mesh"
     },
     "d8fba": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@d8fba",
       "imported": true,
@@ -261,7 +261,7 @@
       "name": "Gentlemen_shoe_left.mesh"
     },
     "6a49c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6a49c",
       "imported": true,
@@ -278,7 +278,7 @@
       "name": "Gentlemen_shoe_right.mesh"
     },
     "ad585": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@ad585",
       "imported": true,
@@ -295,7 +295,7 @@
       "name": "Gentleman_mostache.mesh"
     },
     "6287d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@6287d",
       "imported": true,
@@ -312,7 +312,7 @@
       "name": "Knight_Sword.mesh"
     },
     "a4867": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a4867",
       "imported": true,
@@ -329,7 +329,7 @@
       "name": "Knight_Water.mesh"
     },
     "9ce29": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@9ce29",
       "imported": true,
@@ -346,7 +346,7 @@
       "name": "Knight_shoe_right.mesh"
     },
     "a2d9c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@a2d9c",
       "imported": true,
@@ -363,7 +363,7 @@
       "name": "Magic_hat.mesh"
     },
     "af519": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@af519",
       "imported": true,
@@ -380,7 +380,7 @@
       "name": "Magic_book.mesh"
     },
     "43c2d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@43c2d",
       "imported": true,
@@ -397,7 +397,7 @@
       "name": "Magic_shoe_right.mesh"
     },
     "fc23d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@fc23d",
       "imported": true,
@@ -414,7 +414,7 @@
       "name": "Magic_shoe_left.mesh"
     },
     "8adc8": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@8adc8",
       "imported": true,
@@ -431,7 +431,7 @@
       "name": "Santa_hat_02.mesh"
     },
     "e4374": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@e4374",
       "imported": true,
@@ -448,7 +448,7 @@
       "name": "Santa_hat.mesh"
     },
     "c8f32": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@c8f32",
       "imported": true,
@@ -465,7 +465,7 @@
       "name": "Santa_shoe_left.mesh"
     },
     "4d3ae": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4d3ae",
       "imported": true,
@@ -482,7 +482,7 @@
       "name": "santa_shoe_right.mesh"
     },
     "2c979": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@2c979",
       "imported": true,
@@ -499,7 +499,7 @@
       "name": "SkateBoy_hat.mesh"
     },
     "4b7e4": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4b7e4",
       "imported": true,
@@ -516,7 +516,7 @@
       "name": "SkateBoy_Skateboard.mesh"
     },
     "cf16e": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@cf16e",
       "imported": true,
@@ -533,7 +533,7 @@
       "name": "SkateBoy_shoe_left.mesh"
     },
     "59c1d": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@59c1d",
       "imported": true,
@@ -550,7 +550,7 @@
       "name": "Soldier_Shoe_left.mesh"
     },
     "26a7c": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@26a7c",
       "imported": true,
@@ -567,7 +567,7 @@
       "name": "Soldier_backpack.mesh"
     },
     "5af22": {
-      "ver": "1.0.7",
+      "ver": "1.0.8",
       "importer": "gltf-mesh",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@5af22",
       "imported": true,
@@ -666,7 +666,7 @@
       "name": "Map #0.texture"
     },
     "1c7e7": {
-      "ver": "1.0.10",
+      "ver": "1.0.13",
       "importer": "gltf-material",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@1c7e7",
       "imported": true,
@@ -682,7 +682,7 @@
       "name": "01 - Default-0.material"
     },
     "949ce": {
-      "ver": "1.0.10",
+      "ver": "1.0.13",
       "importer": "gltf-material",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@949ce",
       "imported": true,
@@ -698,7 +698,7 @@
       "name": "01 - Default-1.material"
     },
     "302ed": {
-      "ver": "1.0.10",
+      "ver": "1.0.13",
       "importer": "gltf-material",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@302ed",
       "imported": true,
@@ -714,7 +714,7 @@
       "name": "03 - Default-2.material"
     },
     "4bcab": {
-      "ver": "1.0.8",
+      "ver": "1.0.9",
       "importer": "gltf-scene",
       "uuid": "45d1f9c9-498f-4553-ae2a-ef590c8fe5bd@4bcab",
       "imported": true,

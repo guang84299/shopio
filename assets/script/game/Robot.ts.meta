@@ -1,14 +1,15 @@
 {
-  "ver": "1.0.844",
+  "ver": "2.0.14",
   "importer": "typescript",
   "imported": true,
   "uuid": "361f2f9e-5cd9-4171-b9c5-081a38e45c05",
   "files": [
-    ".js"
+    ".js",
+    ".trans"
   ],
   "subMetas": {},
   "userData": {
-    "moduleId": "project:///assets/script/game/Robot.ts",
-    "importAsPlugin": false
+    "importAsPlugin": false,
+    "moduleId": "project:///assets/script/game/Robot.js"
   }
 }

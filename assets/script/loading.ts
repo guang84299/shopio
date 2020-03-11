@@ -78,8 +78,8 @@ export class loading extends Component {
 
     loadSubpackage(){
         this.suburls = [
-            "subpackages/mode/",
-            "subpackages/images/"
+            "mode",
+            "images"
         ];
 
         this.subTotalCount = this.suburls.length;
@@ -274,7 +274,7 @@ export class loading extends Component {
             //console.error(url,cc.url.raw("resources/"+url));
             resource = resource.json;//JSON.parse(resource.text);
         }
-
+cc.log(url,resource);
         if(url.indexOf("conf/") != -1)
             res.loads[pifx] = resource;
         else  if(url.indexOf("audio/") != -1)

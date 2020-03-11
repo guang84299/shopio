@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.6",
+  "ver": "1.0.8",
   "importer": "animation-clip",
   "imported": true,
   "uuid": "dc0e6f7f-cab6-4605-972c-84610cfe73a6",
@@ -7,5 +7,7 @@
     ".json"
   ],
   "subMetas": {},
-  "userData": {}
+  "userData": {
+    "name": "animrob"
+  }
 }

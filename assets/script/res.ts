@@ -3,7 +3,7 @@ const { ccclass, property } = _decorator;
 
 export const res = {
     loads:{},
-    audio_music: "",
+    audio_music: "audio/bgm",
     nodePools: {},
     tipTime : 0,
 
