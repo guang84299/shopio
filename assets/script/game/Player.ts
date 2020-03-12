@@ -17,6 +17,7 @@ export class Player extends Component {
     protected rotateSpeed = Math.PI/18;//弧度
     protected isCanColl = true;
     public isExcColl = false;
+    protected _tarDir = cc.v2(0,1);
 
     public lv = 1;
     protected gameControl = null;
@@ -975,13 +976,26 @@ export class Player extends Component {
                 //         this.moveDir.rotate(rad);
                 //     }    
                 // }
-               
+                if(this.isMove)
+                {
+                    var st = 0.3;
+                    var ang = this._tarDir.signAngle(this.moveDir);
+                    // if(ang>=0)
+                    // {
+                    //     if(ang>st) ang = st;
+                    // }
+                    // else{
+                    //     if(ang<-st) ang = -st;
+                    // }
+                    this.moveDir.rotate(-ang/5);
+                }
 
                 this.run();
                 this.updateDir(this.moveDir);
-                if(this.moveDir.x != 0 || this.moveDir.y != 0)
+
+                if(this._tarDir.x != 0 || this._tarDir.y != 0)
                 {    
-                    this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.getMoveSpeed()));
+                    this.gcoll.applyForce(cc.v2(this._tarDir).multiplyScalar(this.getMoveSpeed()));
                 }
                
             }
@@ -993,9 +1007,9 @@ export class Player extends Component {
        }
        else
        {
-            if(this.moveDir.x != 0 || this.moveDir.y != 0)
+            if(this._tarDir.x != 0 || this._tarDir.y != 0)
             {    
-                this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.getMoveSpeed()));
+                this.gcoll.applyForce(cc.v2(this._tarDir).multiplyScalar(this.getMoveSpeed()));
             }
         //    if(this.follow[0].isColl)
         //     {

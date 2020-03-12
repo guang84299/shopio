@@ -165,7 +165,7 @@ export class Robot extends Player {
         if(this.robotState == "toPostGoods")
         {
             this.isMove = false; 
-            this.moveDir = cc.v2(0,0);
+            this._tarDir = cc.v2(0,0);
             if(this.goods.length<=0) 
             {
                 this.toPostGoodsTime += dt;
@@ -187,11 +187,11 @@ export class Robot extends Player {
                 if(dis>0.02)// && this.updateDirTime>0.25
                 {
                     this.updateDirTime = 0;    
-                    this.moveDir = cc.v2(np.x,np.z).subtract(cc.v2(p.x,p.z)).normalize();
+                    this._tarDir = cc.v2(np.x,np.z).subtract(cc.v2(p.x,p.z)).normalize();
                     if(Math.random()<0.008)  cc.log("物品方向");
                 }
                 else{
-                    this.moveDir = cc.v2(0,0);
+                    this._tarDir = cc.v2(0,0);
                     cc.log("到达物品");
                 }
                 // if(this.toHoldGoodsTime>0.5)
@@ -221,14 +221,14 @@ export class Robot extends Player {
                 // }
                 // else
                 {
-                    this.moveDir = cc.v2(pp.x,pp.z).subtract(cc.v2(p.x,p.z)).normalize();
+                    this._tarDir = cc.v2(pp.x,pp.z).subtract(cc.v2(p.x,p.z)).normalize();
                 }
 
             }
             else 
             {
                 this.robotState = "toIdle";
-                this.moveDir = cc.v2(0,0);
+                this._tarDir = cc.v2(0,0);
                 this.toAvoidTime = 1;
             }
         }
@@ -243,7 +243,7 @@ export class Robot extends Player {
 
                 // if(dis1>dis2)
                 {
-                    this.moveDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p.x,p.z)).normalize();
+                    this._tarDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p.x,p.z)).normalize();
                 }
                 // else
                 // {
@@ -253,7 +253,7 @@ export class Robot extends Player {
             else
             {
                 this.robotState = "toIdle";
-                this.moveDir = cc.v2(0,0);
+                this._tarDir = cc.v2(0,0);
                 this.toRobTime = 2;
             }
         }
@@ -276,17 +276,17 @@ export class Robot extends Player {
                 {
                     this.roadList.shift();
                     if(this.roadList.length > 0) node = this.roadList[0];
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                    this._tarDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
                 }
                 if(this.updateDirTime>0.1)
                 {
                     this.updateDirTime = 0;
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                    this._tarDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
                 }
                 if(dis>2 || this.roadList.length == 0)
                 {
                     this.robotState = "toIdle";
-                    this.moveDir = cc.v2(0,0);
+                    this._tarDir = cc.v2(0,0);
                     this.isMove = false; 
                     // if(this.roadList.length == 0)
                     // {
@@ -299,7 +299,7 @@ export class Robot extends Player {
             }
             else{
                 this.robotState = "toIdle";
-                this.moveDir = cc.v2(0,0);
+                this._tarDir = cc.v2(0,0);
                 this.isMove = false; 
             }
         }
@@ -328,5 +328,6 @@ export class Robot extends Player {
             this.ai();
         }
         this.findCanHoldGoods(0);
+
     }
 }

@@ -7,6 +7,9 @@ export class PlayerSelf extends Player {
     private startTouchPos = null;
     private findPlaDt = 0;
     private touchTime = 0;
+
+
+    
     onLoad(){
         this.initEvent();
     }
@@ -28,14 +31,17 @@ export class PlayerSelf extends Player {
     onTouchStart (e:EventTouch) {
         this.startTouchPos = e.getLocation();
         this.touchTime = new Date().getTime();
+        this._tarDir = cc.v2(0,1);
     }
 
     onTouchMove (e:EventTouch) {
         if(!this.isColl)
         {
             let p = e.getLocation();
-            this.moveDir = p.subtract(this.startTouchPos).normalize();
-            this.moveDir = cc.v2(-this.moveDir.x,this.moveDir.y).rotate(Math.PI);
+            this._tarDir = p.subtract(this.startTouchPos).normalize();
+            this._tarDir = cc.v2(-this._tarDir.x,this._tarDir.y).rotate(Math.PI);
+            // this.moveDir = p.subtract(this.startTouchPos).normalize();
+            // this.moveDir = cc.v2(-this.moveDir.x,this.moveDir.y).rotate(Math.PI);
     
         }
         this.isMove = true;
