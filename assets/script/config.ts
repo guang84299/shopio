@@ -130,7 +130,8 @@ export const config = {
     //判断2点之间是有有墙
     judgeWall(pos1,pos2){
         var dir = cc.v2(pos2).subtract(cc.v2(pos1)).normalize();
-        // var len = cc.Vec2.distance(cc.v2(pos2),cc.v2(pos1))/0.03;
+        // var len = cc.Vec2.distance(cc.v2(pos2),cc.v2(pos1))/0.05;
+        // if(len>30) len = 30;
         for(var i=1;i<=2;i++)
         {
             var p = cc.v2(pos1);

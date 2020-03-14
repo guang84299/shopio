@@ -125,6 +125,7 @@ export class loading extends Component {
             "conf/starlv",
             "conf/starrank",
             "conf/robotstage",
+            "conf/goodspath",
 
             "prefab/game/player",
             "prefab/game/pack",

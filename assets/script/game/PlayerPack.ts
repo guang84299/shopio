@@ -13,7 +13,6 @@ export class PlayerPack extends Component {
     isMove = false;
     isPlayPost = false;
     isPlayDrop = false;
-    isPause = false;
     moveDir = cc.v2(0,0);
     gameControl = null;
     // gcoll = null;
@@ -170,7 +169,7 @@ export class PlayerPack extends Component {
     }
 
     canColl(pos){
-        if(!this.isColl && this.followTarget.isCanColl)
+        if(!this.isColl)
         {
             var p = this.node.getWorldPosition();
             var dis = cc.Vec2.distance(cc.v2(pos.x,pos.z),cc.v2(p.x,p.z));
@@ -184,7 +183,6 @@ export class PlayerPack extends Component {
 
     coll(target){
         this.isColl = true;
-        this.isPause = true;
         var toPos = this.node.getWorldPosition();
         var pos = target.node.getPosition();
         var dir = cc.v2(toPos.x,toPos.z).subtract(cc.v2(pos.x,pos.z)).normalize();
@@ -208,7 +206,6 @@ export class PlayerPack extends Component {
             // });
             self.isColl = false;
             self.dropGoods(target);
-            self.isPause = false;
          },1);
 
          if(this.followTarget.isPlayerSelf)
@@ -388,7 +385,6 @@ export class PlayerPack extends Component {
     }
 
     update (deltaTime: number) {
-        // if(this.isPause) return;
         if(this.gameControl.isStart)
         {
             this.upDirDt += deltaTime;

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent} from "cc";
+import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent,ModelComponent} from "cc";
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
@@ -36,6 +36,7 @@ export class gameControl extends Component {
     public players = [];
     public robotConfPath = [];
     public robotRemovePath = [[],[]];
+    public goodsConfPath = [];
     public holdGoods = [];
     public dogs = [];
     num = 0;
@@ -166,6 +167,17 @@ export class gameControl extends Component {
                     }
                 }
                
+                // if(mass>0 && mass<0.5)
+                // {
+                //     var mat = goods.getComponent(ModelComponent).material;
+                //     if(mat)
+                //     {
+                //         cc.log(mat);
+                //         mat.recompileShaders({ USE_BATCHING: true ,USE_SKINNING:true});
+                //         // mat.overridePipelineStates({});
+                //         cc.log(mat);
+                //     }
+                // }
                 // box.enable(false);
                
                 goods.addComponent(Goods).initConf(m.id,m.c);
@@ -197,8 +209,8 @@ export class gameControl extends Component {
 
     initRobot(){
         //生成robot
-        // this.players = [];
-        var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
+        // this.players = [];[cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
+        var pps = [cc.v2(5,3),cc.v2(0,3),cc.v2(-2,3),cc.v2(-3,5),cc.v2(0.8,5)];
         var robotNum = 0;
          //星级
         var starlv = cc.storage.getStorage(cc.storage.starlv);
@@ -207,6 +219,7 @@ export class gameControl extends Component {
         {
             robotNum = 3;
             this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"]));
+            this.goodsConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_goodspath"]));
         }
         for(var i=0;i<robotNum;i++)
        {
@@ -220,7 +233,7 @@ export class gameControl extends Component {
             this.goodsNode.addChild(robot);
             var robotSc = robot.addComponent(Robot);
             robotSc.initConf(1);
-            robotSc.initRobotConf(Number(robotIds[robotId]),i%2);//Number(robotIds[robotId])
+            robotSc.initRobotConf(Number(robotIds[robotId]),i);//Number(robotIds[robotId])
             robotSc.initNick(this.randNick(),Math.floor(Math.random()*11));
             robotSc.bodyColor = new cc.Color(this.colors[i+1]);
             this.players.push(robotSc);

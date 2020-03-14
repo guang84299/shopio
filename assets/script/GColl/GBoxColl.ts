@@ -272,7 +272,7 @@ export class GBoxColl extends Component {
         }
        
         //判断位移
-        if(!this.isRobot || (this.isRobot && this.robotSc.isExcColl))
+        if(!this.isRobot || (this.isRobot && (this.robotSc.isExcColl || this.robotSc.isExcColl2)))
         {
             var ap = config.converToNodePos(cc.v2(np.x,np.z));
             if(!config.astarmap[ap.y][ap.x])
