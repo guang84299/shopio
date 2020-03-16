@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 
 import { GCollControl } from './GCollControl';
 import { Player } from '../game/Player';
+import { Dog } from '../game/Dog';
 import { config } from '../config';
 
 @ccclass("GBoxColl")
@@ -39,7 +40,9 @@ export class GBoxColl extends Component {
 
     isRobot = false;
     isPlayer = false;
+    isDog = false;
     robotSc = null;
+    dogSc = null;
 
     canColl = false;
 
@@ -73,6 +76,11 @@ export class GBoxColl extends Component {
                 self.isRobot = self.node.getComponent(Player).isRobot;
                 self.isPlayer = true;
                 if(self.isRobot) self.robotSc = self.node.getComponent(Player);
+            }
+            else if(self.node.name == "dog")
+            {
+                self.isDog = true;
+                self.dogSc = self.node.getComponent(Dog);
             }
         },1);
        
@@ -272,7 +280,7 @@ export class GBoxColl extends Component {
         }
        
         //判断位移
-        if(!this.isRobot || (this.isRobot && (this.robotSc.isExcColl || this.robotSc.isExcColl2)))
+        if((!this.isRobot && !this.isDog) || (this.isRobot && (this.robotSc.isExcColl || this.robotSc.isExcColl2)) || (this.isDog && this.dogSc.isExcColl))
         {
             var ap = config.converToNodePos(cc.v2(np.x,np.z));
             if(!config.astarmap[ap.y][ap.x])

@@ -12,10 +12,13 @@ export class Robot extends Player {
     protected toHoldGoodsTime = 0;
     protected toRobTime = 0;
     protected toAvoidTime = 0;
+    protected toAvoidDogTime = 0;
     protected judgeRobTime = 0;
     protected judgeAvoidTime = 0;
+    protected judgeAvoidDogTime = 0;
 
     protected updateDirTime = 1;
+    protected tarDog = null;
 
     protected aiDt = 0;
 
@@ -88,6 +91,20 @@ export class Robot extends Player {
             }
         }
 
+        //判断躲避狗
+        if(this.robotState != "toAvoidDog"  && this.judgeAvoidDogTime > 0)
+        {
+            var pla = this.findDog();
+            if(pla && Math.random()*100 <= Number(this.robotConfId.avoid)+Number(this.robotConflv.avoid))
+            {
+                this.tarDog = pla;
+                this.judgeAvoidDogTime = 0;
+                this.robotState = "toAvoidDog";  
+                this.toAvoidDogTime = 2;
+                this.isExcColl2 = true;
+            }
+        }
+
 
         if(this.robotState == "toHoldGoods")
         {
@@ -113,16 +130,18 @@ export class Robot extends Player {
             }
         }
         
-        if(Math.random()<0.01)
-        cc.log(this.robotState);
+       
        
     }
 
     updateAi(dt){
         this.judgeRobTime += dt;
         this.judgeAvoidTime += dt;
+        this.judgeAvoidDogTime += dt;
+
         this.toAvoidTime -= dt;
         this.toRobTime -= dt;
+        this.toAvoidDogTime -= dt;
         this.toHoldGoodsTime += dt;
         this.updateDirTime += dt;
 
@@ -194,6 +213,27 @@ export class Robot extends Player {
                 // var p1 = this.tarPlayer.node.getPosition();
                 var p2 = this.tarPlayer.follow[0].node.getPosition();
                 this._tarDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p.x,p.z)).normalize();
+            }
+            else
+            {
+                this.robotState = "toIdle";
+                this._tarDir = cc.v2(0,0);
+                this.isMove = false; 
+                this.isExcColl2 = false;
+            }
+        }
+        else if(this.robotState == "toAvoidDog")
+        {
+            if(this.toAvoidDogTime>0 && this.tarDog)
+            {
+                // var p1 = this.tarPlayer.node.getPosition();
+                var p2 = this.tarDog.node.getPosition();
+                this._tarDir = cc.v2(p.x,p.z).subtract(cc.v2(p2.x,p2.z)).normalize();
+                if(Math.random()<0.5)
+                {
+                    this.toAvoidDogTime = 0;
+                    this.speedUp();
+                }
             }
             else
             {

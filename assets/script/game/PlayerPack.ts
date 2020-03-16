@@ -166,6 +166,9 @@ export class PlayerPack extends Component {
         this.uiNodePos.setPosition(cc.v3(0,num*0.6/2,0));
 
         this.node.setPosition(0,0,-num*0.25);
+
+        var goodsSc = num*0.5;
+        this.goodsNode.setScale(goodsSc,goodsSc,goodsSc);
     }
 
     canColl(pos){

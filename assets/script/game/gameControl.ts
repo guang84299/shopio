@@ -210,7 +210,7 @@ export class gameControl extends Component {
     initRobot(){
         //生成robot
         // this.players = [];[cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
-        var pps = [cc.v2(5,3),cc.v2(0,3),cc.v2(-2,3),cc.v2(-3,5),cc.v2(0.8,5)];
+        var pps =  [cc.v2(8,2),cc.v2(4,2.5),cc.v2(-1.5,1.2),cc.v2(-4.8,-1),cc.v2(-10.5,-0.6),cc.v2(-9,4.1),cc.v2(-0.9,5)];//[cc.v2(5,3),cc.v2(0,3),cc.v2(-2,3),cc.v2(-3,5),cc.v2(0.8,5)];
         var robotNum = 0;
          //星级
         var starlv = cc.storage.getStorage(cc.storage.starlv);
@@ -294,13 +294,16 @@ export class gameControl extends Component {
 
     addDog(){
         if(this.dogs.length>= 3) return;
-        var p = this.players[Math.floor(Math.random()*this.players.length)].node.getPosition();
+        var pps =  [cc.v2(8,2),cc.v2(4,2.5),cc.v2(-1.5,1.2),cc.v2(-4.8,-1),cc.v2(-10.5,-0.6),cc.v2(-9,4.1),cc.v2(-0.9,5)];
+        var p2 = pps[Math.floor(Math.random()*pps.length)];
         var dog = cc.instantiate(res.loads["prefab_game_dog"]);
-        var p2 = config.converToNodePos(cc.v2(p.x+(Math.random()-0.5)*3,p.z+(Math.random()-0.5)*3));
-        p2 = config.converToWorldPos(p2);
-        dog.setPosition(p2.x,p.y,p2.y);
+        // var p2 = config.converToNodePos(cc.v2(p.x+(Math.random()-0.5)*3,p.z+(Math.random()-0.5)*3));
+        // p2 = config.converToWorldPos(p2);
+        dog.setPosition(p2.x,0,p2.y);
         this.goodsNode.addChild(dog);
-        this.dogs.push(dog.getComponent(Dog));
+        var dogSc = dog.getComponent(Dog);
+        dogSc.initConf(this.dogs.length);
+        this.dogs.push(dogSc);
     }
 
     startCountDown(){
@@ -310,7 +313,7 @@ export class gameControl extends Component {
         this.players.push(this.playerSc);
         this.gameUI.active = true;
         this.updateHold(0);
-
+        if(cc.GAME.startSpeedUp) res.showTips("开局已加速");
     }
 
     updateSelfCapacity(pro){

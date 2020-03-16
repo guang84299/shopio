@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,ButtonComponent,AnimationComponent} from "cc";
+import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,ButtonComponent,AnimationComponent,ToggleComponent} from "cc";
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
@@ -35,6 +35,8 @@ export class mainControl extends Component {
     capacityUp = null;
     @property(Node)
     startNode = null;
+    @property(ToggleComponent)
+    startSpeedUp = null;
 
     @property(Player)
     public playerSc = null;
@@ -446,6 +448,18 @@ export class mainControl extends Component {
     click(event,data){
         if(data == "start")
         {
+            cc.GAME.startSpeedUp = false;
+            if(this.startSpeedUp.isChecked)
+            {
+                cc.sdk.showVedio(function(r){
+                    if(r) 
+                    {
+                        cc.GAME.startSpeedUp = true;
+                        cc.director.loadScene("game");
+                    }
+                });
+            }
+            else
             cc.director.loadScene("game");
         }
         else if(data == "mode")

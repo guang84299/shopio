@@ -10,6 +10,7 @@ import { config } from '../config';
 export class Dog extends Component {
     public state = "idle";
     private gameControl = null;
+    public isExcColl = false;
     gcoll = null;
     moveDir = cc.v2(0,0);
     isMove = false;
@@ -21,18 +22,26 @@ export class Dog extends Component {
     idleTime = 1;
     lookTime = 3;
     attackTime = 3;
-    moveSpeed = 2.3;
+    judgeattackTime = 3;
+    moveSpeed = 2;
 
     roadList = [];
+    pathIndex = 0;
 
-    upDt = 0;
+    aiDt = 0;
     lookDt = 0;
 
+    conf = {wander:50,attack:50};
 
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.gcoll = this.node.getComponent(GBoxColl);
 
+    }
+
+    initConf(pathIndex)
+    {
+        this.pathIndex = pathIndex;
     }
 
     idle(){
@@ -47,14 +56,6 @@ export class Dog extends Component {
         if(this.state != "wander")
         {
             this.state = "wander";
-            this.isMove = true;
-            this.moveDir = cc.v2(Math.random()-0.5,Math.random()-0.5).normalize();
-            if(this.nerPlayer)
-            {
-                var p = this.node.getPosition();
-                var p2 = this.nerPlayer.node.getWorldPosition();    
-                this.moveDir = cc.v2(p2.x,p2.z).subtract(cc.v2(p.x,p.z)).normalize();
-            }
         }
     }
 
@@ -62,8 +63,6 @@ export class Dog extends Component {
         if(this.state != "attack")
         {
             this.state = "attack";
-            this.isMove = true;
-            this.upDt = 0;
         }
     }
 
@@ -80,9 +79,6 @@ export class Dog extends Component {
             {
                 this.tarPlayer = this.nerPlayer;
                 this.attack();
-            }
-            else{
-                this.changeState();
             }
         }
 
@@ -117,58 +113,6 @@ export class Dog extends Component {
         return tarPlayer;
     }
 
-    ai(dt){
-        this.upDt += dt;
-        if(this.state == "idle" && this.upDt>=this.idleTime)
-        {
-            this.changeState();
-        }
-        else if(this.state == "wander" && this.upDt>=this.wanderTime)
-        {
-            this.changeState();
-        }
-      
-
-        this.lookDt += dt;
-        if(this.lookDt>=this.lookTime)
-        {
-            this.lookDt = 0;
-            this.look();
-        }
-
-        if(this.state == "attack")
-        {
-            this.updateDirTime += dt;
-            if(this.roadList.length > 0)
-            {
-                var p = this.node.getPosition();
-                var node = this.roadList[0];
-                var dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
-                if(dis<0.05)
-                {
-                    this.roadList.shift();
-                    if(this.roadList.length > 0) node = this.roadList[0];
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
-                }
-                if(this.updateDirTime>0.1)
-                {
-                    this.updateDirTime = 0;
-                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
-                }
-               
-            }
-            else{
-                this.changeState();
-            }
-        }
-    }
-
-    changeState(){
-        var r = Math.random();
-        if(r<0.3) this.idle();
-        else if(r<1) this.wander();
-        this.upDt = 0;
-    }
 
     findRoad(tarPoint){
        
@@ -183,6 +127,105 @@ export class Dog extends Component {
         this.roadList.shift(); //JSON.parse(JSON.stringify(this.roadList))
         this.updateDirTime = 0;
     }
+
+    ai(){
+        //判断游荡
+        if(this.state != "wander" && this.state != "attack" && this.wanderTime > 2 && Math.random()*100 <= this.conf.wander)
+        {
+            this.state = "wander";
+            this.wanderTime = 0;
+        }
+
+        //判断攻击
+        if(this.state != "attack" && this.judgeattackTime > 0.2)
+        {
+            this.judgeattackTime = 0;
+            this.look();
+            if(this.tarPlayer && Math.random()*100 <= this.conf.attack)
+            {
+                this.state = "attack";
+                this.attackTime = 3;
+                this.isExcColl = true;
+            }
+        }
+      
+        if(this.state == "wander")
+        {
+            //如果没有路 就找到最近的路
+            if(this.roadList.length == 0)
+            {
+                // var p1 = this.node.getPosition();
+                // this.pathIndex++;
+                // if(this.pathIndex>=this.gameControl.goodsConfPath.length) this.pathIndex = 0;
+
+                var p = this.gameControl.goodsConfPath[this.pathIndex][0];
+                this.findRoad(cc.v2(p.x,p.y));
+                for(var i=1;i<this.gameControl.goodsConfPath[this.pathIndex].length;i++)
+                {
+                    var node = this.gameControl.goodsConfPath[this.pathIndex][i];
+                    this.roadList.push({x:Number(node.x),y:Number(node.y)});
+                }
+            }
+        }
+
+        if(Math.random()<0.1)
+        cc.log(this.state);
+    }
+
+    updateAi(dt){
+        this.wanderTime+=dt;
+        this.judgeattackTime += dt;
+        this.attackTime -= dt;
+        this.updateDirTime += dt;
+        this.isMove = true; 
+        var p = this.node.getPosition();
+        if(this.state == "wander")
+        {
+            if(this.roadList.length > 0)
+            {
+                var node = this.roadList[0];
+                var dis = cc.Vec2.distance(cc.v2(node.x,node.y),cc.v2(p.x,p.z));
+                if(dis<0.05)
+                {
+                    this.roadList.shift();
+                    if(this.roadList.length > 0) node = this.roadList[0];
+                }
+                if(this.updateDirTime>0.1)
+                {
+                    this.updateDirTime = 0;
+                    this.moveDir = cc.v2(node.x,node.y).subtract(cc.v2(p.x,p.z)).normalize();
+                }
+
+                if(this.roadList.length == 0)
+                {
+                    this.state = "idle";
+                    this.moveDir = cc.v2(0,0);
+                    this.isMove = false; 
+                }
+            }
+            else{
+                this.state = "idle";
+                this.moveDir = cc.v2(0,0);
+                this.isMove = false; 
+            }
+        }
+        else if(this.state == "attack")
+        {
+            if(this.attackTime>0 && this.tarPlayer)
+            {
+                var p1 = this.tarPlayer.node.getPosition();
+                this.moveDir = cc.v2(p1.x,p1.z).subtract(cc.v2(p.x,p.z)).normalize();
+            }
+            else
+            {
+                this.state = "idle";
+                this.moveDir = cc.v2(0,0);
+                this.isMove = false; 
+                this.isExcColl = false;
+            }
+        }
+    }
+
   
     updateStep(dt){
         if(this.isMove)
@@ -198,8 +241,23 @@ export class Dog extends Component {
     update (deltaTime: number) {
         if(this.gameControl.isStart)
         {
-            this.ai(deltaTime);
+            this.updateAi(deltaTime);
             this.updateStep(deltaTime);
         }
+        else{
+            this.idle();
+        }
+    }
+
+    lateUpdate(dt: number){
+        if(!this.gameControl.isStart) return;
+       
+        this.aiDt += dt;
+        if(this.aiDt > 0.1)
+        {
+            this.aiDt = 0;
+            this.ai();
+        }
+
     }
 }

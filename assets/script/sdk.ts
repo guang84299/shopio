@@ -188,8 +188,8 @@ export const sdk = {
                 });
             });
 
-            if(cc.GAME.share)
-               this.share(callback,"prop");
+            // if(cc.GAME.share)
+            //    this.share(callback,"prop");
             // else
             // {
             //    if(callback)

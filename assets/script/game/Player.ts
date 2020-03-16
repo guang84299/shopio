@@ -120,6 +120,7 @@ export class Player extends Component {
             var lv = cc.storage.getStorage(cc.storage.speedlv);
             var data = cc.res.loads["conf_playerlv"][lv];
             this.moveSpeed = this.delSpeed*(1+Number(data.speed)/100);
+            if(cc.GAME.startSpeedUp) this.moveSpeed *= 1.5;
 
             var lv = cc.storage.getStorage(cc.storage.capacitylv);
             var data = cc.res.loads["conf_playerlv"][lv];
@@ -447,6 +448,29 @@ export class Player extends Component {
                         var dis2 = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p3.x,p3.z));
                         if(dis<dis2)  tarPlayer = pla;
                     }
+                }
+            }
+        }
+        return tarPlayer;
+    }
+
+    //寻找附近是否有狗
+    findDog(){
+        var p = this.node.getPosition();
+        var plas = this.gameControl.dogs;
+        var tarPlayer = null;
+        for(var i=0;i<plas.length;i++)
+        {
+            var pla = plas[i];
+            var p2 = pla.node.getWorldPosition();
+            var dis = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z));
+            if(dis<2.5)
+            {
+                if(!tarPlayer) tarPlayer = pla;
+                else{
+                    var p3 = tarPlayer.node.getPosition();
+                    var dis2 = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p3.x,p3.z));
+                    if(dis<dis2)  tarPlayer = pla;
                 }
             }
         }
