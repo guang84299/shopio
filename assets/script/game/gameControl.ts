@@ -448,6 +448,16 @@ export class gameControl extends Component {
         cc.audio.playSound("result");
     }
 
+    tofuhuo(){
+        this.isStart = false;
+        res.openUI("fuhuo");
+    }
+
+    fuhuo(){
+        this.playerSc.fuhuo();
+        this.isStart = true;
+    }
+
     update (dt: number) {
         if(this.isStart)
         {

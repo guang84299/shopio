@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, random,ParticleSystemComponent } from "cc";
+import { _decorator, Component, Node, random,ModelComponent ,SkeletalAnimationComponent} from "cc";
 const { ccclass, property } = _decorator;
 import { GBoxColl } from "../GColl/GBoxColl"
 import { Player } from "./Player"
@@ -9,6 +9,7 @@ import { config } from '../config';
 @ccclass("Dog")
 export class Dog extends Component {
     public state = "idle";
+    private aniState = "idle";
     private gameControl = null;
     public isExcColl = false;
     gcoll = null;
@@ -37,6 +38,8 @@ export class Dog extends Component {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.gcoll = this.node.getComponent(GBoxColl);
 
+        var material = cc.find("RootNode/polySurface2",this.node).getComponent(ModelComponent).material;   
+        material.setProperty('albedo', cc.color(60,60,60)); 
     }
 
     initConf(pathIndex)
@@ -45,24 +48,27 @@ export class Dog extends Component {
     }
 
     idle(){
-        if(this.state != "idle")
+        if(this.aniState != "idle")
         {
-            this.state = "idle";
+            this.aniState = "idle";
             this.isMove = false;
+            this.node.getComponent(SkeletalAnimationComponent).play("idle");
         }
     }
 
     wander(){
-        if(this.state != "wander")
+        if(this.aniState != "wander")
         {
-            this.state = "wander";
+            this.aniState = "wander";
+            this.node.getComponent(SkeletalAnimationComponent).play("run");
         }
     }
 
     attack(){
-        if(this.state != "attack")
+        if(this.aniState != "attack")
         {
-            this.state = "attack";
+            this.aniState = "attack";
+            this.node.getComponent(SkeletalAnimationComponent).play("attack");
         }
     }
 
@@ -78,7 +84,6 @@ export class Dog extends Component {
             if(dis<2)
             {
                 this.tarPlayer = this.nerPlayer;
-                this.attack();
             }
         }
 
@@ -113,6 +118,15 @@ export class Dog extends Component {
         return tarPlayer;
     }
 
+    updateDir(dir){
+        //旋转
+        if(dir.x != 0 || dir.y != 0)
+        {
+            var rad = cc.v2(dir).signAngle(cc.v2(0,1));
+            var ang = 180/Math.PI*rad;
+            this.node.setRotationFromEuler(0,ang,0);
+        }
+    }
 
     findRoad(tarPoint){
        
@@ -208,6 +222,7 @@ export class Dog extends Component {
                 this.moveDir = cc.v2(0,0);
                 this.isMove = false; 
             }
+            this.wander();
         }
         else if(this.state == "attack")
         {
@@ -223,6 +238,10 @@ export class Dog extends Component {
                 this.isMove = false; 
                 this.isExcColl = false;
             }
+            this.attack();
+        }
+        else{
+            this.idle();
         }
     }
 
@@ -232,6 +251,7 @@ export class Dog extends Component {
         {
             if(this.moveDir.x != 0 || this.moveDir.y != 0)
             {    
+                this.updateDir(this.moveDir);
                 this.gcoll.applyForce(cc.v2(this.moveDir).multiplyScalar(this.moveSpeed));
             }
         }

@@ -2,29 +2,13 @@
   "ver": "1.3.16",
   "importer": "fbx",
   "imported": true,
-  "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95",
+  "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e",
   "files": [],
   "subMetas": {
-    "79115": {
-      "ver": "1.0.9",
-      "importer": "gltf-scene",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@79115",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      },
-      "displayName": "",
-      "id": "79115",
-      "name": "Player_02.FBX.prefab"
-    },
     "3accf": {
       "ver": "1.0.8",
       "importer": "gltf-mesh",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@3accf",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@3accf",
       "imported": true,
       "files": [
         ".json",
@@ -41,7 +25,7 @@
     "cac3d": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@cac3d",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@cac3d",
       "imported": true,
       "files": [
         ".bin",
@@ -64,7 +48,7 @@
     "029b8": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@029b8",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@029b8",
       "imported": true,
       "files": [
         ".bin",
@@ -76,7 +60,7 @@
         "sample": 30,
         "span": {
           "from": 2,
-          "to": 3.533333333333333
+          "to": 3.4
         },
         "events": []
       },
@@ -87,7 +71,7 @@
     "cf5ee": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@cf5ee",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@cf5ee",
       "imported": true,
       "files": [
         ".bin",
@@ -110,7 +94,7 @@
     "a80c5": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@a80c5",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@a80c5",
       "imported": true,
       "files": [
         ".bin",
@@ -133,7 +117,7 @@
     "a8ff0": {
       "ver": "1.0.13",
       "importer": "gltf-animation",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@a8ff0",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@a8ff0",
       "imported": true,
       "files": [
         ".bin",
@@ -153,10 +137,35 @@
       "id": "a8ff0",
       "name": "post.animation"
     },
+    "09ed9": {
+      "ver": "1.0.13",
+      "importer": "gltf-animation",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@09ed9",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "events": [],
+        "gltfIndex": 0,
+        "sample": 30,
+        "span": {
+          "from": 8.133333333333333,
+          "to": 8.9
+        },
+        "speed": 1,
+        "wrapMode": 2
+      },
+      "displayName": "",
+      "id": "09ed9",
+      "name": "runpost.animation"
+    },
     "438fe": {
       "ver": "1.0.0",
       "importer": "gltf-skeleton",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@438fe",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@438fe",
       "imported": true,
       "files": [
         ".json"
@@ -172,7 +181,7 @@
     "db4d2": {
       "ver": "1.0.13",
       "importer": "gltf-material",
-      "uuid": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@db4d2",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@db4d2",
       "imported": true,
       "files": [
         ".json"
@@ -184,6 +193,22 @@
       "displayName": "",
       "id": "db4d2",
       "name": "02 - Default.material"
+    },
+    "1a3da": {
+      "ver": "1.0.9",
+      "importer": "gltf-scene",
+      "uuid": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@1a3da",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 0
+      },
+      "displayName": "",
+      "id": "1a3da",
+      "name": "ren.FBX.prefab"
     }
   },
   "userData": {
@@ -191,7 +216,7 @@
     "animationImportSettings": [
       {
         "name": "Take 001",
-        "duration": 8,
+        "duration": 9,
         "fps": 30,
         "splits": [
           {
@@ -202,7 +227,7 @@
           {
             "name": "idle2",
             "from": 2,
-            "to": 3.533333333333333
+            "to": 3.4
           },
           {
             "name": "run",
@@ -218,24 +243,29 @@
             "name": "post",
             "from": 6.7,
             "to": 8
+          },
+          {
+            "name": "runpost",
+            "from": 8.133333333333333,
+            "to": 8.9
           }
         ]
       }
     ],
-    "redirect": "03becafb-c80d-45e7-b867-aa1e3dd7fb95@79115",
+    "redirect": "f3e1741a-e3f6-45bc-b744-b6d283227b0e@1a3da",
     "assetFinder": {
       "meshes": [
-        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@3accf"
+        "f3e1741a-e3f6-45bc-b744-b6d283227b0e@3accf"
       ],
       "skeletons": [
-        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@438fe"
+        "f3e1741a-e3f6-45bc-b744-b6d283227b0e@438fe"
       ],
       "textures": [],
       "materials": [
-        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@db4d2"
+        "f3e1741a-e3f6-45bc-b744-b6d283227b0e@db4d2"
       ],
       "scenes": [
-        "03becafb-c80d-45e7-b867-aa1e3dd7fb95@79115"
+        "f3e1741a-e3f6-45bc-b744-b6d283227b0e@1a3da"
       ]
     }
   }

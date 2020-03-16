@@ -21,6 +21,8 @@ export const storage = {
     lixianlv: "lixianlv",
     skinid: "skinid",
     hasskin:"hasskin",
+    ballid: "ballid",
+    hasball:"hasball",
     loginday:"loginday",
     logintime:"logintime",
     modewinnum:"modewinnum",
@@ -42,6 +44,8 @@ export const storage = {
         lixianlv: 0,
         skinid: 0,
         hasskin: [],
+        ballid: 0,
+        hasball: [],
         loginday: 0,
         logintime: 0,
         modewinnum: 0

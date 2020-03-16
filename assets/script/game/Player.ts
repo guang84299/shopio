@@ -92,7 +92,8 @@ export class Player extends Component {
         var clips = this.node.getComponent(SkeletalAnimationComponent).clips;
         if(clips)
         {
-            clips[clips.length-1].speed = 3;
+            clips[clips.length-2].speed = 3;
+            // clips[clips.length-1].speed = 1;
         }
 
         if(this.isRobot) this.addFollowPlayer();
@@ -230,21 +231,24 @@ export class Player extends Component {
             this.state = "die";
             this.isPause = true;
 
-           this.follow[0].dropGoodsDie();
-
+            this.follow[0].dropGoodsDie();
 
             var self = this;
             this.scheduleOnce(function(){
                 // self.node.getComponent(SkeletalAnimationComponent).stop();
-                var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
-                var p = pps[ Math.floor(Math.random()*pps.length)];
-                self.node.setPosition(cc.v3(p.x,0,p.y));
-                self.isPause = false;
-                self.idle();
-            },1.1)//1.3
-
+                if(self.isPlayerSelf) self.gameControl.tofuhuo();
+                else self.fuhuo();
+            },1.1)//1.3           
             this.showEmoji("hurt");
         }
+    }
+
+    fuhuo(){
+        var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
+        var p = pps[ Math.floor(Math.random()*pps.length)];
+        this.node.setPosition(cc.v3(p.x,0,p.y));
+        this.isPause = false;
+        this.idle();
     }
 
     updateDir(dir){
@@ -318,8 +322,9 @@ export class Player extends Component {
     postGoods(){
         if(this.goods.length>0 && !this.isPostGoods)//this.state != "post")
         {
-            
-            // this.node.getComponent(SkeletalAnimationComponent).play("post");
+            if(this.state == "run")
+                this.node.getComponent(SkeletalAnimationComponent).play("runpost");
+            else this.node.getComponent(SkeletalAnimationComponent).play("post");
             // this.state = "post";
             this.isPostGoods = true;
 
@@ -734,6 +739,14 @@ export class Player extends Component {
         this.moveSpeed *= 5;
 
         this.isColl = true;
+        this.updateDir(this._tarDir);
+        this.node.getComponent(SkeletalAnimationComponent).pause();
+        this.scheduleOnce(function(){
+            self.node.getComponent(SkeletalAnimationComponent).resume();
+            if(this.isPlayerSelf) 
+            cc.audio.playSound("hurt");
+        },0.1);
+
         var self = this;       
         var t = 0.4;
         this.scheduleOnce(function(){
@@ -744,13 +757,6 @@ export class Player extends Component {
                 self.isCanColl = true;
             },0.5);
         },t);//1.7
-        this.updateDir(this._tarDir);
-        this.node.getComponent(SkeletalAnimationComponent).pause();
-        this.scheduleOnce(function(){
-            self.node.getComponent(SkeletalAnimationComponent).resume();
-            if(this.isPlayerSelf) 
-            cc.audio.playSound("hurt");
-        },0.1);
 
         if(this.isPlayerSelf) 
         {

@@ -43,6 +43,14 @@ export class PlayerPack extends Component {
         // this.gcoll = this.node.getComponent(GBoxColl);
         this.goodsNode = cc.find("goods",this.node);
         this.packNode = cc.find("pack",this.node);
+        // var ballId = Math.floor(Math.random()*5);
+        // if(ballId != 0)
+        // {
+        //     this.packNode.destroy();
+        //     this.packNode = cc.instantiate(cc.find("RootNode/ball"+ballId,cc.instantiate(cc.res.loads["prefab_skin_ball"])));
+        //     this.packNode.setPosition(cc.v3(0,0,0));
+        //     this.packNode.parent = this.node;
+        // }
         // this.lineNode = cc.find("line",this.node);
         this.uiNodePos =  cc.find("uiNode",this.node);
         this.uiNode = new cc.Node();

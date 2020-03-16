@@ -152,6 +152,7 @@ export class loading extends Component {
             "prefab/skin/skin8",
             "prefab/skin/skin9",
             "prefab/skin/skin10",
+            "prefab/skin/ball",
            
 
             "prefab/anim/ParLvUp",
@@ -168,6 +169,7 @@ export class loading extends Component {
             "prefab/ui/skin",
             "prefab/ui/lixian",
             "prefab/ui/starup",
+            "prefab/ui/fuhuo",
 
             "prefab/ui/test"
         ];
@@ -443,6 +445,12 @@ cc.log(url,resource);
 
             if(datas.hasOwnProperty("skinid"))
                 storage.setStorage(storage.skinid, Number(datas.skinid));  
+
+            if(datas.hasOwnProperty("hasball"))
+                storage.setStorage(storage.hasball, datas.hasball);  
+
+            if(datas.hasOwnProperty("ballid"))
+                storage.setStorage(storage.ballid, Number(datas.ballid));     
 
             if(datas.hasOwnProperty("loginday"))
                 storage.setStorage(storage.loginday, Number(datas.loginday));    

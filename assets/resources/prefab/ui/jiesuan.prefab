@@ -1819,6 +1819,7 @@
     },
     "_sharedMaterial": null,
     "_type": 0,
+    "_inverted": false,
     "_segments": 64,
     "_id": ""
   },
@@ -2474,7 +2475,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -383.557,
+      "y": -330,
       "z": 0
     },
     "_lrot": {
