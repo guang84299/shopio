@@ -171,7 +171,7 @@
     ],
     "_visFlags": 0,
     "_mesh": {
-      "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@db573"
+      "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@c7d64"
     },
     "_shadowCastingMode": 0,
     "_skeleton": {
@@ -2080,9 +2080,7 @@
         "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@989ed"
       }
     ],
-    "_defaultClip": {
-      "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@1f586"
-    },
+    "_defaultClip": null,
     "_sockets": [],
     "_id": ""
   },

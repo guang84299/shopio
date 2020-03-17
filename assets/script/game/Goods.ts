@@ -77,9 +77,9 @@ export class Goods extends Component {
         var dir = cc.v2(toP.x,toP.z).subtract(cc.v2(pos.x,pos.z)).normalize();
         var len = cc.Vec2.distance(cc.v2(toP.x,toP.z),cc.v2(pos.x,pos.z));
 
-        var to1 = cc.v3(pos.x+dir.x*len*0.25,toP.y+3*0.75,pos.z+dir.y*len*0.25);
-        var to2 = cc.v3(pos.x+dir.x*len*0.5,toP.y+3*1,pos.z+dir.y*len*0.5);
-        var to3 = cc.v3(pos.x+dir.x*len*0.75,toP.y+3*0.75,pos.z+dir.y*len*0.75);
+        var to1 = cc.v3(pos.x+dir.x*len*0.25,toP.y+5*0.75,pos.z+dir.y*len*0.25);
+        var to2 = cc.v3(pos.x+dir.x*len*0.5,toP.y+5*1,pos.z+dir.y*len*0.5);
+        var to3 = cc.v3(pos.x+dir.x*len*0.75,toP.y+5*0.75,pos.z+dir.y*len*0.75);
         var to4 = cc.v3(pos);
 
         var ang = (Math.random()-0.5)*(Math.PI/5);
@@ -110,7 +110,9 @@ export class Goods extends Component {
                 if(self.gameControl.isStart)
                 pack.holdGoods(self);
                 if(isPlayerSelf)
-                cc.sdk.vibrate();
+                {
+                    cc.sdk.vibrate();
+                }
 
                 node.destroy();
 
@@ -168,7 +170,7 @@ export class Goods extends Component {
 
  
             anisc.bezierTo(0.5,[to1,to2,to3,to4],function(){
-                if(self.gameControl && self.gameControl.isStart)
+                if(self.gameControl && self.gameControl.gameTime>0)
                 {
                     self.state = "idle";
                     self.gBoxColl.enable(true);

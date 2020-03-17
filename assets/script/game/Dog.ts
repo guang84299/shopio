@@ -39,7 +39,7 @@ export class Dog extends Component {
         this.gcoll = this.node.getComponent(GBoxColl);
 
         var material = cc.find("RootNode/polySurface2",this.node).getComponent(ModelComponent).material;   
-        material.setProperty('albedo', cc.color(60,60,60)); 
+        material.setProperty('albedo', cc.color(10,10,10)); 
     }
 
     initConf(pathIndex)
@@ -160,6 +160,17 @@ export class Dog extends Component {
                 this.state = "attack";
                 this.attackTime = 3;
                 this.isExcColl = true;
+
+                if(this.tarPlayer.isPlayerSelf)
+                {
+                    if(this.gameControl.tipNum1<3 && new Date().getTime()-cc.res.tipTime>5000)
+                    {
+                        this.gameControl.tipNum1 ++;
+                        cc.res.showTips("注意恶犬！");
+                    }
+                    cc.audio.playSound("dogzhuiren");
+                }
+                
             }
         }
       

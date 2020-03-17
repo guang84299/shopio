@@ -5,10 +5,10 @@
   "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6",
   "files": [],
   "subMetas": {
-    "db573": {
+    "c7d64": {
       "ver": "1.0.8",
       "importer": "gltf-mesh",
-      "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@db573",
+      "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@c7d64",
       "imported": true,
       "files": [
         ".json",
@@ -19,8 +19,8 @@
         "gltfIndex": 0
       },
       "displayName": "",
-      "id": "db573",
-      "name": "polySurface2.mesh"
+      "id": "c7d64",
+      "name": "dog2.mesh"
     },
     "cf5ee": {
       "ver": "1.0.13",
@@ -36,7 +36,7 @@
         "gltfIndex": 0,
         "sample": 30,
         "span": {
-          "from": 0.03333333333333333,
+          "from": 0.06666666666666667,
           "to": 0.4666666666666667
         },
         "events": []
@@ -191,12 +191,12 @@
     "animationImportSettings": [
       {
         "name": "Take 001",
-        "duration": 6.166666507720947,
+        "duration": 6.333333492279053,
         "fps": 30,
         "splits": [
           {
             "name": "run",
-            "from": 0.03333333333333333,
+            "from": 0.06666666666666667,
             "to": 0.4666666666666667
           },
           {
@@ -215,7 +215,7 @@
     "redirect": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@dc533",
     "assetFinder": {
       "meshes": [
-        "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@db573"
+        "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@c7d64"
       ],
       "skeletons": [
         "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@438fe"

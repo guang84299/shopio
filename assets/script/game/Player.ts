@@ -267,7 +267,12 @@ export class Player extends Component {
         {
             if(this.hands.length>0)
             {
-                this.gameControl.holdGoods.push(cc.instantiate(goods.node));
+                if(!goods.node["isauto"])
+                {
+                    var autogoods = cc.instantiate(goods.node);
+                    this.gameControl.holdGoods.push(autogoods);
+                }
+                
 
                 goods.hold(this.isPlayerSelf);
                 this.goods.push(goods);
@@ -350,12 +355,6 @@ export class Player extends Component {
             {
                 this.gameControl.updateSelfCapacity(this.currCapacity/Number(this.conf.Capacity));
                 this.gameControl.updateHold(len);
-
-                if(this.gameControl.tipNum2<3 && new Date().getTime()-cc.res.tipTime>5000)
-                {
-                    this.gameControl.tipNum2 ++;
-                    cc.res.showTips("放物品时，小心被抢");
-                }
             }
            
             var slef = this;
@@ -591,6 +590,15 @@ export class Player extends Component {
                     // cc.res.putObjByPool(node,"prefab_anim_ParLvUp");
                     node.destroy();
                 },2);
+
+                if(this.isPlayerSelf)
+                {
+                    if(this.gameControl.tipNum6<3 && new Date().getTime()-cc.res.tipTime>5000)
+                    {
+                        this.gameControl.tipNum6 ++;
+                        cc.res.showTips("你升级啦！");
+                    }
+                }
             }
         }
     }
@@ -661,6 +669,7 @@ export class Player extends Component {
         toPos.x += dir.x*0.3;
         toPos.z += dir.y*0.3;
         this.moveDir = dir;
+        this._tarDir = dir;
         this.moveSpeed *= 3;
 
         var self = this;       
@@ -677,14 +686,14 @@ export class Player extends Component {
                     self.isCanColl = true;
                 },0.5);
             },0.6);//1.7
-            self.scheduleOnce(function(){
-                self.dropGoods(player);
-            },0.4);
+            // self.scheduleOnce(function(){
+            //     self.dropGoods(player);
+            // },0.4);
         }
         else{
             var t = 0.1;
             if(player && player.lv==this.lv)
-                t = 0.4;
+                t = 0.2;
             self.scheduleOnce(function(){
                 self.isColl = false;
                 self.moveSpeed = self.delSpeed;
@@ -801,20 +810,8 @@ export class Player extends Component {
     collEnter(item){
         if(item.node.name == "player")
         {
-            // if(!this.isColl)
-            // {
-            //     this.isColl = true;
-            //     var player = item.node.getComponent(Player);
-            //     var self = this;               
-            //     var t = 0.1;
-            //     if(!player.isColl) t = 1;
-            //     self.scheduleOnce(function(){
-            //         self.isColl = false;
-            //     },t);//1.7
-            // }
-            // this._tarDir.rotate((Math.random()-0.5)*0.5);
-            // if(this.judgeColl(item))
-            //     this.collPlayer(item,0);
+            if(this.judgeColl(item))
+                this.collPlayer(item,0);
         }
         else if(this.gameControl.goodsNames.indexOf(item.node.name) != -1)
         {

@@ -173,7 +173,7 @@ export class PlayerPack extends Component {
         // if(this.tarDis<1) this.tarDis = 1;
         this.uiNodePos.setPosition(cc.v3(0,num*0.6/2,0));
 
-        this.node.setPosition(0,0,-num*0.25);
+        this.node.setPosition(0,0,-num*0.4);//-0.25
 
         var goodsSc = num*0.5;
         this.goodsNode.setScale(goodsSc,goodsSc,goodsSc);
@@ -219,18 +219,11 @@ export class PlayerPack extends Component {
             self.dropGoods(target);
          },1);
 
-         if(this.followTarget.isPlayerSelf)
-         {
-            if(this.gameControl.tipNum3<3 && new Date().getTime()-cc.res.tipTime>5000)
-            {
-                this.gameControl.tipNum3 ++;
-                cc.res.showTips("你的货品被偷啦，赶紧回身反击或者逃跑");
-            }
-         }
+         
         
         //  if(target.isPlayerSelf)
         //  {
-        //     cc.audio.playSound("audio/MusRob");
+        //     cc.audio.playSound("rob");
         //  }
 
         // this.followTarget.collPlayerPack(target);
@@ -268,6 +261,10 @@ export class PlayerPack extends Component {
             var tpos = player.follow[0].node.getWorldPosition();//this.gameControl.cashier.getPosition()
             goods.die(tpos,i*0.05+0.04,player.isPlayerSelf,player.follow[0]);
             player.addScore(Number(goods.conf.Score));
+            // if(player.isPlayerSelf)
+            // {
+            //     this.dropSound(i*1.2+0.04);
+            // }
             // player.addScoreAni(i*0.05+0.14,Number(goods.conf.Score));
             // goods.drop(player.node.getPosition(),i*0.05,this.followTarget.isPlayerSelf);
 
@@ -276,7 +273,30 @@ export class PlayerPack extends Component {
         this.playDropAni();
 
         if(this.followTarget.isPlayerSelf)
-        cc.log(dropNum,score);
+        {
+            if(this.gameControl.tipNum2<3 && new Date().getTime()-cc.res.tipTime>5000)
+            {
+                this.gameControl.tipNum2 ++;
+                cc.res.showTips("你被抢了！");
+            }
+        }
+        if(player.isPlayerSelf)
+         {
+            if(this.gameControl.tipNum3<3 && new Date().getTime()-cc.res.tipTime>5000)
+            {
+                this.gameControl.tipNum3 ++;
+                cc.res.showTips("抢的真爽！");
+            }
+
+            if(this.goodss.length<=2 && this.gameControl.tipNum4<3 && new Date().getTime()-cc.res.tipTime>5000)
+            {
+                this.gameControl.tipNum4 ++;
+                cc.res.showTips("干掉一个！");
+            }
+
+            cc.audio.playSound("rob");
+         }
+        // cc.log(dropNum,score);
 
         // var upData = this.followTarget.getPackLv(this.packLv,false);
         // if(upData.lv != this.packLv)
@@ -284,6 +304,12 @@ export class PlayerPack extends Component {
         //     this.packLv = upData.lv;
         //     this.lvUp(upData.len);
         // }
+    }
+
+    dropSound(time){
+        this.scheduleOnce(function(){
+            cc.audio.playSound("rob");
+        },time);
     }
 
     //掉落商品
@@ -305,12 +331,29 @@ export class PlayerPack extends Component {
             var tpos = this.node.getWorldPosition();//this.gameControl.cashier.getPosition()
             tpos.x += (Math.random()-0.5)*2;
             tpos.z += (Math.random()-0.5)*2;
-            goods.die2(tpos,i*0.05+0.04,this.followTarget.isPlayerSelf,this,i<8);
+            goods.die2(tpos,i*0.05+0.04,this.followTarget.isPlayerSelf,this,i<18);
+            if(i<18)
+            {
+                goods.node["isauto"] = true;
+            }
 
         }
         this.goodss.splice(0,dropNum);
         this.maxGoods = null;
         this.playDropAni();
+
+        if(this.followTarget.isPlayerSelf)
+        {
+            if(this.gameControl.tipNum5<3 && new Date().getTime()-cc.res.tipTime>5000)
+            {
+                this.gameControl.tipNum5 ++;
+                cc.res.showTips("我出局了！");
+            }
+            this.scheduleOnce(function(){
+                cc.audio.playSound("die");
+            },0.5);
+            cc.audio.playSound("dogyaoren");
+        }
     }
 
     updateMoveDir(){

@@ -71,6 +71,8 @@ export class mainControl extends Component {
             this.scheduleOnce(function(){
                 cc.sdk.videoLoad();
             },0.3);
+
+            this.startSpeedUp.uncheck();
         }
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 

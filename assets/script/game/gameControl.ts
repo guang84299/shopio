@@ -66,6 +66,9 @@ export class gameControl extends Component {
     tipNum1 = 0;
     tipNum2 = 0;
     tipNum3 = 0;
+    tipNum4 = 0;
+    tipNum5 = 0;
+    tipNum6 = 0;
     tipTime = 0;
     start () {
         // this.initGoods();
@@ -314,6 +317,15 @@ export class gameControl extends Component {
         this.gameUI.active = true;
         this.updateHold(0);
         if(cc.GAME.startSpeedUp) res.showTips("开局已加速");
+        else
+        {
+            if(this.gameMode == 1)
+            {
+                var strs = ["接触别人袋子可以抢夺!","尽快拿东西让自己变大！"];
+                res.showTips(strs[Math.floor(Math.random()*strs.length)]);
+            }
+           
+        }
     }
 
     updateSelfCapacity(pro){
@@ -336,11 +348,6 @@ export class gameControl extends Component {
             {
                 capacityIcon.getComponent(AnimationComponent).play();
                 this.isPlayCapacity = true;
-                if(this.tipNum1<3 && new Date().getTime()-res.tipTime>5000)
-                {
-                    this.tipNum1 ++;
-                    res.showTips("容量满啦，立刻松开手指");
-                }
             }
         }
         else{
