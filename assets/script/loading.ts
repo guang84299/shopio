@@ -69,6 +69,7 @@ export class loading extends Component {
             storage.setStorage(storage.vibrate,1);
         }   
         
+        cc.sdk.event("进入加载界面");
         if(window["wx"])
             this.loadSubpackage();
         else 
@@ -93,6 +94,7 @@ export class loading extends Component {
             self.subCount ++;
             if(self.subCount>=self.subTotalCount)
             {
+                cc.sdk.event("加载子包完成");
                 self.loadAllRes();
             }
             else{
@@ -251,7 +253,7 @@ export class loading extends Component {
         //this.progressTips.string = "加载中";
         //this.progressBar.node.active = true;
         //cc.loader.loadResDir("audio", this.progressCallback.bind(this), this.completeCallback2.bind(this));
-
+        cc.sdk.event("加载资源完成");
         this.loadNode.active = false;
         this.startGame();
     }

@@ -235,6 +235,7 @@ export class skin extends Component {
         // this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
         cc.sdk.showBanner();
+        cc.sdk.event("皮肤界面-打开");
     }
 
     hide(){
@@ -268,6 +269,7 @@ export class skin extends Component {
                     if(r) self.toLock();
                 });
             }
+            cc.sdk.event("皮肤界面-解锁按钮");
         }
         cc.log(data);
         cc.audio.playSound("button");

@@ -73,6 +73,7 @@ export class mainControl extends Component {
             },0.3);
 
             this.startSpeedUp.uncheck();
+            cc.sdk.event("进入主界面");
         }
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
@@ -492,14 +493,17 @@ export class mainControl extends Component {
         else if(data == "speedUp")
         {
             this.toSpeedUp();
+            cc.sdk.event("点击速度升级");
         }
         else if(data == "capacityUp")
         {
             this.toCapacityUp();
+            cc.sdk.event("点击容量升级");
         }
         else if(data == "lixianUp")
         {
             this.toLixianUp();
+            cc.sdk.event("点击离线升级");
         }
 
         cc.audio.playSound("button");

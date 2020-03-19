@@ -138,11 +138,13 @@ export const sdk = {
                 if (res && res.isEnded || res === undefined) {
                     if(self.videocallback)
                         self.videocallback(true);
+                    cc.sdk.event("视频观看成功");
                 }
                 else {
                     if(self.videocallback)
                         self.videocallback(false);
                     cc.res.showToast("视频未看完！");
+                    cc.sdk.event("视频观看失败");
                 }
                 // if(cc.myscene == "main")
                     cc.storage.playMusic(cc.res.audio_music);
@@ -188,6 +190,7 @@ export const sdk = {
                 });
             });
 
+            cc.sdk.event("视频展示");
             // if(cc.GAME.share)
             //    this.share(callback,"prop");
             // else
@@ -216,6 +219,7 @@ export const sdk = {
             //         return;
             // }
 
+            cc.sdk.event("banner展示");
             if(this.bannerAd && this.bannerNum<5)
             {
                 this.bannerNum ++;
@@ -588,5 +592,9 @@ export const sdk = {
         {
             wx.openCustomerServiceConversation({});
         }
+    },
+
+    event: function(name){
+        cc.qianqista.event(name);
     }
 }

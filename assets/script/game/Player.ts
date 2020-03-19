@@ -14,6 +14,7 @@ export class Player extends Component {
     public isCanColl = true;
     public isExcColl = false;
     public isExcColl2 = false;
+    public isBorn = false;
     protected delSpeed = 2.5;
     protected moveSpeed = 2.5;
     protected _tarDir = cc.v2(0,1);
@@ -249,6 +250,12 @@ export class Player extends Component {
         this.node.setPosition(cc.v3(p.x,0,p.y));
         this.isPause = false;
         this.idle();
+        this.isBorn = true;
+
+        var self = this;
+        this.scheduleOnce(function(){
+            self.isBorn = false;
+        },3) ;
     }
 
     updateDir(dir){

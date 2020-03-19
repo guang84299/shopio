@@ -26,13 +26,15 @@ export class Dog extends Component {
     judgeattackTime = 3;
     moveSpeed = 2;
 
+    bornTime = 4;
+
     roadList = [];
     pathIndex = 0;
 
     aiDt = 0;
     lookDt = 0;
 
-    conf = {wander:50,attack:50};
+    conf = {wander:50,attack:40};
 
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -97,7 +99,7 @@ export class Dog extends Component {
         for(var i=0;i<plas.length;i++)
         {
             var pla = plas[i];
-            if(!pla.isColl)
+            if(!pla.isColl && !pla.isBorn)
             {
                 var p2 = pla.node.getWorldPosition();
                 var dis = cc.Vec2.distance(cc.v2(p.x,p.z),cc.v2(p2.x,p2.z));
@@ -166,7 +168,7 @@ export class Dog extends Component {
                     if(this.gameControl.tipNum1<3 && new Date().getTime()-cc.res.tipTime>5000)
                     {
                         this.gameControl.tipNum1 ++;
-                        cc.res.showTips("注意恶犬！");
+                        cc.res.showTips("恶犬靠近！注意躲避！");
                     }
                     cc.audio.playSound("dogzhuiren");
                 }
@@ -282,9 +284,10 @@ export class Dog extends Component {
 
     lateUpdate(dt: number){
         if(!this.gameControl.isStart) return;
-       
+        
+        this.bornTime -= dt;
         this.aiDt += dt;
-        if(this.aiDt > 0.1)
+        if(this.aiDt > 0.1 && this.bornTime<0)
         {
             this.aiDt = 0;
             this.ai();

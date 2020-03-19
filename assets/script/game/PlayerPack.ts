@@ -277,7 +277,7 @@ export class PlayerPack extends Component {
             if(this.gameControl.tipNum2<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum2 ++;
-                cc.res.showTips("你被抢了！");
+                cc.res.showTips("你被偷了！:(");
             }
         }
         if(player.isPlayerSelf)
@@ -285,7 +285,7 @@ export class PlayerPack extends Component {
             if(this.gameControl.tipNum3<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum3 ++;
-                cc.res.showTips("抢的真爽！");
+                cc.res.showTips("偷的好爽！:)");
             }
 
             if(this.goodss.length<=2 && this.gameControl.tipNum4<3 && new Date().getTime()-cc.res.tipTime>5000)

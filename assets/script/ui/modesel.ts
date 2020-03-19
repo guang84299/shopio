@@ -66,11 +66,13 @@ export class modesel extends Component {
         {
             cc.storage.setStorage(cc.storage.mode,1);
             this.updateMode();
+            cc.sdk.event("模式界面-打开经典模式");
         }
         else if(data == "mode2")
         {
             cc.storage.setStorage(cc.storage.mode,2);
             this.updateMode();
+            cc.sdk.event("模式界面-打开单人模式");
         }
         cc.log(data);
         cc.audio.playSound("button");

@@ -25,6 +25,8 @@ export class starup extends Component {
         this.starlvLabel.string = starlv;
 
         cc.res.setSpriteFrame("images/starup/ImgLv"+starlv+"/spriteFrame",this.starlvname);
+
+        cc.sdk.event("升星-"+starlv);
     }
 
     updateUI(){

@@ -107,6 +107,7 @@ export class gameControl extends Component {
         // this.gameTime = 18;
 
         cc.audio.playMusic(cc.res.audio_music);
+        cc.sdk.event("开始游戏-"+( this.gameMode == 1 ? "经典模式" : "单人模式"));
     }
 
     updatePro(){
@@ -307,6 +308,8 @@ export class gameControl extends Component {
         var dogSc = dog.getComponent(Dog);
         dogSc.initConf(this.dogs.length);
         this.dogs.push(dogSc);
+
+        if(this.dogs.length == 2) res.showTips("注意恶犬出现！");
     }
 
     startCountDown(){
@@ -321,7 +324,7 @@ export class gameControl extends Component {
         {
             if(this.gameMode == 1)
             {
-                var strs = ["接触别人袋子可以抢夺!","尽快拿东西让自己变大！"];
+                var strs = ["接触别人袋子可以偷东西!","尽快拿东西让自己变大！"];
                 res.showTips(strs[Math.floor(Math.random()*strs.length)]);
             }
            

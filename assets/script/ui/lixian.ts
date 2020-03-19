@@ -94,6 +94,7 @@ export class lixian extends Component {
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
 
         cc.sdk.showBanner();
+        cc.sdk.event("离线界面-打开");
     }
 
     hide(){
@@ -126,7 +127,7 @@ export class lixian extends Component {
                     if(r) self.liangqu(true);
                 });
             }
-           
+            cc.sdk.event("离线界面-2倍领取");
         }
         cc.audio.playSound("button");
     }
