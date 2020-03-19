@@ -127,7 +127,12 @@ export const sdk = {
         var self = this;
         if(window["wx"])
         {
-            this.rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId:'adunit-f82cfca77c68b3d0'});
+            var vedioId = "adunit-f82cfca77c68b3d0";
+            if(window["qq"])
+            {
+                vedioId = "559b9cf470defd966316bb953ae8f0f7";
+            }
+            this.rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId:vedioId});
             this.rewardedVideoAd.onLoad(function(){
                 cc.GAME.hasVideo = true;
                 console.log('激励视频 广告加载成功')
@@ -166,7 +171,7 @@ export const sdk = {
             this.interstitialAd = null;
 
             // 创建插屏广告实例，提前初始化
-            if (wx.createInterstitialAd){
+            if (wx.createInterstitialAd && !window["qq"] ){
                 this.interstitialAd = wx.createInterstitialAd({
                     adUnitId: 'adunit-208a14c8625961a8'
                 });
@@ -218,6 +223,8 @@ export const sdk = {
             //     if(now - this.bannerTime<2000)
             //         return;
             // }
+            var bannerId = "adunit-948f2698c0f7e103";
+            if(window["qq"]) bannerId = "604ff7061d3891f9a2b48afe33dc9ebd";
 
             cc.sdk.event("banner展示");
             if(this.bannerAd && this.bannerNum<5)
@@ -252,7 +259,7 @@ export const sdk = {
             }
 
             this.bannerAd = wx.createBannerAd({
-                adUnitId: 'adunit-948f2698c0f7e103',
+                adUnitId: bannerId,
                 style: {
                     left: 0,
                     top: s.height/dpi-300/3.5,

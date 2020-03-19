@@ -391,11 +391,13 @@ export const qianqista = {
         var self = this;
         if(window["wx"])
         {
+            var funname = "jscode2session";
+            if(window["qq"]) funname = "jscode2sessionqq";
             wx.login({
                 success: function(res)
                 {
                     console.log('login:', res);
-                    self.sendRequest("jscode2session",{gameId:self.gameId,gameSecret:self.secret,jsCode:res.code},function(r){
+                    self.sendRequest(funname,{gameId:self.gameId,gameSecret:self.secret,jsCode:res.code},function(r){
                         if(r.state == 200)
                         {
                             var msg = JSON.parse(r.msg);
@@ -425,7 +427,10 @@ export const qianqista = {
             var self = this;
             if(window["wx"])
             {
-                self.httpPost("groupid",{encryptedData:encryptedData,sessionkey:self.session_key,iv:iv},function(r){
+                var funname = "groupid";
+                if(window["qq"]) funname = "groupidqq";
+
+                self.httpPost(funname,{encryptedData:encryptedData,sessionkey:self.session_key,iv:iv},function(r){
                     if(r.state == 200)
                     {
                         var msg = r.data;

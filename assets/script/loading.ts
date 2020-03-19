@@ -51,7 +51,21 @@ export class loading extends Component {
         
                  
         var self = this;
-        qianqista.init("wx83aa5365b3b6f2be","c2cbe456f71cb7e9826b2527284cf5a9","疯狂购物3D-微信",function(){
+        var appkey = "wx83aa5365b3b6f2be";
+        var appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
+        var appname = "疯狂购物3D-微信";
+        if(window["qq"])
+        {
+            appkey = "1110216465";
+            appsecret = "c4HIDQY9Jfd777pI";
+            appname = "疯狂购物3D-QQ";
+        }
+        else if(window["wx"]){
+            appkey = "wx83aa5365b3b6f2be";
+            appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
+            appname = "疯狂购物3D-微信";
+        }
+        qianqista.init(appkey,appsecret,appname,function(){
             // var score = storage.getStorage(storage.lv);
             // sdk.uploadScore(score,self.initNet.bind(self));
             self.initNet();
