@@ -9,10 +9,10 @@
   "_techIdx": 0,
   "_defines": [
     {
-      "USE_SKINNING": true
+      "USE_SKINNING": 2
     },
     {
-      "USE_SKINNING": true
+      "USE_SKINNING": 2
     }
   ],
   "_states": [
@@ -39,10 +39,10 @@
     {
       "mainColor": {
         "__type__": "cc.Color",
-        "r": 56,
-        "g": 53,
-        "b": 30,
-        "a": 123
+        "r": 73,
+        "g": 73,
+        "b": 73,
+        "a": 193
       },
       "alphaThreshold": 0.1
     },

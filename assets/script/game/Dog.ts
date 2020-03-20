@@ -153,14 +153,14 @@ export class Dog extends Component {
         }
 
         //判断攻击
-        if(this.state != "attack" && this.judgeattackTime > 0.2)
+        if(this.state != "attack" && this.judgeattackTime > 0.3)
         {
             this.judgeattackTime = 0;
             this.look();
             if(this.tarPlayer && Math.random()*100 <= this.conf.attack)
             {
                 this.state = "attack";
-                this.attackTime = 3;
+                this.attackTime = 1.5;
                 this.isExcColl = true;
 
                 if(this.tarPlayer.isPlayerSelf)
@@ -171,6 +171,7 @@ export class Dog extends Component {
                         cc.res.showTips("恶犬靠近！注意躲避！");
                     }
                     cc.audio.playSound("dogzhuiren");
+                    this.gameControl.updateRed();
                 }
                 
             }

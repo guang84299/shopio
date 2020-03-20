@@ -11,7 +11,7 @@ CCEffect %{
         depthWrite: true
       blendState:
         targets:
-        - blend: true
+        - blend: false
           blendSrc: src_alpha
           blendDst: one
           blendSrcAlpha: src_alpha

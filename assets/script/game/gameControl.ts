@@ -61,6 +61,7 @@ export class gameControl extends Component {
     //ani
     isPlayCapacity = false;
     isPlayHurt = false;
+    isPlayRed = false;
 
     // tips num
     tipNum1 = 0;
@@ -363,6 +364,22 @@ export class gameControl extends Component {
         }
     }
 
+    updateRed(){
+        if(!this.isPlayRed)
+        {
+            var anim = cc.find("red",this.gameUI).getComponent(AnimationComponent);
+            anim.node.active = true;
+            anim.play();
+            var self = this;
+            this.isPlayRed = true;
+            this.scheduleOnce(function(){
+                self.isPlayRed = false;
+                anim.node.active = false;
+                anim.stop();
+            },1.8);
+        }
+    }
+
     updateHold(num){
         if(this.gameMode == 1) return;
         this.holdGoodsNum += num;
@@ -504,6 +521,11 @@ export class gameControl extends Component {
                 if(this.addDogDt>5)
                 {
                     this.addDogDt = 0;
+                    if(cc.GAME.isNewUser)
+                    {
+                        if(this.gameTime<90) this.addDog();
+                    }
+                    else
                     this.addDog();
                 }
             }

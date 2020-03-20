@@ -166,7 +166,7 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "4bad87dd-04a2-4f93-b203-a89f845c8ef1"
+        "__uuid__": "b1d88690-29a7-4a44-a899-cb5290024ea5"
       }
     ],
     "_visFlags": 0,
@@ -2080,7 +2080,9 @@
         "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@989ed"
       }
     ],
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@1f586"
+    },
     "_sockets": [],
     "_id": ""
   },

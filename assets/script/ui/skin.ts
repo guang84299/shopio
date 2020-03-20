@@ -30,7 +30,9 @@ export class skin extends Component {
 
     isNeedScoll = false;
     skinid = 0;
+    ballid = 0;
     hasskin = [];
+    hasball = [];
     currScollIndex = 1;
 
     useShare = false;
@@ -39,38 +41,64 @@ export class skin extends Component {
         {id:1,type:1,desc:"明天再玩"},
         {id:2,type:2,desc:"连续登陆7天"},
         {id:3,type:1,desc:"经典模式争取第一"},
+        {id:3,type:3,desc:"看视频获得"},
         {id:4,type:1,desc:"经典模式得分2000"},
+        {id:1,type:3,desc:"看视频获得"},
         {id:5,type:1,desc:"经典模式得分2500"},
         {id:6,type:2,desc:"3次经典模式获得最高分奖杯"},
         {id:7,type:1,desc:"达到白金级"},
         {id:8,type:1,desc:"达到钻石级"},
+        {id:2,type:3,desc:"看视频获得"},
         {id:9,type:1,desc:"达到大师级"},
+        {id:4,type:3,desc:"看视频获得"},
         {id:10,type:1,desc:"达到星耀级"}
-    ];
+    ];//type==3 包裹皮肤
     
     start () {
         this.skinid = storage.getStorage(storage.skinid);
         this.hasskin = storage.getStorage(storage.hasskin);
         if(!this.hasskin) this.hasskin = [];
 
+        this.ballid = storage.getStorage(storage.ballid);
+        this.hasball = storage.getStorage(storage.hasball);
+        if(!this.hasball) this.hasball = [];
+
         for(var i=0;i<this.itemConfig.length;i++)
         {
+            var cid = this.itemConfig[i].id;
             var item = cc.instantiate(this.item);
             item.active = true;
             var sel = cc.find("sel",item);
             var lock = cc.find("lock",item);
             var mode = cc.find("mode",item);
-            cc.res.setSpriteFrame("images/skin/ImgSkin"+(i+1)+"/spriteFrame",mode);
             lock.active = true;
-            if(storage.indexOf(this.hasskin,i+1) != -1)  lock.active = false;
-            if(i+1 == this.skinid)
+            if(this.itemConfig[i].type == 3)
             {
-                sel.active = true;
+                mode.setScale(1.5,1.5,1.5);
+                cc.res.setSpriteFrame("images/skin/ball"+cid+"/spriteFrame",mode);
+                if(storage.indexOf(this.hasball,cid) != -1)  lock.active = false;
+                if(cid == this.ballid)
+                {
+                    sel.active = true;
+                }
+                else
+                {
+                    sel.active = false;
+                }
             }
-            else
-            {
-                sel.active = false;
+            else{
+                cc.res.setSpriteFrame("images/skin/ImgSkin"+cid+"/spriteFrame",mode);
+                if(storage.indexOf(this.hasskin,cid) != -1)  lock.active = false;
+                if(cid == this.skinid)
+                {
+                    sel.active = true;
+                }
+                else
+                {
+                    sel.active = false;
+                }
             }
+           
 
             this.listNode.addChild(item);
         }
@@ -116,92 +144,167 @@ export class skin extends Component {
 
         this.currScollIndex = index+1;
         
-        if(this.itemConfig[index].type == 1) this.pro.node.active = false;
+        if(this.itemConfig[index].type == 1 || this.itemConfig[index].type == 3) this.pro.node.active = false;
         else this.pro.node.active = true;
 
         var id = this.itemConfig[index].id;
-        if(id == 1) 
+        if(this.itemConfig[index].type == 3)
         {
             this.protitleLabel.string = "";
+            if(storage.indexOf(this.hasball,id) != -1)
+            {
+                this.btnSel.node.active = true;
+                this.btnLock.node.active = false;
+                this.protitleLabel.string = "已获得";
+            }
+            else{
+                this.btnSel.node.active = false;
+                this.btnLock.node.active = true;
+                this.updateAd();
+            }
         }
-        else if(id == 2) 
+        else
         {
-            var loginday = storage.getStorage(storage.loginday);
-            this.protitleLabel.string = loginday+"/7";
-            this.pro.progress = loginday/7;
-        }
-        else if(id == 3) 
-        {
-            this.protitleLabel.string = "";
-        }
-        else if(id == 4) 
-        {
-            var maxscore = storage.getStorage(storage.maxscore);
-            this.protitleLabel.string = maxscore+"/2000";
-            this.pro.progress = maxscore/2000;
-        }
-        else if(id == 5) 
-        {
-            var maxscore = storage.getStorage(storage.maxscore);
-            this.protitleLabel.string = maxscore+"/2500";
-            this.pro.progress = maxscore/2500;
-        }
-        else if(id == 6) 
-        {
-            var modewinnum = storage.getStorage(storage.modewinnum);
-            this.protitleLabel.string = modewinnum+"/3";
-            this.pro.progress = modewinnum/3;
-        }
-        else if(id == 7 || id == 8 || id == 9 || id == 10) 
-        {
-            var starlv = storage.getStorage(storage.starlv);
-            this.protitleLabel.string = "当前："+cc.res.loads["conf_starlv"][starlv-1].name;
-        }
+            if(id == 1) 
+            {
+                this.protitleLabel.string = "";
+            }
+            else if(id == 2) 
+            {
+                var loginday = storage.getStorage(storage.loginday);
+                this.protitleLabel.string = loginday+"/7";
+                this.pro.progress = loginday/7;
+            }
+            else if(id == 3) 
+            {
+                this.protitleLabel.string = "";
+            }
+            else if(id == 4) 
+            {
+                var maxscore = storage.getStorage(storage.maxscore);
+                this.protitleLabel.string = maxscore+"/2000";
+                this.pro.progress = maxscore/2000;
+            }
+            else if(id == 5) 
+            {
+                var maxscore = storage.getStorage(storage.maxscore);
+                this.protitleLabel.string = maxscore+"/2500";
+                this.pro.progress = maxscore/2500;
+            }
+            else if(id == 6) 
+            {
+                var modewinnum = storage.getStorage(storage.modewinnum);
+                this.protitleLabel.string = modewinnum+"/3";
+                this.pro.progress = modewinnum/3;
+            }
+            else if(id == 7 || id == 8 || id == 9 || id == 10) 
+            {
+                var starlv = storage.getStorage(storage.starlv);
+                this.protitleLabel.string = "当前："+cc.res.loads["conf_starlv"][starlv-1].name;
+            }
 
-        if(storage.indexOf(this.hasskin,this.currScollIndex) != -1)
-        {
-            this.btnSel.node.active = true;
-            this.btnLock.node.active = false;
-            this.protitleLabel.string = "已获得";
+            if(storage.indexOf(this.hasskin,id) != -1)
+            {
+                this.btnSel.node.active = true;
+                this.btnLock.node.active = false;
+                this.protitleLabel.string = "已获得";
+            }
+            else{
+                this.btnSel.node.active = false;
+                this.btnLock.node.active = true;
+                this.updateAd();
+            }
         }
-        else{
-            this.btnSel.node.active = false;
-            this.btnLock.node.active = true;
-            this.updateAd();
-        }
+        
        cc.log(index);
     }
 
     toSel(){
-        if(this.currScollIndex != this.skinid)
+        var index = this.currScollIndex-1;
+        if(index<0) index = 0;
+        if(index>=this.itemConfig.length) index = this.itemConfig.length-1;
+
+        var type = this.itemConfig[index].type;
+        var id = this.itemConfig[index].id;
+
+        if(type == 3)
         {
-            //关闭原来的
-            if(this.skinid>0)
+            if(id != this.ballid)
             {
-                var item = this.listNode.children[this.skinid-1];
-                cc.find("sel",item).active = false;
+                //关闭原来的
+                if(this.ballid>0)
+                {
+                    //找到原来的关闭
+                    for(var i=0;i<this.itemConfig.length;i++)
+                    {
+                        if(this.itemConfig[i].type == 3 && this.itemConfig[i].id == this.ballid)
+                        {
+                            var item = this.listNode.children[i];
+                            cc.find("sel",item).active = false;
+                        }
+                    }
+                }
+            
+                var item = this.listNode.children[index];
+                var sel = cc.find("sel",item);
+                sel.active = true;
+
+                this.ballid = id;
+                storage.setStorage(storage.ballid,this.ballid);
+                // this.mainControl.updateSkin();
             }
-           
-            var item = this.listNode.children[this.currScollIndex-1];
-            var sel = cc.find("sel",item);
-            sel.active = true;
-
-            this.skinid = this.currScollIndex;
-            storage.setStorage(storage.skinid,this.skinid);
-
-            this.mainControl.updateSkin();
         }
+        else
+        {
+            if(id != this.skinid)
+            {
+                //关闭原来的
+                if(this.skinid>0)
+                {
+                    //找到原来的关闭
+                    for(var i=0;i<this.itemConfig.length;i++)
+                    {
+                        if(this.itemConfig[i].type != 3 && this.itemConfig[i].id == this.skinid)
+                        {
+                            var item = this.listNode.children[i];
+                            cc.find("sel",item).active = false;
+                        }
+                    }
+                }
+            
+                var item = this.listNode.children[index];
+                var sel = cc.find("sel",item);
+                sel.active = true;
 
+                this.skinid = id;
+                storage.setStorage(storage.skinid,this.skinid);
+                this.mainControl.updateSkin();
+            }
+        }
     }
 
     toLock(){
-        this.hasskin.push(this.currScollIndex);
-        storage.setStorage(storage.hasskin,this.hasskin);
-        storage.uploadStorage(storage.hasskin);
+        var index = this.currScollIndex-1;
+        if(index<0) index = 0;
+        if(index>=this.itemConfig.length) index = this.itemConfig.length-1;
 
-        var item = this.listNode.children[this.currScollIndex-1];
-        cc.find("lock",item).active = false;
-
+        var type = this.itemConfig[index].type;
+        var id = this.itemConfig[index].id;
+        if(type != 3)
+        {
+            this.hasskin.push(id);
+            storage.setStorage(storage.hasskin,this.hasskin);
+            storage.uploadStorage(storage.hasskin);
+        }
+        else
+        {
+            this.hasball.push(id);
+            storage.setStorage(storage.hasball,this.hasball);
+            storage.uploadStorage(storage.hasball);
+        }
+        
+        var item = this.listNode.children[index];
+         cc.find("lock",item).active = false;
         this.updateSel(this.currScollIndex-1);
     }
 

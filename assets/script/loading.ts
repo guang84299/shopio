@@ -13,6 +13,7 @@ cc.qianqista = qianqista;
 cc.audio = audio;
 cc.GAME = {};
 cc.GAME.judgeLixian = true;
+cc.GAME.isNewUser = false;
 
 @ccclass("loading")
 export class loading extends Component {
@@ -488,8 +489,7 @@ cc.log(url,resource);
         }
         else
         {
-           
-           
+            cc.GAME.isNewUser = true;
         }
     }
     // update (deltaTime: number) {
