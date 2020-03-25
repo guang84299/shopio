@@ -40,6 +40,8 @@ export class PlayerPack extends Component {
     scoreAniNum = 0;
 
     aniTime = 0;
+
+    dropSpeed = [0.5,0.5,0.25,0.25,0.166,0.166,0.125,0.125,0.125,0.125,0.125,0.125];
     
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -226,6 +228,8 @@ export class PlayerPack extends Component {
         }
         // var anisc = this.node.getComponent(ani);
 
+        var time = this.dropSpeed[target.lv-1];
+        // target.lv
         self.scheduleOnce(function(){
             // anisc.moveTo(t1,toPos,function(){
             //     self.scheduleOnce(function(){
@@ -234,7 +238,7 @@ export class PlayerPack extends Component {
             // });
             self.isColl = false;
             self.dropGoods(target);
-         },1);
+         },time);
 
          
         
@@ -250,16 +254,16 @@ export class PlayerPack extends Component {
     //掉落商品
     dropGoods(player)
     {
-        var dropNum = 5; //Math.floor(this.goodss.length/2);
-        if(player.lv>=this.followTarget.lv)
-        {
-            dropNum += player.lv-this.followTarget.lv;
-            if(dropNum>8) dropNum = 8;
-        }
-        else{
-            dropNum = 2;
-            if(Math.abs(player.lv-this.followTarget.lv)<4) dropNum = 1;
-        }
+        var dropNum = 1; //Math.floor(this.goodss.length/2);
+        // if(player.lv>=this.followTarget.lv)
+        // {
+        //     dropNum += player.lv-this.followTarget.lv;
+        //     if(dropNum>8) dropNum = 8;
+        // }
+        // else{
+        //     dropNum = 2;
+        //     if(Math.abs(player.lv-this.followTarget.lv)<4) dropNum = 1;
+        // }
         if(dropNum>this.goodss.length) dropNum = this.goodss.length;
         var score = 0;
         for(var i=0;i<dropNum;i++)

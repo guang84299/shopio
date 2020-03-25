@@ -260,7 +260,7 @@ export class gameControl extends Component {
             
             // pps.splice(pindex,1);
        }
-       pps.splice(0,robotNum);
+       pps = [cc.v2(12.7,-1.1),cc.v2(0,10.7),cc.v2(-16.4,14.75),cc.v2(-2.6,-6.6)];
        var p = pps[Math.floor(Math.random()*pps.length)];
        this.playerSc.node.setPosition(cc.v3(p.x,0,p.y));
        this.playerSc.addFollowPlayer();
@@ -490,7 +490,7 @@ export class gameControl extends Component {
         else res.openUI("jiesuan2");
 
         cc.audio.playSound("result");
-        $SF.Ga.onGameEnd({score: this.playerSc.currScore,level: this.gameMode,win: this.gameRank},function(){});
+        $SF.Ga.onGameEnd({score: this.playerSc.currScore,win: this.gameRank},function(){});
     }
 
     tofuhuo(){

@@ -681,8 +681,8 @@ export class Player extends Component {
         this._tarDir = dir;
         this.moveSpeed *= 3;
 
-        var self = this;       
         this.updateDir(cc.v2(-dir.x,-dir.y));
+        var self = this;       
 
         var player = item.node.getComponent(Player);
         if(player && player.lv>this.lv)
@@ -751,7 +751,7 @@ export class Player extends Component {
 
     //加速
     speedUp(){
-        if(!this.isCanColl) return;
+        if(!this.isCanColl || !this.node) return;
         this.isCanColl = false;
         this.isExcColl = true;
         this.moveSpeed *= 5;
