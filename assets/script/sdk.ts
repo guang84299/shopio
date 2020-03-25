@@ -5,6 +5,7 @@ import { storage } from "./storage";
 
 export const sdk = {
     bannerNum:0,
+    isBannerShow: false,
     is_iphonex: function()
     {
         if(!this._initiphonex)
@@ -227,12 +228,19 @@ export const sdk = {
             if(window["qq"]) bannerId = "604ff7061d3891f9a2b48afe33dc9ebd";
 
             cc.sdk.event("banner展示");
+
+            if(this.isBannerShow) return;
+
             if(this.bannerAd && this.bannerNum<5)
             {
                 this.bannerNum ++;
+                this.isBannerShow = true;
                 this.bannerAd.show();
                 return;
             }
+            if(this.bannerAd) this.bannerAd.destroy();
+            this.bannerNum = 1;
+            this.isBannerShow = true;
 
             // this.hideBanner();
 
@@ -241,6 +249,7 @@ export const sdk = {
             var dpi = cc.winSize.width/s.width;
 
             var w = s.width;
+            var self = this;
 
             var isMoveAd = true;
             if(cc.GAME.adCheck && !this.is_iphonex())
@@ -288,6 +297,11 @@ export const sdk = {
                 {
                     bannerAd.style.top = s.height+20;
                 }
+
+                if(!self.isBannerShow)
+                {
+                    self.hideBanner();
+                }
             });
             this.bannerAd.onError(function(res){
                 console.error(res);
@@ -307,6 +321,7 @@ export const sdk = {
                 this.bannerAd.hide();
                 // this.bannerAd = null;
             }
+            this.isBannerShow = false;
 
         }
     },

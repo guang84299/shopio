@@ -5,10 +5,10 @@
   "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6",
   "files": [],
   "subMetas": {
-    "c7d64": {
+    "f8566": {
       "ver": "1.0.8",
       "importer": "gltf-mesh",
-      "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@c7d64",
+      "uuid": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@f8566",
       "imported": true,
       "files": [
         ".json",
@@ -19,8 +19,8 @@
         "gltfIndex": 0
       },
       "displayName": "",
-      "id": "c7d64",
-      "name": "dog2.mesh"
+      "id": "f8566",
+      "name": "dog003.mesh"
     },
     "cf5ee": {
       "ver": "1.0.13",
@@ -191,7 +191,7 @@
     "animationImportSettings": [
       {
         "name": "Take 001",
-        "duration": 6.333333492279053,
+        "duration": 6.166666507720947,
         "fps": 30,
         "splits": [
           {
@@ -215,7 +215,7 @@
     "redirect": "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@dc533",
     "assetFinder": {
       "meshes": [
-        "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@c7d64"
+        "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@f8566"
       ],
       "skeletons": [
         "f8ca79eb-a517-49a8-8cc9-e09154ca6eb6@438fe"

@@ -38,6 +38,8 @@ export class PlayerPack extends Component {
     packLv = 1;
 
     scoreAniNum = 0;
+
+    aniTime = 0;
     
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -102,7 +104,9 @@ export class PlayerPack extends Component {
         {
             var good = this.goodss[i];
             // cc.log(i,good);
-            good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*0.5-0.3,(Math.random()-0.5)*0.5));
+            var spre = 0.5;
+            if(good.gBoxColl.height>0.5) spre = 0.8;
+            good.node.setPosition(cc.v3((Math.random()-0.5)*0.5,0.1*(h-(n%4))+good.gBoxColl.height*spre-0.3,(Math.random()-0.5)*0.5));
             n++;
             if(n>12) 
             {
@@ -124,6 +128,8 @@ export class PlayerPack extends Component {
 
     //新增分数动画
     addScoreAni(score){
+        if(this.aniTime>0) return;
+        this.aniTime = 1;
         var node = cc.res.getObjByPool("prefab_ui_score");
         node.parent = this.uiNode;
         node.setPosition(cc.v3(0,40+this.scoreAniNum*10,0));
@@ -132,6 +138,7 @@ export class PlayerPack extends Component {
         if(score<20) node.getComponent(AnimationComponent).play("score1");
         else  node.getComponent(AnimationComponent).play("score2");
         this.scoreAniNum ++;
+        if( this.scoreAniNum>5)  this.scoreAniNum = 0;
         // var anisc = node.getComponent(ani);
         // anisc.moveTo(1.0,cc.v3(0,200,0));
         // anisc.scaleTo(1.0,cc.v3(0.5,0.5,0.5),function(){
@@ -305,6 +312,7 @@ export class PlayerPack extends Component {
             }
 
             cc.audio.playSound("rob");
+            cc.sdk.vibrate(true);
          }
         // cc.log(dropNum,score);
 
@@ -452,6 +460,7 @@ export class PlayerPack extends Component {
         if(this.gameControl.isStart)
         {
             this.upDirDt += deltaTime;
+            this.aniTime -= deltaTime;
             if(this.upDirDt>=0.1)
             {
                 this.upDirDt = 0;

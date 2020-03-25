@@ -245,7 +245,7 @@ export class Player extends Component {
     }
 
     fuhuo(){
-        var pps = [cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
+        var pps = [cc.v2(17.2,-3),cc.v2(-0.5,9.4),cc.v2(-12,15),cc.v2(0,-10),cc.v2(14.7,9.2),cc.v2(-15.8,-8.3),cc.v2(-0.0,2.7)];
         var p = pps[ Math.floor(Math.random()*pps.length)];
         this.node.setPosition(cc.v3(p.x,0,p.y));
         this.isPause = false;
@@ -276,8 +276,8 @@ export class Player extends Component {
             {
                 if(!goods.node["isauto"])
                 {
-                    var autogoods = cc.instantiate(goods.node);
-                    this.gameControl.holdGoods.push(autogoods);
+                    // var autogoods = cc.instantiate(goods.node);
+                    this.gameControl.holdGoods.push({node:goods.node,data:{goodsId:goods.goodsId,collPos:goods.collPos,delPos:goods.delPos,delRoa:goods.delRoa}});
                 }
                 
 
@@ -291,6 +291,7 @@ export class Player extends Component {
                 var rlen = Math.round(this.goods.length/8);
                 goods.node.setPosition(cc.v3(Math.random()*0.2*rlen*l,Math.random()*0.2*rlen*l,Math.random()*0.2*rlen*l));
                 goods.node.parent = this.hands[handIndex];
+                if(this.goods.length>2) this.goods[this.goods.length-1].node.active = false;
 
                 if(this.isRobot)
                 {
@@ -345,6 +346,7 @@ export class Player extends Component {
             for(var i=0;i<len;i++)
             {
                 var goods = this.goods.pop();
+                goods.node.active = true;
                 this.currCapacity -= Number(goods.conf.Capacity);
     
                 this.addScore(Number(goods.conf.Score));
@@ -371,7 +373,7 @@ export class Player extends Component {
                 if(slef.goods.length==0)slef.idle();
             },0.5);
 
-            if(len>0) this.showEmoji("post");
+            // if(len>0) this.showEmoji("post");
         }
         else{
             // if(this.state != "post")

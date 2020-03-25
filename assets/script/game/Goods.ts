@@ -13,6 +13,8 @@ export class Goods extends Component {
     gBoxColl = null;
     conf = {Require:"1",Score:"1",Capacity:"1",CapacityAdd:"0"};
     collPos = null;
+    delPos = null;
+    delRoa = null;
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.gBoxColl = this.node.getComponent(GBoxColl);
@@ -23,6 +25,9 @@ export class Goods extends Component {
         this.collPos = collPos;
         var obj = cc.res.loads["conf_goods"][goodsId-1];
         this.conf = JSON.parse(JSON.stringify(obj));
+
+        this.delPos = this.node.getWorldPosition();
+        this.delRoa = this.node.getWorldRotation();
     }
 
     drop(toP,delyTime,isPlayerSelf){
@@ -196,7 +201,7 @@ export class Goods extends Component {
         return lv >= Number(this.conf.Require);
     }
 
-    resetState(){
+    resetState(delPos,delRoa){
         if(this.collPos)
         {
             for(var i=0;i<this.collPos.length;i++)
@@ -204,7 +209,15 @@ export class Goods extends Component {
                 var p = config.converToNodePos(cc.v2(this.collPos[i].x,this.collPos[i].z));
                 config.astarmap[p.y][p.x] = 0;
             }
-        }    
+        }   
+        this.delPos = delPos;
+        this.delRoa = delRoa;
+        this.node.setWorldPosition(this.delPos.clone());
+        this.node.setWorldRotation(this.delRoa.clone()); 
+        this.state = "idle";
+        if(!this.gBoxColl)
+        this.gBoxColl = this.node.getComponent(GBoxColl);
+        this.gBoxColl.enable(true);
     }
     // update (deltaTime: number) {
     //     // Your update function goes here.

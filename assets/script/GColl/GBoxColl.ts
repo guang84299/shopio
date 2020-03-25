@@ -48,6 +48,8 @@ export class GBoxColl extends Component {
 
     lastAstarP = null;
 
+    upDt = 2;
+
     start () {
         this.collDis = GCollControl.ins.collMindis;
         var mesh = this.findMesh(this.node);
@@ -204,10 +206,10 @@ export class GBoxColl extends Component {
         var p = this.node.getPosition();
         p.x += dt*v.x;
         p.z += dt*v.y;
-        if(p.x>14) p.x = 14;
-        if(p.x<-14) p.x = -14;
-        if(p.z>7.5) p.z = 7.5;
-        if(p.z<-7.5) p.z = -7.5;
+        if(p.x>50) p.x = 50;
+        if(p.x<-50) p.x = -50;
+        if(p.z>40) p.z =40;
+        if(p.z<-40) p.z = -40;
         return p;
     }
 
@@ -217,10 +219,10 @@ export class GBoxColl extends Component {
         var p = this.node.getPosition();
         p.x += dt*v.x;
         p.z += dt*v.y;
-        if(p.x>13.5) p.x = 13.5;
-        if(p.x<-13.5) p.x = -13.5;
-        if(p.z>7) p.z = 7;
-        if(p.z<-7) p.z = -7;
+        if(p.x>50) p.x = 50;
+        if(p.x<-50) p.x = -50;
+        if(p.z>40) p.z = 40;
+        if(p.z<-40) p.z = -40;
         return p;
     }
 
@@ -751,6 +753,17 @@ export class GBoxColl extends Component {
     }
 
     update (dt: number) {
+        if(this.isStatic)
+        {
+            this.upDt += dt;
+            if(this.upDt<0.5) return;
+            else this.upDt = 0;
+        }
+        else{
+            this.upDt += dt;
+            if(this.upDt<0.1) return;
+            else this.upDt = 0;
+        }
         var p = this.node.getPosition();
         var key = Math.round(p.x)+"_"+Math.round(p.z);
         if(!GCollControl.ins.maps[key])  GCollControl.ins.maps[key] = [];

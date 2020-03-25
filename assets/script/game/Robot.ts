@@ -37,7 +37,7 @@ export class Robot extends Player {
     findRoad(tarPoint){
        
         var p = cc.v3(this.node.getPosition());
-        cc.log("tarPoint",tarPoint);
+        cc.log("tarPoint",tarPoint,p);
                 
         var currCollPos = null;
         if(cc.isValid(this.currCollNode))
@@ -111,10 +111,24 @@ export class Robot extends Player {
             //如果没有路 就找到最近的路
             if(this.roadList.length == 0)
             {
-                // var p1 = this.node.getPosition();
                 if(this.pathIndex == -1)
                 {
                     this.pathIndex = this.pathType;
+                    // this.pathIndex = 0;
+                    // //找到最近的路
+                    // var p1 = this.node.getPosition();
+                    // var p2 = this.gameControl.goodsConfPath[this.pathIndex][0];
+                    // var dis1 = cc.Vec2.distance(cc.v2(p2.x,p2.y),cc.v2(p1.x,p1.z));
+                    // for(var i=1;i<this.gameControl.goodsConfPath.length;i++)
+                    // {
+                    //     var p3 = this.gameControl.goodsConfPath[i][0];
+                    //     var dis2 = cc.Vec2.distance(cc.v2(p3.x,p3.y),cc.v2(p1.x,p1.z));
+                    //     if(dis2<dis1)
+                    //     {
+                    //         dis2 = dis1;
+                    //         this.pathIndex = i;
+                    //     }
+                    // }
                 }
                 else{
                     this.pathIndex++;

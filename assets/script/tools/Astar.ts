@@ -44,7 +44,7 @@ export class Astar extends Object {
         // cc.log(this.startPoint,this.endPoint);
         var time = new Date().getTime();
 
-        while(this.findNext() && this.num < 2000)
+        while(this.findNext() && this.num < 3000)
         {
             this.num ++;
         }

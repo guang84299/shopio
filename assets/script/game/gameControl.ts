@@ -25,6 +25,7 @@ export class gameControl extends Component {
     loadNode = null;
     @property(LabelComponent)
     timeLabel = null;
+    
 
     cashier = null;
 
@@ -34,7 +35,6 @@ export class gameControl extends Component {
 
     public goodss = [];
     public players = [];
-    public robotConfPath = [];
     public robotRemovePath = [[],[]];
     public goodsConfPath = [];
     public holdGoods = [];
@@ -71,6 +71,10 @@ export class gameControl extends Component {
     tipNum5 = 0;
     tipNum6 = 0;
     tipTime = 0;
+
+    dogConfs = [{time:30,intime:30,num:4,lv:1},{time:30,intime:30,num:4,lv:2},{time:30,intime:15,num:6,lv:3},{time:5,intime:5,num:6,lv:4}];
+    dogConf = {time:30,intime:30,num:4,lv:1};
+
     start () {
         // this.initGoods();
         cc.game.setFrameRate(30);
@@ -88,7 +92,13 @@ export class gameControl extends Component {
         this.loadNode.active = true;
         this.gameUI.active = false;
 
-        if(this.gameMode == 1) cc.find("tip1",this.loadNode).active = true;
+        if(this.gameMode == 1)
+        {
+            var starlv = cc.storage.getStorage(cc.storage.starlv);
+            if(starlv>this.dogConfs.length) starlv = this.dogConfs.length;
+            this.dogConf = this.dogConfs[starlv-1];
+            cc.find("tip1",this.loadNode).active = true;
+        }
         else cc.find("tip2",this.loadNode).active = true;
 
 
@@ -194,7 +204,11 @@ export class gameControl extends Component {
                 }
                 else{
                     this.goodsNames += pre + ":";
-                    this.goodsToalNum ++;
+                    if(pre.indexOf("Res950") == -1)
+                    {
+                        this.goodsToalNum ++;
+                    }
+                    
                 }
             }
 
@@ -214,38 +228,37 @@ export class gameControl extends Component {
 
     initRobot(){
         //生成robot
-        // this.players = [];[cc.v2(-4,5),cc.v2(-2,4),cc.v2(-3,0),cc.v2(-4.5,2.5),cc.v2(-0.5,1),cc.v2(2,3),cc.v2(3,6),cc.v2(5.5,2),cc.v2(5,4.5)];
-        var pps =  [cc.v2(8,2),cc.v2(4,2.5),cc.v2(-1.5,1.2),cc.v2(-4.8,-1),cc.v2(-10.5,-0.6),cc.v2(-9,4.1),cc.v2(-0.9,5)];//[cc.v2(5,3),cc.v2(0,3),cc.v2(-2,3),cc.v2(-3,5),cc.v2(0.8,5)];
+        var pps =  [cc.v2(17.2,-3),cc.v2(-0.5,9.4),cc.v2(-12,15),cc.v2(0,-10),cc.v2(14.7,9.2),cc.v2(-15.8,-8.3),cc.v2(-0.0,2.7)];
         var robotNum = 0;
          //星级
         var starlv = cc.storage.getStorage(cc.storage.starlv);
         var aiDatas = cc.res.loads["conf_robotstage"][starlv-1];
         if(this.gameMode == 1) 
         {
-            robotNum = 3;
-            this.robotConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_robotpath"]));
+            robotNum = 5;
             this.goodsConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_goodspath"]));
+            // cc.log(this.goodsConfPath);
         }
         for(var i=0;i<robotNum;i++)
        {
            var robotIds = aiDatas["AI"+(i+1)].split(",");
            var robotId = Math.floor(Math.random()*robotIds.length);
            
-           var pindex = Math.floor(Math.random()*pps.length);
+           var pindex = i;//Math.floor(Math.random()*pps.length);
            var p = pps[pindex];
             var robot = cc.instantiate(res.loads["prefab_game_player"]);
             robot.setPosition(cc.v3(p.x,0,p.y));
             this.goodsNode.addChild(robot);
             var robotSc = robot.addComponent(Robot);
             robotSc.initConf(1);
-            robotSc.initRobotConf(Number(robotIds[robotId]),i);//Number(robotIds[robotId])
+            robotSc.initRobotConf(Number(robotIds[robotId]),pindex);//Number(robotIds[robotId])
             robotSc.initNick(this.randNick(),Math.floor(Math.random()*11));
             robotSc.bodyColor = new cc.Color(this.colors[i+1]);
             this.players.push(robotSc);
             
-
-            pps.splice(pindex,1);
+            // pps.splice(pindex,1);
        }
+       pps.splice(0,robotNum);
        var p = pps[Math.floor(Math.random()*pps.length)];
        this.playerSc.node.setPosition(cc.v3(p.x,0,p.y));
        this.playerSc.addFollowPlayer();
@@ -298,16 +311,16 @@ export class gameControl extends Component {
     }
 
     addDog(){
-        if(this.dogs.length>= 3) return;
-        var pps =  [cc.v2(8,2),cc.v2(4,2.5),cc.v2(-1.5,1.2),cc.v2(-4.8,-1),cc.v2(-10.5,-0.6),cc.v2(-9,4.1),cc.v2(-0.9,5)];
-        var p2 = pps[Math.floor(Math.random()*pps.length)];
+        if(this.dogs.length >= this.dogConf.num) return;
+        var pps =  [cc.v2(17.2,-3),cc.v2(-0.5,9.4),cc.v2(-12,15),cc.v2(0,-10),cc.v2(14.7,9.2),cc.v2(-15.8,-8.3),cc.v2(-0.0,2.7)];
+        var p2 = pps[this.dogs.length];
         var dog = cc.instantiate(res.loads["prefab_game_dog"]);
         // var p2 = config.converToNodePos(cc.v2(p.x+(Math.random()-0.5)*3,p.z+(Math.random()-0.5)*3));
         // p2 = config.converToWorldPos(p2);
         dog.setPosition(p2.x,0,p2.y);
         this.goodsNode.addChild(dog);
         var dogSc = dog.getComponent(Dog);
-        dogSc.initConf(this.dogs.length);
+        dogSc.initConf(this.dogs.length,this.dogConf.lv);
         this.dogs.push(dogSc);
 
         if(this.dogs.length == 2) res.showTips("注意恶犬出现！");
@@ -325,7 +338,7 @@ export class gameControl extends Component {
         {
             if(this.gameMode == 1)
             {
-                var strs = ["接触别人袋子可以偷东西!","尽快拿东西让自己变大！"];
+                var strs = ["接触别人袋子可以偷东西!","尽快拿东西让自己变大！","体积大可以弹开对手！","体积大抢夺更有优势！"];
                 res.showTips(strs[Math.floor(Math.random()*strs.length)]);
             }
            
@@ -507,25 +520,27 @@ export class gameControl extends Component {
             if(this.gameMode == 1)
             {
                 this.addGoodsDt += dt;
-                if(this.addGoodsDt > 0.3 && this.holdGoods.length>0)
+                if(this.addGoodsDt > 0.5 && this.holdGoods.length>0)
                 {
                     this.addGoodsDt = 0;
                     var r = Math.floor(Math.random()*this.holdGoods.length);
-                    var goodsNode = this.holdGoods[r];
-                    this.goodsNode.addChild(goodsNode);
+                    var item = this.holdGoods[r];
+                    if(cc.isValid(item.node))
+                    {
+                        var goodsNode = cc.instantiate(item.node);
+                        this.goodsNode.addChild(goodsNode);
+                        goodsNode.getComponent(Goods).initConf(item.data.goodsId,item.data.collPos);
+                        goodsNode.getComponent(Goods).resetState(item.data.delPos,item.data.delRoa);
+                    }
                     this.holdGoods.splice(r,1);
-                    goodsNode.getComponent(Goods).resetState();
+
                 }   
                 
+                this.dogConf.time -= dt;
                 this.addDogDt += dt;
-                if(this.addDogDt>5)
+                if(this.addDogDt>this.dogConf.intime && this.dogConf.time<=0)
                 {
                     this.addDogDt = 0;
-                    if(cc.GAME.isNewUser)
-                    {
-                        if(this.gameTime<90) this.addDog();
-                    }
-                    else
                     this.addDog();
                 }
             }

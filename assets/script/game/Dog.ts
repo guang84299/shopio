@@ -25,6 +25,7 @@ export class Dog extends Component {
     attackTime = 3;
     judgeattackTime = 3;
     moveSpeed = 2;
+    dogLv = 0;
 
     bornTime = 4;
 
@@ -34,6 +35,12 @@ export class Dog extends Component {
     aiDt = 0;
     lookDt = 0;
 
+    dogConf = [
+        {wander:50,attack:1},
+        {wander:50,attack:10},
+        {wander:50,attack:20},
+        {wander:50,attack:40}
+    ];
     conf = {wander:50,attack:40};
 
     start () {
@@ -44,9 +51,12 @@ export class Dog extends Component {
         material.setProperty('albedo', cc.color(10,10,10)); 
     }
 
-    initConf(pathIndex)
+    initConf(pathIndex,lv)
     {
+        if(lv>this.dogConf.length) lv = this.dogConf.length;
+        this.dogLv = lv;
         this.pathIndex = pathIndex;
+        this.conf = this.dogConf[this.dogLv-1];
     }
 
     idle(){

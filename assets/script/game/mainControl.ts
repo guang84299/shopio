@@ -71,10 +71,10 @@ export class mainControl extends Component {
             this.scheduleOnce(function(){
                 cc.sdk.videoLoad();
             },0.3);
-
-            this.startSpeedUp.uncheck();
+           
             cc.sdk.event("进入主界面");
         }
+        this.startSpeedUp.uncheck();
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
         cc.audio.playMusic(cc.res.audio_music);

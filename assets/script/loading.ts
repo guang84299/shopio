@@ -49,7 +49,9 @@ export class loading extends Component {
     onLoad() {
         //cc.sys.os = "web";
         // cc.game.setFrameRate(30);
-        
+        cc.log(cc.macro.BATCH_VERTEX_COUNT,cc.macro.ENABLE_CULLING);
+        // cc.macro.ENABLE_CULLING = true;
+        // cc.macro.ENABLE_WEBGL_ANTIALIAS = true;
                  
         var self = this;
         var appkey = "wx83aa5365b3b6f2be";
@@ -135,7 +137,6 @@ export class loading extends Component {
             "conf/player",
             "conf/map",
             "conf/maptitle",
-            "conf/robotpath",
             "conf/robotid",
             "conf/robotlv",
             "conf/playerlv",
