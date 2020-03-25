@@ -51,6 +51,7 @@ export class PlayerPack extends Component {
         if(this.followTarget.isPlayerSelf)
         {
             ballId = storage.getStorage(storage.ballid);
+            if(cc.GAME.shiyongBallId > 0) ballId = cc.GAME.shiyongBallId;
         }
         else 
         {

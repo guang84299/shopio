@@ -78,6 +78,9 @@ export class mainControl extends Component {
         // cc.qianqista.onshowmaincallback = this.updateLixian.bind(this);
 
         cc.audio.playMusic(cc.res.audio_music);
+
+        cc.GAME.shiyongSkinId = 0;
+        cc.GAME.shiyongBallId = 0;
     }
 
     initUI(){
@@ -463,7 +466,11 @@ export class mainControl extends Component {
                 });
             }
             else
-            cc.director.loadScene("game");
+            {
+                if(Math.random()*100<cc.GAME.shiyongRad) res.openUI("shiyong");
+                else cc.director.loadScene("game");
+            }
+            
         }
         else if(data == "mode")
         {

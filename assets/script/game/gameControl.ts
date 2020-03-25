@@ -258,7 +258,7 @@ export class gameControl extends Component {
             
             // pps.splice(pindex,1);
        }
-       pps.splice(0,robotNum);
+       pps = [cc.v2(12.7,-1.1),cc.v2(0,10.7),cc.v2(-16.4,14.75),cc.v2(-2.6,-6.6)];
        var p = pps[Math.floor(Math.random()*pps.length)];
        this.playerSc.node.setPosition(cc.v3(p.x,0,p.y));
        this.playerSc.addFollowPlayer();

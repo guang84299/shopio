@@ -16,6 +16,7 @@ export class PlayerSelf extends Player {
 
     start () {
         var skinid = cc.storage.getStorage(cc.storage.skinid);
+        if(cc.GAME.shiyongSkinId > 0) skinid = cc.GAME.shiyongSkinId;
         this.initNick("我自己",skinid);
         super.start();
         this.isPlayerSelf = true;
