@@ -39,7 +39,7 @@ export class starup extends Component {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
 
-        cc.sdk.showBanner();
+        cc.sdk.showBanner(20006);
     }
 
     hide(){

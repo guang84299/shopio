@@ -337,7 +337,7 @@ export class skin extends Component {
         this.type = type;
         // this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
-        cc.sdk.showBanner();
+        cc.sdk.showBanner(20005);
         cc.sdk.event("皮肤界面-打开");
     }
 
@@ -370,7 +370,7 @@ export class skin extends Component {
             {
                 cc.sdk.showVedio(function(r){
                     if(r) self.toLock();
-                });
+                },10005);
             }
             cc.sdk.event("皮肤界面-解锁按钮");
         }

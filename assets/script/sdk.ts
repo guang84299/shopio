@@ -26,15 +26,17 @@ export const sdk = {
 
     vibrate: function(isLong)
     {
-        if(storage.getStorage(storage.vibrate) == 1 && window["wx"])
+        if(storage.getStorage(storage.vibrate) == 1)
         {
-            if(isLong)
+            if(window["wx"])
             {
-                wx.vibrateLong({});
+                if(isLong) wx.vibrateLong({});
+                else wx.vibrateShort({});
             }
             else
             {
-                wx.vibrateShort({});
+                if(isLong) $SF.Ga.startVib (100);
+                else $SF.Ga.startVib (1000);
             }
         }
     },
@@ -183,7 +185,7 @@ export const sdk = {
         this.bannerTime = 0;
     },
 
-    showVedio: function(callback)
+    showVedio: function(callback,postId)
     {
         var self = this;
         this.videocallback = callback;
@@ -208,12 +210,30 @@ export const sdk = {
         }
         else
         {
-            if(callback)
-                callback(true);
+            cc.GAME.hasVideo = true;
+            cc.res.openUI("vedio");
+            $SF.Ga.playRewardVideo(postId, function(r){
+                if(r == 2)
+                {
+                    if(callback)
+                        callback(true);
+                }
+                else
+                {
+                    if(callback)
+                        callback(false);
+                    cc.res.showToast("视频准备中...请稍后再试");
+                }
+
+                var comp  = cc.find("gameNode").getComponent("gameControl") || cc.find("gameNode").getComponent("mainControl");
+                comp.scheduleOnce(function(){
+                    cc.res.closeUI("vedio");
+                },0.2);
+            },false);
         }
     },
 
-    showBanner: function(node,callback,isHide)
+    showBanner: function(postId,node,callback,isHide)
     {
 
         if(window["wx"])
@@ -310,6 +330,10 @@ export const sdk = {
 
             this.bannerTime = new Date().getTime();
         }
+        else
+        {
+            $SF.Ga.showBa(postId, false, function(r){});
+        }
     },
 
     hideBanner: function()
@@ -323,6 +347,10 @@ export const sdk = {
             }
             this.isBannerShow = false;
 
+        }
+        else
+        {
+            $SF.Ga.hideBa();
         }
     },
 

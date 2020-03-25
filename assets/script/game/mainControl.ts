@@ -460,7 +460,7 @@ export class mainControl extends Component {
                         cc.GAME.startSpeedUp = true;
                         cc.director.loadScene("game");
                     }
-                });
+                },10000);
             }
             else
             cc.director.loadScene("game");

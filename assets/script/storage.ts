@@ -55,11 +55,11 @@ export const storage = {
     {
         if(typeof this.defaultVal[key] == "object")
             val = JSON.stringify(val);       
-        cc.sys.localStorage.setItem(this.pfix+key,val);
+        $SF.sfLocalStorage.setItem(this.pfix+key,val);
     },
     getStorage: function(key)
     {
-        var val = cc.sys.localStorage.getItem(this.pfix+key);
+        var val = $SF.sfLocalStorage.getItem(this.pfix+key);
         if(val === null || val === "" || val === undefined)
         {
             return this.defaultVal[key];

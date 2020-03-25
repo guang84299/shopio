@@ -59,7 +59,7 @@ export class fuhuo extends Component {
     show(){
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
-        cc.sdk.showBanner();
+        cc.sdk.showBanner(20000);
         cc.sdk.event("复活界面-打开");
     }
 
@@ -89,7 +89,7 @@ export class fuhuo extends Component {
             {
                 cc.sdk.showVedio(function(r){
                     if(r) self.fuhuo();
-                });
+                },10001);
             }
             cc.sdk.event("复活界面-复活");
         }

@@ -48,6 +48,7 @@ export class gameControl extends Component {
     gameMode = 1;
     goodsToalNum = 0;
     holdGoodsNum = 0;
+    gameRank = 0;
 
     parentPre = [];
 
@@ -119,6 +120,7 @@ export class gameControl extends Component {
 
         cc.audio.playMusic(cc.res.audio_music);
         cc.sdk.event("开始游戏-"+( this.gameMode == 1 ? "经典模式" : "单人模式"));
+        $SF.Ga.onGameStart(function(){});
     }
 
     updatePro(){
@@ -463,6 +465,8 @@ export class gameControl extends Component {
             lv.string = rank+"";
             name.string = cc.storage.getLabelStr(this.playerSc.nick,14);
             score.string = this.playerSc.currScore+"";
+
+            this.gameRank = rank;
         // }
 
         if(isToScore) this.gameOver();
@@ -486,6 +490,7 @@ export class gameControl extends Component {
         else res.openUI("jiesuan2");
 
         cc.audio.playSound("result");
+        $SF.Ga.onGameEnd({score: this.playerSc.currScore,level: this.gameMode,win: this.gameRank},function(){});
     }
 
     tofuhuo(){

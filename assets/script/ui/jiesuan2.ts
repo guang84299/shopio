@@ -105,7 +105,7 @@ export class jiesuan2 extends Component {
         this.type = type;
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
         this.mainControl = cc.find("gameNode").getComponent("mainControl");
-        cc.sdk.showBanner();
+        cc.sdk.showBanner(20002);
         cc.sdk.event("结算界面-单人模式打开");
     }
 
@@ -137,7 +137,7 @@ export class jiesuan2 extends Component {
             {
                 cc.sdk.showVedio(function(r){
                     if(r) self.liangqu(true);
-                });
+                },10003);
             }
             cc.sdk.event("结算界面-单人模式-双倍领取");
         }

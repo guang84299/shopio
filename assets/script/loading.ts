@@ -54,20 +54,23 @@ export class loading extends Component {
         // cc.macro.ENABLE_WEBGL_ANTIALIAS = true;
                  
         var self = this;
-        var appkey = "wx83aa5365b3b6f2be";
-        var appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
-        var appname = "疯狂购物3D-微信";
-        if(window["qq"])
-        {
-            appkey = "1110216465";
-            appsecret = "c4HIDQY9Jfd777pI";
-            appname = "疯狂购物3D-QQ";
-        }
-        else if(window["wx"]){
-            appkey = "wx83aa5365b3b6f2be";
-            appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
-            appname = "疯狂购物3D-微信";
-        }
+        var appkey = "shop-fish";
+        var appsecret = "shop";
+        var appname = "疯狂购物3D-雪鲤鱼";
+        // if(window["qq"])
+        // {
+        //     appkey = "1110216465";
+        //     appsecret = "c4HIDQY9Jfd777pI";
+        //     appname = "疯狂购物3D-QQ";
+        // }
+        // else if(window["wx"]){
+        //     appkey = "wx83aa5365b3b6f2be";
+        //     appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
+        //     appname = "疯狂购物3D-微信";
+        // }
+        $SF.Ga.init({ id: 10165, complete: function(){
+            self.scheduleOnce(self.loadAllRes.bind(self),0.5);
+        } });
         qianqista.init(appkey,appsecret,appname,function(){
             // var score = storage.getStorage(storage.lv);
             // sdk.uploadScore(score,self.initNet.bind(self));
@@ -75,7 +78,7 @@ export class loading extends Component {
         },null);
         sdk.getUserInfo();
         //sdk.videoLoad();
-        sdk.closeRank();
+        // sdk.closeRank();
         this.canLoadVideo = true;
 
         if(storage.getStorage(storage.first) == 0)
@@ -87,10 +90,10 @@ export class loading extends Component {
         }   
         
         cc.sdk.event("进入加载界面");
-        if(window["wx"])
-            this.loadSubpackage();
-        else 
-            this.loadAllRes();
+        // if(window["wx"])
+        //     this.loadSubpackage();
+        // else 
+        //     this.loadAllRes();
      
     }
 
@@ -242,7 +245,7 @@ export class loading extends Component {
 
         this.progressBar.progress = this.progress;
         this.progressTips.string = "加载中 " + Math.floor(this.completedCount/this.totalCount*100)+"%";
-
+        $SF.Ga.onLoadingProgress({ loadCur: Math.floor(this.completedCount/this.totalCount*100), loadMax: 100 });
         
         this.setRes(resource,index);
 
@@ -271,6 +274,7 @@ export class loading extends Component {
         //cc.loader.loadResDir("audio", this.progressCallback.bind(this), this.completeCallback2.bind(this));
         cc.sdk.event("加载资源完成");
         this.loadNode.active = false;
+        $SF.Ga.onLoadingProgress({ loadCur: 100, loadMax: 100 });
         this.startGame();
     }
 
