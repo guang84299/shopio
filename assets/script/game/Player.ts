@@ -48,6 +48,7 @@ export class Player extends Component {
     protected uiNick = null;
     protected nickNode = null;
     protected kingNode = null;
+    protected jiantouNode = null;
     protected nick = "";
     protected skinId = 0;
 
@@ -85,6 +86,13 @@ export class Player extends Component {
             this.uiNick = cc.instantiate(cc.res.loads["prefab_ui_nick"]);
             this.uiNick.parent = this.gameControl.gameUI;
             this.uiNick.getComponent(LabelComponent).string = "Lv.1 "+this.nick;
+
+            if(this.isRobot)
+            {
+                this.jiantouNode = cc.instantiate(cc.res.loads["prefab_ui_jiantou"]);
+                this.jiantouNode.parent = this.gameControl.gameUI;
+                this.jiantouNode.active = false;
+            }
         }
         this.kingNode = cc.find("king",this.nickNode);
 
@@ -895,5 +903,48 @@ export class Player extends Component {
         var sc = 10/dis;
         if(sc>1) sc = 1;
         this.uiNick.setScale(sc, sc, 1);
+
+        if(this.isRobot)
+        {
+            var b = false;
+            var offdis = 20;
+            if(p.x>cc.winSize.width)
+            {
+                p.x = cc.winSize.width-offdis;
+                b = true;
+            }
+            else
+            {
+                if(p.x < 0) 
+                {
+                    p.x = offdis;
+                    b = true;
+                }
+            }
+            if(p.y>cc.winSize.height)
+            {
+                p.y = cc.winSize.height-offdis;
+                b = true;
+            }
+            else 
+            {
+                if(p.y < 0) 
+                {
+                    p.y = offdis;
+                    b = true;
+                }
+            }
+            if(b)
+            {
+                var rad = cc.v2(p.x-cc.winSize.width/2,p.y-cc.winSize.height/2).normalize().signAngle(cc.v2(0,1));
+                var ang = 180/Math.PI*rad;
+                this.jiantouNode.setRotationFromEuler(0,0,-ang);
+
+                this.jiantouNode.setWorldPosition(p);
+            }
+            this.jiantouNode.active = b;
+
+            
+        }
     }
 }

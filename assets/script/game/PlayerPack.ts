@@ -42,6 +42,8 @@ export class PlayerPack extends Component {
     aniTime = 0;
 
     dropSpeed = [0.5,0.5,0.25,0.25,0.166,0.166,0.125,0.125,0.125,0.125,0.125,0.125];
+    rotateName = "Res216,Res217,Res218,Res219,Res220,Res221,Res222,Res310,Res311,Res312,Res313";
+    rotateName2 = "Res515,Res516,Res517";
     
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -88,7 +90,7 @@ export class PlayerPack extends Component {
         var max1 = Math.max(goods.gBoxColl.height,goods.gBoxColl.width);
         if(max1>=1) 
         {
-            goods.node.setRotationFromEuler(0,0,90);
+            // goods.node.setRotationFromEuler(0,0,90);
             if(this.maxGoods)
             {
                 var max2 = Math.max(this.maxGoods.gBoxColl.height,this.maxGoods.gBoxColl.width);
@@ -96,6 +98,15 @@ export class PlayerPack extends Component {
             }
             else this.maxGoods = goods;
         }
+        else if(this.rotateName.indexOf(goods.node.name) != -1)
+        {
+            goods.node.setRotationFromEuler(0,0,180);
+        }
+        else if(this.rotateName2.indexOf(goods.node.name) != -1)
+        {
+            goods.node.setRotationFromEuler(0,0,90);
+        }
+
         if(this.maxGoods && this.maxGoods != goods)
         {
             this.goodss[this.goodss.length-1] = this.maxGoods;
@@ -228,9 +239,7 @@ export class PlayerPack extends Component {
             t2 = 2.3;
         }
         // var anisc = this.node.getComponent(ani);
-
         var time = this.dropSpeed[target.lv-1];
-        // target.lv
         self.scheduleOnce(function(){
             // anisc.moveTo(t1,toPos,function(){
             //     self.scheduleOnce(function(){
