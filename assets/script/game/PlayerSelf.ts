@@ -57,6 +57,7 @@ export class PlayerSelf extends Player {
            var dis = cc.Vec2.distance(p,this.startTouchPos);
            if(dis>=100)
            {
+            if(this.gameControl && this.gameControl.isStart)
                this.speedUp();
            }
        }

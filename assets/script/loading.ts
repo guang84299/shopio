@@ -184,6 +184,7 @@ export class loading extends Component {
             "prefab/ui/toast",
             "prefab/ui/tips",
             "prefab/ui/nick",
+            "prefab/ui/jiantou",
             "prefab/ui/score",
             "prefab/ui/countdown",
             "prefab/ui/jiesuan",

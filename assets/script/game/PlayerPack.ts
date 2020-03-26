@@ -40,6 +40,10 @@ export class PlayerPack extends Component {
     scoreAniNum = 0;
 
     aniTime = 0;
+
+    dropSpeed = [0.5,0.5,0.25,0.25,0.166,0.166,0.125,0.125,0.125,0.125,0.125,0.125];
+    rotateName = "Res216,Res217,Res218,Res219,Res220,Res221,Res222,Res310,Res311,Res312,Res313";
+    rotateName2 = "Res515,Res516,Res517";
     
     start () {
         this.gameControl = cc.find("gameNode").getComponent("gameControl");
@@ -86,7 +90,7 @@ export class PlayerPack extends Component {
         var max1 = Math.max(goods.gBoxColl.height,goods.gBoxColl.width);
         if(max1>=1) 
         {
-            goods.node.setRotationFromEuler(0,0,90);
+            // goods.node.setRotationFromEuler(0,0,90);
             if(this.maxGoods)
             {
                 var max2 = Math.max(this.maxGoods.gBoxColl.height,this.maxGoods.gBoxColl.width);
@@ -94,6 +98,15 @@ export class PlayerPack extends Component {
             }
             else this.maxGoods = goods;
         }
+        else if(this.rotateName.indexOf(goods.node.name) != -1)
+        {
+            goods.node.setRotationFromEuler(0,0,180);
+        }
+        else if(this.rotateName2.indexOf(goods.node.name) != -1)
+        {
+            goods.node.setRotationFromEuler(0,0,90);
+        }
+
         if(this.maxGoods && this.maxGoods != goods)
         {
             this.goodss[this.goodss.length-1] = this.maxGoods;
@@ -226,7 +239,7 @@ export class PlayerPack extends Component {
             t2 = 2.3;
         }
         // var anisc = this.node.getComponent(ani);
-
+        var time = this.dropSpeed[target.lv-1];
         self.scheduleOnce(function(){
             // anisc.moveTo(t1,toPos,function(){
             //     self.scheduleOnce(function(){
@@ -235,7 +248,7 @@ export class PlayerPack extends Component {
             // });
             self.isColl = false;
             self.dropGoods(target);
-         },1);
+         },time);
 
          
         
@@ -251,16 +264,16 @@ export class PlayerPack extends Component {
     //掉落商品
     dropGoods(player)
     {
-        var dropNum = 5; //Math.floor(this.goodss.length/2);
-        if(player.lv>=this.followTarget.lv)
-        {
-            dropNum += player.lv-this.followTarget.lv;
-            if(dropNum>8) dropNum = 8;
-        }
-        else{
-            dropNum = 2;
-            if(Math.abs(player.lv-this.followTarget.lv)<4) dropNum = 1;
-        }
+        var dropNum = 1; //Math.floor(this.goodss.length/2);
+        // if(player.lv>=this.followTarget.lv)
+        // {
+        //     dropNum += player.lv-this.followTarget.lv;
+        //     if(dropNum>8) dropNum = 8;
+        // }
+        // else{
+        //     dropNum = 2;
+        //     if(Math.abs(player.lv-this.followTarget.lv)<4) dropNum = 1;
+        // }
         if(dropNum>this.goodss.length) dropNum = this.goodss.length;
         var score = 0;
         for(var i=0;i<dropNum;i++)
