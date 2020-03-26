@@ -14,6 +14,10 @@ cc.audio = audio;
 cc.GAME = {};
 cc.GAME.judgeLixian = true;
 cc.GAME.isNewUser = false;
+cc.GAME.shiyongSkinId = 0;
+cc.GAME.shiyongBallId = 0;
+cc.GAME.shiyongRad = 0;
+
 
 @ccclass("loading")
 export class loading extends Component {
@@ -191,6 +195,7 @@ export class loading extends Component {
             "prefab/ui/lixian",
             "prefab/ui/starup",
             "prefab/ui/fuhuo",
+            "prefab/ui/shiyong",
 
             "prefab/ui/test"
         ];
@@ -200,11 +205,11 @@ export class loading extends Component {
         //    this.purls.push("prefab/game/Res"+i);
         // }
         this.totalCount = this.purls.length;
-        for(var i=0;i<2;i++)
-        this.loadres();  
         
         this.loadCount = 0;
         this.nowtime = new Date().getTime();
+        for(var i=0;i<2;i++)
+        this.loadres();  
     }
 
     start () {
@@ -417,6 +422,10 @@ cc.log(url,resource);
                 else if(con.id == "adCheck")
                 {
                     cc.GAME.adCheck = con.value == 1 ? true : false;
+                }
+                else if(con.id == "shiyongRad")
+                {
+                    cc.GAME.shiyongRad = Number(con.value);
                 }
                 else
                 {
