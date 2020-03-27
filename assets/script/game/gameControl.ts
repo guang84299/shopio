@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent,ModelComponent} from "cc";
+import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent,ModelComponent,WidgetComponent} from "cc";
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
@@ -119,6 +119,27 @@ export class gameControl extends Component {
 
         cc.audio.playMusic(cc.res.audio_music);
         cc.sdk.event("开始游戏-"+( this.gameMode == 1 ? "经典模式" : "单人模式"));
+
+        if(cc.sdk.is_iphonex())
+        {
+            this.scheduleOnce(function(){
+                var timebg = cc.find("Canvas/gameUI/timebg").getComponent(WidgetComponent);
+                var rank = cc.find("Canvas/gameUI/rank").getComponent(WidgetComponent);
+                var capacity = cc.find("Canvas/gameUI/capacity").getComponent(WidgetComponent);
+                var holdpro = cc.find("Canvas/gameUI/holdpro").getComponent(WidgetComponent);
+
+                var dis = 40;
+                timebg.top += dis;
+                rank.top += dis;
+                capacity.top += dis;
+                holdpro.top += dis;
+
+                timebg.updateAlignment();
+                rank.updateAlignment();
+                capacity.updateAlignment();
+                holdpro.updateAlignment();
+            },0.1);
+        }
     }
 
     updatePro(){
@@ -411,6 +432,7 @@ export class gameControl extends Component {
 
         var isHasSelf = false;
         var isToScore = false;
+        var rank = 4;
         for(var i=0;i<ranks.length-1;i++)
         {
             var item = ranks[i];
@@ -425,7 +447,10 @@ export class gameControl extends Component {
                 score.string = this.players[i].currScore+"";
 
                 if(this.playerSc == this.players[i])
-                isHasSelf = true;
+                {
+                    isHasSelf = true;
+                    rank = i+1;
+                }
 
                 if(i == 0)
                 {
@@ -447,16 +472,20 @@ export class gameControl extends Component {
         // if(isHasSelf) item.active = false;
         // else{
         //     item.active = true;
-            var rank = 1;
-            for(var i=3;i<this.players.length;i++)
+            // var rank = 4;
+            if(!isHasSelf)
             {
-                if(this.playerSc == this.players[i])
+                for(var i=3;i<this.players.length;i++)
                 {
-                    rank = i+1;
-                    this.playerSc.showKing(false);
-                    break;
+                    if(this.playerSc == this.players[i])
+                    {
+                        rank = i+1;
+                        this.playerSc.showKing(false);
+                        break;
+                    }
                 }
             }
+            
             var lv = cc.find("lv",item).getComponent(LabelComponent);
             var name = cc.find("name",item).getComponent(LabelComponent);
             var score = cc.find("score",item).getComponent(LabelComponent);
