@@ -82,6 +82,7 @@ export class lixian extends Component {
         if(isx2) this.award *= 2;
         storage.setStorage(storage.coin,storage.getStorage(storage.coin)+ this.award);
         storage.uploadStorage(storage.coin);
+        this.mainControl.updateCoin();
 
         cc.res.showToast("金币+"+ this.award);
 
