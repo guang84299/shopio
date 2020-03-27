@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,ButtonComponent,AnimationComponent,ToggleComponent} from "cc";
+import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,ButtonComponent,AnimationComponent,ToggleComponent,WidgetComponent} from "cc";
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
@@ -81,6 +81,27 @@ export class mainControl extends Component {
 
         cc.GAME.shiyongSkinId = 0;
         cc.GAME.shiyongBallId = 0;
+
+        if(cc.sdk.is_iphonex())
+        {
+            this.scheduleOnce(function(){
+                var coinbg = cc.find("Canvas/coinbg").getComponent(WidgetComponent);
+                var starpro = cc.find("Canvas/starpro").getComponent(WidgetComponent);
+                var vibrate = cc.find("Canvas/btnNode/vibrate").getComponent(WidgetComponent);
+                var music = cc.find("Canvas/btnNode/music").getComponent(WidgetComponent);
+
+                var dis = 40;
+                coinbg.top += dis;
+                starpro.top += dis;
+                vibrate.top += dis;
+                music.top += dis;
+
+                coinbg.updateAlignment();
+                starpro.updateAlignment();
+                vibrate.updateAlignment();
+                music.updateAlignment();
+            },0.1);
+        }
     }
 
     initUI(){
