@@ -127,12 +127,12 @@ export class jiesuan extends Component {
         storage.setStorage(storage.starexp,starexp);
         storage.uploadStorage(storage.starexp);
 
-        if(myRank == 1)
-        {
+        // if(myRank == 1)
+        // {
             var modewinnum = storage.getStorage(storage.modewinnum);
             storage.setStorage(storage.modewinnum,modewinnum+1);
             storage.uploadStorage(storage.modewinnum);
-        }
+        // }
     }
 
     updateAd(){

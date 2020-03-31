@@ -63,7 +63,7 @@ export class mainControl extends Component {
         this.updateCapacityUp();
         this.updateLixianUp();
 
-        this.scheduleOnce(this.judgeSkin.bind(this),0.2);
+        this.scheduleOnce(this.judgeSkin.bind(this),0.02);
         if(cc.GAME.judgeLixian)
         {
             cc.GAME.judgeLixian = false;
@@ -327,91 +327,10 @@ export class mainControl extends Component {
         var b = false;
         if(storage.indexOf(hasskin,1) == -1)
         {
-            var loginday = storage.getStorage(storage.loginday);
-            if(loginday>0) 
-            {
-                hasskin.push(1);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,2) == -1)
-        {
-            var loginday = storage.getStorage(storage.loginday);
-            if(loginday>=7) 
-            {
-                hasskin.push(2);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,3) == -1)
-        {
             var modewinnum = storage.getStorage(storage.modewinnum);
             if(modewinnum>=1) 
             {
-                hasskin.push(3);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,4) == -1)
-        {
-            var maxscore = storage.getStorage(storage.maxscore);
-            if(maxscore>=2000) 
-            {
-                hasskin.push(4);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,5) == -1)
-        {
-            var maxscore = storage.getStorage(storage.maxscore);
-            if(maxscore>=2500) 
-            {
-                hasskin.push(5);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,6) == -1)
-        {
-            var modewinnum = storage.getStorage(storage.modewinnum);
-            if(modewinnum>=3) 
-            {
-                hasskin.push(6);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,7) == -1)
-        {
-            var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=5)
-            {
-                hasskin.push(7);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,8) == -1)
-        {
-            var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=6)
-            {
-                hasskin.push(8);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,9) == -1)
-        {
-            var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=7)
-            {
-                hasskin.push(9);
-                b = true;
-            }
-        }
-        if(storage.indexOf(hasskin,10) == -1)
-        {
-            var starlv = storage.getStorage(storage.starlv);
-            if(starlv>=8)
-            {
-                hasskin.push(10);
+                hasskin.push(1);
                 b = true;
             }
         }
@@ -420,7 +339,11 @@ export class mainControl extends Component {
             storage.setStorage(storage.hasskin,hasskin);
             storage.uploadStorage(storage.hasskin);
             res.showToast("解锁新皮肤");
+
+            res.openUI("yindao",null,1);
+            cc.GAME.yindaoStep = 1;
         }
+        cc.log(b,hasskin);
     }
 
    
@@ -499,6 +422,8 @@ export class mainControl extends Component {
         }
         else if(data == "skin")
         {
+            if(cc.GAME.yindaoStep == 1)
+            res.closeUI("yindao");
             res.openUI("skin");
         }
         else if(data == "vibrate")

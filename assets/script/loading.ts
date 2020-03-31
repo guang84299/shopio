@@ -17,6 +17,7 @@ cc.GAME.isNewUser = false;
 cc.GAME.shiyongSkinId = 0;
 cc.GAME.shiyongBallId = 0;
 cc.GAME.shiyongRad = 0;
+cc.GAME.yindaoStep = 0;
 
 
 @ccclass("loading")
@@ -194,6 +195,7 @@ export class loading extends Component {
             "prefab/ui/starup",
             "prefab/ui/fuhuo",
             "prefab/ui/shiyong",
+            // "prefab/ui/yindao",
 
             "prefab/ui/test"
         ];

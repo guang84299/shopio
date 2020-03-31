@@ -33,7 +33,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 20
+        "gltfIndex": 19
       },
       "displayName": "",
       "id": "24814",
@@ -84,7 +84,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 26
+        "gltfIndex": 25
       },
       "displayName": "",
       "id": "47402",
@@ -135,7 +135,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 34
+        "gltfIndex": 33
       },
       "displayName": "",
       "id": "71106",
@@ -430,23 +430,6 @@
       "id": "4237b",
       "name": "Water_005.mesh"
     },
-    "1f0dd": {
-      "ver": "1.0.8",
-      "importer": "gltf-mesh",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1f0dd",
-      "imported": true,
-      "files": [
-        ".json",
-        ".bin"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 17
-      },
-      "displayName": "",
-      "id": "1f0dd",
-      "name": "Orange_01.mesh"
-    },
     "4b477": {
       "ver": "1.0.8",
       "importer": "gltf-mesh",
@@ -458,7 +441,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 18
+        "gltfIndex": 17
       },
       "displayName": "",
       "id": "4b477",
@@ -475,7 +458,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 19
+        "gltfIndex": 18
       },
       "displayName": "",
       "id": "94e92",
@@ -492,7 +475,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 21
+        "gltfIndex": 20
       },
       "displayName": "",
       "id": "3b671",
@@ -509,7 +492,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 22
+        "gltfIndex": 21
       },
       "displayName": "",
       "id": "98acf",
@@ -526,7 +509,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 23
+        "gltfIndex": 22
       },
       "displayName": "",
       "id": "03752",
@@ -543,7 +526,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 24
+        "gltfIndex": 23
       },
       "displayName": "",
       "id": "67f84",
@@ -560,7 +543,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 25
+        "gltfIndex": 24
       },
       "displayName": "",
       "id": "32b38",
@@ -577,7 +560,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 27
+        "gltfIndex": 26
       },
       "displayName": "",
       "id": "b015b",
@@ -594,7 +577,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 28
+        "gltfIndex": 27
       },
       "displayName": "",
       "id": "56c51",
@@ -611,7 +594,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 29
+        "gltfIndex": 28
       },
       "displayName": "",
       "id": "03162",
@@ -628,7 +611,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 30
+        "gltfIndex": 29
       },
       "displayName": "",
       "id": "78cd2",
@@ -645,7 +628,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 31
+        "gltfIndex": 30
       },
       "displayName": "",
       "id": "04c0d",
@@ -662,7 +645,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 32
+        "gltfIndex": 31
       },
       "displayName": "",
       "id": "9af31",
@@ -679,7 +662,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 33
+        "gltfIndex": 32
       },
       "displayName": "",
       "id": "c760f",
@@ -696,7 +679,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 35
+        "gltfIndex": 34
       },
       "displayName": "",
       "id": "f0aa1",
@@ -713,7 +696,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 36
+        "gltfIndex": 35
       },
       "displayName": "",
       "id": "c9eb0",
@@ -730,7 +713,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 37
+        "gltfIndex": 36
       },
       "displayName": "",
       "id": "d7127",
@@ -747,7 +730,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 38
+        "gltfIndex": 37
       },
       "displayName": "",
       "id": "cc4a1",
@@ -764,7 +747,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 39
+        "gltfIndex": 38
       },
       "displayName": "",
       "id": "3f07d",
@@ -781,7 +764,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 40
+        "gltfIndex": 39
       },
       "displayName": "",
       "id": "796cc",
@@ -798,7 +781,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 41
+        "gltfIndex": 40
       },
       "displayName": "",
       "id": "cdc50",
@@ -815,7 +798,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 42
+        "gltfIndex": 41
       },
       "displayName": "",
       "id": "8c32c",
@@ -832,7 +815,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 43
+        "gltfIndex": 42
       },
       "displayName": "",
       "id": "1481c",
@@ -849,7 +832,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 44
+        "gltfIndex": 43
       },
       "displayName": "",
       "id": "ed6e6",
@@ -866,7 +849,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 45
+        "gltfIndex": 44
       },
       "displayName": "",
       "id": "2d762",
@@ -883,7 +866,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 46
+        "gltfIndex": 45
       },
       "displayName": "",
       "id": "8ae0f",
@@ -900,7 +883,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 47
+        "gltfIndex": 46
       },
       "displayName": "",
       "id": "66a24",
@@ -917,7 +900,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 48
+        "gltfIndex": 47
       },
       "displayName": "",
       "id": "86e8d",
@@ -934,7 +917,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 49
+        "gltfIndex": 48
       },
       "displayName": "",
       "id": "a44eb",
@@ -951,7 +934,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 50
+        "gltfIndex": 49
       },
       "displayName": "",
       "id": "d09b0",
@@ -968,7 +951,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 51
+        "gltfIndex": 50
       },
       "displayName": "",
       "id": "1340f",
@@ -985,7 +968,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 52
+        "gltfIndex": 51
       },
       "displayName": "",
       "id": "2a143",
@@ -1002,11 +985,28 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 53
+        "gltfIndex": 52
       },
       "displayName": "",
       "id": "86e27",
       "name": "Sign_Bakery_01.mesh"
+    },
+    "1f0dd": {
+      "ver": "1.0.8",
+      "importer": "gltf-mesh",
+      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@1f0dd",
+      "imported": true,
+      "files": [
+        ".json",
+        ".bin"
+      ],
+      "subMetas": {},
+      "userData": {
+        "gltfIndex": 53
+      },
+      "displayName": "",
+      "id": "1f0dd",
+      "name": "Orange_01.mesh"
     },
     "67ce0": {
       "ver": "1.0.8",
@@ -2300,104 +2300,6 @@
       "id": "2793c",
       "name": "SI_Prop_Mat_01.mesh"
     },
-    "d6386": {
-      "ver": "1.0.2",
-      "importer": "gltf-embeded-image",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d6386",
-      "imported": true,
-      "files": [
-        ".png",
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      },
-      "displayName": "",
-      "id": "d6386",
-      "name": "Map #8.image"
-    },
-    "876a7": {
-      "ver": "1.0.2",
-      "importer": "gltf-embeded-image",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@876a7",
-      "imported": true,
-      "files": [
-        ".png",
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 1
-      },
-      "displayName": "",
-      "id": "876a7",
-      "name": "Map #7.image"
-    },
-    "a0427": {
-      "ver": "1.0.19",
-      "importer": "texture",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@a0427",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "premultiplyAlpha": false,
-        "anisotropy": 1,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "404a95cd-89d8-4bbe-a78d-8387a267d963@d6386"
-      },
-      "displayName": "",
-      "id": "a0427",
-      "name": "Map #8.texture"
-    },
-    "8b7bb": {
-      "ver": "1.0.19",
-      "importer": "texture",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@8b7bb",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "wrapModeS": "repeat",
-        "wrapModeT": "repeat",
-        "minfilter": "linear",
-        "magfilter": "linear",
-        "mipfilter": "none",
-        "premultiplyAlpha": false,
-        "anisotropy": 1,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "404a95cd-89d8-4bbe-a78d-8387a267d963@876a7"
-      },
-      "displayName": "",
-      "id": "8b7bb",
-      "name": "Map #7.texture"
-    },
-    "d90a4": {
-      "ver": "1.0.13",
-      "importer": "gltf-material",
-      "uuid": "404a95cd-89d8-4bbe-a78d-8387a267d963@d90a4",
-      "imported": true,
-      "files": [
-        ".json"
-      ],
-      "subMetas": {},
-      "userData": {
-        "gltfIndex": 0
-      },
-      "displayName": "",
-      "id": "d90a4",
-      "name": "01 - Default.material"
-    },
     "db4d2": {
       "ver": "1.0.13",
       "importer": "gltf-material",
@@ -2408,7 +2310,7 @@
       ],
       "subMetas": {},
       "userData": {
-        "gltfIndex": 1
+        "gltfIndex": 0
       },
       "displayName": "",
       "id": "db4d2",
@@ -2432,16 +2334,7 @@
     }
   },
   "userData": {
-    "imageMetas": [
-      {
-        "name": "Map #8",
-        "uri": "404a95cd-89d8-4bbe-a78d-8387a267d963@d6386"
-      },
-      {
-        "name": "Map #7",
-        "uri": "404a95cd-89d8-4bbe-a78d-8387a267d963@876a7"
-      }
-    ],
+    "imageMetas": [],
     "redirect": "404a95cd-89d8-4bbe-a78d-8387a267d963@902cc",
     "assetFinder": {
       "meshes": [
@@ -2462,7 +2355,6 @@
         "404a95cd-89d8-4bbe-a78d-8387a267d963@7ea98",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@70858",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@4237b",
-        "404a95cd-89d8-4bbe-a78d-8387a267d963@1f0dd",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@4b477",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@94e92",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@24814",
@@ -2499,6 +2391,7 @@
         "404a95cd-89d8-4bbe-a78d-8387a267d963@1340f",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@2a143",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@86e27",
+        "404a95cd-89d8-4bbe-a78d-8387a267d963@1f0dd",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@67ce0",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@1ec58",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@2972f",
@@ -2582,12 +2475,8 @@
         "404a95cd-89d8-4bbe-a78d-8387a267d963@2793c"
       ],
       "skeletons": [],
-      "textures": [
-        "404a95cd-89d8-4bbe-a78d-8387a267d963@a0427",
-        "404a95cd-89d8-4bbe-a78d-8387a267d963@8b7bb"
-      ],
+      "textures": [],
       "materials": [
-        "404a95cd-89d8-4bbe-a78d-8387a267d963@d90a4",
         "404a95cd-89d8-4bbe-a78d-8387a267d963@db4d2"
       ],
       "scenes": [

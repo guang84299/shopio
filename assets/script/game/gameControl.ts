@@ -115,7 +115,7 @@ export class gameControl extends Component {
         //模式切换UI
         cc.find("rank",this.gameUI).active = this.gameMode == 1 ? true : false;
         cc.find("holdpro",this.gameUI).active = this.gameMode == 1 ? false : true;
-        // this.gameTime = 18;
+        // this.gameTime = 16;
 
         cc.audio.playMusic(cc.res.audio_music);
         cc.sdk.event("开始游戏-"+( this.gameMode == 1 ? "经典模式" : "单人模式"));

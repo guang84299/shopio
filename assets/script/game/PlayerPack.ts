@@ -40,6 +40,7 @@ export class PlayerPack extends Component {
     scoreAniNum = 0;
 
     aniTime = 0;
+    hasTarTime = 0;
 
     dropSpeed = [0.5,0.5,0.25,0.25,0.166,0.166,0.125,0.125,0.125,0.125,0.125,0.125];
     rotateName = "Res216,Res217,Res218,Res219,Res220,Res221,Res222,Res310,Res311,Res312,Res313";
@@ -251,7 +252,6 @@ export class PlayerPack extends Component {
          },time);
 
          
-        
         //  if(target.isPlayerSelf)
         //  {
         //     cc.audio.playSound("rob");
@@ -347,7 +347,7 @@ export class PlayerPack extends Component {
     //掉落商品
     dropGoodsDie()
     {
-        var dropNum = this.goodss.length;
+        var dropNum = Math.floor(this.goodss.length/2);
         for(var i=0;i<dropNum;i++)
         {
             var goods = this.goodss[i];
@@ -487,10 +487,14 @@ export class PlayerPack extends Component {
             //判断碰撞
             if(this.tarPlayer)
             {
+                this.hasTarTime += deltaTime;
                 var p = this.tarPlayer.node.getPosition();
-                if(this.canColl(p)) this.coll(this.tarPlayer);
+                if(this.hasTarTime>0.5 && this.canColl(p)) this.coll(this.tarPlayer);
             }
-            
+            else
+            {
+                this.hasTarTime = 0;
+            }
         }
        else
        {
