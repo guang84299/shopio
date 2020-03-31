@@ -59,7 +59,8 @@ export const res = {
 
     loadPic: function(url,sp)
     {
-        cc.loader.load({url: url, type: 'png'}, function (err, tex) {
+        //{url: url, type: 'png'}
+        cc.loader.load(url, function (err, tex) {
             if(err)
             {
                 cc.log(err);
@@ -68,7 +69,8 @@ export const res = {
             {
                 if(cc.isValid(sp))
                 {
-                    var spriteFrame = new cc.SpriteFrame(tex);
+                    var spriteFrame = new cc.SpriteFrame();
+                    spriteFrame.texture = tex._texture;
                     sp.getComponent(SpriteComponent).spriteFrame = spriteFrame;
                 }
             }

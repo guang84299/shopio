@@ -2,16 +2,16 @@
   "ver": "1.0.16",
   "importer": "image",
   "imported": true,
-  "uuid": "a6cb9d0d-2b67-4efc-8c35-d0b675b9074e",
+  "uuid": "2011fb18-e828-41c9-a9c9-c23c558c1817",
   "files": [
-    ".jpg",
+    ".png",
     ".json"
   ],
   "subMetas": {
     "f9941": {
       "ver": "1.0.8",
       "importer": "sprite-frame",
-      "uuid": "a6cb9d0d-2b67-4efc-8c35-d0b675b9074e@f9941",
+      "uuid": "2011fb18-e828-41c9-a9c9-c23c558c1817@f9941",
       "imported": true,
       "files": [
         ".json"
@@ -32,25 +32,25 @@
         "offsetY": 0,
         "trimX": 0,
         "trimY": 0,
-        "width": 750,
-        "height": 1334,
-        "rawWidth": 750,
-        "rawHeight": 1334,
+        "width": 88,
+        "height": 73,
+        "rawWidth": 88,
+        "rawHeight": 73,
         "borderTop": 0,
         "borderBottom": 0,
         "borderLeft": 0,
         "borderRight": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "a6cb9d0d-2b67-4efc-8c35-d0b675b9074e",
+        "imageUuidOrDatabaseUri": "2011fb18-e828-41c9-a9c9-c23c558c1817",
         "atlasUuid": ""
       },
-      "displayName": "ImgLoading",
+      "displayName": "loadicon",
       "id": "f9941",
       "name": "spriteFrame"
     }
   },
   "userData": {
     "type": "sprite-frame",
-    "redirect": "a6cb9d0d-2b67-4efc-8c35-d0b675b9074e@f9941"
+    "redirect": "2011fb18-e828-41c9-a9c9-c23c558c1817@f9941"
   }
 }

@@ -1,10 +1,13 @@
 {
   "state": {
     "animationUuid": "",
-    "assetUuid": "5b302b6a-8924-4177-8b8e-d660d09a9936",
+    "assetUuid": "2b3bbfc0-8b05-48af-8ffd-203faa70d346",
     "expandLevels": [
       "0",
-      "0_0"
+      "0_4",
+      "0_4_1",
+      "0_4_1_1_2",
+      "0_4_1_0_3_3"
     ]
   }
 }

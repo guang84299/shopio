@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent,ModelComponent,WidgetComponent} from "cc";
+import { _decorator, Component, Node,tween, Prefab,LabelComponent,ProgressBarComponent ,CameraComponent,AnimationComponent,ModelComponent,WidgetComponent} from "cc";
 import { Player } from "./Player"
 import { Goods } from "./Goods"
 import { Robot } from "./Robot"
@@ -31,6 +31,8 @@ export class gameControl extends Component {
 
     loadPro = null;
     proTxt = null;
+    proIcon = null;
+    proIcons = [];
 
 
     public goodss = [];
@@ -87,8 +89,9 @@ export class gameControl extends Component {
         // PhysicsSystem.ins.enable = true;
         this.gameMode = cc.storage.getStorage(cc.storage.mode);
 
-        this.loadPro = cc.find("pro",this.loadNode).getComponent(ProgressBarComponent);
-        this.proTxt = cc.find("pro/txt",this.loadNode).getComponent(LabelComponent);
+        this.loadPro = cc.find("tip2/pro",this.loadNode).getComponent(ProgressBarComponent);
+        this.proTxt = cc.find("tip2/pro/txt",this.loadNode).getComponent(LabelComponent);
+        this.proIcon = cc.find("tip2/pro/icon",this.loadNode);
         this.loadNode.active = true;
         this.gameUI.active = false;
 
@@ -98,6 +101,22 @@ export class gameControl extends Component {
             if(starlv>this.dogConfs.length) starlv = this.dogConfs.length;
             this.dogConf = this.dogConfs[starlv-1];
             cc.find("tip1",this.loadNode).active = true;
+
+           var icons = cc.find("tip1/box/icons",this.loadNode);
+           var icondi = cc.find("tip1/box/icondi",this.loadNode);
+           for(var i=0;i<10;i++)
+           {
+               var icon = cc.instantiate(icondi);
+               icon.active = true;
+               icon.parent = icons;
+               var icon2 = cc.find("icon",icon);
+               this.proIcons.push(icon2);
+               var tw = tween(icon2)
+               .by(2,{eulerAngles:cc.v3(0,0,360)})
+               .repeatForever()
+               .start(); 
+               icon2["tw"] = tw;
+           }
         }
         else cc.find("tip2",this.loadNode).active = true;
 
@@ -145,11 +164,27 @@ export class gameControl extends Component {
     updatePro(){
         var pro = this.num/cc.res.loads["conf_map"].length;
         this.loadPro.progress = pro;
-        this.proTxt.string = "加载中..."+Math.floor(pro*100)+"%";
-
+        this.proTxt.string = "商品正在上架....."+Math.floor(pro*100)+"%";
+        this.proIcon.position = cc.v3(600*pro - 300,-18,0);
         if(pro>=1)
         {
             this.loadNode.active = false;
+        }
+        this.updatePro1(pro);
+    }
+
+    updatePro1(pro){
+        if(1-this.proIcons.length/10.0<pro && this.proIcons.length>0)
+        {
+            var index = Math.floor(Math.random()*this.proIcons.length);
+            var icon = this.proIcons[index];
+            this.proIcons.splice(index,1);
+
+            icon["tw"].stop();
+            icon.eulerAngles = cc.v3(0,0,0);
+
+            var path = "https://www.7q7q.top/avatarpng/" + Math.floor(Math.random()*80+1) + ".png";
+            res.loadPic(path,icon);
         }
     }
 
