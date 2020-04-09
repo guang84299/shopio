@@ -15,6 +15,7 @@ export class Player extends Component {
     public isExcColl = false;
     public isExcColl2 = false;
     public isBorn = false;
+    public isExcAni = true;
     protected delSpeed = 2.5;
     protected moveSpeed = 2.5;
     protected _tarDir = cc.v2(0,1);
@@ -358,10 +359,10 @@ export class Player extends Component {
                 this.currCapacity -= Number(goods.conf.Capacity);
     
                 this.addScore(Number(goods.conf.Score));
-                if(!this.isPlayerSelf && !this.isRobot)
-                {
-                    this.followTarget.addScore(Number(goods.conf.Score));
-                }
+                // if(!this.isPlayerSelf && !this.isRobot)
+                // {
+                //     this.followTarget.addScore(Number(goods.conf.Score));
+                // }
     
                
                 var tpos = this.follow[0].node.getWorldPosition();//this.gameControl.cashier.getPosition()
@@ -393,7 +394,7 @@ export class Player extends Component {
     
     //显示表情
     showEmoji(type){
-        if(Math.random()<0.8) return;
+        if(Math.random()<0.8 || !this.isExcAni) return;
 
         var emojibg = cc.find("emojibg",this.uiNick);
         if(emojibg.active && this.currEmojiType == type) return;
@@ -600,13 +601,17 @@ export class Player extends Component {
 
                 this.showEmoji("lvup");
 
-                var node = cc.res.getObjByPool("prefab_anim_ParLvUp");
-                node.parent = this.node;
-                node.setPosition(cc.v3(0,-0.9,0));
-                this.scheduleOnce(function(){
-                    // cc.res.putObjByPool(node,"prefab_anim_ParLvUp");
-                    node.destroy();
-                },2);
+                if(this.isExcAni)
+                {
+                    var node = cc.res.getObjByPool("prefab_anim_ParLvUp");
+                    node.parent = this.node;
+                    node.setPosition(cc.v3(0,-0.9,0));
+                    this.scheduleOnce(function(){
+                        // cc.res.putObjByPool(node,"prefab_anim_ParLvUp");
+                        node.destroy();
+                    },2);
+                }
+               
 
                 if(this.isPlayerSelf)
                 {
@@ -943,7 +948,7 @@ export class Player extends Component {
                 this.jiantouNode.setWorldPosition(p);
             }
             this.jiantouNode.active = b;
-
+            this.isExcAni = !b;
             
         }
     }

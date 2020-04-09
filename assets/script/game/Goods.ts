@@ -75,6 +75,12 @@ export class Goods extends Component {
 
     die(toP,delyTime,isPlayerSelf,pack){
         this.state = "die";
+
+        if(!pack.followTarget.isExcAni)
+        {
+            pack.holdGoods(this);
+            return;
+        }
        
         var self = this;
         var anisc = this.node.addComponent(ani);
@@ -140,6 +146,14 @@ export class Goods extends Component {
             // this.node.parent = this.gameControl.goodsNode;
             this.state = "die";
             this.node.destroy();
+            return;
+        }
+        if(!pack.followTarget.isExcAni)
+        {
+            this.node.setPosition(toP);
+            this.node.parent = this.gameControl.goodsNode;
+            this.state = "idle";
+            this.gBoxColl.enable(true);
             return;
         }
         this.state = "die";

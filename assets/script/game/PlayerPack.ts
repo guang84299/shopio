@@ -143,6 +143,7 @@ export class PlayerPack extends Component {
 
     //新增分数动画
     addScoreAni(score){
+        if(!this.followTarget.isExcAni) return;
         if(this.aniTime>0) return;
         this.aniTime = 1;
         var node = cc.res.getObjByPool("prefab_ui_score");

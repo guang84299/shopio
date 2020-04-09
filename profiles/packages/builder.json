@@ -124,12 +124,12 @@
             "displayWatermark": true
           }
         },
-        "message": "build success in 37115 ms!",
+        "message": "build success in 31794 ms!",
         "logMap": {
-          "log": 0,
-          "warn": 0,
+          "log": 17,
+          "warn": 4,
           "error": 0,
-          "debug": 0
+          "debug": 220
         }
       },
       {
@@ -225,12 +225,12 @@
             "displayWatermark": true
           }
         },
-        "message": "build success in 24414 ms!",
+        "message": "build success in 46743 ms!",
         "logMap": {
           "log": 17,
           "warn": 4,
           "error": 0,
-          "debug": 219
+          "debug": 220
         }
       }
     ]

@@ -43,7 +43,7 @@ export class gameControl extends Component {
     public dogs = [];
     num = 0;
     public goodsNames = "";
-    private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF"];
+    private colors = ["#FF5200","#00ffd8","#fc00ff","#00ff18","#9cff00","#FFFFFF","#F769E6","#8069F7","#F7A269","#67F730"];
 
     gameTime = 0;
     gameScore = 0;
@@ -284,14 +284,14 @@ export class gameControl extends Component {
 
     initRobot(){
         //生成robot
-        var pps =  [cc.v2(17.2,-3),cc.v2(-0.5,9.4),cc.v2(-12,15),cc.v2(0,-10),cc.v2(14.7,9.2),cc.v2(-15.8,-8.3),cc.v2(-0.0,2.7)];
+        var pps =  [cc.v2(17.2,-3),cc.v2(-0.5,9.4),cc.v2(-12,15),cc.v2(0,-10),cc.v2(14.7,9.2),cc.v2(-15.8,-8.3),cc.v2(-0.0,2.7),cc.v2(-4,-0.76),cc.v2(3.3,-10)];
         var robotNum = 0;
          //星级
         var starlv = cc.storage.getStorage(cc.storage.starlv);
         var aiDatas = cc.res.loads["conf_robotstage"][starlv-1];
         if(this.gameMode == 1) 
         {
-            robotNum = 5;
+            robotNum = 9;
             this.goodsConfPath = JSON.parse(JSON.stringify(cc.res.loads["conf_goodspath"]));
             // cc.log(this.goodsConfPath);
         }

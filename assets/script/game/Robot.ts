@@ -63,7 +63,7 @@ export class Robot extends Player {
         }
 
         //判断躲避
-        if(this.robotState != "toAvoid" && this.robotState != "toRob" && this.judgeAvoidTime > 0)
+        if(this.robotState != "toAvoid" && this.robotState != "toRob" && this.judgeAvoidTime > 0 && this.isExcAni)
         {
             var pla = this.findOtherPlayer();
             if(pla && Math.random()*100 <= Number(this.robotConfId.avoid)+Number(this.robotConflv.avoid))
@@ -77,7 +77,7 @@ export class Robot extends Player {
         }
 
         //判断抢夺
-        if(this.robotState != "toRob" && this.robotState != "toAvoid" && this.judgeRobTime > 0)
+        if(this.robotState != "toRob" && this.robotState != "toAvoid" && this.judgeRobTime > 0 && this.isExcAni)
         {
             var pla = this.findOtherPlayerPack();
             if(pla && Math.random()*100 <= Number(this.robotConfId.rob)+Number(this.robotConflv.rob))
