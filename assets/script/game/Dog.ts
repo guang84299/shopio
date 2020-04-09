@@ -178,7 +178,7 @@ export class Dog extends Component {
                     if(this.gameControl.tipNum1<3 && new Date().getTime()-cc.res.tipTime>5000)
                     {
                         this.gameControl.tipNum1 ++;
-                        cc.res.showTips("恶犬靠近！注意躲避！");
+                        cc.res.showTips("Dog close! Avoid!"); 
                     }
                     cc.audio.playSound("dogzhuiren");
                     this.gameControl.updateRed();

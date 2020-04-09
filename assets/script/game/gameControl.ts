@@ -164,7 +164,7 @@ export class gameControl extends Component {
     updatePro(){
         var pro = this.num/cc.res.loads["conf_map"].length;
         this.loadPro.progress = pro;
-        this.proTxt.string = "商品正在上架....."+Math.floor(pro*100)+"%";
+        this.proTxt.string = "loading....."+Math.floor(pro*100)+"%";
         this.proIcon.position = cc.v3(600*pro - 300,-18,0);
         if(pro>=1)
         {
@@ -379,7 +379,7 @@ export class gameControl extends Component {
         dogSc.initConf(this.dogs.length,this.dogConf.lv);
         this.dogs.push(dogSc);
 
-        if(this.dogs.length == 2) res.showTips("注意恶犬出现！");
+        if(this.dogs.length == 2) res.showTips("Dogs appear!");
     }
 
     startCountDown(){
@@ -389,12 +389,12 @@ export class gameControl extends Component {
         this.players.push(this.playerSc);
         this.gameUI.active = true;
         this.updateHold(0);
-        if(cc.GAME.startSpeedUp) res.showTips("开局已加速");
+        if(cc.GAME.startSpeedUp) res.showTips("Speed Up");
         else
         {
             if(this.gameMode == 1)
             {
-                var strs = ["接触别人袋子可以偷东西!","尽快拿东西让自己变大！","体积大可以弹开对手！","体积大抢夺更有优势！"];
+                var strs = ["Touch other people's bags and steal!","Get something as soon as possible!","Big size can open opponents!","Big size grab more advantages!"];
                 res.showTips(strs[Math.floor(Math.random()*strs.length)]);
             }
            

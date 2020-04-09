@@ -309,7 +309,7 @@ export class PlayerPack extends Component {
             if(this.gameControl.tipNum2<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum2 ++;
-                cc.res.showTips("你被偷了！:(");
+                cc.res.showTips("You were stolen！:(");
             }
         }
         if(player.isPlayerSelf)
@@ -317,13 +317,13 @@ export class PlayerPack extends Component {
             if(this.gameControl.tipNum3<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum3 ++;
-                cc.res.showTips("偷的好爽！:)");
+                cc.res.showTips("Steal good！:)");
             }
 
             if(this.goodss.length<=2 && this.gameControl.tipNum4<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum4 ++;
-                cc.res.showTips("干掉一个！");
+                cc.res.showTips("Kill one！");
             }
 
             cc.audio.playSound("rob");
@@ -380,7 +380,7 @@ export class PlayerPack extends Component {
             if(this.gameControl.tipNum5<3 && new Date().getTime()-cc.res.tipTime>5000)
             {
                 this.gameControl.tipNum5 ++;
-                cc.res.showTips("我出局了！");
+                cc.res.showTips("I'm out！");
             }
             this.scheduleOnce(function(){
                 cc.audio.playSound("die");

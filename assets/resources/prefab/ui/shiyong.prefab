@@ -469,7 +469,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 190,
+      "width": 200.29,
       "height": 56
     },
     "_anchorPoint": {
@@ -498,7 +498,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "皮肤试用",
+    "_string": "Skin trial",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 46,
@@ -1029,7 +1029,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -110,
+      "x": -99.78,
       "y": 0,
       "z": 0
     },
@@ -1309,7 +1309,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 190,
+      "width": 169.56,
       "height": 56
     },
     "_anchorPoint": {
@@ -1338,7 +1338,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "立即试用",
+    "_string": "try now",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 46,
@@ -1399,7 +1399,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 378,
+      "width": 357.56,
       "height": 153
     },
     "_anchorPoint": {

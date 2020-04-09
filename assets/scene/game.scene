@@ -842,7 +842,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 313.36,
+      "width": 406.72,
       "height": 46
     },
     "_anchorPoint": {
@@ -871,7 +871,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "2分钟内 拿到最多",
+    "_string": "Get the most in 2 min",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 40,
@@ -945,7 +945,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 400,
+      "width": 602.4,
       "height": 120
     },
     "_anchorPoint": {
@@ -974,7 +974,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "体积大可以弹开对手！\n体积大抢夺更有优势！",
+    "_string": "Big size can open opponents!\nBig size grab more advantages!",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 40,
@@ -1070,7 +1070,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -116.488,
+      "x": -172.097,
       "y": 133.862,
       "z": 0
     },
@@ -1210,7 +1210,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 216,
+      "width": 321.83,
       "height": 40
     },
     "_anchorPoint": {
@@ -1239,11 +1239,11 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "搜索全城玩家",
+    "_string": "Search for city players",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
-    "_actualFontSize": 36,
-    "_fontSize": 36,
+    "_actualFontSize": 30,
+    "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
     "_overflow": 0,
@@ -1752,7 +1752,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 250,
+      "width": 423.47,
       "height": 160
     },
     "_anchorPoint": {
@@ -1781,7 +1781,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "2分钟内\n扫清地图",
+    "_string": "Clear the map \nin 2 minutes",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 60,
@@ -1873,7 +1873,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 360,
+      "width": 482.32,
       "height": 46
     },
     "_anchorPoint": {
@@ -1902,7 +1902,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "快速滑动，提高效率",
+    "_string": "Fast sliding for efficiency",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 40,
@@ -2170,7 +2170,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "商品正在上架..... 0%",
+    "_string": "loading..... 0%",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,
@@ -2436,9 +2436,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 179,
-      "g": 175,
-      "b": 175,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_sharedMaterial": null,

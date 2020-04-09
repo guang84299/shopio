@@ -43,20 +43,20 @@ export class skin extends Component {
 
     //type 1:完成一局 2：金币  3：看视频  itemtype: 1皮肤 2袋子
     itemConfig = [
-        {id:1,itemtype:1,type:1,desc:"完成一局",cost:1},//明天再玩 1
-        {id:2,itemtype:1,type:2,desc:"2000金币",cost:2000},//连续登陆7天 2
-        {id:3,itemtype:1,type:2,desc:"4000金币",cost:4000},//经典模式争取第一 1
-        {id:3,itemtype:2,type:3,desc:"看视频获得",cost:1},//看视频获得 3
-        {id:4,itemtype:1,type:3,desc:"看视频获得",cost:1}, //经典模式得分2000 1
-        {id:1,itemtype:2,type:2,desc:"5000金币",cost:5000},
-        {id:5,itemtype:1,type:2,desc:"6000金币",cost:6000},
-        {id:6,itemtype:1,type:2,desc:"4000金币",cost:4000},//3次经典模式获得最高分奖杯 2
-        {id:7,itemtype:1,type:2,desc:"4000金币",cost:4000},//达到白金级 1
-        {id:8,itemtype:1,type:2,desc:"8000金币",cost:8000},
-        {id:2,itemtype:2,type:2,desc:"4000金币",cost:4000},
-        {id:9,itemtype:1,type:3,desc:"看视频获得",cost:1},
-        {id:4,itemtype:2,type:3,desc:"看视频获得",cost:1},
-        {id:10,itemtype:1,type:2,desc:"20000金币",cost:20000}
+        {id:1,itemtype:1,type:1,desc:"Finish a game",cost:1},//明天再玩 1
+        {id:2,itemtype:1,type:2,desc:"2000 coin",cost:2000},//连续登陆7天 2
+        {id:3,itemtype:1,type:2,desc:"4000 coin",cost:4000},//经典模式争取第一 1
+        {id:3,itemtype:2,type:3,desc:"Watch the video to get",cost:1},//看视频获得 3
+        {id:4,itemtype:1,type:3,desc:"Watch the video to get",cost:1}, //经典模式得分2000 1
+        {id:1,itemtype:2,type:2,desc:"5000 coin",cost:5000},
+        {id:5,itemtype:1,type:2,desc:"6000 coin",cost:6000},
+        {id:6,itemtype:1,type:2,desc:"4000 coin",cost:4000},//3次经典模式获得最高分奖杯 2
+        {id:7,itemtype:1,type:2,desc:"4000 coin",cost:4000},//达到白金级 1
+        {id:8,itemtype:1,type:2,desc:"8000 coin",cost:8000},
+        {id:2,itemtype:2,type:2,desc:"4000 coin",cost:4000},
+        {id:9,itemtype:1,type:3,desc:"Watch the video to get",cost:1},
+        {id:4,itemtype:2,type:3,desc:"Watch the video to get",cost:1},
+        {id:10,itemtype:1,type:2,desc:"20000 coin",cost:20000}
     ];
     
     start () {
@@ -172,7 +172,7 @@ export class skin extends Component {
             this.btnSel.node.active = true;
             this.btnLock.node.active = false;
             this.btnLockCoin.node.active = false;
-            this.protitleLabel.string = "已获得";
+            this.protitleLabel.string = "Achieved";
         }
         else{
             this.btnSel.node.active = false;
@@ -303,7 +303,7 @@ export class skin extends Component {
             var coin = storage.getStorage(storage.coin);
             if(coin<cost)
             {
-                cc.res.showToast("金币不足");
+                cc.res.showToast("Coin Not enough");
             }
             else
             {

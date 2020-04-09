@@ -251,7 +251,7 @@ export class loading extends Component {
         //this.totalCount = totalCount;
 
         this.progressBar.progress = this.progress;
-        this.progressTips.string = "商品正在上架..... " + Math.floor(this.completedCount/this.totalCount*100)+"%";
+        this.progressTips.string = "loading..... " + Math.floor(this.completedCount/this.totalCount*100)+"%";
         this.loadIcon.position = cc.v3(600*this.progress - 300,-17.57,0);
         
         this.setRes(resource,index);
@@ -274,7 +274,7 @@ export class loading extends Component {
 
     completeCallback () {
         console.log("-----completeCallback---time:",new Date().getTime()-this.nowtime);
-        this.progressTips.string = "商品正在上架.....100%";
+        this.progressTips.string = "loading.....100%";
         this.progressBar.progress = 1;
         //this.progressTips.string = "加载中";
         //this.progressBar.node.active = true;

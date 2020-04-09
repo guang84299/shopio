@@ -149,7 +149,7 @@ export const sdk = {
                 else {
                     if(self.videocallback)
                         self.videocallback(false);
-                    cc.res.showToast("视频未看完！");
+                    cc.res.showToast("Video not finished!");
                     cc.sdk.event("视频观看失败");
                 }
                 // if(cc.myscene == "main")

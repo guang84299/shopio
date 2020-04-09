@@ -466,7 +466,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 190,
+      "width": 288.43,
       "height": 56
     },
     "_anchorPoint": {
@@ -495,11 +495,11 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "免费复活",
+    "_string": "Free Resurrection",
     "_horizontalAlign": 1,
-    "_verticalAlign": 2,
-    "_actualFontSize": 46,
-    "_fontSize": 46,
+    "_verticalAlign": 1,
+    "_actualFontSize": 33,
+    "_fontSize": 33,
     "_fontFamily": "Arial",
     "_lineHeight": 56,
     "_overflow": 0,
@@ -874,7 +874,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 425.34,
+      "width": 483.53,
       "height": 40
     },
     "_anchorPoint": {
@@ -903,7 +903,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "Tips: 快速滑动，加速逃跑",
+    "_string": "Tips: Fast slide, fast escape",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
     "_actualFontSize": 36,
@@ -1047,7 +1047,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -110,
+      "x": -121.38,
       "y": 0,
       "z": 0
     },
@@ -1327,7 +1327,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 190,
+      "width": 212.76,
       "height": 56
     },
     "_anchorPoint": {
@@ -1356,11 +1356,11 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "立即复活",
+    "_string": "now revive",
     "_horizontalAlign": 1,
     "_verticalAlign": 2,
-    "_actualFontSize": 46,
-    "_fontSize": 46,
+    "_actualFontSize": 40,
+    "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 56,
     "_overflow": 0,
@@ -1417,7 +1417,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 378,
+      "width": 400.76,
       "height": 153
     },
     "_anchorPoint": {

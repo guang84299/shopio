@@ -169,7 +169,7 @@ export class jiesuan extends Component {
             storage.setStorage(storage.coin,storage.getStorage(storage.coin)+award);
             storage.uploadStorage(storage.coin);
     
-            cc.res.showToast("金币+"+award);
+            cc.res.showToast("Coin+"+award);
         }
         else
         {
@@ -181,7 +181,7 @@ export class jiesuan extends Component {
                 storage.setStorage(storage.coin,storage.getStorage(storage.coin)+award);
                 storage.uploadStorage(storage.coin);
         
-                cc.res.showToast("金币+"+award);
+                cc.res.showToast("Coin+"+award);
             }
             var self = this;
             this.scheduleOnce(function(){

@@ -153,12 +153,12 @@ export class mainControl extends Component {
         var mode = storage.getStorage(storage.mode);
         if(mode == 1)
         {
-            this.maxscoreLabel.string = "最高分："+storage.getStorage(storage.maxscore);
+            this.maxscoreLabel.string = "High score："+storage.getStorage(storage.maxscore);
             res.setSpriteFrame("images/main/BtnGame1/spriteFrame",this.startNode);
         }
         else
         {
-            this.maxscoreLabel.string = "最高分："+storage.getStorage(storage.maxscore2);
+            this.maxscoreLabel.string = "High score："+storage.getStorage(storage.maxscore2);
             res.setSpriteFrame("images/main/BtnGame2/spriteFrame",this.startNode);
         }
     }
@@ -176,7 +176,7 @@ export class mainControl extends Component {
         if(lv+1<cc.res.loads["conf_playerlv"].length) nextData = cc.res.loads["conf_playerlv"][lv+1];
 
         
-        addLabel.string = "速度+"+data.speed;
+        addLabel.string = "Speed+"+data.speed;
         
         if(nextData) 
         {
@@ -193,12 +193,12 @@ export class mainControl extends Component {
         var lv = storage.getStorage(storage.speedlv);
         if(lv+1>=cc.res.loads["conf_playerlv"].length)
         {
-            res.showToast("等级已满");return;
+            res.showToast("Level Max");return;
         }
         var nextData = cc.res.loads["conf_playerlv"][lv+1];
         if(this.coin<Number(nextData.speedcost))
         {
-            res.showToast("金币不足");return;
+            res.showToast("Coin Not enough");return;
         }
 
         storage.setStorage(storage.coin,this.coin-Number(nextData.speedcost));
@@ -230,7 +230,7 @@ export class mainControl extends Component {
         if(lv+1<cc.res.loads["conf_playerlv"].length) nextData = cc.res.loads["conf_playerlv"][lv+1];
 
         
-        addLabel.string = "容量+"+data.capacity;
+        addLabel.string = "Capacity+"+data.capacity;
         
         if(nextData) 
         {
@@ -247,12 +247,12 @@ export class mainControl extends Component {
         var lv = storage.getStorage(storage.capacitylv);
         if(lv+1>=cc.res.loads["conf_playerlv"].length)
         {
-            res.showToast("等级已满");return;
+            res.showToast("Level Max");return;
         }
         var nextData = cc.res.loads["conf_playerlv"][lv+1];
         if(this.coin<Number(nextData.capacitycost))
         {
-            res.showToast("金币不足");return;
+            res.showToast("Coin Not enough");return;
         }
 
         storage.setStorage(storage.coin,this.coin-Number(nextData.capacitycost));
@@ -282,7 +282,7 @@ export class mainControl extends Component {
         if(lv+1<cc.res.loads["conf_playerlv"].length) nextData = cc.res.loads["conf_playerlv"][lv+1];
 
         
-        addLabel.string = data.offline+"/分钟";
+        addLabel.string = data.offline+"/min";
         
         if(nextData) 
         {
@@ -299,12 +299,12 @@ export class mainControl extends Component {
         var lv = storage.getStorage(storage.lixianlv);
         if(lv+1>=cc.res.loads["conf_playerlv"].length)
         {
-            res.showToast("等级已满");return;
+            res.showToast("Level Max");return;
         }
         var nextData = cc.res.loads["conf_playerlv"][lv+1];
         if(this.coin<Number(nextData.offlinecost))
         {
-            res.showToast("金币不足");return;
+            res.showToast("Coin Not enough");return;
         }
 
         storage.setStorage(storage.coin,this.coin-Number(nextData.offlinecost));
@@ -338,7 +338,7 @@ export class mainControl extends Component {
         {
             storage.setStorage(storage.hasskin,hasskin);
             storage.uploadStorage(storage.hasskin);
-            res.showToast("解锁新皮肤");
+            res.showToast("Unlock new skin");
 
             res.openUI("yindao",null,1);
             cc.GAME.yindaoStep = 1;

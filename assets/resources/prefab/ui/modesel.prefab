@@ -561,7 +561,7 @@
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -1093,7 +1093,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 192,
+      "width": 236.11,
       "height": 30
     },
     "_anchorPoint": {
@@ -1122,7 +1122,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "两分钟内清空地图",
+    "_string": "clear the map in 2 min",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
@@ -1549,7 +1549,7 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 192,
+      "width": 213.43,
       "height": 30
     },
     "_anchorPoint": {
@@ -1578,7 +1578,7 @@
     },
     "_sharedMaterial": null,
     "_useOriginalSize": true,
-    "_string": "两分钟内挑战高分",
+    "_string": "high scores in 2 min",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,

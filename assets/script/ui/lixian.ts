@@ -84,7 +84,7 @@ export class lixian extends Component {
         storage.uploadStorage(storage.coin);
         this.mainControl.updateCoin();
 
-        cc.res.showToast("金币+"+ this.award);
+        cc.res.showToast("Coin+"+ this.award);
 
         this.hide();
     }

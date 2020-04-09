@@ -618,7 +618,7 @@ export class Player extends Component {
                     if(this.gameControl.tipNum6<3 && new Date().getTime()-cc.res.tipTime>5000)
                     {
                         this.gameControl.tipNum6 ++;
-                        cc.res.showTips("你升级啦！");
+                        cc.res.showTips("Level Up ！");
                     }
                 }
             }
