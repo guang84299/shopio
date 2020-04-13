@@ -756,7 +756,7 @@ export class GBoxColl extends Component {
         if(this.isStatic)
         {
             this.upDt += dt;
-            if(this.upDt<0.3) return;
+            if(this.upDt<0.15) return;
             else this.upDt = 0;
         }
         else{

@@ -125,7 +125,7 @@ export class lixian extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.liangqu(true);
+                    if(r == 1) self.liangqu(true);
                 });
             }
             cc.sdk.event("离线界面-2倍领取");

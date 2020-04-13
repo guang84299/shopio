@@ -145,7 +145,7 @@ export class shiyong extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.toShiyong();
+                    if(r == 1) self.toShiyong();
                 });
             }
             cc.sdk.event("皮肤试用界面-试用");

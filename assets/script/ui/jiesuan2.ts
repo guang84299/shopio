@@ -136,7 +136,7 @@ export class jiesuan2 extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.liangqu(true);
+                    if(r == 1) self.liangqu(true);
                 });
             }
             cc.sdk.event("结算界面-单人模式-双倍领取");

@@ -402,7 +402,7 @@ export class mainControl extends Component {
             if(this.startSpeedUp.isChecked)
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) 
+                    if(r == 1) 
                     {
                         cc.GAME.startSpeedUp = true;
                         cc.director.loadScene("game");

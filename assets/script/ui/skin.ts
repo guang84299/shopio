@@ -325,7 +325,7 @@ export class skin extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.toLock();
+                    if(r == 1) self.toLock();
                 });
             }
         }

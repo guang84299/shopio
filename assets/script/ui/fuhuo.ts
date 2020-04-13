@@ -88,7 +88,7 @@ export class fuhuo extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.fuhuo();
+                    if(r == 1) self.fuhuo();
                 });
             }
             cc.sdk.event("复活界面-复活");

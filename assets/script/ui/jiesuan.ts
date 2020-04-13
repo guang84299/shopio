@@ -228,7 +228,7 @@ export class jiesuan extends Component {
             else
             {
                 cc.sdk.showVedio(function(r){
-                    if(r) self.liangqu(true);
+                    if(r == 1) self.liangqu(true);
                 });
             }
             cc.sdk.event("结算界面-经典模式-双倍领取");

@@ -26,16 +26,24 @@ export const sdk = {
 
     vibrate: function(isLong)
     {
-        if(storage.getStorage(storage.vibrate) == 1 && window["wx"])
+        if(storage.getStorage(storage.vibrate) == 1)
         {
-            if(isLong)
+            if(window["wx"])
             {
-                wx.vibrateLong({});
+                if(isLong)
+                {
+                    wx.vibrateLong({});
+                }
+                else
+                {
+                    wx.vibrateShort({});
+                }
             }
-            else
+            else if(cc.sys.os == cc.sys.OS_ANDROID)
             {
-                wx.vibrateShort({});
+                jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "vibrate", "(I)V", isLong ? 1 : 0);
             }
+
         }
     },
 
@@ -180,6 +188,10 @@ export const sdk = {
 
 
         }
+        else if(cc.sys.os == cc.sys.OS_ANDROID)
+        {
+            cc.GAME.hasVideo = true;
+        }
         this.bannerTime = 0;
     },
 
@@ -205,6 +217,10 @@ export const sdk = {
             //        callback(false);
             //    cc.res.showToast("暂未开放！");
             // }
+        }
+        else if(cc.sys.os == cc.sys.OS_ANDROID)
+        {
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "showVedio", "(Ljava/lang/String;)V", "1");
         }
         else
         {
@@ -310,6 +326,10 @@ export const sdk = {
 
             this.bannerTime = new Date().getTime();
         }
+        else if(cc.sys.os == cc.sys.OS_ANDROID)
+        {
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "showBanner", "(Ljava/lang/String;)V", "1");
+        }
     },
 
     hideBanner: function()
@@ -323,6 +343,10 @@ export const sdk = {
             }
             this.isBannerShow = false;
 
+        }
+        else if(cc.sys.os == cc.sys.OS_ANDROID)
+        {
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "showBanner", "(Ljava/lang/String;)V", "0");
         }
     },
 
@@ -364,6 +388,10 @@ export const sdk = {
                     console.error(err)
                 });
             }
+        }
+        else if(cc.sys.os == cc.sys.OS_ANDROID)
+        {
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "showSpot", "(Ljava/lang/String;)V", "1");
         }
     },
 

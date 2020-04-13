@@ -143,12 +143,26 @@ export const qianqista = {
             }
             else
             {
-                this.openid = "test002";
+                var openid = cc.sys.localStorage.getItem("shop_openid");
+                if(!openid)
+                {
+                    openid = this.guid();
+                    cc.sys.localStorage.setItem("shop_openid",openid);
+                }
+                this.openid = openid;
                 this.userName = "嘿嘿";
                 this.avatarUrl = "https://game.7q7q.top/img/wxgame/1b6474f6563845c4a5afd5b9a797c017.png";
                 this.fromid = "test001";
             }
         }
+    },
+
+    guid:function() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
     },
 
     setHideCallback: function(hidecallback)
