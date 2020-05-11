@@ -355,12 +355,12 @@
             "displayWatermark": true
           }
         },
-        "message": "build success in 67634 ms!",
+        "message": "build success in 36384 ms!",
         "logMap": {
           "log": 25,
           "warn": 4,
           "error": 0,
-          "debug": 200
+          "debug": 227
         }
       }
     ]
