@@ -22,7 +22,7 @@
         "__id__": 4
       },
       {
-        "__id__": 299
+        "__id__": 304
       },
       {
         "__id__": 75
@@ -33,7 +33,7 @@
     "_prefab": null,
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 300
+      "__id__": 305
     },
     "_id": "7b885a39-4e11-4e67-9d87-f9e81599d568"
   },
@@ -2728,16 +2728,16 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 294
+        "__id__": 299
       },
       {
-        "__id__": 295
+        "__id__": 300
       },
       {
-        "__id__": 296
+        "__id__": 301
       },
       {
-        "__id__": 298
+        "__id__": 303
       }
     ],
     "_prefab": null,
@@ -2803,15 +2803,18 @@
       },
       {
         "__id__": 276
+      },
+      {
+        "__id__": 292
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 292
+        "__id__": 297
       },
       {
-        "__id__": 293
+        "__id__": 298
       }
     ],
     "_prefab": null,
@@ -10246,6 +10249,184 @@
     "_id": "6c+sVutUhBArKeV2RrZEYn"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "share",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 74
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 293
+      },
+      {
+        "__id__": 294
+      },
+      {
+        "__id__": 295
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 290.653,
+      "y": -82.059,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 0.6,
+      "y": 0.6,
+      "z": 1
+    },
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "0213OBhN5DWYZep/k+4Hxw"
+  },
+  {
+    "__type__": "cc.UITransformComponent",
+    "_name": "music<UITransformComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 292
+    },
+    "_enabled": true,
+    "_priority": 0,
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 188,
+      "height": 216
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": "14Fyax7nZAIInm+FYuF6Av"
+  },
+  {
+    "__type__": "cc.SpriteComponent",
+    "_name": "music<SpriteComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 292
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_sharedMaterial": null,
+    "_spriteFrame": {
+      "__uuid__": "401beabd-4516-4f01-998c-3ed736848d89@f9941"
+    },
+    "_type": 1,
+    "_fillType": 0,
+    "_sizeMode": 1,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_useGrayscale": false,
+    "_atlas": null,
+    "_id": "9eDecsyLVDtaOmYZ9AYn3T"
+  },
+  {
+    "__type__": "cc.ButtonComponent",
+    "_name": "music<ButtonComponent>",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 292
+    },
+    "_enabled": true,
+    "clickEvents": [
+      {
+        "__id__": 296
+      }
+    ],
+    "_interactable": true,
+    "_transition": 3,
+    "_normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_hoverColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_pressColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_disabledColor": {
+      "__type__": "cc.Color",
+      "r": 124,
+      "g": 124,
+      "b": 124,
+      "a": 255
+    },
+    "_normalSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941"
+    },
+    "_hoverSprite": {
+      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941"
+    },
+    "_pressedSprite": {
+      "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941"
+    },
+    "_disabledSprite": {
+      "__uuid__": "951249e0-9f16-456d-8b85-a6ca954da16b@f9941"
+    },
+    "_duration": 0.1,
+    "_zoomScale": 1.2,
+    "_target": {
+      "__id__": 292
+    },
+    "_id": "78uHZZQBJLp4nxU2lxPiZc"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 4
+    },
+    "component": "",
+    "_componentId": "ccf28gONRhDkLODhrKxDmt8",
+    "handler": "click",
+    "customEventData": "share"
+  },
+  {
     "__type__": "cc.UITransformComponent",
     "_name": "btnNode<UITransformComponent>",
     "_objFlags": 0,
@@ -10360,7 +10541,7 @@
     "_enabled": true,
     "clickEvents": [
       {
-        "__id__": 297
+        "__id__": 302
       }
     ],
     "_interactable": true,
@@ -10491,13 +10672,13 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 301
+      "__id__": 306
     },
     "planarShadows": {
-      "__id__": 302
+      "__id__": 307
     },
     "_skybox": {
-      "__id__": 303
+      "__id__": 308
     }
   },
   {

@@ -1180,9 +1180,9 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 2,
-      "y": 2,
-      "z": 2
+      "x": 1,
+      "y": 1,
+      "z": 1
     },
     "_layer": 33554432,
     "_euler": {
@@ -1204,8 +1204,8 @@
     "_priority": 0,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 49,
-      "height": 30
+      "width": 72,
+      "height": 64
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1233,7 +1233,7 @@
     },
     "_sharedMaterial": null,
     "_spriteFrame": {
-      "__uuid__": "79282aab-be8f-4a71-8f1c-c41115bbdab0@f9941"
+      "__uuid__": "48391174-af14-4d11-96e1-3d3e278b3052@f9941"
     },
     "_type": 0,
     "_fillType": 0,

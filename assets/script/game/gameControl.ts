@@ -399,6 +399,10 @@ export class gameControl extends Component {
             }
            
         }
+
+        cc.sdk.gameRecorderStop(function(){
+            cc.sdk.gameRecorderStart();
+        });
     }
 
     updateSelfCapacity(pro){
@@ -546,20 +550,28 @@ export class gameControl extends Component {
 
     gameOver(){
         this.isStart = false;
-        if(this.gameMode == 1) res.openUI("jiesuan");
-        else res.openUI("jiesuan2");
+        var self = this;
+        cc.sdk.gameRecorderStop(function(){
+            if(self.gameMode == 1) res.openUI("jiesuan");
+            else res.openUI("jiesuan2");
 
-        cc.audio.playSound("result");
+            cc.audio.playSound("result");
+        });
     }
 
     tofuhuo(){
         this.isStart = false;
-        res.openUI("fuhuo");
+        cc.sdk.gameRecorderStop(function(){
+            res.openUI("fuhuo");
+        });
     }
 
     fuhuo(){
         this.playerSc.fuhuo();
         this.isStart = true;
+        cc.sdk.gameRecorderStop(function(){
+            cc.sdk.gameRecorderStart();
+        });
     }
 
     update (dt: number) {

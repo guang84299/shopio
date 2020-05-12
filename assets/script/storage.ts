@@ -26,6 +26,7 @@ export const storage = {
     loginday:"loginday",
     logintime:"logintime",
     modewinnum:"modewinnum",
+    videoPath: "videoPath",
 
     defaultVal: {
         music:1,
@@ -48,7 +49,8 @@ export const storage = {
         hasball: [],
         loginday: 0,
         logintime: 0,
-        modewinnum: 0
+        modewinnum: 0,
+        videoPath: {}
     },
 
     setStorage: function(key,val)

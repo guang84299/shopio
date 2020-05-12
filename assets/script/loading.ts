@@ -61,9 +61,9 @@ export class loading extends Component {
         // cc.macro.ENABLE_WEBGL_ANTIALIAS = true;
                  
         var self = this;
-        var appkey = "wx83aa5365b3b6f2be";
-        var appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
-        var appname = "疯狂购物3D-微信";
+        var appkey = "tt61f6174bfed3841f";
+        var appsecret = "9c299ea7e86e5a2f8b24f39067c81670ffc4efbe";
+        var appname = "疯狂购物3D-TT";
         if(window["qq"])
         {
             appkey = "1110216465";
@@ -71,9 +71,9 @@ export class loading extends Component {
             appname = "疯狂购物3D-QQ";
         }
         else if(window["wx"]){
-            appkey = "wx83aa5365b3b6f2be";
-            appsecret = "c2cbe456f71cb7e9826b2527284cf5a9";
-            appname = "疯狂购物3D-微信";
+            appkey = "tt61f6174bfed3841f";
+            appsecret = "9c299ea7e86e5a2f8b24f39067c81670ffc4efbe";
+            appname = "疯狂购物3D-TT";
         }
         qianqista.init(appkey,appsecret,appname,function(){
             // var score = storage.getStorage(storage.lv);
@@ -92,11 +92,12 @@ export class loading extends Component {
             storage.setStorage(storage.sound,1);
             storage.setStorage(storage.vibrate,1);
         }   
-        
+        storage.setStorage(storage.videoPath,{});
+
         cc.sdk.event("进入加载界面");
-        if(window["wx"])
-            this.loadSubpackage();
-        else 
+        // if(window["wx"])
+        //     this.loadSubpackage();
+        // else 
             this.loadAllRes();
      
     }

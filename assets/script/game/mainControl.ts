@@ -458,7 +458,10 @@ export class mainControl extends Component {
             this.toLixianUp();
             cc.sdk.event("点击离线升级");
         }
-
+        else if(data == "share")
+        {
+            cc.sdk.share();
+        }
         cc.audio.playSound("button");
     }
     // update (dt: number) {

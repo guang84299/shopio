@@ -1,6 +1,7 @@
 import { _decorator, Component, Node } from "cc";
 const { ccclass, property } = _decorator;
 import { storage } from "./storage";
+var tt = window["tt"];
 
 
 export const sdk = {
@@ -14,7 +15,7 @@ export const sdk = {
             if(true) {
                 var bl = (cc.view.getFrameSize().width / cc.view.getFrameSize().height);
                 var bt = cc.view.getFrameSize().height/cc.view.getFrameSize().width;
-                if (bl == (1125/2436) || bl == (1080/2280) || bl == (720/1520) || bl == (1080/2340) || bt > 2.0) {
+                if (bl == (1125/2436) || bl == (1080/2280) || bl == (720/1520) || bl == (1080/2340) || bt > 1.96) {
                     this.isIphoneX = true;
                 } else {
                     this.isIphoneX = false;
@@ -128,7 +129,7 @@ export const sdk = {
         var self = this;
         if(window["wx"])
         {
-            var vedioId = "adunit-f82cfca77c68b3d0";
+            var vedioId = "309f5h28ll979pk7ik";
             if(window["qq"])
             {
                 vedioId = "559b9cf470defd966316bb953ae8f0f7";
@@ -174,7 +175,7 @@ export const sdk = {
             // 创建插屏广告实例，提前初始化
             if (wx.createInterstitialAd && !window["qq"] ){
                 this.interstitialAd = wx.createInterstitialAd({
-                    adUnitId: 'adunit-208a14c8625961a8'
+                    adUnitId: 'qfprmq1gr3age040k9'
                 });
             }
 
@@ -224,7 +225,7 @@ export const sdk = {
             //     if(now - this.bannerTime<2000)
             //         return;
             // }
-            var bannerId = "adunit-948f2698c0f7e103";
+            var bannerId = "jjbc4mj30052v55xca";
             if(window["qq"]) bannerId = "604ff7061d3891f9a2b48afe33dc9ebd";
 
             cc.sdk.event("banner展示");
@@ -302,11 +303,12 @@ export const sdk = {
                 {
                     self.hideBanner();
                 }
+                else bannerAd.show();
             });
             this.bannerAd.onError(function(res){
                 console.error(res);
             });
-            this.bannerAd.show();
+            // this.bannerAd.show();
 
             this.bannerTime = new Date().getTime();
         }
@@ -384,23 +386,53 @@ export const sdk = {
                     imageUrl = sdata.imageUrl;
                 }
             }
-            wx.shareAppMessage({
-                query:query,
+            var videoPath = storage.getStorage(storage.videoPath);
+            if(!videoPath.path){
+                cc.res.showToast("暂未录制视频!");
+                return;
+            }
+            tt.shareAppMessage({
+                channel: 'video',
                 title: title,
+                desc: title,
                 imageUrl: imageUrl,
-                // success: function(res)
-                // {
-                //     if(callback)
-                //         callback(true);
-                //     cc.log(res);
-                // },
-                // fail: function()
-                // {
-                //     if(callback)
-                //         callback(false);
-                // }
-            });
-            this.shareJudge(callback);
+                templateId: '', // 替换成通过审核的分享ID
+                query: query,
+                extra: {
+                    videoPath: videoPath.path, // 可替换成录屏得到的视频地址
+                    videoTopics: ['疯狂抢购3D大作战','疯狂抢购小游戏','抖音小游戏']
+                },
+                success() {
+                    console.log('分享视频成功');
+                    if(callback) callback(true);
+                    },
+                    fail(e) {
+                    console.log('分享视频失败');
+                    if(callback)
+                    {
+                        callback(false);
+                        cc.res.showToast("分享视频失败!");
+                    }
+                    
+                }  
+            });      
+            // wx.shareAppMessage({
+            //     query:query,
+            //     title: title,
+            //     imageUrl: imageUrl,
+            //     // success: function(res)
+            //     // {
+            //     //     if(callback)
+            //     //         callback(true);
+            //     //     cc.log(res);
+            //     // },
+            //     // fail: function()
+            //     // {
+            //     //     if(callback)
+            //     //         callback(false);
+            //     // }
+            // });
+            // this.shareJudge(callback);
         }
         else
         {
@@ -618,5 +650,73 @@ export const sdk = {
 
     event: function(name){
         cc.qianqista.event(name);
+    },
+
+    gameRecorderStart: function(){
+        if(tt)
+        {
+            if(this.recordering) return;
+            if(!this.recorderManage)
+            {
+                var self = this;
+                const recorder = tt.getGameRecorderManager();
+                this.recorderManage =  recorder;
+                recorder.onStart(res =>{
+                    console.log('录屏开始');
+                    // do somethine;
+                })
+
+                recorder.onStop(res =>{
+                    if(this.isSaveVedio)
+                        storage.setStorage(storage.videoPath, {path:res.videoPath});
+                    console.log(res.videoPath);
+                    if(this.recordercallback) this.recordercallback();
+                    this.recordering = false;
+                    // do somethine;
+                })
+                recorder.onError(errMsg =>{
+                    console.log(errMsg);
+                    if(this.recordercallback) this.recordercallback();
+                    this.recordering = false;
+                    // do somethine;
+                })
+            }
+            this.recorderManage.start({
+                duration: 300,
+            })
+            this.recordercallback = null;
+            this.recordering = true;
+            storage.setStorage(storage.videoPath, {});
+            this.recorderTime = new Date().getTime();
+            this.isSaveVedio = true;
+            this.isClickCancal = false;
+        }
+        
+    },
+
+    gameRecorderStop: function(callback){
+        if(tt)
+        {
+            this.recordercallback = callback;
+            if(this.recordering)
+            {
+                if(!this.isClickCancal)
+                {
+                    this.isClickCancal = true;
+                    // this.recordering = false;
+                    if(new Date().getTime()-this.recorderTime<3000) this.isSaveVedio = false;
+                    if(this.recorderManage)this.recorderManage.stop();
+                    console.log('主动停止录屏');
+                }
+            }
+            else
+            {
+                if(callback) callback();
+            }
+        }
+        else
+        {
+            if(callback) callback();
+        }
     }
 }

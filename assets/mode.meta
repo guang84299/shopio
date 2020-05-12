@@ -6,7 +6,7 @@
   "files": [],
   "subMetas": {},
   "userData": {
-    "isSubpackage": true,
+    "isSubpackage": false,
     "subpackageName": "mode"
   }
 }

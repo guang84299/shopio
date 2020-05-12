@@ -44,7 +44,8 @@ export class jiesuan2 extends Component {
 
     updateAd(){
         this.useShare = false;
-        if(cc.GAME.share)
+        var videoPath = cc.storage.getStorage(cc.storage.videoPath);
+        if(cc.GAME.share && videoPath.path)
         {
             var rad = parseInt(cc.GAME.jiesuanAd);
             if(!cc.GAME.hasVideo) rad = 100;

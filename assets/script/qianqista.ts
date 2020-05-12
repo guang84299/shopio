@@ -385,15 +385,23 @@ export const qianqista = {
             });
         }
     },
+    guid:function() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    },
 
     getOpenId: function(callback)
     {
         var self = this;
         if(window["wx"])
         {
-            var funname = "jscode2session";
+            var funname = "jscode2sessionzijie";
             if(window["qq"]) funname = "jscode2sessionqq";
             wx.login({
+                force:  false,
                 success: function(res)
                 {
                     console.log('login:', res);
@@ -403,13 +411,34 @@ export const qianqista = {
                             var msg = JSON.parse(r.msg);
                             self.session_key = msg.session_key;
                             self.openid = msg.openid;
-
+                            if(!self.openid)
+                            {
+                                var openid = cc.sys.localStorage.getItem("shopio_openid");
+                                if(!openid)
+                                {
+                                    openid = self.guid();
+                                    cc.sys.localStorage.setItem("shopio_openid",openid);
+                                }
+                                self.openid = openid;
+                            }
                             console.error('openid:', self.openid);
                         }
                         if(callback)
                             callback();
                         console.log('jscode2session:', r);
                     });
+                },
+                fail: function(){
+                    var openid = cc.sys.localStorage.getItem("shopio_openid");
+                    if(!openid)
+                    {
+                        openid = self.guid();
+                        cc.sys.localStorage.setItem("shopio_openid",openid);
+                    }
+                    self.openid = openid;
+                    console.error('openid:', self.openid);
+                    if(callback)
+                            callback();
                 }
             });
         }

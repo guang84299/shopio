@@ -124,10 +124,10 @@
       "id": "cc240",
       "name": "plane_g002.mesh"
     },
-    "b238b": {
+    "df7df": {
       "ver": "1.0.2",
       "importer": "gltf-embeded-image",
-      "uuid": "48db7c6f-84e8-4f10-a469-e8494f67728e@b238b",
+      "uuid": "48db7c6f-84e8-4f10-a469-e8494f67728e@df7df",
       "imported": true,
       "files": [
         ".png",
@@ -138,8 +138,8 @@
         "gltfIndex": 0
       },
       "displayName": "",
-      "id": "b238b",
-      "name": "plane01.png.image"
+      "id": "df7df",
+      "name": "贴图 #1.image"
     },
     "a96a6": {
       "ver": "1.0.19",
@@ -159,7 +159,7 @@
         "premultiplyAlpha": false,
         "anisotropy": 1,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "48db7c6f-84e8-4f10-a469-e8494f67728e@b238b"
+        "imageUuidOrDatabaseUri": "48db7c6f-84e8-4f10-a469-e8494f67728e@df7df"
       },
       "displayName": "",
       "id": "a96a6",
@@ -201,8 +201,8 @@
   "userData": {
     "imageMetas": [
       {
-        "name": "plane01.png",
-        "uri": "48db7c6f-84e8-4f10-a469-e8494f67728e@b238b"
+        "name": "贴图 #1",
+        "uri": "48db7c6f-84e8-4f10-a469-e8494f67728e@df7df"
       }
     ],
     "redirect": "48db7c6f-84e8-4f10-a469-e8494f67728e@87eb8",
